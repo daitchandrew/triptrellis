@@ -176,6 +176,101 @@ function stopGenerationLoading() {
   setGenerateButtonLoading(false);
 }
 
+// ---- Form Enhancement Functions ----
+
+function updateDurationCounter() {
+  const startField = document.querySelector("#start-date");
+  const endField = document.querySelector("#end-date");
+  const durationCounter = document.querySelector("#duration-counter");
+  
+  if (!startField || !endField || !durationCounter) return;
+  
+  const start = new Date(startField.value);
+  const end = new Date(endField.value);
+  
+  if (!startField.value || !endField.value || isNaN(start) || isNaN(end)) {
+    durationCounter.innerHTML = '<span class="duration-days">—</span> <span class="duration-nights">days</span>';
+    return;
+  }
+  
+  if (end <= start) {
+    durationCounter.innerHTML = '<span class="duration-days">0</span> <span class="duration-nights">days</span>';
+    return;
+  }
+  
+  const diffTime = Math.abs(end - start);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+  durationCounter.innerHTML = `<span class="duration-days">${diffDays}</span> <span class="duration-nights">${diffDays === 1 ? 'day' : 'days'}</span>`;
+}
+
+function updateFormSummary() {
+  const form = getForm();
+  if (!form) return;
+  
+  const citySelect = form.querySelector("#city");
+  const budgetSelect = form.querySelector("#budget");
+  const durationCounter = document.querySelector("#duration-counter");
+  const focusCheckboxes = form.querySelectorAll('input[name="focus"]:checked');
+  
+  if (document.querySelector("#summary-city")) {
+    document.querySelector("#summary-city").textContent = citySelect?.options[citySelect.selectedIndex]?.text || "Select city";
+  }
+  
+  if (document.querySelector("#summary-budget")) {
+    const budgetOption = budgetSelect?.options[budgetSelect.selectedIndex]?.text;
+    document.querySelector("#summary-budget").textContent = budgetOption || "Select budget";
+  }
+  
+  if (document.querySelector("#summary-dates")) {
+    const durationText = document.querySelector("#duration-counter")?.querySelector(".duration-days")?.textContent || "—";
+    document.querySelector("#summary-dates").textContent = `${durationText} days`;
+  }
+  
+  if (document.querySelector("#summary-interests")) {
+    const count = focusCheckboxes.length;
+    let interestsText = "No interests selected";
+    if (count === 1) {
+      const firstFocus = focusCheckboxes[0].closest(".focus-card");
+      const titleText = firstFocus?.querySelector(".focus-card-label")?.textContent;
+      interestsText = titleText || "1 interest";
+    } else if (count > 1) {
+      const firstFocus = focusCheckboxes[0].closest(".focus-card");
+      const firstTitle = firstFocus?.querySelector(".focus-card-label")?.textContent?.split("\n")[0];
+      interestsText = `${firstTitle}, and ${count - 1} more`;
+    }
+    document.querySelector("#summary-interests").textContent = interestsText;
+  }
+}
+
+function handleDatePreset(days) {
+  const startField = document.querySelector("#start-date");
+  const endField = document.querySelector("#end-date");
+  const today = new Date();
+  
+  if (!startField || !endField) return;
+  
+  // Start 18 days from now
+  const start = shiftDate(today, 18);
+  const end = new Date(start);
+  end.setDate(end.getDate() + days - 1);
+  
+  startField.value = toInputDate(start);
+  endField.value = toInputDate(end);
+  
+  updateDurationCounter();
+  updateFormSummary();
+  
+  // Visual feedback
+  const presetBtns = document.querySelectorAll(".preset-btn");
+  presetBtns.forEach(btn => {
+    btn.classList.remove("active");
+    if (parseInt(btn.dataset.days) === days) {
+      btn.classList.add("active");
+    }
+  });
+}
+
 export function generateFromForm(form) {
   if (!form) {
     showGenerationError(new Error("TripTrellis could not find the planner form."));
@@ -279,6 +374,10 @@ function initializeApp() {
   }
 
   setBuildTripPlanFn(buildPlan);
+  
+  // Initialize new form features
+  updateDurationCounter();
+  updateFormSummary();
 }
 
 function bindEvents() {
@@ -294,6 +393,45 @@ function bindEvents() {
   form?.addEventListener("submit", handlePlannerSubmit);
   generateButton?.addEventListener("click", () => {
     generateFromForm(form);
+  });
+
+  // Date and duration tracking
+  const startField = document.querySelector("#start-date");
+  const endField = document.querySelector("#end-date");
+  startField?.addEventListener("change", () => {
+    updateDurationCounter();
+    updateFormSummary();
+  });
+  endField?.addEventListener("change", () => {
+    updateDurationCounter();
+    updateFormSummary();
+  });
+
+  // Form summary updates
+  const citySelect = form?.querySelector("#city");
+  const budgetSelect = form?.querySelector("#budget");
+  const focusCheckboxes = form?.querySelectorAll('input[name="focus"]');
+  
+  citySelect?.addEventListener("change", updateFormSummary);
+  budgetSelect?.addEventListener("change", updateFormSummary);
+  focusCheckboxes?.forEach(cb => cb.addEventListener("change", updateFormSummary));
+
+  // Date presets
+  const presetButtons = document.querySelectorAll(".preset-btn");
+  presetButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      handleDatePreset(parseInt(btn.dataset.days));
+    });
+  });
+
+  // Reset form
+  const resetButton = document.querySelector("#reset-form-button");
+  resetButton?.addEventListener("click", () => {
+    form?.reset();
+    initializeDates();
+    updateDurationCounter();
+    updateFormSummary();
   });
 
   savedButton?.addEventListener("click", () => setSavedDrawerOpen(true));

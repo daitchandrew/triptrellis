@@ -150,6 +150,25 @@
             </div>
             </div><!-- /.anchor-set -->
 
+            <!-- Testimonials Section -->
+            <section class="testimonials-section">
+              <p class="section-eyebrow">Loved by travelers</p>
+              <div class="testimonials-grid">
+                <div class="testimonial-card">
+                  <p class="testimonial-text">"This completely changed how I plan trips. No more generic guides—just thoughtful, playable itineraries."</p>
+                  <p class="testimonial-author">— Sarah M., San Francisco</p>
+                </div>
+                <div class="testimonial-card">
+                  <p class="testimonial-text">"The hotel-aware planning is game-changing. I actually know where I'm going before I arrive."</p>
+                  <p class="testimonial-author">— James L., Brooklyn</p>
+                </div>
+                <div class="testimonial-card">
+                  <p class="testimonial-text">"Finally, an itinerary I don't feel like I have to ditch halfway through. It actually makes sense."</p>
+                  <p class="testimonial-author">— Elena T., Berlin</p>
+                </div>
+              </div>
+            </section>
+
           </div>
 
           <aside class="planner-card">
@@ -164,14 +183,37 @@
               <label>
                 City
                 <select id="city" name="city" required>
-                  <option value="seoul" selected>Seoul</option>
-                  <option value="tokyo">Tokyo</option>
-                  <option value="kyoto">Kyoto</option>
-                  <option value="osaka">Osaka</option>
-                  <option value="bangkok">Bangkok</option>
-                  <option value="prague">Prague</option>
-                  <option value="copenhagen">Copenhagen</option>
-                  <option value="berlin">Berlin</option>
+                  <optgroup label="Asia">
+                    <option value="seoul" selected>Seoul</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="kyoto">Kyoto</option>
+                    <option value="osaka">Osaka</option>
+                    <option value="bangkok">Bangkok</option>
+                    <option value="singapore">Singapore</option>
+                    <option value="hong-kong">Hong Kong</option>
+                    <option value="bali">Bali</option>
+                  </optgroup>
+                  <optgroup label="Europe">
+                    <option value="prague">Prague</option>
+                    <option value="copenhagen">Copenhagen</option>
+                    <option value="berlin">Berlin</option>
+                    <option value="paris">Paris</option>
+                    <option value="barcelona">Barcelona</option>
+                    <option value="venice">Venice</option>
+                    <option value="amsterdam">Amsterdam</option>
+                    <option value="lisbon">Lisbon</option>
+                  </optgroup>
+                  <optgroup label="Americas">
+                    <option value="new-york">New York</option>
+                    <option value="los-angeles">Los Angeles</option>
+                    <option value="mexico-city">Mexico City</option>
+                    <option value="buenos-aires">Buenos Aires</option>
+                  </optgroup>
+                  <optgroup label="Middle East & Africa">
+                    <option value="dubai">Dubai</option>
+                    <option value="istanbul">Istanbul</option>
+                    <option value="marrakech">Marrakech</option>
+                  </optgroup>
                 </select>
               </label>
 
@@ -247,6 +289,23 @@
                     <option value="evening">Evening</option>
                   </select>
                 </label>
+              </div>
+
+              <div class="duration-display">
+                <p class="duration-label">Trip length</p>
+                <div class="duration-counter" id="duration-counter">
+                  <span class="duration-days">4</span> <span class="duration-nights">nights</span>
+                </div>
+              </div>
+
+              <div class="date-presets">
+                <p class="date-presets-label">Quick select</p>
+                <div class="preset-buttons">
+                  <button type="button" class="preset-btn" data-days="3">3 days</button>
+                  <button type="button" class="preset-btn" data-days="4">4 days</button>
+                  <button type="button" class="preset-btn" data-days="5">5 days</button>
+                  <button type="button" class="preset-btn" data-days="7">Week</button>
+                </div>
               </div>
 
               <div class="detail-grid">
@@ -343,13 +402,32 @@
                 ></textarea>
               </label>
 
-              <button
-                id="generate-trip-button"
-                type="button"
-                onclick="window.TripTrellisGenerateNow(this.form); return false;"
-              >
-                Generate my trip brief <span aria-hidden="true">→</span>
-              </button>
+              <div class="form-summary">
+                <p class="summary-label">Your trip setup</p>
+                <div class="summary-items" id="form-summary-items">
+                  <div class="summary-item"><span class="summary-icon">📍</span><span id="summary-city">Seoul</span></div>
+                  <div class="summary-item"><span class="summary-icon">📅</span><span id="summary-dates">4 days</span></div>
+                  <div class="summary-item"><span class="summary-icon">💰</span><span id="summary-budget">Premium</span></div>
+                  <div class="summary-item"><span class="summary-icon">🎯</span><span id="summary-interests">Culture, and 1 more</span></div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  id="generate-trip-button"
+                  type="button"
+                  onclick="window.TripTrellisGenerateNow(this.form); return false;"
+                >
+                  Generate my trip brief <span aria-hidden="true">→</span>
+                </button>
+                <button
+                  id="reset-form-button"
+                  type="reset"
+                  class="reset-btn"
+                >
+                  Clear form
+                </button>
+              </div>
             </form>
           </aside>
         </div>
@@ -374,8 +452,36 @@
     <template id="empty-state-template"></template>
 
     <footer class="site-footer">
-      <span class="brand-mark footer-brand-mark">TripTrellis</span>
-      <span>Trip planning with actual taste</span>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-mark footer-brand-mark">TripTrellis</span>
+          <span class="footer-tagline">Trip planning with actual taste</span>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <p class="footer-label">Features</p>
+            <a href="#" class="footer-link">Hotel-aware planning</a>
+            <a href="#" class="footer-link">Day-by-day itineraries</a>
+            <a href="#" class="footer-link">Editable layouts</a>
+          </div>
+          <div class="footer-column">
+            <p class="footer-label">Resources</p>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">About us</a>
+            <a href="#" class="footer-link">Contact</a>
+          </div>
+          <div class="footer-column">
+            <p class="footer-label">Legal</p>
+            <a href="#" class="footer-link">Privacy</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Cookies</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-credit">Made for travelers who care about details</p>
+        <p class="footer-year">&copy; 2026 TripTrellis. All rights reserved.</p>
+      </div>
     </footer>
 
     <script type="module" src="./js/main-current.js?v=triptrellis-mobile-loading-20260411-011"></script>
