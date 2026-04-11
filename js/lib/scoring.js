@@ -285,9 +285,9 @@ export function scoreItem(item, guide, hotelBase, noteProfile, focuses, budget, 
   const focusTheme = buildMergedFocusTheme(focusArr);
 
   if (item.area === primaryArea) {
-    score += 4.5;
+    score += 1.8;
   } else if (adjacent.has(item.area)) {
-    score += 2.2;
+    score += 1.15;
   }
 
   noteProfile.tags.forEach((tag) => {
@@ -373,13 +373,13 @@ export function scoreDayForItem(day, item, guide, hotelBase, totalDays, focus) {
   const categoryLabel = item.categoryLabel || categorizeLibraryItem(item, item.category);
 
   if (day.areaKeysUsed.includes(item.area)) {
-    score += 5;
+    score += 4.2;
   } else if (day.areaKeysUsed.some((areaKey) => adjacent.has(areaKey))) {
-    score += 2;
+    score += 1.8;
   }
 
   if (item.area === hotelBase.areaKey) {
-    score += 2;
+    score += 0.55;
   }
 
   if (item.timing === "evening" && day.title.toLowerCase().includes("departure")) {

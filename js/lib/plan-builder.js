@@ -5,7 +5,7 @@ import { focusThemes, budgetProfiles, paceRules, buildMergedFocusTheme } from ".
 import { categorySupplementLibraries } from "../data/cities/index.js";
 import { categorizeLibraryItem, inferFoodCuisine, inferFoodPriceTier, inferFoodTiming, inferActivityPriceTier, expandLibraryDescription, buildLibraryDetailLine, polishLibraryDescription } from "./infer.js";
 import { buildTravelAvailabilityRules } from "./itinerary.js";
-import { buildNoteProfile, rankHotels, scoreCollection, detectAreaFromText, bestAreaFromNotes } from "./scoring.js";
+import { buildNoteProfile, rankHotels, scoreCollection, detectAreaFromText, bestAreaFromNotes } from "./scoring.js?v=triptrellis-transit-balanced-20260411-010";
 
 export function formatFocusKey(focusTheme) {
   const match = Object.entries(focusThemes).find(([, value]) => value === focusTheme);
@@ -187,8 +187,8 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
       areaLabel: area.label,
       source: "Your booked hotel",
       vibe,
-      strategy: `Suggestions are now heavily weighted toward ${area.label} and adjacent neighborhoods so the itinerary actually changes based on where you are staying.`,
-      influence: `Hotel influence: high. The planner is biasing sights, meals, and evenings toward ${area.label}${guide.areaAdjacency[areaKey]?.length ? ` plus ${guide.areaAdjacency[areaKey].map((key) => guide.hotelAreas[key]?.label).filter(Boolean).slice(0, 2).join(" and ")}` : ""}.`,
+      strategy: `Suggestions use ${area.label} as the base, then branch into strong nearby or worthwhile cross-town areas when the trip is better for it.`,
+      influence: `Hotel influence: balanced. The planner keeps arrivals, late nights, and loose transitions practical around ${area.label}, but full days can explore the strongest parts of the city.`,
       longDescription: buildSelectedHotelDescription(knownMatch || hotelName, areaKey, area, guide),
       amenityLine: knownMatch ? buildHotelAmenityLine(knownMatch, area) : "",
     };
@@ -205,8 +205,8 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
       areaLabel: fallbackArea.label,
       source: "Selected hotel",
       vibe: fallback?.vibe || `A practical base in ${fallbackArea.label}.`,
-      strategy: `${fallback?.name || "This hotel"} is recommended because ${fallbackArea.label} best supports this version of the trip.`,
-      influence: `Planner bias: ${fallbackArea.label} is being used as the primary anchor for routing, food picks, and evening suggestions.`,
+      strategy: `${fallback?.name || "This hotel"} is recommended because ${fallbackArea.label} gives the trip a useful base without locking every day to one neighborhood.`,
+      influence: `Planner bias: ${fallbackArea.label} anchors arrivals, late nights, and practical routing, while full days can move farther for stronger city experiences.`,
       longDescription: buildSelectedHotelDescription(fallback, fallbackAreaKey, fallbackArea, guide),
       amenityLine: fallback ? buildHotelAmenityLine(fallback, fallbackArea) : "",
     };
@@ -219,8 +219,8 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
     areaLabel: area.label,
     source: "Selected hotel",
     vibe: recommended.vibe,
-    strategy: `${recommended.name} is recommended because ${area.label} best supports this version of the trip.`,
-    influence: `Planner bias: ${area.label} is being used as the primary anchor for routing, food picks, and evening suggestions.`,
+    strategy: `${recommended.name} is recommended because ${area.label} gives the trip a useful base without locking every day to one neighborhood.`,
+    influence: `Planner bias: ${area.label} anchors arrivals, late nights, and practical routing, while full days can move farther for stronger city experiences.`,
     longDescription: buildSelectedHotelDescription(recommended, areaKey, area, guide),
     amenityLine: buildHotelAmenityLine(recommended, area),
   };
@@ -330,10 +330,10 @@ export function buildDayPlan({ guide, hotelBase, noteProfile, budgetProfile, foc
   return {
     title: isArrivalDay ? "Arrival and orientation" : isDepartureDay && totalDays > 1 ? "Departure and final highlights" : `Day ${dayNumber}`,
     dateLabel: formatDate(date),
-    flow: `Start with ${hotelBase.areaLabel} and build this day around one or two connected neighborhoods.`,
+    flow: `Build this day around one or two connected neighborhoods, using ${hotelBase.areaLabel} as the practical base rather than the whole route.`,
     baseNote: `Hotel: ${hotelBase.hotelName} in ${hotelBase.areaLabel}.`,
     summary: `Suggested around a ${budgetProfile.label.toLowerCase()} ${focusTheme.headline.toLowerCase().replace(/\.$/, "")}.`,
-    areaKeysUsed: [hotelBase.areaKey],
+    areaKeysUsed: [],
     itineraryItems: [],
     reservationNote: `Good pacing for a ${paceRule.label.toLowerCase()}`,
   };

@@ -6,7 +6,7 @@ import {
   refreshDayState, getSlotLabel, chooseBestSlotForItem,
   createItineraryItemFromLibrary, dayAlreadyHasItem, buildContextualFitNote,
 } from "./itinerary.js";
-import { scoreDayForItem } from "./scoring.js";
+import { scoreDayForItem } from "./scoring.js?v=triptrellis-transit-balanced-20260411-010";
 import { STORAGE_KEY } from "./constants.js";
 
 // ---- DOM references (resolved lazily via getters to avoid TDZ issues) ----

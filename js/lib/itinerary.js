@@ -3,7 +3,7 @@
 import { normalizeText, hashString, basePlaceName, highlightLabel } from "./utils.js";
 import { DAY_SLOT_ORDER } from "./constants.js";
 import { categorizeLibraryItem } from "./infer.js";
-import { scoreDayForItem } from "./scoring.js";
+import { scoreDayForItem } from "./scoring.js?v=triptrellis-transit-balanced-20260411-010";
 
 const ARRIVAL_AVAILABILITY_RULES = {
   morning: {
@@ -312,19 +312,23 @@ function getPreferredAreaKeysForDay(dayIndex, plan) {
   const widerPool = Object.keys(areaScores)
     .filter((areaKey) => areaKey !== hotelArea && !adjacent.includes(areaKey))
     .sort((left, right) => (areaScores[right] || 0) - (areaScores[left] || 0))
-    .slice(0, 2);
-  const rotationPool = [hotelArea, ...adjacent, ...widerPool];
+    .slice(0, 4);
+  const rotationPool = [...adjacent, ...widerPool, hotelArea].filter(Boolean);
   if (!rotationPool.length) {
     return [hotelArea];
   }
 
   if (dayIndex === 0 || dayIndex === plan.totalDays - 1) {
-    return [hotelArea, ...adjacent.slice(0, 1)];
+    return [...new Set([hotelArea, ...adjacent.slice(0, 1), ...widerPool.slice(0, 1)])];
   }
 
-  const primary = rotationPool[dayIndex % rotationPool.length];
-  const secondary = rotationPool[(dayIndex + 1) % rotationPool.length];
-  return [...new Set([primary, secondary])];
+  const primary = rotationPool[(dayIndex - 1) % rotationPool.length];
+  const primaryAdjacent = (plan.guide.areaAdjacency[primary] || [])
+    .filter((areaKey) => areaKey !== hotelArea)
+    .sort((left, right) => (areaScores[right] || 0) - (areaScores[left] || 0));
+  const secondary = primaryAdjacent[0] || rotationPool[dayIndex % rotationPool.length];
+  const includeHotelBase = dayIndex % 3 === 0;
+  return [...new Set([primary, secondary, includeHotelBase ? hotelArea : ""])].filter(Boolean);
 }
 
 const OSAKA_DAY_TEMPLATES = {
@@ -533,8 +537,11 @@ export function buildFlowLine(guide, hotelBase, highlights) {
   const areaLabels = highlights
     .map((item) => guide.hotelAreas[item.area]?.label || detectAreaLabelFromText(guide, item.title))
     .filter(Boolean);
-  const unique = [...new Set([hotelBase.areaLabel, ...areaLabels])].slice(0, 3);
-  return `Flow the day through ${unique.join(" + ")} so it feels organized and geographically sane.`;
+  const unique = [...new Set(areaLabels)].slice(0, 3);
+  if (!unique.length) {
+    return `Use ${hotelBase.areaLabel} as the practical base, then choose the strongest area for the day.`;
+  }
+  return `Flow the day through ${unique.join(" + ")} so it feels organized while still exploring beyond the hotel orbit.`;
 }
 
 export function buildDaySummary(day, plan) {
@@ -564,7 +571,7 @@ export function buildDaySummary(day, plan) {
 
   const labels = items.slice(0, 3).map((item) => item.title);
   if (labels.length === 1) {
-    return [cityTemplateLine, `${labels[0]} is the anchor for this day, with the rest of the timing left flexible around ${plan.hotelBase.areaLabel}.`, areaLine]
+    return [cityTemplateLine, `${labels[0]} is the anchor for this day, with the rest of the timing left flexible around the strongest nearby additions.`, areaLine]
       .filter(Boolean)
       .join(" ");
   }
@@ -632,7 +639,7 @@ export function buildDayReservationNote(day, plan) {
 
 export function refreshDayState(day, plan) {
   const items = getRenderedDayItems(day);
-  day.areaKeysUsed = [...new Set([plan.hotelBase.areaKey, ...items.map((item) => item.area).filter(Boolean)])];
+  day.areaKeysUsed = [...new Set(items.map((item) => item.area).filter(Boolean))];
   day.flow = buildFlowLine(plan.guide, plan.hotelBase, items);
   day.summary = buildDaySummary(day, plan);
   day.reservationNote = buildDayReservationNote(day, plan);
@@ -726,17 +733,21 @@ export function pickBestSuggestedItem({ day, sortedPool, usedNames, plan, filter
     }
 
     if (preferredAreas.has(item.area)) {
-      score += 2.1;
+      score += 1.45;
     } else if (preferredAreas.size && !areaCounts[item.area]) {
-      score -= 1.4;
+      score -= 0.35;
     }
 
     if (!day.itineraryItems?.length && item.area === plan.hotelBase.areaKey) {
-      score += 1.6;
+      score += 0.35;
+    }
+
+    if (item.area === plan.hotelBase.areaKey && (planAreaCounts[item.area] || 0) >= Math.max(2, Math.ceil(plan.totalDays / 2))) {
+      score -= 2.4;
     }
 
     if ((item.categoryLabel === "Nightlife & Entertainment" || item.slot === "late-night") && !(item.area === plan.hotelBase.areaKey || adjacentToHotel.has(item.area))) {
-      score -= 1.4;
+      score -= 0.75;
     }
 
     if (isFoodItem(item)) {
@@ -984,7 +995,7 @@ export function populateSuggestedItinerary(plan) {
     const cityTemplate = getCityDayTemplate(dayIndex, plan);
     if (cityTemplate) {
       day.cityTheme = cityTemplate.label;
-      day.areaKeysUsed = [...new Set([...(cityTemplate.areas || []), plan.hotelBase.areaKey])];
+      day.areaKeysUsed = [...new Set(cityTemplate.areas || [])];
       day.title = getDayType(dayIndex, plan.totalDays) === "arrival"
         ? "Arrival and Namba food night"
         : getDayType(dayIndex, plan.totalDays) === "departure"
