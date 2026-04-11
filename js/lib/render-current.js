@@ -512,15 +512,23 @@ export function renderTripPlan(plan, results) {
     <section class="overview-shell">
       <section class="section-card hero-result">
         <div class="trip-header">
-          <div>
+          <div class="trip-hero-copy">
             <p class="section-kicker">Generated city plan</p>
             <h2 class="trip-title">${plan.guide.label}</h2>
-            <p class="trip-meta">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)} • ${plan.totalDays} days • ${formatFocus(plan.focuses || [plan.focus])} • ${plan.budgetProfile.label}</p>
-            <p class="trip-meta">${plan.guide.country}</p>
+            <p class="trip-lede">A sharper ${plan.totalDays}-day brief built around ${plan.hotelBase.areaLabel}, with stronger day flow, editable stops, and a city library you can keep shaping.</p>
+            <div class="trip-meta-pills">
+              <span class="trip-meta-pill">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}</span>
+              <span class="trip-meta-pill">${plan.totalDays} days</span>
+              <span class="trip-meta-pill">${formatFocus(plan.focuses || [plan.focus])}</span>
+              <span class="trip-meta-pill">${plan.budgetProfile.label}</span>
+              <span class="trip-meta-pill">${plan.guide.country}</span>
+            </div>
           </div>
           <div class="confidence-note">
-            <strong>${plan.focusTheme.headline}</strong><br />
-            ${plan.hotelBase.influence}<br /><br />${plan.budgetProfile.headline}
+            <p class="confidence-kicker">Trip logic</p>
+            <strong>${plan.focusTheme.headline}</strong>
+            <p>${plan.hotelBase.influence}</p>
+            <p>${plan.budgetProfile.headline}</p>
           </div>
         </div>
         <div class="trip-at-a-glance">
