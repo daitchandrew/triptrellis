@@ -91,9 +91,9 @@ function renderTripAdjustmentPanel(plan) {
     <section class="section-card trip-adjust-panel">
       <div class="trip-adjust-head">
         <div>
-          <p class="section-kicker">Adjust this trip</p>
-          <h3 class="section-title">Steer the itinerary without starting over</h3>
-          <p class="card-subtitle">Use these quick refinements when the plan is close, but you want it to lean more clearly in one direction.</p>
+          <p class="section-kicker">Refine after review</p>
+          <h3 class="section-title">Want to steer this version?</h3>
+          <p class="card-subtitle">Use these only after you have scanned the itinerary and know what direction it should lean next.</p>
         </div>
         ${history.length ? `<span class="adjust-history-pill">${history.length} refinement${history.length === 1 ? "" : "s"} applied</span>` : ""}
       </div>
@@ -532,7 +532,6 @@ export function renderTripPlan(plan, results) {
         ${renderWorkspaceStats(plan)}
       </section>
 
-      ${renderTripAdjustmentPanel(plan)}
       ${renderAreaSummary(plan)}
 
       <section class="summary-grid compact-summary-grid">
@@ -773,6 +772,8 @@ export function renderTripPlan(plan, results) {
         </div>
       </section>
     ` : ""}
+
+    ${renderTripAdjustmentPanel(plan)}
 
     <section class="summary-grid lower-summary-grid">
       <article class="section-card utility-section">

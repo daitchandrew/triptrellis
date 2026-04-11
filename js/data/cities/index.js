@@ -8,6 +8,7 @@ import { bangkokGuide, bangkokSupplements } from './bangkok.js';
 import { pragueGuide, pragueSupplements } from './prague.js';
 import { copenhagenGuide, copenhagenSupplements } from './copenhagen.js';
 import { berlinGuide, berlinSupplements } from './berlin.js';
+import { expandedSupplementLibraries } from './expansions.js';
 import { enrichCityGuidesWithHotelDetails } from '../hotel-details.js';
 import { basePlaceName, getPlaceIdentityKeys } from '../../lib/utils.js?v=triptrellis-prague-clock-cleanup-20260411-007';
 
@@ -96,13 +97,18 @@ export const cityGuides = enrichCityGuidesWithHotelDetails(cleanedCityGuides);
 
 function cleanSupplementsForCity(cityKey, supplements) {
   const guide = cleanedCityGuides[cityKey];
+  const expandedSupplements = expandedSupplementLibraries[cityKey] || [];
+  const allSupplements = [
+    ...(supplements || []),
+    ...expandedSupplements,
+  ];
   const primaryKeys = new Set(
     ["cantMiss", "activities", "food"].flatMap((source) =>
       (guide[source] || []).flatMap((item) => getPlaceIdentityKeys(item.name))
     )
   );
 
-  return dedupeEntries((supplements || []).map((item) => ({ item, source: "supplement" })))
+  return dedupeEntries(allSupplements.map((item) => ({ item, source: "supplement" })))
     .filter((entry) => !getPlaceIdentityKeys(entry.item.name).some((key) => primaryKeys.has(key)))
     .map((entry) => entry.item);
 }

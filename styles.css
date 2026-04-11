@@ -1342,6 +1342,12 @@ button:active { transform: translateY(0); }
     linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(248, 241, 231, 0.92));
 }
 
+.trip-adjust-panel {
+  padding: 28px;
+  background: rgba(255, 252, 247, 0.86);
+  border-color: rgba(43, 29, 20, 0.08);
+}
+
 .trip-adjust-head {
   display: flex;
   align-items: flex-start;
@@ -1370,25 +1376,25 @@ button:active { transform: translateY(0); }
 }
 
 .trip-adjust-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .trip-adjust-card {
-  width: 100%;
-  min-height: 112px;
+  width: auto;
+  min-height: 0;
   margin: 0;
-  padding: 18px;
-  border-radius: 22px;
+  padding: 11px 14px;
+  border-radius: var(--r-pill);
   border: 1px solid rgba(43, 29, 20, 0.1);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.64);
   color: var(--ink);
   text-align: left;
   box-shadow: none;
-  display: grid;
-  align-content: start;
-  gap: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
@@ -1396,23 +1402,24 @@ button:active { transform: translateY(0); }
 }
 
 .trip-adjust-card:hover {
-  background: rgba(255, 252, 247, 0.98);
-  border-color: rgba(157, 101, 32, 0.28);
+  background: rgba(245, 241, 234, 0.94);
+  border-color: rgba(157, 101, 32, 0.22);
   box-shadow: none;
   transform: none;
 }
 
 .trip-adjust-card span {
-  font-size: 0.98rem;
-  font-weight: 900;
-  letter-spacing: -0.01em;
+  font-size: 0.86rem;
+  font-weight: 850;
+  letter-spacing: 0;
 }
 
 .trip-adjust-card small {
   color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.45;
+  font-size: 0.78rem;
+  line-height: 1.35;
   font-weight: 600;
+  max-width: 210px;
 }
 
 .area-compass-section {

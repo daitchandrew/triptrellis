@@ -1,8 +1,8 @@
-import { cityGuides } from "./data/cities/index.js";
+import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansion-20260411-008";
 import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-prague-clock-cleanup-20260411-007";
 import { populateSuggestedItinerary } from "./lib/itinerary.js";
 import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
-import { renderEmptyState, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-prague-clock-cleanup-20260411-007";
+import { renderEmptyState, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-refine-panel-position-20260411-009";
 import {
   handleDragEnd,
   handleDragOver,
@@ -13,7 +13,7 @@ import {
   handleResultsInput,
   setBuildTripPlanFn,
   syncHotelFields,
-} from "./lib/handlers.js?v=triptrellis-prague-clock-cleanup-20260411-007";
+} from "./lib/handlers.js?v=triptrellis-refine-panel-position-20260411-009";
 import { shiftDate, toInputDate } from "./lib/utils.js";
 
 function getResults() {

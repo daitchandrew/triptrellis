@@ -34,7 +34,7 @@
         }
 
         try {
-          const app = await import("./js/main-current.js?v=triptrellis-prague-clock-cleanup-20260411-007");
+          const app = await import("./js/main-current.js?v=triptrellis-refine-panel-position-20260411-009");
           const generator = window.TripTrellisGenerate || app.generateFromForm;
           if (!generator) {
             throw new Error("TripTrellis loaded, but the Generate function was not found.");
@@ -378,6 +378,6 @@
       <span>Trip planning with actual taste</span>
     </footer>
 
-    <script type="module" src="./js/main-current.js?v=triptrellis-prague-clock-cleanup-20260411-007"></script>
+    <script type="module" src="./js/main-current.js?v=triptrellis-refine-panel-position-20260411-009"></script>
   </body>
 </html>
