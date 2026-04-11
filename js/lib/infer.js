@@ -288,8 +288,8 @@ export function categorizeLibraryItem(item, baseCategory) {
   if (haystack.includes("garden") || haystack.includes("park") || haystack.includes("forest") || haystack.includes("river") || haystack.includes("canal") || haystack.includes("sunset") || haystack.includes("beach")) return "Nature";
   if (haystack.includes("shopping") || haystack.includes("boutique") || haystack.includes("flagship") || haystack.includes("market")) return "Shopping";
   if (haystack.includes("wander") || haystack.includes("walk") || haystack.includes("lane") || haystack.includes("street") || haystack.includes("district") || haystack.includes("stroll")) return "Place to Wander";
-  if (haystack.includes("palace") || haystack.includes("temple") || haystack.includes("shrine") || haystack.includes("cathedral") || haystack.includes("memorial") || haystack.includes("gate") || haystack.includes("history") || haystack.includes("castle")) return "Cultural Sight";
-  if (haystack.includes("bar") || haystack.includes("night") || haystack.includes("club") || haystack.includes("cocktail") || haystack.includes("jazz") || haystack.includes("concert")) return "Nightlife & Entertainment";
+  if (haystack.includes("palace") || haystack.includes("temple") || haystack.includes("shrine") || haystack.includes("cathedral") || haystack.includes("memorial") || haystack.includes("gate") || haystack.includes("history") || haystack.includes("castle") || haystack.includes("clock")) return "Cultural Sight";
+  if (/\b(bar|bars|club|clubs|cocktail|jazz|concert|nightlife)\b/.test(haystack) || haystack.includes("after dark")) return "Nightlife & Entertainment";
   if (haystack.includes("tour") || haystack.includes("ride") || haystack.includes("activity") || haystack.includes("theme park") || haystack.includes("boat") || haystack.includes("amusement") || haystack.includes("karaoke")) return "Amusement & Activities";
   if ((item.tags || []).includes("culture")) return "Cultural Sight";
   if ((item.tags || []).includes("shopping")) return "Shopping";

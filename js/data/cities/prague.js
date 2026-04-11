@@ -341,15 +341,6 @@ export const pragueGuide = {
       "description": "Czech history and natural sciences in a massive neo-Renaissance building at the top of Wenceslas Square."
     },
     {
-      "name": "Prague Astronomical Clock tick",
-      "area": "oldtown",
-      "tags": [
-        "culture",
-        "design"
-      ],
-      "description": "Join the crowd at the top of the hour to watch the 600-year-old mechanical Apostle parade."
-    },
-    {
       "name": "Dancing House (Frank Gehry)",
       "area": "oldtown",
       "tags": [
@@ -435,16 +426,6 @@ export const pragueGuide = {
       ],
       "timing": "morning",
       "description": "Hours of unhurried wandering through the world's largest ancient castle complex."
-    },
-    {
-      "name": "Old Town Square and Clock Tower experience",
-      "area": "oldtown",
-      "tags": [
-        "culture",
-        "design"
-      ],
-      "timing": "morning",
-      "description": "Arrive before the crowds to appreciate the square's stunning architecture before the day gets thick."
     },
     {
       "name": "St. Vitus Cathedral interior beauty",
@@ -1786,26 +1767,6 @@ export const pragueSupplements = [
     "description": "Watch a traditional Czech puppet performance in one of the city's historic puppet theaters."
   },
   {
-    "categoryLabel": "Amusement & Activities",
-    "name": "Old Town Hall tower climb",
-    "area": "oldtown",
-    "tags": [
-      "wellness",
-      "design"
-    ],
-    "description": "Climb the tower for city views and watch the Astronomical Clock from above at the top of the hour."
-  },
-  {
-    "categoryLabel": "Other",
-    "name": "Prague Astronomical Clock spectacle",
-    "area": "oldtown",
-    "tags": [
-      "culture",
-      "design"
-    ],
-    "description": "Join crowds at the top of the hour to watch the 600-year-old mechanical Apostle parade."
-  },
-  {
     "categoryLabel": "Other",
     "name": "Charles Bridge at multiple times",
     "area": "malastrana",
@@ -1823,16 +1784,6 @@ export const pragueSupplements = [
       "design"
     ],
     "description": "A striking deconstructivist building that seems to bend and dance among traditional 19th-century architecture."
-  },
-  {
-    "categoryLabel": "Other",
-    "name": "Old Town Square Astronomical Clock",
-    "area": "oldtown",
-    "tags": [
-      "culture",
-      "design"
-    ],
-    "description": "A 600-year-old mechanical marvel in one of Europe's most beautiful squares."
   },
   {
     "categoryLabel": "Other",
