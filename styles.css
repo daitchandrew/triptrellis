@@ -3695,41 +3695,6 @@ button:active { transform: translateY(0); }
   color: var(--muted);
 }
 
-.preset-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-.preset-btn {
-  padding: 8px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-md);
-  background: var(--paper-soft);
-  color: var(--ink);
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--t-base) var(--ease);
-}
-
-.preset-btn:hover {
-  border-color: var(--gold);
-  background: var(--gold-faint);
-  color: var(--gold-2);
-}
-
-.preset-btn.active {
-  border-color: var(--gold);
-  background: var(--gold-soft);
-  color: var(--gold-2);
-  font-weight: 700;
-}
-
-.preset-btn:active {
-  transform: scale(0.98);
-}
-
 /* ─── Form Summary ────────────────────────────────────────────────────────── */
 .form-summary {
   margin-top: 20px;
@@ -3792,6 +3757,34 @@ button:active { transform: translateY(0); }
   color: var(--ink);
 }
 
+.save-form-btn {
+  padding: 12px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--green-faint), var(--gold-faint));
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-base) var(--ease));
+}
+
+.save-form-btn:hover {
+  border-color: var(--green);
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.save-form-btn.saved {
+  border-color: var(--green);
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.save-form-btn.saved::after {
+  content: " ✓ Saved!";
+}
+
 /* ─── Testimonials ────────────────────────────────────────────────────────── */
 .testimonials-section {
   margin-top: 48px;
@@ -3843,7 +3836,271 @@ button:active { transform: translateY(0); }
   color: var(--muted);
 }
 
-/* ─── Mobile Responsive ────────────────────────────────────────────────────── */
+/* ─── City Search Dropdown ────────────────────────────────────────────────── */
+.city-selector-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.city-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all var(--t-base) var(--ease);
+}
+
+.city-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(157, 101, 32, 0.1);
+}
+
+.city-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  background: var(--paper-strong);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.city-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-option {
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 0.9rem;
+  transition: background var(--t-base) var(--ease);
+  border-bottom: 1px solid var(--line);
+}
+
+.city-option:last-child {
+  border-bottom: none;
+}
+
+.city-option:hover {
+  background: var(--gold-faint);
+  color: var(--gold-2);
+}
+
+.city-option.selected {
+  background: var(--gold-soft);
+  color: var(--gold-2);
+  font-weight: 700;
+}
+
+/* ─── Form Validation ──────────────────────────────────────────────────────── */
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #c84536;
+  font-weight: 600;
+  animation: fadeIn 200ms var(--ease);
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: #c84536 !important;
+  background: rgba(200, 69, 54, 0.04);
+}
+
+input[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(200, 69, 54, 0.1);
+}
+
+/* ─── Trust Stats Section ──────────────────────────────────────────────────── */
+.trust-stats-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0 48px;
+  animation: fadeUp 600ms var(--ease) backwards;
+  animation-delay: 100ms;
+}
+
+.stat-card {
+  padding: 20px 16px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, var(--gold-faint), var(--green-faint));
+  border: 1px solid rgba(157, 101, 32, 0.14);
+  text-align: center;
+  transition: all var(--t-base) var(--ease);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 12px 36px rgba(157, 101, 32, 0.15);
+}
+
+.stat-number {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--gold-2);
+}
+
+.stat-label {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* ─── How It Works Section ────────────────────────────────────────────────── */
+.how-it-works {
+  margin: 56px 0 48px;
+  animation: fadeUp 600ms var(--ease) backwards;
+  animation-delay: 200ms;
+}
+
+.how-title {
+  margin: 0 0 32px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.how-step {
+  padding: 24px 20px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, var(--paper-luxe), var(--paper-strong));
+  border: 1px solid var(--line);
+  transition: all var(--t-base) var(--ease));
+  position: relative;
+}
+
+.how-step:hover {
+  border-color: var(--gold);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(157, 101, 32, 0.15);
+}
+
+.how-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background: var(--gold-soft);
+  color: var(--gold-2);
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.how-step-title {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.how-step-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ─── FAQ Section ──────────────────────────────────────────────────────────── */
+.faq-section {
+  margin-top: 56px;
+  animation: fadeUp 600ms var(--ease) backwards;
+  animation-delay: 300ms;
+}
+
+.faq-title {
+  margin: 0 0 24px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.faq-item {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--paper-luxe);
+  transition: all var(--t-base) var(--ease));
+  cursor: pointer;
+}
+
+.faq-item:hover {
+  border-color: var(--gold);
+  background: var(--paper-strong);
+}
+
+.faq-item[open] {
+  border-color: var(--gold);
+  background: rgba(157, 101, 32, 0.04);
+}
+
+.faq-question {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faq-question::marker {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.faq-answer {
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.faq-answer p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ─── Mobile FAQ Grid ──────────────────────────────────────────────────────── */
 @media (max-width: 800px) {
   .testimonials-grid {
     grid-template-columns: 1fr;
@@ -3854,16 +4111,25 @@ button:active { transform: translateY(0); }
     gap: 24px;
   }
 
-  .preset-buttons {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .summary-items {
     grid-template-columns: 1fr;
   }
 
   .form-actions {
     flex-direction: column;
+  }
+
+  .trust-stats-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3873,10 +4139,6 @@ button:active { transform: translateY(0); }
     align-items: flex-start;
   }
 
-  .preset-buttons {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .footer-links {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -3884,6 +4146,18 @@ button:active { transform: translateY(0); }
 
   .testimonial-text {
     font-size: 0.85rem;
+  }
+
+  .trust-stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .faq-title {
+    font-size: 1.4rem;
   }
 }
 

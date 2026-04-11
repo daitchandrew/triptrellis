@@ -150,6 +150,44 @@
             </div>
             </div><!-- /.anchor-set -->
 
+            <!-- Trust & Stats Section -->
+            <section class="trust-stats-section">
+              <div class="stat-card">
+                <p class="stat-number">50K+</p>
+                <p class="stat-label">Itineraries generated</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-number">18K+</p>
+                <p class="stat-label">Travelers planned with</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-number">4.8★</p>
+                <p class="stat-label">Average rating</p>
+              </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="how-it-works">
+              <h3 class="how-title">How it works</h3>
+              <div class="how-grid">
+                <div class="how-step">
+                  <div class="how-step-number">01</div>
+                  <h4 class="how-step-title">Tell us your vibe</h4>
+                  <p class="how-step-desc">Pick a city, dates, budget, and what you love. Culture? Food? Nightlife? We learn your style.</p>
+                </div>
+                <div class="how-step">
+                  <div class="how-step-number">02</div>
+                  <h4 class="how-step-title">We build your plan</h4>
+                  <p class="how-step-desc">In seconds, TripTrellis generates a full itinerary shaped by your hotel area, your pace, and your interests.</p>
+                </div>
+                <div class="how-step">
+                  <div class="how-step-number">03</div>
+                  <h4 class="how-step-title">Make it yours</h4>
+                  <p class="how-step-desc">Swap activities, reorder days, add discoveries. The itinerary adapts to your changes instantly.</p>
+                </div>
+              </div>
+            </section>
+
             <!-- Testimonials Section -->
             <section class="testimonials-section">
               <p class="section-eyebrow">Loved by travelers</p>
@@ -169,6 +207,49 @@
               </div>
             </section>
 
+            <!-- FAQ Section -->
+            <section class="faq-section">
+              <h3 class="faq-title">Frequently asked</h3>
+              <div class="faq-grid">
+                <details class="faq-item">
+                  <summary class="faq-question">How detailed is the itinerary?</summary>
+                  <div class="faq-answer">
+                    <p>Each day includes specific restaurant recommendations, neighborhood routing based on your hotel, time-of-day suggestions (breakfast, lunch, dinner), and cultural insights. Think of it as a co-created itinerary that balances must-sees with authentic wandering.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-question">Can I edit the trip after generation?</summary>
+                  <div class="faq-answer">
+                    <p>Yes, completely. Swap out activities, reorder days, add your own discoveries, remove items that don't appeal to you, and drag to change the sequence. The itinerary is a starting point, not a lockdown.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-question">Which cities are available?</summary>
+                  <div class="faq-answer">
+                    <p>We currently support 20+ destinations across Asia, Europe, Americas, and Middle East/Africa, including Seoul, Tokyo, Paris, Barcelona, New York, Dubai, and many more. New cities are added regularly.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-question">How does "hotel-aware" planning work?</summary>
+                  <div class="faq-answer">
+                    <p>When you provide your hotel location, we cluster activities by neighborhood to minimize transit time. Days are routed so you're not zigzagging across the city. This makes the itinerary not just beautiful, but actually playable.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-question">Can I save my itineraries?</summary>
+                  <div class="faq-answer">
+                    <p>Yes! Your itineraries are saved locally in your browser. You can revisit, edit, and refine them anytime. No account required.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary class="faq-question">How long does it take to generate?</summary>
+                  <div class="faq-answer">
+                    <p>Typically 3-8 seconds depending on city size and your preferences. The app is thinking about hotel areas, transit connections, and timing to build a route that actually makes sense.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
           </div>
 
           <aside class="planner-card">
@@ -182,8 +263,15 @@
 
               <label>
                 City
-                <select id="city" name="city" required>
-                  <optgroup label="Asia">
+                <div class="city-selector-wrapper">
+                  <input 
+                    type="text" 
+                    id="city-search" 
+                    class="city-search-input" 
+                    placeholder="Search cities..." 
+                    autocomplete="off"
+                  />
+                  <select id="city" name="city" required style="display: none;">
                     <option value="seoul" selected>Seoul</option>
                     <option value="tokyo">Tokyo</option>
                     <option value="kyoto">Kyoto</option>
@@ -192,8 +280,6 @@
                     <option value="singapore">Singapore</option>
                     <option value="hong-kong">Hong Kong</option>
                     <option value="bali">Bali</option>
-                  </optgroup>
-                  <optgroup label="Europe">
                     <option value="prague">Prague</option>
                     <option value="copenhagen">Copenhagen</option>
                     <option value="berlin">Berlin</option>
@@ -202,19 +288,18 @@
                     <option value="venice">Venice</option>
                     <option value="amsterdam">Amsterdam</option>
                     <option value="lisbon">Lisbon</option>
-                  </optgroup>
-                  <optgroup label="Americas">
                     <option value="new-york">New York</option>
                     <option value="los-angeles">Los Angeles</option>
                     <option value="mexico-city">Mexico City</option>
                     <option value="buenos-aires">Buenos Aires</option>
-                  </optgroup>
-                  <optgroup label="Middle East & Africa">
                     <option value="dubai">Dubai</option>
                     <option value="istanbul">Istanbul</option>
                     <option value="marrakech">Marrakech</option>
-                  </optgroup>
-                </select>
+                  </select>
+                  <div class="city-dropdown" id="city-dropdown" hidden>
+                    <div class="city-options" id="city-options"></div>
+                  </div>
+                </div>
               </label>
 
               <p class="footer-note">
@@ -265,10 +350,13 @@
               <p class="form-section-label">Trip shape</p>
 
               <div class="arrival-departure-grid">
-                <label>
-                  Arrival Date
-                  <input type="date" id="start-date" name="start-date" required />
-                </label>
+                <div class="field-wrapper">
+                  <label>
+                    Arrival Date
+                    <input type="date" id="start-date" name="start-date" required />
+                  </label>
+                  <p class="field-error" id="start-date-error" hidden></p>
+                </div>
                 <label>
                   Arrival Time
                   <select id="arrival-time" name="arrival-time">
@@ -277,10 +365,13 @@
                     <option value="evening">Evening</option>
                   </select>
                 </label>
-                <label>
-                  Departure Date
-                  <input type="date" id="end-date" name="end-date" required />
-                </label>
+                <div class="field-wrapper">
+                  <label>
+                    Departure Date
+                    <input type="date" id="end-date" name="end-date" required />
+                  </label>
+                  <p class="field-error" id="end-date-error" hidden></p>
+                </div>
                 <label>
                   Departure Time
                   <select id="departure-time" name="departure-time">
@@ -295,16 +386,6 @@
                 <p class="duration-label">Trip length</p>
                 <div class="duration-counter" id="duration-counter">
                   <span class="duration-days">4</span> <span class="duration-nights">nights</span>
-                </div>
-              </div>
-
-              <div class="date-presets">
-                <p class="date-presets-label">Quick select</p>
-                <div class="preset-buttons">
-                  <button type="button" class="preset-btn" data-days="3">3 days</button>
-                  <button type="button" class="preset-btn" data-days="4">4 days</button>
-                  <button type="button" class="preset-btn" data-days="5">5 days</button>
-                  <button type="button" class="preset-btn" data-days="7">Week</button>
                 </div>
               </div>
 
@@ -426,6 +507,14 @@
                   class="reset-btn"
                 >
                   Clear form
+                </button>
+                <button
+                  id="save-form-button"
+                  type="button"
+                  class="save-form-btn"
+                  title="Save your current form setup to browser"
+                >
+                  💾 Save setup
                 </button>
               </div>
             </form>

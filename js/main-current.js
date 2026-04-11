@@ -199,7 +199,7 @@ function updateDurationCounter() {
   }
   
   const diffTime = Math.abs(end - start);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
   
   durationCounter.innerHTML = `<span class="duration-days">${diffDays}</span> <span class="duration-nights">${diffDays === 1 ? 'day' : 'days'}</span>`;
 }
@@ -243,32 +243,201 @@ function updateFormSummary() {
   }
 }
 
-function handleDatePreset(days) {
-  const startField = document.querySelector("#start-date");
-  const endField = document.querySelector("#end-date");
-  const today = new Date();
-  
-  if (!startField || !endField) return;
-  
-  // Start 18 days from now
-  const start = shiftDate(today, 18);
-  const end = new Date(start);
-  end.setDate(end.getDate() + days - 1);
-  
-  startField.value = toInputDate(start);
-  endField.value = toInputDate(end);
-  
-  updateDurationCounter();
-  updateFormSummary();
-  
+// ---- Form Save/Load Functions ----
+
+const FORM_PREFS_KEY = "triptrellis-form-prefs";
+
+function saveFormPreferences() {
+  const form = getForm();
+  if (!form) return;
+
+  const prefs = {
+    city: form.querySelector("#city")?.value,
+    startDate: form.querySelector("#start-date")?.value,
+    endDate: form.querySelector("#end-date")?.value,
+    arrivalTime: form.querySelector("#arrival-time")?.value,
+    departureTime: form.querySelector("#departure-time")?.value,
+    budget: form.querySelector("#budget")?.value,
+    pace: form.querySelector("#pace")?.value,
+    hotelStatus: form.querySelector('input[name="hotel-status"]:checked')?.value,
+    focus: Array.from(form.querySelectorAll('input[name="focus"]:checked')).map(c => c.value),
+    notes: form.querySelector("#notes")?.value,
+    savedAt: new Date().toISOString(),
+  };
+
+  localStorage.setItem(FORM_PREFS_KEY, JSON.stringify(prefs));
+
   // Visual feedback
-  const presetBtns = document.querySelectorAll(".preset-btn");
-  presetBtns.forEach(btn => {
-    btn.classList.remove("active");
-    if (parseInt(btn.dataset.days) === days) {
-      btn.classList.add("active");
+  const saveBtn = document.querySelector("#save-form-button");
+  if (saveBtn) {
+    saveBtn.classList.add("saved");
+    setTimeout(() => saveBtn.classList.remove("saved"), 2000);
+  }
+}
+
+function loadFormPreferences() {
+  const prefs = localStorage.getItem(FORM_PREFS_KEY);
+  if (!prefs) return false;
+
+  try {
+    const data = JSON.parse(prefs);
+    const form = getForm();
+    if (!form) return false;
+
+    // Load all form values
+    if (data.city) form.querySelector("#city").value = data.city;
+    if (data.startDate) form.querySelector("#start-date").value = data.startDate;
+    if (data.endDate) form.querySelector("#end-date").value = data.endDate;
+    if (data.arrivalTime) form.querySelector("#arrival-time").value = data.arrivalTime;
+    if (data.departureTime) form.querySelector("#departure-time").value = data.departureTime;
+    if (data.budget) form.querySelector("#budget").value = data.budget;
+    if (data.pace) form.querySelector("#pace").value = data.pace;
+    if (data.hotelStatus) {
+      const radioBtn = form.querySelector(`input[name="hotel-status"][value="${data.hotelStatus}"]`);
+      if (radioBtn) radioBtn.checked = true;
+    }
+    if (data.focus && data.focus.length > 0) {
+      form.querySelectorAll('input[name="focus"]').forEach(cb => {
+        cb.checked = data.focus.includes(cb.value);
+      });
+    }
+    if (data.notes) form.querySelector("#notes").value = data.notes;
+
+    // Trigger updates
+    updateDurationCounter();
+    updateFormSummary();
+    
+    const existingHotelFields = getExistingHotelFields();
+    if (existingHotelFields) {
+      syncHotelFields(existingHotelFields);
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Failed to load form preferences:", error);
+    return false;
+  }
+}
+
+function hasFormPreferences() {
+  return !!localStorage.getItem(FORM_PREFS_KEY);
+}
+
+// ---- City Search Functions ----
+
+function initializeCitySearch() {
+  const searchInput = document.querySelector("#city-search");
+  const citySelect = document.querySelector("#city");
+  const dropdown = document.querySelector("#city-dropdown");
+  const optionsContainer = document.querySelector("#city-options");
+  
+  if (!searchInput || !citySelect) return;
+
+  const cities = Array.from(citySelect.options).map(opt => ({
+    value: opt.value,
+    text: opt.textContent
+  }));
+
+  function renderOptions(filter = "") {
+    const filtered = cities.filter(city =>
+      city.text.toLowerCase().includes(filter.toLowerCase()) ||
+      city.value.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    optionsContainer.innerHTML = filtered
+      .map(city => `
+        <div class="city-option ${city.value === citySelect.value ? 'selected' : ''}" data-value="${city.value}">
+          ${city.text}
+        </div>
+      `)
+      .join("");
+
+    if (filtered.length === 0) {
+      optionsContainer.innerHTML = '<div style="padding: 10px 14px; color: var(--muted); font-size: 0.9rem;">No cities found</div>';
+    }
+  }
+
+  searchInput.addEventListener("focus", () => {
+    renderOptions(searchInput.value);
+    dropdown.hidden = false;
+  });
+
+  searchInput.addEventListener("input", (e) => {
+    renderOptions(e.target.value);
+  });
+
+  optionsContainer.addEventListener("click", (e) => {
+    const option = e.target.closest(".city-option");
+    if (option) {
+      const value = option.dataset.value;
+      citySelect.value = value;
+      searchInput.value = option.textContent;
+      dropdown.hidden = true;
+      updateFormSummary();
+      citySelect.dispatchEvent(new Event("change", { bubbles: true }));
     }
   });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".city-selector-wrapper")) {
+      dropdown.hidden = true;
+    }
+  });
+
+  // Initialize with selected city
+  const selectedOption = cities.find(c => c.value === citySelect.value);
+  if (selectedOption) {
+    searchInput.value = selectedOption.text;
+  }
+}
+
+// ---- Date Validation Functions ----
+
+function validateDates() {
+  const startField = document.querySelector("#start-date");
+  const endField = document.querySelector("#end-date");
+  const startError = document.querySelector("#start-date-error");
+  const endError = document.querySelector("#end-date-error");
+
+  if (!startField || !endField) return true;
+
+  let isValid = true;
+  const startDate = new Date(startField.value);
+  const endDate = new Date(endField.value);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Check start date is not in past
+  if (startField.value && startDate < today) {
+    showFieldError(startField, startError, "Arrival date must be in the future");
+    isValid = false;
+  } else {
+    clearFieldError(startField, startError);
+  }
+
+  // Check end date is after start date
+  if (startField.value && endField.value && endDate <= startDate) {
+    showFieldError(endField, endError, "Departure must be after arrival");
+    isValid = false;
+  } else {
+    clearFieldError(endField, endError);
+  }
+
+  return isValid;
+}
+
+function showFieldError(field, errorEl, message) {
+  if (!field || !errorEl) return;
+  field.setAttribute("aria-invalid", "true");
+  errorEl.textContent = message;
+  errorEl.hidden = false;
+}
+
+function clearFieldError(field, errorEl) {
+  if (!field || !errorEl) return;
+  field.removeAttribute("aria-invalid");
+  errorEl.textContent = "";
+  errorEl.hidden = true;
 }
 
 export function generateFromForm(form) {
@@ -278,6 +447,10 @@ export function generateFromForm(form) {
   }
 
   if (typeof form.reportValidity === "function" && !form.reportValidity()) {
+    return;
+  }
+
+  if (!validateDates()) {
     return;
   }
 
@@ -378,6 +551,10 @@ function initializeApp() {
   // Initialize new form features
   updateDurationCounter();
   updateFormSummary();
+  initializeCitySearch();
+  
+  // Load stored preferences if available
+  loadFormPreferences();
 }
 
 function bindEvents() {
@@ -401,27 +578,37 @@ function bindEvents() {
   startField?.addEventListener("change", () => {
     updateDurationCounter();
     updateFormSummary();
+    validateDates();
+    saveFormPreferences();
   });
   endField?.addEventListener("change", () => {
     updateDurationCounter();
     updateFormSummary();
+    validateDates();
+    saveFormPreferences();
   });
+
+  // Validate on blur too
+  startField?.addEventListener("blur", validateDates);
+  endField?.addEventListener("blur", validateDates);
 
   // Form summary updates
   const citySelect = form?.querySelector("#city");
   const budgetSelect = form?.querySelector("#budget");
   const focusCheckboxes = form?.querySelectorAll('input[name="focus"]');
   
-  citySelect?.addEventListener("change", updateFormSummary);
-  budgetSelect?.addEventListener("change", updateFormSummary);
-  focusCheckboxes?.forEach(cb => cb.addEventListener("change", updateFormSummary));
-
-  // Date presets
-  const presetButtons = document.querySelectorAll(".preset-btn");
-  presetButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      handleDatePreset(parseInt(btn.dataset.days));
+  citySelect?.addEventListener("change", () => {
+    updateFormSummary();
+    saveFormPreferences();
+  });
+  budgetSelect?.addEventListener("change", () => {
+    updateFormSummary();
+    saveFormPreferences();
+  });
+  focusCheckboxes?.forEach(cb => {
+    cb.addEventListener("change", () => {
+      updateFormSummary();
+      saveFormPreferences();
     });
   });
 
@@ -432,6 +619,12 @@ function bindEvents() {
     initializeDates();
     updateDurationCounter();
     updateFormSummary();
+  });
+
+  // Save form preferences
+  const saveButton = document.querySelector("#save-form-button");
+  saveButton?.addEventListener("click", () => {
+    saveFormPreferences();
   });
 
   savedButton?.addEventListener("click", () => setSavedDrawerOpen(true));
@@ -470,8 +663,13 @@ function bindEvents() {
       if (existingHotelFields) {
         syncHotelFields(existingHotelFields);
       }
+      saveFormPreferences();
     });
   });
+
+  // Auto-save notes field
+  const notesField = form?.querySelector("#notes");
+  notesField?.addEventListener("input", saveFormPreferences);
 
   results?.addEventListener("click", handleResultsClick);
   results?.addEventListener("input", handleResultsInput);
