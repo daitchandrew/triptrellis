@@ -58,8 +58,48 @@ function buildHotelOptionSummary(hotel, area) {
   return `${tierLead} in ${area.label} with ${hotel.vibe.charAt(0).toLowerCase()}${hotel.vibe.slice(1)}`;
 }
 
+function getFallbackAreaKey(guide) {
+  return Object.keys(guide.hotelAreas || {})[0] || "";
+}
+
+function resolveAreaKey(guide, areaKey = "") {
+  if (areaKey && guide.hotelAreas?.[areaKey]) {
+    return areaKey;
+  }
+  return getFallbackAreaKey(guide);
+}
+
+function resolveArea(guide, areaKey = "") {
+  const safeAreaKey = resolveAreaKey(guide, areaKey);
+  return {
+    areaKey: safeAreaKey,
+    area: guide.hotelAreas?.[safeAreaKey] || {
+      label: "Central area",
+      mood: "practical and central",
+      strengths: [],
+    },
+  };
+}
+
+function getAllKnownHotels(guide) {
+  return Object.values(guide.hotels || {}).flat().filter(Boolean);
+}
+
+function findKnownHotelMatch(guide, hotelName = "") {
+  const normalizedHotelName = normalizeText(hotelName);
+  if (!normalizedHotelName) return null;
+
+  return getAllKnownHotels(guide).find((hotel) => {
+    const normalizedKnownName = normalizeText(hotel.name);
+    return normalizedHotelName === normalizedKnownName
+      || normalizedHotelName.includes(normalizedKnownName)
+      || normalizedKnownName.includes(normalizedHotelName);
+  }) || null;
+}
+
 function buildHotelRecommendationDescription(hotel, area, guide) {
-  const nearbyLabels = (guide.areaAdjacency[hotel.area] || [])
+  const { areaKey } = resolveArea(guide, hotel.area);
+  const nearbyLabels = (guide.areaAdjacency?.[areaKey] || [])
     .map((areaKey) => guide.hotelAreas[areaKey]?.label)
     .filter(Boolean)
     .slice(0, 2);
@@ -132,25 +172,24 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
   const existing = existingHotels.find((entry) => entry.cityKey === cityKey) || existingHotels[0];
 
   if (hotelStatus === "have-hotel" && existing) {
-    const areaKey = detectAreaFromText(guide, `${existing.hotel} ${existing.area} ${noteProfile.text}`) || bestAreaFromNotes(guide, noteProfile) || Object.keys(guide.hotelAreas)[0];
-    const area = guide.hotelAreas[areaKey];
-    const allKnownHotels = Object.values(guide.hotels || {}).flat();
-    const knownMatch = allKnownHotels.find((h) =>
-      normalizeText(h.name) === normalizeText(existing.hotel) ||
-      normalizeText(existing.hotel).includes(normalizeText(h.name))
-    );
+    const knownMatch = findKnownHotelMatch(guide, existing.hotel);
+    const detectedAreaKey = knownMatch?.area
+      || detectAreaFromText(guide, `${existing.hotel} ${existing.area} ${noteProfile.text}`)
+      || bestAreaFromNotes(guide, noteProfile);
+    const { areaKey, area } = resolveArea(guide, detectedAreaKey);
     const vibe = knownMatch
       ? knownMatch.vibe
       : `Your base in ${area.label}, which feels ${area.mood}.`;
+    const hotelName = knownMatch?.name || existing.hotel;
     return {
-      hotelName: existing.hotel,
+      hotelName,
       areaKey,
       areaLabel: area.label,
       source: "Your booked hotel",
       vibe,
       strategy: `Suggestions are now heavily weighted toward ${area.label} and adjacent neighborhoods so the itinerary actually changes based on where you are staying.`,
-      influence: `Hotel influence: high. The planner is biasing sights, meals, and evenings toward ${area.label}${guide.areaAdjacency[areaKey]?.length ? ` plus ${guide.areaAdjacency[areaKey].map((key) => guide.hotelAreas[key].label).slice(0, 2).join(" and ")}` : ""}.`,
-      longDescription: buildSelectedHotelDescription(knownMatch || existing.hotel, areaKey, area, guide),
+      influence: `Hotel influence: high. The planner is biasing sights, meals, and evenings toward ${area.label}${guide.areaAdjacency[areaKey]?.length ? ` plus ${guide.areaAdjacency[areaKey].map((key) => guide.hotelAreas[key]?.label).filter(Boolean).slice(0, 2).join(" and ")}` : ""}.`,
+      longDescription: buildSelectedHotelDescription(knownMatch || hotelName, areaKey, area, guide),
       amenityLine: knownMatch ? buildHotelAmenityLine(knownMatch, area) : "",
     };
   }
@@ -158,38 +197,38 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
   const selectedRecommended = rankedHotels.find(({ hotel }) => hotel.name === selectedHotelName)?.hotel;
   const recommended = selectedRecommended || (rankedHotels[0] || {}).hotel;
   if (!recommended) {
-    const fallback = guide.hotels[budget][0];
-    const fallbackArea = guide.hotelAreas[fallback.area];
+    const fallback = (guide.hotels?.[budget] || Object.values(guide.hotels || {}).flat())[0];
+    const { areaKey: fallbackAreaKey, area: fallbackArea } = resolveArea(guide, fallback?.area);
     return {
-      hotelName: fallback.name,
-      areaKey: fallback.area,
+      hotelName: fallback?.name || "Selected hotel",
+      areaKey: fallbackAreaKey,
       areaLabel: fallbackArea.label,
       source: "Selected hotel",
-      vibe: fallback.vibe,
-      strategy: `${fallback.name} is recommended because ${fallbackArea.label} best supports this version of the trip.`,
+      vibe: fallback?.vibe || `A practical base in ${fallbackArea.label}.`,
+      strategy: `${fallback?.name || "This hotel"} is recommended because ${fallbackArea.label} best supports this version of the trip.`,
       influence: `Planner bias: ${fallbackArea.label} is being used as the primary anchor for routing, food picks, and evening suggestions.`,
-      longDescription: buildSelectedHotelDescription(fallback, fallback.area, fallbackArea, guide),
-      amenityLine: buildHotelAmenityLine(fallback, fallbackArea),
+      longDescription: buildSelectedHotelDescription(fallback, fallbackAreaKey, fallbackArea, guide),
+      amenityLine: fallback ? buildHotelAmenityLine(fallback, fallbackArea) : "",
     };
   }
-  const area = guide.hotelAreas[recommended.area];
+  const { areaKey, area } = resolveArea(guide, recommended.area);
 
   return {
     hotelName: recommended.name,
-    areaKey: recommended.area,
+    areaKey,
     areaLabel: area.label,
     source: "Selected hotel",
     vibe: recommended.vibe,
     strategy: `${recommended.name} is recommended because ${area.label} best supports this version of the trip.`,
     influence: `Planner bias: ${area.label} is being used as the primary anchor for routing, food picks, and evening suggestions.`,
-    longDescription: buildSelectedHotelDescription(recommended, recommended.area, area, guide),
+    longDescription: buildSelectedHotelDescription(recommended, areaKey, area, guide),
     amenityLine: buildHotelAmenityLine(recommended, area),
   };
 }
 
 export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budgetProfile, focus, focusTheme, noteProfile, hasExistingHotel = false) {
   const recommendations = rankedHotels.slice(0, 4).map(({ hotel }) => {
-    const area = guide.hotelAreas[hotel.area];
+    const { areaKey, area } = resolveArea(guide, hotel.area);
     const matchedTags = hotel.bestFor.filter((tag) => (
       focusTheme.wantedTags.includes(tag)
       || budgetProfile.wantedTags.includes(tag)
@@ -200,7 +239,7 @@ export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budget
       : `Best for a ${budgetProfile.label.toLowerCase()} ${formatFocus(focus).toLowerCase()} trip.`;
     return {
       name: hotel.name,
-      areaKey: hotel.area,
+      areaKey,
       areaLabel: area.label,
       tierLabel: hotel.tier ? hotel.tier.charAt(0).toUpperCase() + hotel.tier.slice(1) : "",
       vibe: hotel.vibe,

@@ -1,7 +1,7 @@
 import { cityGuides } from "./data/cities/index.js";
 import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js";
 import { populateSuggestedItinerary } from "./lib/itinerary.js";
-import { loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
+import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
 import { renderEmptyState, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js";
 import {
   handleDragEnd,
@@ -117,6 +117,21 @@ function setSavedDrawerOpen(open) {
   drawer.setAttribute("aria-hidden", String(!open));
   backdrop.hidden = !open;
   button.setAttribute("aria-expanded", String(open));
+}
+
+function reopenSavedTrip(saveId) {
+  const savedTrip = loadSavedItineraries().find((trip) => trip.id === saveId);
+  const results = getResults();
+  if (!savedTrip || !results) return;
+
+  const plan = hydratePlan(savedTrip);
+  plan.savedTrips = loadSavedItineraries();
+  setCurrentPlan(plan);
+  renderTripPlan(plan, results);
+  setSavedDrawerOpen(false);
+  window.setTimeout(() => {
+    results.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 80);
 }
 
 export function generateFromForm(form) {
@@ -245,6 +260,12 @@ function bindEvents() {
       event.preventDefault();
       savedTripsFilter = filterButton.dataset.filter || "all";
       renderSavedDrawer();
+      return;
+    }
+    const reopenButton = event.target.closest('[data-action="reopen-itinerary"]');
+    if (reopenButton) {
+      event.preventDefault();
+      reopenSavedTrip(reopenButton.dataset.saveId);
       return;
     }
     handleResultsClick(event);

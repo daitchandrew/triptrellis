@@ -33,7 +33,7 @@ export const pragueGuide = {
     "zizkov": [
       "josefov",
       "vinohrady",
-      "karlín"
+      "karlin"
     ],
     "karlin": [
       "zizkov",
@@ -75,6 +75,33 @@ export const pragueGuide = {
         "culture",
         "nature",
         "luxury"
+      ]
+    },
+    "josefov": {
+      "label": "Josefov / Jewish Quarter",
+      "mood": "historic and refined",
+      "strengths": [
+        "culture",
+        "walkability",
+        "history"
+      ]
+    },
+    "zizkov": {
+      "label": "Žižkov",
+      "mood": "local and lively",
+      "strengths": [
+        "nightlife",
+        "food",
+        "local"
+      ]
+    },
+    "karlin": {
+      "label": "Karlín",
+      "mood": "creative and cafe-led",
+      "strengths": [
+        "food",
+        "design",
+        "local"
       ]
     }
   },
@@ -806,7 +833,7 @@ export const pragueGuide = {
     },
     {
       "name": "U Medvídků",
-      "area": "josephov",
+      "area": "josefov",
       "tags": [
         "food",
         "culture",

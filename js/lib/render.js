@@ -343,6 +343,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                 <div class="saved-card-footer">
                   <span class="saved-card-hotel">${escapeHtml(trip.hotelName || "Hotel base saved")}</span>
                   <div class="saved-actions">
+                    <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Reopen trip</button>
                     <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Download</button>
                     <button class="mini-button saved-delete-button" type="button" data-action="delete-itinerary" data-save-id="${trip.id}">Delete</button>
                   </div>

@@ -2499,6 +2499,7 @@ button:active { transform: translateY(0); }
   line-height: 1.62;
 }
 
+.saved-reopen-button,
 .saved-download-button,
 .saved-delete-button {
   background: #f5f5f0 !important;
@@ -2511,10 +2512,27 @@ button:active { transform: translateY(0); }
   transition: background-color 0.2s ease, color 0.2s ease !important;
 }
 
+.saved-reopen-button {
+  background: #1c1a17 !important;
+  color: #fff8ee !important;
+}
+
+.saved-reopen-button:hover {
+  background: #332d27 !important;
+  color: #fff8ee !important;
+}
+
 .saved-download-button:hover,
 .saved-delete-button:hover {
   background: #e9e8df !important;
   color: rgba(28, 26, 23, 0.92) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.saved-reopen-button:hover {
+  background: #332d27 !important;
+  color: #fff8ee !important;
   box-shadow: none !important;
   transform: none !important;
 }
