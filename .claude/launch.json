@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "autoPort": true,
+  "configurations": [
+    {
+      "name": "voyagr",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "require('http').createServer((req,res)=>{const fs=require('fs'),path=require('path'),url=require('url');let p=url.parse(req.url).pathname;let f=path.join('/Users/andrewdaitch/Desktop/Travel Planner',p==='/'?'index.html':p);const ext={'.html':'text/html','.css':'text/css','.js':'text/javascript'}[path.extname(f)]||'text/plain';fs.readFile(f,(e,d)=>{if(e){res.writeHead(404);res.end();}else{res.writeHead(200,{'Content-Type':ext});res.end(d);}});}).listen(process.env.PORT||3000)"]
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TripTrellis | Detailed Travel Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=triptrellis-sticky-library-panel-20260411-001" />
+  </head>
+  <body>
+    <script>
+      window.TripTrellisShowLoadError = function () {
+        const results = document.querySelector("#results");
+        if (!results) return;
+        results.innerHTML = `
+          <section class="section-card">
+            <p class="section-kicker">App loading issue</p>
+            <h2 class="section-title">TripTrellis is not ready yet.</h2>
+            <p class="card-subtitle">The JavaScript module did not finish loading. Make sure you opened the app from <strong>serve.command</strong>, then refresh this page.</p>
+          </section>
+        `;
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      window.TripTrellisGenerateNow = async function (form) {
+        if (window.TripTrellisGenerate) {
+          window.TripTrellisGenerate(form);
+          return;
+        }
+
+        try {
+          const app = await import("./js/main-current.js");
+          const generator = window.TripTrellisGenerate || app.generateFromForm;
+          if (!generator) {
+            throw new Error("TripTrellis loaded, but the Generate function was not found.");
+          }
+          generator(form);
+        } catch (error) {
+          const results = document.querySelector("#results");
+          console.error("TripTrellis module import failed:", error);
+          if (!results) return;
+          results.innerHTML = `
+            <section class="section-card">
+              <p class="section-kicker">App loading issue</p>
+              <h2 class="section-title">TripTrellis could not load the generator.</h2>
+              <p class="card-subtitle">${error?.message || "Unknown module loading error."}</p>
+            </section>
+          `;
+          results.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+
+      if (window.location.protocol === "file:") {
+        document.body.innerHTML = `
+          <main style="min-height:100vh;display:grid;place-items:center;padding:32px;background:linear-gradient(180deg,#f6eee2,#ecddca);font-family:Manrope,sans-serif;color:#14100c;">
+            <section style="max-width:680px;padding:32px;border-radius:28px;background:rgba(255,252,248,0.96);border:1px solid rgba(38,24,14,0.08);box-shadow:0 20px 60px rgba(28,16,8,0.12);">
+              <p style="margin:0 0 10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#9d6520;">TripTrellis Setup</p>
+              <h1 style="margin:0 0 14px;font:700 42px/1.02 'Playfair Display',serif;">Open this app through the local launcher.</h1>
+              <p style="margin:0 0 12px;font-size:18px;line-height:1.7;color:#6a5b4e;">The separated JavaScript files only run over a local web server. If you open <strong>index.html</strong> directly from Finder, buttons like Generate will not work.</p>
+              <p style="margin:0 0 18px;font-size:18px;line-height:1.7;color:#6a5b4e;">Use <strong>serve.command</strong> in this folder, then open <strong>http://127.0.0.1:4173/</strong>.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                <span style="padding:10px 16px;border-radius:999px;background:#fff7ef;border:1px solid rgba(157,101,32,0.22);color:#9d6520;font-weight:700;">1. Double-click serve.command</span>
+                <span style="padding:10px 16px;border-radius:999px;background:#f7fafb;border:1px solid rgba(111,143,157,0.22);color:#55636d;font-weight:700;">2. Wait for the browser to open</span>
+                <span style="padding:10px 16px;border-radius:999px;background:#f7fafb;border:1px solid rgba(111,143,157,0.22);color:#55636d;font-weight:700;">3. Generate the trip there</span>
+              </div>
+            </section>
+          </main>
+        `;
+      }
+    </script>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <div class="brand-lockup">
+            <span class="brand-mark">TripTrellis</span>
+            <span class="brand-tag">Trip planning with actual taste</span>
+          </div>
+          <div class="topbar-status">
+            <span>One city at a time</span>
+            <span>Hotel-aware</span>
+            <span>Buildable itinerary</span>
+            <button class="topbar-link" id="my-trips-button" type="button" aria-controls="saved-trips-drawer" aria-expanded="false">My Trips</button>
+          </div>
+        </nav>
+
+        <div class="hero-grid">
+          <!-- LEFT COLUMN: content stack -->
+          <div class="hero-col-left">
+
+            <!-- 1. Intro -->
+            <div class="hero-intro">
+              <p class="eyebrow">Detailed trip briefs, not generic lists</p>
+              <h1>Plan city days that actually make sense.</h1>
+              <p class="hero-text">
+                Choose one city, set your dates, and tell TripTrellis how you travel.
+                It turns that into a hotel-aware planning workspace with a stronger
+                base, a deeper city library, and a day-by-day itinerary you can
+                keep shaping as you go.
+              </p>
+              <div class="hero-chips">
+                <span>Hotel-aware planning</span>
+                <span>Better day flow</span>
+                <span>Editable itinerary</span>
+              </div>
+            </div>
+
+            <!-- 2 + 3. Dark Anchor + Snapshot as a grouped "set" -->
+            <div class="anchor-set">
+            <div class="dark-anchor">
+              <p class="dark-anchor-kicker">A cleaner planning workspace</p>
+              <h3 class="dark-anchor-title">Built for trips that need structure, taste, and room to edit.</h3>
+              <div class="dark-anchor-items">
+                <div class="dark-anchor-item">
+                  <span class="dark-anchor-num">01</span>
+                  <div>
+                    <h4>Stay grounded</h4>
+                    <p>Plan around your hotel area, or choose the strongest base first.</p>
+                  </div>
+                </div>
+                <div class="dark-anchor-item">
+                  <span class="dark-anchor-num">02</span>
+                  <div>
+                    <h4>Shape the day</h4>
+                    <p>Balance food, culture, nightlife, and wandering into a real sequence.</p>
+                  </div>
+                </div>
+                <div class="dark-anchor-item">
+                  <span class="dark-anchor-num">03</span>
+                  <div>
+                    <h4>Edit everything</h4>
+                    <p>Add, replace, drag, remove, and save without rebuilding the trip.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trip Snapshot Card (part of anchor-set) -->
+            <div class="trip-snapshot-card">
+              <h4 class="trip-snapshot-title">Your Trip Brief Includes:</h4>
+              <ul class="trip-snapshot-list">
+                <li>Full daily itineraries with maps</li>
+                <li>Hotel-aware neighborhood routing</li>
+                <li>Curated dining &amp; hidden gems</li>
+              </ul>
+            </div>
+            </div><!-- /.anchor-set -->
+
+          </div>
+
+          <aside class="planner-card">
+            <div class="card-heading">
+              <p class="card-kicker">Plan a trip</p>
+              <h2>Build a concierge-grade itinerary</h2>
+            </div>
+
+            <form id="planner-form" class="planner-form" action="#" onsubmit="window.TripTrellisGenerateNow(this); return false;">
+              <p class="form-section-label">Trip basics</p>
+
+              <label>
+                City
+                <select id="city" name="city" required>
+                  <option value="seoul" selected>Seoul</option>
+                  <option value="tokyo">Tokyo</option>
+                  <option value="kyoto">Kyoto</option>
+                  <option value="osaka">Osaka</option>
+                  <option value="bangkok">Bangkok</option>
+                  <option value="prague">Prague</option>
+                  <option value="copenhagen">Copenhagen</option>
+                  <option value="berlin">Berlin</option>
+                </select>
+              </label>
+
+              <p class="footer-note">
+                Choose one city and TripTrellis will build the best version of that trip for the exact number of days.
+              </p>
+
+              <p class="form-section-label">Stay setup</p>
+
+              <fieldset class="choice-group segmented-group">
+                <legend>Do you already have hotel picks?</legend>
+                <div class="toggle-grid segmented-control">
+                  <label class="toggle-option">
+                    <input
+                      type="radio"
+                      name="hotel-status"
+                      value="need-hotel"
+                      checked
+                    />
+                    <span>I want hotel recommendations</span>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="hotel-status" value="have-hotel" />
+                    <span>I already booked my hotel</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div
+                id="existing-hotel-fields"
+                class="conditional-fields hidden"
+                aria-hidden="true"
+              >
+                <label>
+                  Existing hotel details
+                  <textarea
+                    id="existing-hotels"
+                    name="existing-hotels"
+                    rows="4"
+                    placeholder="One per line. Example:&#10;Seoul - Ryse Hotel - Hongdae&#10;Tokyo - Trunk Hotel Yoyogi Park - Shibuya"
+                  ></textarea>
+                </label>
+                <p class="footer-note">
+                  Include city, hotel name, and neighborhood if you know it. The itinerary
+                  will cluster days around that area when possible.
+                </p>
+              </div>
+
+              <p class="form-section-label">Trip shape</p>
+
+              <div class="arrival-departure-grid">
+                <label>
+                  Arrival Date
+                  <input type="date" id="start-date" name="start-date" required />
+                </label>
+                <label>
+                  Arrival Time
+                  <select id="arrival-time" name="arrival-time">
+                    <option value="morning">Morning</option>
+                    <option value="afternoon" selected>Afternoon</option>
+                    <option value="evening">Evening</option>
+                  </select>
+                </label>
+                <label>
+                  Departure Date
+                  <input type="date" id="end-date" name="end-date" required />
+                </label>
+                <label>
+                  Departure Time
+                  <select id="departure-time" name="departure-time">
+                    <option value="morning" selected>Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="evening">Evening</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="detail-grid">
+                <label>
+                  Budget
+                  <select id="budget" name="budget">
+                    <option value="luxury">Luxury</option>
+                    <option value="premium" selected>Premium</option>
+                    <option value="smart">Smart spend</option>
+                  </select>
+                </label>
+
+                <label>
+                  Travel pace
+                  <select id="pace" name="pace">
+                    <option value="slow">Slow</option>
+                    <option value="balanced" selected>Balanced</option>
+                    <option value="packed">Packed</option>
+                  </select>
+                </label>
+              </div>
+
+              <fieldset class="choice-group focus-picker" id="focus-group">
+                <legend>Select all that apply</legend>
+                <div class="focus-grid">
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="culture" checked />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Culture &amp;<br />History</span></div>
+                    <span class="focus-card-desc">Temples, palaces, and heritage districts.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="food" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Food &amp;<br />Drink</span></div>
+                    <span class="focus-card-desc">Markets, local spots, and destination meals.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="design" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Design &amp; Architecture</span></div>
+                    <span class="focus-card-desc">Architecture and design-forward places.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="museum" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Museums &amp; Galleries</span></div>
+                    <span class="focus-card-desc">Art collections and major cultural institutions.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="wellness" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Wellness &amp; Recharge</span></div>
+                    <span class="focus-card-desc">Parks, spas, and slower restorative days.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="nightlife" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Nightlife &amp; Energy</span></div>
+                    <span class="focus-card-desc">Bars, late-night food, and after-dark energy.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="shopping" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Shopping &amp; Style</span></div>
+                    <span class="focus-card-desc">Markets, boutiques, and standout retail streets.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="nature" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Nature &amp; Outdoors</span></div>
+                    <span class="focus-card-desc">Parks, hikes, rivers, and open-air escapes.</span>
+                  </label>
+                  <label class="focus-card">
+                    <input type="checkbox" name="focus" value="luxury" />
+                    <span class="focus-card-icon" aria-hidden="true"></span>
+                    <div class="focus-card-title"><span class="focus-card-label">Luxury &amp; Splurge</span></div>
+                    <span class="focus-card-desc">High-end stays, meals, and worth-it splurges.</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <p class="footer-note">
+                This shapes hotel ranking, don’t-miss picks, and how items get placed into the itinerary.
+              </p>
+
+              <label>
+                Notes
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="Rooftop hotel preferred, one splurge dinner, no museums on arrival day."
+                ></textarea>
+              </label>
+
+              <button
+                id="generate-trip-button"
+                type="button"
+                onclick="window.TripTrellisGenerateNow(this.form); return false;"
+              >
+                Generate my trip brief <span aria-hidden="true">→</span>
+              </button>
+            </form>
+          </aside>
+        </div>
+
+      </header>
+
+      <main id="results" class="results" aria-live="polite"></main>
+    </div>
+
+    <div class="drawer-backdrop" id="saved-trips-backdrop" hidden></div>
+    <aside class="saved-trips-drawer" id="saved-trips-drawer" aria-hidden="true" aria-labelledby="saved-trips-title">
+      <div class="saved-drawer-head">
+        <div>
+          <p class="section-kicker">My Trips</p>
+          <h2 class="section-title" id="saved-trips-title">Saved itineraries</h2>
+        </div>
+        <button class="drawer-close" id="saved-trips-close" type="button" aria-label="Close saved trips">×</button>
+      </div>
+      <div class="saved-drawer-body" id="saved-trips-content"></div>
+    </aside>
+
+    <template id="empty-state-template"></template>
+
+    <footer class="site-footer">
+      <span class="brand-mark footer-brand-mark">TripTrellis</span>
+      <span>Trip planning with actual taste</span>
+    </footer>
+
+    <script type="module" src="./js/main-current.js"></script>
+  </body>
+</html>
