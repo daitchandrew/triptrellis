@@ -577,9 +577,11 @@ export function renderTripPlan(plan, results) {
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Hotel options</p>
             <h3 class="section-title">Best hotels for this trip</h3>
+            <p class="card-subtitle hotel-selector-intro">These are the strongest alternate bases if you want to shift the trip's center of gravity without losing the logic.</p>
             <div class="stacked-cards">
-              ${plan.hotelRecommendations.map((hotel) => `
+              ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
+                  <span class="hotel-option-rank">${String(index + 1).padStart(2, "0")}</span>
                   <div class="hotel-option-layout">
                     <div class="hotel-thumb" aria-hidden="true">
                       <span>${escapeHtml(hotelInitials(hotel.name))}</span>
@@ -628,6 +630,7 @@ export function renderTripPlan(plan, results) {
         <div>
           <p class="section-kicker">Don't miss</p>
           <h3 class="section-title">Highest-fit picks for this version of the trip</h3>
+          <p class="card-subtitle dont-miss-intro">The strongest places to protect in this version of the plan before you start editing around the edges.</p>
         </div>
       </div>
       <div class="recommendation-grid">

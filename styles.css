@@ -1731,6 +1731,12 @@ button:active { transform: translateY(0); }
   align-content: start;
 }
 
+.hotel-selector-intro,
+.dont-miss-intro {
+  max-width: 58ch;
+  margin: 2px 0 0;
+}
+
 .hotel-option-card {
   min-height: auto;
   display: grid;
@@ -1745,6 +1751,17 @@ button:active { transform: translateY(0); }
     inset 0 1px 0 rgba(255, 255, 255, 0.88);
   position: relative;
   overflow: hidden;
+}
+
+.hotel-option-rank {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  color: rgba(181, 118, 77, 0.72);
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
 }
 
 .transit-anchor-item {
@@ -2291,6 +2308,23 @@ button:active { transform: translateY(0); }
   max-width: 18ch;
 }
 
+.hotel-selector-card {
+  display: grid;
+  gap: 18px;
+}
+
+.hotel-selector-card::after {
+  content: "";
+  position: absolute;
+  right: -32px;
+  bottom: -34px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(194, 130, 91, 0.1), transparent 68%);
+  pointer-events: none;
+}
+
 .dont-miss-section .section-kicker {
   color: #b5764d;
   font-family: "Sora", "Manrope", sans-serif;
@@ -2308,6 +2342,64 @@ button:active { transform: translateY(0); }
   line-height: 0.92;
   letter-spacing: -0.075em;
   color: #1c1a17;
+}
+
+.dont-miss-section {
+  display: grid;
+  gap: 18px;
+}
+
+.dont-miss-card {
+  align-items: start;
+  gap: 22px;
+  padding: 22px 24px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 244, 237, 0.92));
+  border: 1px solid rgba(218, 209, 197, 0.88);
+}
+
+.dont-miss-card-body {
+  display: grid;
+  gap: 10px;
+  max-width: 72ch;
+}
+
+.dont-miss-card h4 {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+}
+
+.dont-miss-card p {
+  margin: 0;
+  color: #5f554b;
+  line-height: 1.62;
+}
+
+.dont-miss-rank-number {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 56px;
+  color: rgba(181, 118, 77, 0.85);
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.dont-miss-why {
+  margin-top: 2px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(194, 130, 91, 0.07);
+  border: 1px solid rgba(194, 130, 91, 0.12);
+}
+
+.dont-miss-insight-icon {
+  color: #b5764d;
 }
 
 /* ─── Builder Toolbar ────────────────────────────────────────────────────── */
