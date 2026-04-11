@@ -322,74 +322,8 @@ function loadFormPreferences() {
 function hasFormPreferences() {
   return !!localStorage.getItem(FORM_PREFS_KEY);
 }
-
 // ---- City Search Functions ----
-
-function initializeCitySearch() {
-  const searchInput = document.querySelector("#city-search");
-  const citySelect = document.querySelector("#city");
-  const dropdown = document.querySelector("#city-dropdown");
-  const optionsContainer = document.querySelector("#city-options");
-  
-  if (!searchInput || !citySelect) return;
-
-  const cities = Array.from(citySelect.options).map(opt => ({
-    value: opt.value,
-    text: opt.textContent
-  }));
-
-  function renderOptions(filter = "") {
-    const filtered = cities.filter(city =>
-      city.text.toLowerCase().includes(filter.toLowerCase()) ||
-      city.value.toLowerCase().includes(filter.toLowerCase())
-    );
-
-    optionsContainer.innerHTML = filtered
-      .map(city => `
-        <div class="city-option ${city.value === citySelect.value ? 'selected' : ''}" data-value="${city.value}">
-          ${city.text}
-        </div>
-      `)
-      .join("");
-
-    if (filtered.length === 0) {
-      optionsContainer.innerHTML = '<div style="padding: 10px 14px; color: var(--muted); font-size: 0.9rem;">No cities found</div>';
-    }
-  }
-
-  searchInput.addEventListener("focus", () => {
-    renderOptions(searchInput.value);
-    dropdown.hidden = false;
-  });
-
-  searchInput.addEventListener("input", (e) => {
-    renderOptions(e.target.value);
-  });
-
-  optionsContainer.addEventListener("click", (e) => {
-    const option = e.target.closest(".city-option");
-    if (option) {
-      const value = option.dataset.value;
-      citySelect.value = value;
-      searchInput.value = option.textContent;
-      dropdown.hidden = true;
-      updateFormSummary();
-      citySelect.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".city-selector-wrapper")) {
-      dropdown.hidden = true;
-    }
-  });
-
-  // Initialize with selected city
-  const selectedOption = cities.find(c => c.value === citySelect.value);
-  if (selectedOption) {
-    searchInput.value = selectedOption.text;
-  }
-}
+// (Removed - using standard select with optgroups)
 
 // ---- Date Validation Functions ----
 
@@ -551,7 +485,6 @@ function initializeApp() {
   // Initialize new form features
   updateDurationCounter();
   updateFormSummary();
-  initializeCitySearch();
   
   // Load stored preferences if available
   loadFormPreferences();

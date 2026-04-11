@@ -263,15 +263,8 @@
 
               <label>
                 City
-                <div class="city-selector-wrapper">
-                  <input 
-                    type="text" 
-                    id="city-search" 
-                    class="city-search-input" 
-                    placeholder="Search cities..." 
-                    autocomplete="off"
-                  />
-                  <select id="city" name="city" required style="display: none;">
+                <select id="city" name="city" required>
+                  <optgroup label="Asia">
                     <option value="seoul" selected>Seoul</option>
                     <option value="tokyo">Tokyo</option>
                     <option value="kyoto">Kyoto</option>
@@ -280,6 +273,8 @@
                     <option value="singapore">Singapore</option>
                     <option value="hong-kong">Hong Kong</option>
                     <option value="bali">Bali</option>
+                  </optgroup>
+                  <optgroup label="Europe">
                     <option value="prague">Prague</option>
                     <option value="copenhagen">Copenhagen</option>
                     <option value="berlin">Berlin</option>
@@ -288,18 +283,19 @@
                     <option value="venice">Venice</option>
                     <option value="amsterdam">Amsterdam</option>
                     <option value="lisbon">Lisbon</option>
+                  </optgroup>
+                  <optgroup label="Americas">
                     <option value="new-york">New York</option>
                     <option value="los-angeles">Los Angeles</option>
                     <option value="mexico-city">Mexico City</option>
                     <option value="buenos-aires">Buenos Aires</option>
+                  </optgroup>
+                  <optgroup label="Middle East & Africa">
                     <option value="dubai">Dubai</option>
                     <option value="istanbul">Istanbul</option>
                     <option value="marrakech">Marrakech</option>
-                  </select>
-                  <div class="city-dropdown" id="city-dropdown" hidden>
-                    <div class="city-options" id="city-options"></div>
-                  </div>
-                </div>
+                  </optgroup>
+                </select>
               </label>
 
               <p class="footer-note">
