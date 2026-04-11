@@ -2,7 +2,7 @@ import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansi
 import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-transit-balanced-20260411-010";
 import { populateSuggestedItinerary } from "./lib/itinerary.js?v=triptrellis-transit-balanced-20260411-010";
 import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
-import { renderEmptyState, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-refine-panel-position-20260411-009";
+import { renderEmptyState, renderGenerationLoading, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-mobile-loading-20260411-011";
 import {
   handleDragEnd,
   handleDragOver,
@@ -13,7 +13,7 @@ import {
   handleResultsInput,
   setBuildTripPlanFn,
   syncHotelFields,
-} from "./lib/handlers.js?v=triptrellis-refine-panel-position-20260411-009";
+} from "./lib/handlers.js?v=triptrellis-mobile-loading-20260411-011";
 import { shiftDate, toInputDate } from "./lib/utils.js";
 
 function getResults() {
@@ -79,6 +79,16 @@ function buildPlan(options) {
 }
 
 let lastGenerateAt = 0;
+let isGenerating = false;
+let loadingMessageTimer = null;
+
+const generationLoadingMessages = [
+  "Locating optimal hotel areas...",
+  "Curating neighborhood spots...",
+  "Balancing transit and standout detours...",
+  "Structuring your daily flow...",
+  "Polishing the trip brief...",
+];
 
 function showGenerationError(error) {
   const results = getResults();
@@ -134,6 +144,38 @@ function reopenSavedTrip(saveId) {
   }, 80);
 }
 
+function setGenerateButtonLoading(loading) {
+  const button = getGenerateButton();
+  if (!button) return;
+  button.disabled = loading;
+  button.classList.toggle("is-loading", loading);
+  button.setAttribute("aria-busy", String(loading));
+  button.innerHTML = loading
+    ? `Building your trip <span aria-hidden="true">…</span>`
+    : `Generate my trip brief <span aria-hidden="true">→</span>`;
+}
+
+function startGenerationLoading(results) {
+  window.clearInterval(loadingMessageTimer);
+  renderGenerationLoading(results, generationLoadingMessages[0]);
+  results?.scrollIntoView({ behavior: "smooth", block: "start" });
+  let messageIndex = 0;
+  loadingMessageTimer = window.setInterval(() => {
+    messageIndex = (messageIndex + 1) % generationLoadingMessages.length;
+    const messageNode = document.querySelector("#generation-loading-message");
+    if (messageNode) {
+      messageNode.textContent = generationLoadingMessages[messageIndex];
+    }
+  }, 850);
+}
+
+function stopGenerationLoading() {
+  window.clearInterval(loadingMessageTimer);
+  loadingMessageTimer = null;
+  isGenerating = false;
+  setGenerateButtonLoading(false);
+}
+
 export function generateFromForm(form) {
   if (!form) {
     showGenerationError(new Error("TripTrellis could not find the planner form."));
@@ -145,7 +187,7 @@ export function generateFromForm(form) {
   }
 
   const now = Date.now();
-  if (now - lastGenerateAt < 250) {
+  if (isGenerating || now - lastGenerateAt < 250) {
     return;
   }
   lastGenerateAt = now;
@@ -176,29 +218,42 @@ export function generateFromForm(form) {
       return;
     }
 
-    const plan = buildPlan({
-      cityKey,
-      guide,
-      startDate,
-      endDate,
-      budget,
-      pace,
-      focus,
-      focuses,
-      notes,
-      hotelStatus,
-      existingHotels,
-      arrivalTime,
-      departureTime,
-    });
-
-    setCurrentPlan(plan);
-    renderTripPlan(plan, results);
+    isGenerating = true;
+    setGenerateButtonLoading(true);
+    startGenerationLoading(results);
 
     window.setTimeout(() => {
-      results?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
+      try {
+        const plan = buildPlan({
+          cityKey,
+          guide,
+          startDate,
+          endDate,
+          budget,
+          pace,
+          focus,
+          focuses,
+          notes,
+          hotelStatus,
+          existingHotels,
+          arrivalTime,
+          departureTime,
+        });
+
+        setCurrentPlan(plan);
+        renderTripPlan(plan, results);
+
+        window.setTimeout(() => {
+          results?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      } catch (error) {
+        showGenerationError(error);
+      } finally {
+        stopGenerationLoading();
+      }
+    }, 1050);
   } catch (error) {
+    stopGenerationLoading();
     showGenerationError(error);
   }
 }

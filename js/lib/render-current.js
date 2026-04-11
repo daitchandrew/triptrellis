@@ -342,6 +342,28 @@ export function renderInputError(results) {
   `;
 }
 
+export function renderGenerationLoading(results, message = "Locating optimal hotel areas...") {
+  if (!results) return;
+  results.innerHTML = `
+    <section class="generation-loading-shell section-card" aria-live="polite" aria-busy="true">
+      <div class="generation-loading-orb" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="generation-loading-copy">
+        <p class="section-kicker">Building your trip brief</p>
+        <h2 class="section-title">TripTrellis is shaping the route.</h2>
+        <p class="card-subtitle" id="generation-loading-message">${escapeHtml(message)}</p>
+      </div>
+      <div class="generation-loading-steps" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+  `;
+}
+
 function getSavedTripTags(trip) {
   const focusLabel = formatFocus((trip.payload?.focuses && trip.payload.focuses.length) ? trip.payload.focuses : [trip.payload?.focus].filter(Boolean));
   return [
@@ -699,6 +721,8 @@ export function renderTripPlan(plan, results) {
         <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
       </div>
     </section>
+
+    <button class="mobile-add-fab" type="button" data-action="open-library">+ Add to itinerary</button>
 
     ${plan.libraryOverlay?.open ? `
       <section class="library-overlay" data-overlay="library">

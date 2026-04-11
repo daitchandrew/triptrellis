@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=triptrellis-reopen-saved-trips-20260411-001" />
+    <link rel="stylesheet" href="./styles.css?v=triptrellis-mobile-loading-20260411-011" />
   </head>
   <body>
     <script>
@@ -34,7 +34,7 @@
         }
 
         try {
-          const app = await import("./js/main-current.js?v=triptrellis-transit-balanced-20260411-010");
+          const app = await import("./js/main-current.js?v=triptrellis-mobile-loading-20260411-011");
           const generator = window.TripTrellisGenerate || app.generateFromForm;
           if (!generator) {
             throw new Error("TripTrellis loaded, but the Generate function was not found.");
@@ -378,6 +378,6 @@
       <span>Trip planning with actual taste</span>
     </footer>
 
-    <script type="module" src="./js/main-current.js?v=triptrellis-transit-balanced-20260411-010"></script>
+    <script type="module" src="./js/main-current.js?v=triptrellis-mobile-loading-20260411-011"></script>
   </body>
 </html>
