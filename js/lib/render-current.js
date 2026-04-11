@@ -180,15 +180,46 @@ function getDayQualityLabels(day, plan) {
   return [...new Set(labels)].slice(0, 4);
 }
 
+function getUniqueDayAreas(day, plan) {
+  return [...new Set((day.itineraryItems || [])
+    .map((item) => item.areaLabel || plan.guide.hotelAreas?.[item.area]?.label || item.area)
+    .filter(Boolean))];
+}
+
 function renderDayMeta(day) {
   const plannedStops = (day.itineraryItems || []).length;
   const areaCount = [...new Set((day.itineraryItems || []).map((item) => item.areaLabel || item.area).filter(Boolean))].length;
+  const hasTransit = (day.itineraryItems || []).some((item) => item.type === "transit_anchor");
+  const routeLabel = hasTransit
+    ? "Anchored day"
+    : areaCount >= 3
+      ? "Cross-town route"
+      : "Compact route";
 
   return `
     <div class="day-meta-row">
-      <span class="day-meta-pill">${plannedStops} ${plannedStops === 1 ? "stop" : "stops"}</span>
+      <span class="day-meta-pill">${plannedStops} ${plannedStops === 1 ? "planned stop" : "planned stops"}</span>
       <span class="day-meta-pill">${areaCount || 1} ${areaCount === 1 ? "area" : "areas"}</span>
-      <span class="day-meta-pill">${day.reservationNote}</span>
+      <span class="day-meta-pill">${routeLabel}</span>
+    </div>
+  `;
+}
+
+function renderDayRouteStory(day, plan) {
+  const areas = getUniqueDayAreas(day, plan);
+  const routeLabels = [plan.hotelBase.areaLabel, ...areas].filter(Boolean).slice(0, 4);
+  if (!routeLabels.length) return "";
+
+  return `
+    <div class="day-story-panel">
+      <p class="day-story-kicker">Route logic</p>
+      <div class="day-story-route">
+        ${routeLabels.map((label, index) => `
+          ${index ? `<span class="day-story-arrow" aria-hidden="true">→</span>` : ""}
+          <span class="day-story-chip ${index === 0 ? "day-story-chip--base" : ""}">${escapeHtml(label)}</span>
+        `).join("")}
+      </div>
+      <p class="day-story-copy">${escapeHtml(day.flow)}</p>
     </div>
   `;
 }
@@ -681,10 +712,7 @@ export function renderTripPlan(plan, results) {
               <div class="day-quality-row">
                 ${getDayQualityLabels(day, plan).map((label) => `<span class="day-quality-pill">${escapeHtml(label)}</span>`).join("")}
               </div>
-              <div class="day-route-pills">
-                <span class="route-pill route-pill--hotel">${day.baseNote}</span>
-                <span class="route-pill route-pill--flow">${day.flow}</span>
-              </div>
+              ${renderDayRouteStory(day, plan)}
               <p class="day-summary">${day.summary}</p>
             </div>
             <div class="slot-stack">
@@ -814,6 +842,7 @@ export function renderTripPlan(plan, results) {
       <article class="section-card utility-section">
         <p class="section-kicker">Still unresolved</p>
         <h3 class="section-title">Keep an eye on these</h3>
+        <p class="card-subtitle utility-intro">These are the soft edges of the plan, the parts most likely to shift once weather, energy, or reservation timing gets real.</p>
         <ul class="list-panel">
           ${plan.unresolved.map((item) => `<li>${item}</li>`).join("")}
         </ul>
@@ -822,7 +851,7 @@ export function renderTripPlan(plan, results) {
         <p class="section-kicker">Hotel impact</p>
         <h3 class="section-title">How your hotel changed the trip</h3>
         <p class="card-subtitle">${plan.hotelBase.influence}</p>
-        <p class="footer-note">Change the hotel area or mention a different neighborhood in the notes, and the mix of restaurants, districts, and daily flow will change too.</p>
+        <p class="footer-note utility-intro">Change the hotel area or mention a different neighborhood in the notes, and the mix of restaurants, districts, and daily flow will change too.</p>
       </article>
     </section>
   `;

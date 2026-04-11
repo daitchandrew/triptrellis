@@ -1,0 +1,852 @@
+// Base fallback guides for dropdown cities that do not yet have full custom libraries.
+
+function buildAdjacency(areaKeys) {
+  return Object.fromEntries(
+    areaKeys.map((key, index) => [
+      key,
+      [
+        areaKeys[(index + 1) % areaKeys.length],
+        areaKeys[(index + areaKeys.length - 1) % areaKeys.length],
+      ].filter((value, position, list) => list.indexOf(value) === position && value !== key),
+    ])
+  );
+}
+
+function hotel(name, area, vibe, bestFor) {
+  return { name, area, vibe, bestFor };
+}
+
+function sight(name, area, tags, description) {
+  return { name, area, tags, description };
+}
+
+function activity(name, area, tags, description) {
+  return { name, area, tags, description };
+}
+
+function food(name, area, tags, cuisine, description, reservation = "") {
+  return { name, area, tags, cuisine, description, reservation };
+}
+
+function buildGuide({
+  label,
+  country,
+  currency,
+  transferNote,
+  areas,
+  hotels,
+  cantMiss,
+  activities,
+  food: foodItems,
+}) {
+  const hotelAreas = Object.fromEntries(
+    areas.map((area) => [
+      area.key,
+      {
+        label: area.label,
+        mood: area.mood,
+        strengths: area.strengths,
+      },
+    ])
+  );
+
+  return {
+    label,
+    country,
+    currency,
+    transferNote,
+    areaAdjacency: buildAdjacency(areas.map((area) => area.key)),
+    hotelAreas,
+    hotels,
+    cantMiss,
+    activities,
+    food: foodItems,
+  };
+}
+
+export const fallbackCityGuides = {
+  "singapore": buildGuide({
+    label: "Singapore",
+    country: "Singapore",
+    currency: "Use MRT and Grab, and expect hawker meals to be the smartest-value food move in the city.",
+    transferNote: "Humidity and sudden rain matter more than raw distance, so cluster neighborhoods instead of overcommitting.",
+    areas: [
+      { key: "marina-bay", label: "Marina Bay", mood: "sleek, polished, and skyline-driven", strengths: ["luxury", "design", "shopping"] },
+      { key: "chinatown", label: "Chinatown", mood: "food-heavy and historic", strengths: ["food", "culture", "walkability"] },
+      { key: "kampong-glam", label: "Kampong Glam", mood: "creative and café-led", strengths: ["design", "cafes", "nightlife"] },
+      { key: "orchard", label: "Orchard", mood: "efficient and retail-focused", strengths: ["shopping", "luxury", "transit"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Marina Bay Sands", "marina-bay", "A dramatic skyline splurge with serious dinner and pool leverage.", ["luxury", "design", "shopping"]),
+        hotel("The Fullerton Bay Hotel", "marina-bay", "Refined waterfront luxury with stronger romance and city views.", ["luxury", "food", "design"]),
+        hotel("Raffles Singapore", "kampong-glam", "A classic grand-hotel stay that makes the trip feel ceremonial.", ["luxury", "culture", "food"]),
+      ],
+      premium: [
+        hotel("The Clan Hotel", "chinatown", "A polished central base with easy hawker and heritage access.", ["food", "culture", "design"]),
+        hotel("The Standard Singapore", "orchard", "Current-feeling and social without losing the city-center advantage.", ["design", "nightlife", "food"]),
+        hotel("Naumi Hotel", "marina-bay", "Boutique and stylish with a useful core-city position.", ["design", "food", "transit"]),
+      ],
+      smart: [
+        hotel("Hotel Mono", "chinatown", "A straightforward Chinatown stay for food-led, walkable days.", ["food", "walkability", "value"]),
+        hotel("YOTEL Singapore Orchard Road", "orchard", "A practical Orchard base if transit and shopping matter most.", ["shopping", "transit", "value"]),
+        hotel("Hotel Boss", "kampong-glam", "A useful lower-friction pick near several strong districts.", ["value", "food", "transit"]),
+      ],
+    },
+    cantMiss: [
+      sight("Gardens by the Bay", "marina-bay", ["design", "nature"], "Singapore's signature futuristic garden complex and still one of the city's strongest anchors."),
+      sight("Singapore River and Boat Quay", "marina-bay", ["design", "walkability"], "A useful first-night walk for skyline views and an easy sense of the city."),
+      sight("Buddha Tooth Relic Temple", "chinatown", ["culture"], "A compact, visually rich heritage stop that works well inside a Chinatown day."),
+      sight("Sultan Mosque and Arab Street", "kampong-glam", ["culture", "design"], "A strong district pairing for heritage, textiles, cafés, and lower-rise walking."),
+      sight("Singapore Botanic Gardens", "orchard", ["nature", "wellness"], "A greener reset that balances the city's denser core especially well."),
+    ],
+    activities: [
+      activity("National Gallery Singapore", "marina-bay", ["culture", "design"], "One of the city's best museum anchors, especially if you want serious Southeast Asian art."),
+      activity("Maxwell Food Centre crawl", "chinatown", ["food", "walkability"], "A low-friction hawker stop that turns Chinatown into a real lunch district."),
+      activity("Haji Lane and boutique browse", "kampong-glam", ["design", "shopping"], "A good lighter block for local labels, coffee, and smaller-scale streets."),
+      activity("ION Orchard and design retail walk", "orchard", ["shopping", "design"], "A useful polished shopping move if the trip wants one stronger retail stretch."),
+      activity("Clarke Quay evening bar hop", "marina-bay", ["nightlife", "food"], "A simple high-energy night option when you want the evening to stay easy."),
+    ],
+    food: [
+      food("Lau Pa Sat satay night", "marina-bay", ["food", "nightlife"], "Hawker satay", "A classic evening food move when you want local flavor without losing skyline energy."),
+      food("Burnt Ends", "orchard", ["food", "luxury"], "Modern barbecue", "One of Singapore's most talked-about destination dinners.", "Book well ahead."),
+      food("Odette", "marina-bay", ["food", "luxury"], "Contemporary tasting menu", "A major splurge dinner if the trip wants one polished reservation anchor.", "Reserve in advance."),
+      food("Tian Tian Hainanese Chicken Rice", "chinatown", ["food", "value"], "Hainanese chicken rice", "A headline hawker classic that still works if you go in with realistic expectations."),
+      food("Kok Sen", "chinatown", ["food"], "Zi char", "A stronger neighborhood-led dinner if you want something more local-feeling than the obvious global names."),
+      food("The Coconut Club", "kampong-glam", ["food", "design"], "Nasi lemak", "A smart polished local pick that still feels very specific to Singapore."),
+      food("Atlas Bar", "kampong-glam", ["nightlife", "luxury"], "Cocktails", "A strong glamorous cocktail stop when the night should feel more dressed up."),
+    ],
+  }),
+  "hong-kong": buildGuide({
+    label: "Hong Kong",
+    country: "Hong Kong",
+    currency: "Use an Octopus card for transit and ferries, and expect elevation and weather to shape how much you want to walk.",
+    transferNote: "Harbor crossings and hillier districts can make a short day feel long, so keep each day clustered on one side when possible.",
+    areas: [
+      { key: "central", label: "Central", mood: "vertical, polished, and efficient", strengths: ["luxury", "nightlife", "transit"] },
+      { key: "sheung-wan", label: "Sheung Wan", mood: "older, food-led, and local", strengths: ["food", "walkability", "design"] },
+      { key: "tsim-sha-tsui", label: "Tsim Sha Tsui", mood: "harbor-facing and first-trip friendly", strengths: ["shopping", "culture", "transit"] },
+      { key: "causeway-bay", label: "Causeway Bay", mood: "fast, retail-heavy, and high-energy", strengths: ["shopping", "food", "nightlife"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("The Upper House", "central", "A serene design-led luxury base above the city rush.", ["luxury", "design", "food"]),
+        hotel("Rosewood Hong Kong", "tsim-sha-tsui", "A major harborfront splurge with stronger dining and view leverage.", ["luxury", "food", "design"]),
+        hotel("Mandarin Oriental Hong Kong", "central", "Classic polished luxury that makes Central feel easy.", ["luxury", "food", "nightlife"]),
+      ],
+      premium: [
+        hotel("The Pottinger Hong Kong", "central", "A boutique Central stay with more personality than the big towers.", ["design", "food", "nightlife"]),
+        hotel("Eaton HK", "tsim-sha-tsui", "Current-feeling, practical, and stronger on food than most peers.", ["food", "design", "transit"]),
+        hotel("TUVE", "causeway-bay", "A minimal style-forward base if you want shopping and restaurants nearby.", ["design", "shopping", "food"]),
+      ],
+      smart: [
+        hotel("iclub Sheung Wan Hotel", "sheung-wan", "A practical base for old-neighborhood walking and easy meals.", ["food", "walkability", "value"]),
+        hotel("Butterfly on Wellington", "central", "Small but useful if you want Central access at a lower spend.", ["transit", "nightlife", "value"]),
+        hotel("The OTTO Hotel", "tsim-sha-tsui", "A no-fuss Kowloon base with good first-trip convenience.", ["transit", "shopping", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Victoria Peak", "central", ["design", "nature"], "Still the essential skyline-and-topography anchor for understanding Hong Kong."),
+      sight("Star Ferry crossing", "tsim-sha-tsui", ["culture", "walkability"], "A classic harbor move that still earns its place in a first trip."),
+      sight("Man Mo Temple", "sheung-wan", ["culture"], "A compact heritage stop that fits naturally into older Hong Kong walks."),
+      sight("Avenue of Stars promenade", "tsim-sha-tsui", ["walkability", "design"], "A simple harborfront stretch best used near sunset or the evening lights."),
+      sight("Tai Kwun", "central", ["culture", "design"], "A polished historic-complex conversion for galleries, architecture, and easier Central wandering."),
+    ],
+    activities: [
+      activity("PMQ and SoHo design walk", "central", ["design", "shopping"], "A strong lighter block for design shops, coffee, and a more current city mood."),
+      activity("Temple Street night market wander", "tsim-sha-tsui", ["food", "nightlife"], "A lower-friction way to keep the night lively without formal plans."),
+      activity("Western Market and dried seafood streets", "sheung-wan", ["food", "culture"], "A good older-neighborhood route when texture matters more than headline sights."),
+      activity("Causeway Bay retail circuit", "causeway-bay", ["shopping"], "A dense shopping move best for a faster, browse-heavier afternoon."),
+      activity("Hong Kong Museum of Art", "tsim-sha-tsui", ["culture", "museum"], "A useful museum anchor on a Kowloon-side day."),
+    ],
+    food: [
+      food("Mott 32", "central", ["food", "luxury"], "Cantonese", "A polished destination dinner if the trip wants one high-style Cantonese reservation.", "Reserve ahead."),
+      food("Yat Lok", "central", ["food"], "Roast goose", "A famous but still useful roast-goose stop in the middle of a Central day."),
+      food("Mak's Noodle", "central", ["food", "value"], "Wonton noodles", "A quick classic when you want something rooted and efficient."),
+      food("Sing Heung Yuen", "sheung-wan", ["food"], "Hong Kong café food", "A stronger old-school breakfast or lunch stop than a generic café."),
+      food("Australia Dairy Company", "tsim-sha-tsui", ["food", "value"], "Cha chaan teng", "A classic fast local breakfast or comfort-food move."),
+      food("One Dim Sum", "tsim-sha-tsui", ["food"], "Dim sum", "A flexible dim sum option that works well for midday planning."),
+      food("Yardbird", "causeway-bay", ["food", "nightlife"], "Yakitori", "A smart dinner when the night should feel energetic but still polished."),
+    ],
+  }),
+  "bali": buildGuide({
+    label: "Bali",
+    country: "Indonesia",
+    currency: "Traffic can be slow, so use drivers strategically and avoid trying to cover too many regions in one day.",
+    transferNote: "Bali days are shaped by distance and traffic more than by maps, so each day should stay region-first.",
+    areas: [
+      { key: "seminyak", label: "Seminyak", mood: "stylish and restaurant-led", strengths: ["food", "nightlife", "shopping"] },
+      { key: "ubud", label: "Ubud", mood: "green, wellness-focused, and slower", strengths: ["wellness", "nature", "culture"] },
+      { key: "canggu", label: "Canggu", mood: "social, surfy, and current", strengths: ["nightlife", "food", "design"] },
+      { key: "uluwatu", label: "Uluwatu", mood: "dramatic and scenic", strengths: ["nature", "luxury", "wellness"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Mandapa, a Ritz-Carlton Reserve", "ubud", "A deeply restorative Ubud splurge with serious villa-and-river calm.", ["luxury", "wellness", "nature"]),
+        hotel("The Bulgari Resort Bali", "uluwatu", "A major cliffside splurge when scenery and privacy should lead the trip.", ["luxury", "nature", "design"]),
+        hotel("The Legian Seminyak", "seminyak", "A polished beachfront luxury base with strong dining leverage.", ["luxury", "food", "wellness"]),
+      ],
+      premium: [
+        hotel("Alila Seminyak", "seminyak", "Stylish beachfront comfort for food and easier nights out.", ["food", "design", "nightlife"]),
+        hotel("Como Uma Ubud", "ubud", "A calmer Ubud base if the trip leans wellness and slower mornings.", ["wellness", "nature", "design"]),
+        hotel("The Slow", "canggu", "Current-feeling and social without losing boutique polish.", ["design", "food", "nightlife"]),
+      ],
+      smart: [
+        hotel("Potato Head Suites", "seminyak", "A stronger-value design stay for Seminyak meals and beach energy.", ["design", "food", "value"]),
+        hotel("Puri Garden Hotel", "ubud", "A practical Ubud base for greener, lower-key days.", ["value", "wellness", "culture"]),
+        hotel("PinkCoco Uluwatu", "uluwatu", "A useful value pick if cliffs, beach clubs, and sunset matter most.", ["value", "nature", "nightlife"]),
+      ],
+    },
+    cantMiss: [
+      sight("Tegallalang Rice Terraces", "ubud", ["nature", "culture"], "One of Bali's signature landscapes and still useful if timed well."),
+      sight("Uluwatu Temple", "uluwatu", ["culture", "nature"], "A dramatic cliffside temple best treated as a sunset anchor."),
+      sight("Seminyak beach sunset", "seminyak", ["nature", "nightlife"], "A simple first-night move that works because the rest of Seminyak is nearby."),
+      sight("Goa Gajah and central Ubud temples", "ubud", ["culture"], "A useful heritage cluster when you want Bali culture without a massive detour."),
+      sight("Tanah Lot", "canggu", ["culture", "nature"], "A classic scenic temple stop that works best if the day is already west-side."),
+    ],
+    activities: [
+      activity("Ubud café and market walk", "ubud", ["food", "shopping", "walkability"], "A lower-friction way to let Ubud's slower rhythm lead the day."),
+      activity("Canggu beach clubs and browsing", "canggu", ["nightlife", "food", "design"], "An easy social afternoon if the trip wants energy rather than temples."),
+      activity("Balinese massage and spa block", "ubud", ["wellness"], "A useful slower anchor to keep the trip from becoming all transfers and sights."),
+      activity("Uluwatu surf-cliff circuit", "uluwatu", ["nature", "design"], "A scenic route of lookouts, cafés, and more dramatic coastline."),
+      activity("Seminyak boutique browse", "seminyak", ["shopping", "design"], "A cleaner-living retail afternoon with easy dinner follow-through."),
+    ],
+    food: [
+      food("Locavore NXT", "ubud", ["food", "luxury"], "Contemporary Indonesian", "One of Bali's biggest destination meals if you want a real culinary anchor.", "Reserve well ahead."),
+      food("Merah Putih", "seminyak", ["food"], "Modern Indonesian", "A polished Indonesian dinner in the middle of Seminyak's restaurant zone."),
+      food("La Lucciola", "seminyak", ["food", "nature"], "Beachfront Mediterranean", "A classic sunset-adjacent meal if you want the evening to stay easy."),
+      food("Mason", "canggu", ["food", "nightlife"], "Wood-fired modern", "A current-feeling dinner if the trip leans social and design-forward."),
+      food("Naughty Nuri's", "ubud", ["food"], "Balinese pork ribs", "A classic informal Ubud dinner that still works when you want something easy."),
+      food("Suka Espresso", "uluwatu", ["food", "cafes"], "Brunch café", "A useful coastal breakfast or reset near the southern cliffs."),
+      food("Sundara", "seminyak", ["food", "luxury"], "Beach club dining", "A polished beach-club dinner when the night should feel more elevated."),
+    ],
+  }),
+  "paris": buildGuide({
+    label: "Paris",
+    country: "France",
+    currency: "Use the Metro for most movement and expect reservations to matter more for stronger dinners.",
+    transferNote: "Paris is walkable in stretches, but crossing the city multiple times in one day drains the mood fast.",
+    areas: [
+      { key: "marais", label: "Le Marais", mood: "walkable, lively, and layered", strengths: ["food", "walkability", "shopping"] },
+      { key: "saint-germain", label: "Saint-Germain-des-Prés", mood: "classic and polished", strengths: ["culture", "food", "luxury"] },
+      { key: "montmartre", label: "Montmartre", mood: "atmospheric and hilltop", strengths: ["culture", "nightlife", "walkability"] },
+      { key: "opera", label: "Opéra / Louvre", mood: "central and first-trip friendly", strengths: ["transit", "shopping", "culture"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Cheval Blanc Paris", "opera", "A major Seine-side splurge with serious polish and dining leverage.", ["luxury", "food", "design"]),
+        hotel("Hôtel Lutetia", "saint-germain", "A grand Left Bank luxury base for a more classic Paris mood.", ["luxury", "food", "culture"]),
+        hotel("Le Bristol Paris", "opera", "A deeply polished classic if you want old-school Paris luxury done well.", ["luxury", "food", "shopping"]),
+      ],
+      premium: [
+        hotel("Hôtel Providence", "marais", "Boutique and current with strong neighborhood energy.", ["design", "food", "nightlife"]),
+        hotel("Relais Christine", "saint-germain", "A romantic Left Bank stay with quieter charm.", ["culture", "luxury", "walkability"]),
+        hotel("Grand Pigalle Hotel", "montmartre", "A stylish northern base for bistros and late nights.", ["food", "nightlife", "design"]),
+      ],
+      smart: [
+        hotel("Hôtel des Grands Boulevards", "opera", "A practical but attractive central base for first-time Paris.", ["transit", "food", "value"]),
+        hotel("Hôtel Fabric", "marais", "A useful Marais-adjacent pick for design and easier pricing.", ["design", "food", "value"]),
+        hotel("Hôtel Rochechouart", "montmartre", "A good-value base for north-Paris wandering and nightlife.", ["nightlife", "culture", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Louvre exterior and Tuileries axis", "opera", ["culture", "design"], "A major first-trip Paris anchor even if you do not spend half the day inside."),
+      sight("Île de la Cité and Notre-Dame area", "saint-germain", ["culture", "walkability"], "Still one of the strongest walking cores in the city."),
+      sight("Place des Vosges and old Marais lanes", "marais", ["culture", "shopping"], "A classic Paris neighborhood block that still feels genuinely useful."),
+      sight("Sacré-Cœur and upper Montmartre", "montmartre", ["culture", "walkability"], "A dramatic high-ground Paris route best done early or near evening."),
+      sight("Musée d'Orsay", "saint-germain", ["culture", "museum"], "One of the best museum anchors if the trip wants one serious art stop."),
+    ],
+    activities: [
+      activity("Left Bank bookshops and café route", "saint-germain", ["culture", "cafes", "walkability"], "A softer Paris day block that lets the district carry the mood."),
+      activity("Marché des Enfants Rouges lunch wander", "marais", ["food", "walkability"], "A smart midday Marais anchor if the plan wants more casual food texture."),
+      activity("Galeries Lafayette and Opéra retail circuit", "opera", ["shopping", "design"], "A useful central shopping and architecture block."),
+      activity("Canal Saint-Martin stroll", "marais", ["walkability", "design"], "A more local-feeling Paris afternoon if you want less postcard density."),
+      activity("Montmartre wine-bar evening", "montmartre", ["nightlife", "food"], "A stronger night finish when the trip wants atmosphere rather than formality."),
+    ],
+    food: [
+      food("Septime", "marais", ["food", "luxury"], "Contemporary French", "A destination dinner if you want one headline modern Paris reservation.", "Reserve ahead."),
+      food("Clamato", "marais", ["food"], "Seafood small plates", "A smart lively dinner that still feels very Paris right now."),
+      food("Le Comptoir du Relais", "saint-germain", ["food"], "Bistro", "A classic Left Bank bistro move if you can work around the queues."),
+      food("Breizh Café", "marais", ["food"], "Crêpes and cider", "A flexible lighter meal that still feels specific to the city."),
+      food("Frenchie Bar à Vins", "opera", ["food", "nightlife"], "Wine bar", "A good polished-but-easy night move in a central district."),
+      food("Bouillon Pigalle", "montmartre", ["food", "value"], "Classic French comfort food", "A useful lower-friction meal when the day is already in the north."),
+      food("Café de Flore", "saint-germain", ["cafes", "culture"], "Classic Paris café", "Worth doing once if the trip wants the canonical café version of Paris."),
+    ],
+  }),
+  "barcelona": buildGuide({
+    label: "Barcelona",
+    country: "Spain",
+    currency: "Walk and Metro cover most needs, but heat and beach timing matter more than people expect.",
+    transferNote: "Barcelona is best when each day stays district-led instead of bouncing between Gaudí, beach, and old city all at once.",
+    areas: [
+      { key: "eixample", label: "Eixample", mood: "architectural and polished", strengths: ["design", "shopping", "food"] },
+      { key: "gothic", label: "Gothic Quarter", mood: "historic and first-trip friendly", strengths: ["culture", "walkability", "food"] },
+      { key: "gracia", label: "Gràcia", mood: "local, café-led, and slower", strengths: ["food", "walkability", "cafes"] },
+      { key: "barceloneta", label: "Barceloneta", mood: "coastal and casual", strengths: ["nature", "food", "nightlife"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Mandarin Oriental Barcelona", "eixample", "A polished Passeig de Gràcia luxury base with easy design and shopping leverage.", ["luxury", "design", "shopping"]),
+        hotel("Hotel Arts Barcelona", "barceloneta", "A stronger splurge if sea views and a lighter coastal mood matter.", ["luxury", "nature", "food"]),
+        hotel("Alma Barcelona", "eixample", "Refined and quieter than some bigger luxury names nearby.", ["luxury", "design", "food"]),
+      ],
+      premium: [
+        hotel("H10 Casa Mimosa", "eixample", "A smart Eixample boutique base close to Gaudí and better shopping streets.", ["design", "food", "shopping"]),
+        hotel("Casa Bonay", "eixample", "Current-feeling and social without losing comfort.", ["design", "nightlife", "food"]),
+        hotel("Hotel Neri", "gothic", "A more atmospheric old-city stay for culture-led Barcelona trips.", ["culture", "food", "walkability"]),
+      ],
+      smart: [
+        hotel("Motel One Barcelona-Ciutadella", "gothic", "A useful lower-friction base near old city and park routes.", ["culture", "walkability", "value"]),
+        hotel("Praktik Bakery", "eixample", "A practical design-forward pick with one very useful neighborhood.", ["design", "food", "value"]),
+        hotel("Casa Bella Gràcia", "gracia", "A quieter neighborhood stay if cafés and slower pacing matter more.", ["cafes", "walkability", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Sagrada Família", "eixample", ["culture", "design"], "Still Barcelona's major architectural anchor and worth protecting in the plan."),
+      sight("Passeig de Gràcia modernist stretch", "eixample", ["design", "shopping"], "A strong street-level architecture route with easier pacing than a huge museum day."),
+      sight("Barcelona Cathedral and Gothic lanes", "gothic", ["culture", "walkability"], "A useful historic-core route for a first trip."),
+      sight("Park Güell", "gracia", ["design", "nature"], "A stronger morning or late-day Gaudí stop than a rushed middle-of-the-day visit."),
+      sight("Barceloneta boardwalk", "barceloneta", ["nature", "walkability"], "A useful coastal reset if the trip wants some breathing room."),
+    ],
+    activities: [
+      activity("Boqueria and Rambla edge food stop", "gothic", ["food", "walkability"], "Best treated as a quick browse or lunch anchor rather than the whole day."),
+      activity("El Born design-and-boutique wander", "gothic", ["design", "shopping"], "A strong browse-heavy district block with easier transitions into dinner."),
+      activity("Bunkers del Carmel sunset", "gracia", ["nature", "nightlife"], "A simple scenic evening if you want one stronger city-overlook moment."),
+      activity("Picasso Museum or MOCO choice", "gothic", ["museum", "culture"], "A useful museum anchor when the day is already old-city centered."),
+      activity("Beach clubs and chiringuito afternoon", "barceloneta", ["nature", "nightlife"], "A more relaxed coastal afternoon if the trip should feel less checklist-heavy."),
+    ],
+    food: [
+      food("Disfrutar", "eixample", ["food", "luxury"], "Contemporary tasting menu", "One of the biggest destination dinners in the city.", "Reserve far ahead."),
+      food("Bar Cañete", "gothic", ["food", "nightlife"], "Tapas", "A stronger lively dinner than a generic tourist-tapas stop."),
+      food("Cal Pep", "gothic", ["food"], "Seafood tapas", "A classic old-city meal stop if you can handle the queue."),
+      food("Xurreria Laietana", "gothic", ["food", "cafes"], "Churros", "A small specific sweet stop that works especially well at night."),
+      food("Batea", "eixample", ["food"], "Seafood", "A polished seafood dinner when you want something stronger than tapas grazing."),
+      food("La Pubilla", "gracia", ["food"], "Catalan comfort food", "A smart Gràcia lunch or dinner if the day wants more local neighborhood flavor."),
+      food("Can Solé", "barceloneta", ["food"], "Rice and seafood", "A useful coastal lunch if the day is already beach-side."),
+    ],
+  }),
+  "venice": buildGuide({
+    label: "Venice",
+    country: "Italy",
+    currency: "Vaporetto passes help, but the city works best when you treat each day like a walking island circuit.",
+    transferNote: "Bridges, luggage, and water-bus waits all add friction, so a tight district plan matters more here than in most cities.",
+    areas: [
+      { key: "san-marco", label: "San Marco", mood: "classic and ceremonial", strengths: ["culture", "luxury", "walkability"] },
+      { key: "dorsoduro", label: "Dorsoduro", mood: "art-led and calmer", strengths: ["culture", "design", "walkability"] },
+      { key: "cannaregio", label: "Cannaregio", mood: "local and food-friendly", strengths: ["food", "walkability", "value"] },
+      { key: "castello", label: "Castello", mood: "quieter and residential", strengths: ["walkability", "culture", "wellness"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("The Gritti Palace", "san-marco", "A grand-canal splurge that gives Venice full theatrical weight.", ["luxury", "culture", "food"]),
+        hotel("Aman Venice", "san-marco", "A deeply atmospheric palazzo luxury stay for a slower, more romantic Venice.", ["luxury", "culture", "design"]),
+        hotel("Belmond Hotel Cipriani", "castello", "A more retreat-like luxury stay if you want Venice to feel quieter and more removed.", ["luxury", "wellness", "food"]),
+      ],
+      premium: [
+        hotel("Palazzo Veneziano", "dorsoduro", "A polished Dorsoduro base with easier pacing than San Marco.", ["design", "culture", "food"]),
+        hotel("Ca' Pisani", "dorsoduro", "A style-forward boutique option in one of Venice's best districts for wandering.", ["design", "walkability", "food"]),
+        hotel("NH Collection Venezia Murano Villa", "cannaregio", "A smarter premium pick if you want a quieter lagoon-side mood.", ["design", "wellness", "food"]),
+      ],
+      smart: [
+        hotel("Hotel Antiche Figure", "cannaregio", "A practical arrival-friendly base that still gives you real Venice atmosphere.", ["transit", "food", "value"]),
+        hotel("Generator Venice", "dorsoduro", "A strong-value pick if location matters more than full-service luxury.", ["value", "walkability", "design"]),
+        hotel("Hotel Rio", "castello", "A simple useful base for first-time sightseeing without a heavy spend.", ["culture", "walkability", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Piazza San Marco and Basilica exterior", "san-marco", ["culture"], "The essential ceremonial heart of Venice and still best seen early."),
+      sight("Doge's Palace", "san-marco", ["culture", "museum"], "One of the strongest historic interiors in the city."),
+      sight("Accademia Bridge and Grand Canal line", "dorsoduro", ["design", "walkability"], "A useful route for understanding Venice's shape and light."),
+      sight("Cannaregio canals and Jewish Ghetto area", "cannaregio", ["culture", "walkability"], "A stronger slower neighborhood route than another crowded San Marco loop."),
+      sight("Arsenale and eastern Castello lanes", "castello", ["walkability", "culture"], "A quieter residential side of Venice that adds balance to the trip."),
+    ],
+    activities: [
+      activity("Peggy Guggenheim Collection", "dorsoduro", ["museum", "design"], "A polished smaller museum anchor if the day wants art without overload."),
+      activity("Rialto market morning", "san-marco", ["food", "walkability"], "A useful morning food block that still feels connected to real city life."),
+      activity("Cicchetti crawl in Cannaregio", "cannaregio", ["food", "nightlife"], "One of the better ways to make Venice dinner feel local rather than formal."),
+      activity("Zattere waterfront stroll", "dorsoduro", ["walkability", "wellness"], "A calmer canal-edge route when the trip wants breathing room."),
+      activity("Murano glass afternoon", "cannaregio", ["design", "shopping"], "A worthwhile add-on only if you want craft and lagoon movement in the plan."),
+    ],
+    food: [
+      food("Osteria alle Testiere", "san-marco", ["food"], "Seafood", "A very strong small seafood dinner if the trip wants one serious Venetian table.", "Reserve ahead."),
+      food("Cantina Do Mori", "san-marco", ["food", "nightlife"], "Cicchetti", "A classic standing cicchetti stop near Rialto."),
+      food("Antiche Carampane", "san-marco", ["food"], "Venetian seafood", "A good old-school dinner choice if the day is already in central Venice."),
+      food("Al Timon", "cannaregio", ["food", "nightlife"], "Cicchetti and wine", "A more local-feeling evening choice in Cannaregio."),
+      food("Osteria Enoteca Ai Artisti", "dorsoduro", ["food"], "Venetian bistro", "A smart quieter Dorsoduro dinner with real neighborhood feel."),
+      food("Gelateria Nico", "dorsoduro", ["cafes", "food"], "Gelato", "A simple Venice sweet stop on the Zattere."),
+      food("Nevodi", "castello", ["food"], "Seafood", "A good eastern-Venice dinner when the day should stay out of the busiest zones."),
+    ],
+  }),
+  "amsterdam": buildGuide({
+    label: "Amsterdam",
+    country: "Netherlands",
+    currency: "Walk, tram, and bike cover most needs, but museum timing matters more than distance on busier days.",
+    transferNote: "Museum districts and canal belts are easy to combine, but jumping across the city too often flattens the day.",
+    areas: [
+      { key: "canal-belt", label: "Canal Belt", mood: "classic and polished", strengths: ["walkability", "culture", "food"] },
+      { key: "jordaan", label: "Jordaan", mood: "local and slower", strengths: ["food", "walkability", "cafes"] },
+      { key: "museumplein", label: "Museumplein", mood: "art-led and elegant", strengths: ["museum", "luxury", "culture"] },
+      { key: "de-pijp", label: "De Pijp", mood: "lively and food-forward", strengths: ["food", "nightlife", "design"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Waldorf Astoria Amsterdam", "canal-belt", "A major canal-house splurge with quiet polish and serious service.", ["luxury", "culture", "food"]),
+        hotel("Conservatorium Hotel", "museumplein", "The strongest luxury base if museums and design matter most.", ["luxury", "design", "museum"]),
+        hotel("Pulitzer Amsterdam", "jordaan", "A romantic canal-house luxury stay with stronger neighborhood character.", ["luxury", "walkability", "food"]),
+      ],
+      premium: [
+        hotel("The Hoxton Amsterdam", "canal-belt", "A current-feeling central base with easy bars and cafés nearby.", ["design", "nightlife", "food"]),
+        hotel("Hotel De Hallen", "de-pijp", "A sharper premium pick for a more local-feeling Amsterdam stay.", ["design", "food", "nightlife"]),
+        hotel("Morgan & Mees", "jordaan", "A boutique Jordaan base for slower canal-side days.", ["food", "walkability", "design"]),
+      ],
+      smart: [
+        hotel("Volkshotel", "de-pijp", "A useful social-value stay if the trip leans younger and more nightlife-heavy.", ["nightlife", "design", "value"]),
+        hotel("Hotel Estheréa", "canal-belt", "A charming lower-friction canal-belt stay with easy first-trip logic.", ["culture", "walkability", "value"]),
+        hotel("Conscious Hotel Museum Square", "museumplein", "A practical museum-district base when art and parks matter most.", ["museum", "value", "walkability"]),
+      ],
+    },
+    cantMiss: [
+      sight("Rijksmuseum", "museumplein", ["museum", "culture"], "Still the city's major art anchor and worth protecting in the plan."),
+      sight("Nine Streets canal walk", "canal-belt", ["walkability", "shopping"], "A useful classic Amsterdam browse-heavy route."),
+      sight("Anne Frank House area", "jordaan", ["culture"], "An essential historic area even if the ticket timing shapes the whole day."),
+      sight("Vondelpark edge", "museumplein", ["nature", "wellness"], "A greener reset that balances the museum district nicely."),
+      sight("Albert Cuyp Market", "de-pijp", ["food", "walkability"], "A stronger food-and-neighborhood move than another souvenir-heavy central stop."),
+    ],
+    activities: [
+      activity("Van Gogh Museum", "museumplein", ["museum", "culture"], "A strong second museum anchor if the trip wants one serious art day."),
+      activity("Canal cruise at dusk", "canal-belt", ["culture", "nightlife"], "One of the better low-effort evening moves in the city."),
+      activity("Jordaan café and indie-shop drift", "jordaan", ["cafes", "shopping"], "A slower neighborhood block that lets the district carry the mood."),
+      activity("De Pijp wine-bar evening", "de-pijp", ["food", "nightlife"], "An easy, social night option outside the most obvious center."),
+      activity("NDSM or Noord ferry add-on", "de-pijp", ["design", "nightlife"], "A useful more-current detour if the trip wants a slightly different city angle."),
+    ],
+    food: [
+      food("De Kas", "de-pijp", ["food", "luxury"], "Farm-to-table tasting menu", "A polished destination dinner with a calmer edge.", "Reserve ahead."),
+      food("Café Winkel 43", "jordaan", ["cafes", "food"], "Dutch apple pie", "A classic sweet stop if you're already in Jordaan."),
+      food("Breda", "canal-belt", ["food"], "Modern Dutch", "A reliable polished dinner in the canal belt."),
+      food("Foodhallen", "de-pijp", ["food", "nightlife"], "Food hall", "A flexible evening if the group wants variety without formality."),
+      food("Van Kerkwijk", "canal-belt", ["food"], "Dutch-European comfort food", "A stronger neighborhood meal than a generic tourist menu."),
+      food("Pata Negra", "jordaan", ["food", "nightlife"], "Tapas and wine", "A good social evening if the trip leans casual."),
+      food("Bakers & Roasters", "de-pijp", ["cafes", "food"], "Brunch", "A useful midday anchor when the day needs an easy reset."),
+    ],
+  }),
+  "lisbon": buildGuide({
+    label: "Lisbon",
+    country: "Portugal",
+    currency: "Use trams and tuk-tuks selectively, but cluster neighborhoods because the hills can make a short route feel long.",
+    transferNote: "Elevation matters here, so build around one hillside cluster at a time instead of zig-zagging all day.",
+    areas: [
+      { key: "baixa", label: "Baixa / Chiado", mood: "central and first-trip friendly", strengths: ["transit", "shopping", "food"] },
+      { key: "alfama", label: "Alfama", mood: "historic and atmospheric", strengths: ["culture", "walkability", "nightlife"] },
+      { key: "principe-real", label: "Príncipe Real", mood: "polished and local", strengths: ["food", "design", "nightlife"] },
+      { key: "belem", label: "Belém", mood: "monument-led and open", strengths: ["culture", "nature", "walkability"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Four Seasons Hotel Ritz Lisbon", "principe-real", "A polished luxury hilltop base with stronger quiet and service.", ["luxury", "food", "wellness"]),
+        hotel("Bairro Alto Hotel", "baixa", "A major central splurge if you want walking convenience and stronger dining nearby.", ["luxury", "food", "nightlife"]),
+        hotel("Verride Palácio Santa Catarina", "principe-real", "A romantic boutique luxury stay with one of the softer city moods.", ["luxury", "design", "food"]),
+      ],
+      premium: [
+        hotel("Santiago de Alfama", "alfama", "An atmospheric old-core base for a more romantic, heritage-led Lisbon trip.", ["culture", "walkability", "food"]),
+        hotel("The Ivens", "baixa", "Current-feeling and central with easy first-trip leverage.", ["design", "food", "nightlife"]),
+        hotel("Memmo Príncipe Real", "principe-real", "A stylish hilltop boutique stay for slower, more polished Lisbon days.", ["design", "food", "luxury"]),
+      ],
+      smart: [
+        hotel("LX Boutique Hotel", "baixa", "A useful lower-friction central stay for food and walking.", ["food", "transit", "value"]),
+        hotel("My Story Hotel Figueira", "baixa", "A practical first-trip base with easy movement around the center.", ["transit", "shopping", "value"]),
+        hotel("This Is Lisbon Hostel", "alfama", "A smarter value pick if atmosphere and views matter more than full service.", ["walkability", "culture", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Alfama lanes and miradouros", "alfama", ["culture", "walkability"], "Still the essential atmospheric Lisbon route."),
+      sight("Jerónimos Monastery", "belem", ["culture"], "One of the city's strongest heritage anchors and worth protecting in the plan."),
+      sight("Belém Tower waterfront", "belem", ["culture", "nature"], "A useful scenic add-on when the day is already monument-side."),
+      sight("Praça do Comércio and riverfront", "baixa", ["walkability", "design"], "A first-trip Lisbon orientation move that still works well."),
+      sight("São Jorge Castle views", "alfama", ["culture", "nature"], "Best used for the view and city layout rather than a long heavy visit."),
+    ],
+    activities: [
+      activity("Chiado café and bookshop walk", "baixa", ["cafes", "shopping"], "A softer central block when the day needs less uphill effort."),
+      activity("Príncipe Real bars and boutiques", "principe-real", ["design", "nightlife"], "A polished night move outside the most obvious old core."),
+      activity("Time Out Market lunch stop", "baixa", ["food"], "A useful midday choice if the plan needs flexibility more than purity."),
+      activity("Tram 28 stretch and hillside drift", "alfama", ["culture", "walkability"], "Worth folding into a hill district day rather than treating as its own attraction."),
+      activity("MAAT or Belém cultural add-on", "belem", ["museum", "design"], "A good extra stop if the day wants a cleaner modern contrast."),
+    ],
+    food: [
+      food("Belcanto", "baixa", ["food", "luxury"], "Contemporary Portuguese", "A major splurge dinner if the trip wants one serious reservation.", "Reserve ahead."),
+      food("Cervejaria Ramiro", "baixa", ["food"], "Seafood", "A high-energy classic that still earns a place if you want one headline seafood meal."),
+      food("Taberna Sal Grosso", "alfama", ["food"], "Lisbon small plates", "A stronger neighborhood dinner with more local mood than the obvious options."),
+      food("Pastéis de Belém", "belem", ["food", "cafes"], "Pastries", "Still the classic sweet stop if the day is already in Belém."),
+      food("Prado", "baixa", ["food"], "Modern Portuguese", "A polished dinner that still feels grounded in Lisbon."),
+      food("A Cevicheria", "principe-real", ["food", "nightlife"], "Seafood", "A useful current-feeling dinner in Príncipe Real."),
+      food("Ponto Final", "alfama", ["food", "nature"], "Waterside Portuguese", "A scenic meal if you want one stronger river-facing dinner move."),
+    ],
+  }),
+  "new-york": buildGuide({
+    label: "New York",
+    country: "United States",
+    currency: "Subway and walking cover most needs, but crossing boroughs too often makes the day feel more logistical than fun.",
+    transferNote: "Keep Manhattan days neighborhood-clustered, and only cross the river when the destination is really worth making the point of the day.",
+    areas: [
+      { key: "soho", label: "SoHo / NoHo", mood: "stylish and walkable", strengths: ["shopping", "food", "design"] },
+      { key: "west-village", label: "West Village", mood: "classic and restaurant-led", strengths: ["food", "walkability", "nightlife"] },
+      { key: "midtown", label: "Midtown", mood: "efficient and central", strengths: ["transit", "shopping", "culture"] },
+      { key: "lower-east-side", label: "Lower East Side", mood: "lively and current", strengths: ["nightlife", "food", "design"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("The Greenwich Hotel", "west-village", "A deeply polished downtown luxury stay with stronger neighborhood feeling.", ["luxury", "food", "design"]),
+        hotel("The Mercer", "soho", "A classic SoHo luxury base if style and shopping matter most.", ["luxury", "shopping", "design"]),
+        hotel("The Whitby Hotel", "midtown", "A brighter polished Midtown splurge for first-trip convenience with personality.", ["luxury", "culture", "shopping"]),
+      ],
+      premium: [
+        hotel("The Ludlow", "lower-east-side", "A sharp downtown stay for nightlife and current restaurant energy.", ["nightlife", "food", "design"]),
+        hotel("The Bowery Hotel", "lower-east-side", "Atmospheric and social with stronger late-night leverage.", ["nightlife", "food", "design"]),
+        hotel("Walker Hotel Greenwich Village", "west-village", "A useful Village base if classic Manhattan mood matters.", ["food", "walkability", "culture"]),
+      ],
+      smart: [
+        hotel("citizenM Bowery", "lower-east-side", "A practical value pick that still keeps you in a strong downtown zone.", ["value", "nightlife", "food"]),
+        hotel("Arlo SoHo", "soho", "A smaller-footprint SoHo base for shopping and downtown access.", ["shopping", "value", "food"]),
+        hotel("Pod Times Square", "midtown", "A lower-friction central option if transit and Broadway matter more than atmosphere.", ["transit", "value", "culture"]),
+      ],
+    },
+    cantMiss: [
+      sight("Central Park edge and museum axis", "midtown", ["culture", "nature"], "Still one of the strongest New York anchors even if done selectively."),
+      sight("West Village and Washington Square route", "west-village", ["walkability", "culture"], "A classic downtown route that still feels worth protecting."),
+      sight("Brooklyn Bridge walk", "soho", ["walkability", "design"], "A strong skyline-and-city-layout move best done early or near sunset."),
+      sight("SoHo cast-iron streets", "soho", ["design", "shopping"], "A very useful browse-heavy district anchor."),
+      sight("Lower East Side tenement and street grid", "lower-east-side", ["culture"], "A stronger historic-and-current New York pairing than a generic Midtown block."),
+    ],
+    activities: [
+      activity("MoMA or nearby gallery block", "midtown", ["museum", "design"], "A useful polished art anchor if the trip wants one serious museum stop."),
+      activity("Chelsea Market and High Line stretch", "west-village", ["food", "walkability"], "A reliable midday sequence that still works for first-timers."),
+      activity("Lower East Side wine-bar evening", "lower-east-side", ["nightlife", "food"], "An easy downtown night if the trip wants real energy."),
+      activity("Fifth Avenue and Rockefeller circuit", "midtown", ["shopping", "culture"], "A central day block when first-trip landmarks still matter."),
+      activity("East Village café and bookstore drift", "lower-east-side", ["cafes", "walkability"], "A strong lighter afternoon if the plan needs texture more than headlines."),
+    ],
+    food: [
+      food("Via Carota", "west-village", ["food"], "Italian", "A polished downtown classic that still earns a place if you can get in."),
+      food("Katz's Delicatessen", "lower-east-side", ["food"], "Jewish deli", "A classic New York stop worth doing once, especially in a downtown day."),
+      food("The Four Horsemen", "lower-east-side", ["food", "nightlife"], "Wine bar and plates", "A smarter evening if the trip wants current dining energy."),
+      food("Le Bernardin", "midtown", ["food", "luxury"], "Seafood", "A full splurge dinner if the trip wants one major New York reservation.", "Reserve ahead."),
+      food("Balthazar", "soho", ["food"], "French brasserie", "Still useful if the day is already in SoHo and the trip wants a classic room."),
+      food("Caffe Reggio", "west-village", ["cafes", "culture"], "Historic café", "A classic coffee stop with more actual downtown feeling than a generic chain."),
+      food("Russ & Daughters Cafe", "lower-east-side", ["food"], "Appetizing and brunch", "A strong New York breakfast or lunch anchor."),
+    ],
+  }),
+  "los-angeles": buildGuide({
+    label: "Los Angeles",
+    country: "United States",
+    currency: "Drive times matter more than distance, so each day should stay very zone-specific.",
+    transferNote: "A good LA plan is about committing to one side of the city at a time instead of chasing too many neighborhoods.",
+    areas: [
+      { key: "west-hollywood", label: "West Hollywood", mood: "social and polished", strengths: ["nightlife", "food", "shopping"] },
+      { key: "santa-monica", label: "Santa Monica", mood: "coastal and easygoing", strengths: ["nature", "food", "walkability"] },
+      { key: "downtown-la", label: "Downtown LA", mood: "artsy and mixed", strengths: ["culture", "food", "design"] },
+      { key: "silver-lake", label: "Silver Lake / Los Feliz", mood: "local and café-led", strengths: ["cafes", "nightlife", "design"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Sunset Tower Hotel", "west-hollywood", "A classic glamour stay if LA should feel like an occasion.", ["luxury", "nightlife", "food"]),
+        hotel("Shutters on the Beach", "santa-monica", "A strong coastal splurge when the trip wants ocean and slower mornings.", ["luxury", "nature", "food"]),
+        hotel("The Proper Hotel Downtown LA", "downtown-la", "A design-heavy luxury stay if DTLA culture and food are leading the trip.", ["luxury", "design", "food"]),
+      ],
+      premium: [
+        hotel("Palihouse West Hollywood", "west-hollywood", "A useful West Hollywood base for restaurants and easier nights out.", ["food", "nightlife", "design"]),
+        hotel("The Georgian Hotel", "santa-monica", "A polished beachfront-ish base for a lighter coastal version of LA.", ["food", "nature", "design"]),
+        hotel("The Hoxton Downtown LA", "downtown-la", "A stylish practical DTLA base with stronger food follow-through.", ["food", "design", "nightlife"]),
+      ],
+      smart: [
+        hotel("Mama Shelter Los Angeles", "west-hollywood", "A useful Hollywood-area value pick if rooftops and movement matter more than quiet.", ["nightlife", "value", "food"]),
+        hotel("Sea Blue Hotel", "santa-monica", "A simple coastal base for a beach-first LA day structure.", ["nature", "value", "walkability"]),
+        hotel("Silver Lake Pool & Inn", "silver-lake", "A stronger neighborhood-led base if cafés and local nightlife matter most.", ["design", "food", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Griffith Observatory", "silver-lake", ["nature", "culture"], "Still one of the city's best overview-and-sunset anchors."),
+      sight("Santa Monica beach and pier edge", "santa-monica", ["nature", "walkability"], "A useful coastal first-day move if that side of the city is already the focus."),
+      sight("The Broad and Grand Avenue", "downtown-la", ["museum", "design"], "A strong cultural cluster if DTLA is the point of the day."),
+      sight("Sunset Strip after dark", "west-hollywood", ["nightlife"], "A useful LA night anchor if the trip wants that specific glamour-energy mix."),
+      sight("Silver Lake Reservoir area", "silver-lake", ["walkability", "wellness"], "A better local-feeling daytime reset than another long drive."),
+    ],
+    activities: [
+      activity("Melrose and West Hollywood browse", "west-hollywood", ["shopping", "design"], "A useful daytime block if style and coffee matter more than landmarks."),
+      activity("Abbot Kinney detour", "santa-monica", ["shopping", "food"], "A good west-side browse-heavy add-on if the day is already coastal."),
+      activity("Arts District food-and-gallery circuit", "downtown-la", ["food", "design"], "A stronger current-feeling DTLA sequence."),
+      activity("Los Feliz café and bookstore block", "silver-lake", ["cafes", "walkability"], "A slower neighborhood route that feels more local than obvious LA tourism."),
+      activity("Hollywood Bowl or rooftop-bar evening", "west-hollywood", ["nightlife", "culture"], "A higher-energy night finish when you want LA to feel more cinematic."),
+    ],
+    food: [
+      food("Bestia", "downtown-la", ["food"], "Italian", "A destination DTLA dinner if the day is already arts-district centered.", "Reserve ahead."),
+      food("Gjelina", "santa-monica", ["food"], "California seasonal", "A polished west-side meal that still feels very LA."),
+      food("Night + Market", "west-hollywood", ["food", "nightlife"], "Thai", "A strong lively dinner for a social West Hollywood night."),
+      food("Courage Bagels", "silver-lake", ["cafes", "food"], "Bagels and brunch", "A useful daytime food anchor on the east side."),
+      food("Republique", "west-hollywood", ["food"], "French-Californian", "A classic brunch or dinner stop with real room presence."),
+      food("Holbox", "downtown-la", ["food"], "Seafood tacos", "A genuinely strong lower-friction LA lunch stop."),
+      food("Musso & Frank Grill", "west-hollywood", ["food", "culture"], "Classic steakhouse", "Worth doing once if the trip wants old Hollywood weight."),
+    ],
+  }),
+  "mexico-city": buildGuide({
+    label: "Mexico City",
+    country: "Mexico",
+    currency: "Rideshares are often easiest, but traffic and neighborhood clustering matter more than raw distance.",
+    transferNote: "The best Mexico City days stay district-led so you spend your energy on food and streets rather than on traffic.",
+    areas: [
+      { key: "roma-norte", label: "Roma Norte", mood: "current and restaurant-led", strengths: ["food", "nightlife", "design"] },
+      { key: "condesa", label: "Condesa", mood: "green and walkable", strengths: ["walkability", "cafes", "food"] },
+      { key: "centro", label: "Centro Histórico", mood: "grand and historic", strengths: ["culture", "walkability", "shopping"] },
+      { key: "polanco", label: "Polanco", mood: "polished and upscale", strengths: ["luxury", "shopping", "food"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Las Alcobas", "polanco", "A refined smaller luxury base if dining and polished comfort matter most.", ["luxury", "food", "shopping"]),
+        hotel("Four Seasons Hotel Mexico City", "condesa", "A polished classic city luxury stay with calmer courtyard energy.", ["luxury", "wellness", "food"]),
+        hotel("Sofitel Mexico City Reforma", "polanco", "A skyline-facing luxury base with stronger central convenience.", ["luxury", "design", "food"]),
+      ],
+      premium: [
+        hotel("Nima Local House Hotel", "roma-norte", "A boutique Roma Norte stay for a more local-feeling polished trip.", ["design", "food", "nightlife"]),
+        hotel("Casa Polanco", "polanco", "A stylish polished option if the trip leans quieter and more upscale.", ["design", "luxury", "food"]),
+        hotel("Condesa DF", "condesa", "A social design hotel if parks, drinks, and restaurants should shape the trip.", ["nightlife", "design", "food"]),
+      ],
+      smart: [
+        hotel("Hotel Stanza", "roma-norte", "A practical Roma base with strong food and café leverage.", ["food", "value", "nightlife"]),
+        hotel("Casa Decu", "condesa", "A useful Condesa base for slower greener city days.", ["cafes", "walkability", "value"]),
+        hotel("Historico Central", "centro", "A strong-value stay if historic core logistics matter most.", ["culture", "walkability", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Zócalo and Metropolitan Cathedral", "centro", ["culture"], "The essential monumental anchor for understanding the city."),
+      sight("Palacio de Bellas Artes", "centro", ["culture", "design"], "A major architecture-and-culture stop that fits naturally into Centro."),
+      sight("Chapultepec Park edge", "polanco", ["nature", "culture"], "A useful reset and museum district anchor on the west side."),
+      sight("Roma Norte street wander", "roma-norte", ["design", "walkability"], "A district where the atmosphere itself is often the point."),
+      sight("Condesa park loop", "condesa", ["walkability", "wellness"], "A softer, greener city sequence that balances heavier core days."),
+    ],
+    activities: [
+      activity("Museo Nacional de Antropología", "polanco", ["museum", "culture"], "The strongest museum anchor in the city if the trip wants one serious culture block."),
+      activity("Mercado de San Juan browse", "centro", ["food"], "A useful market stop if the trip wants more culinary texture in the center."),
+      activity("Roma cafés and boutiques", "roma-norte", ["cafes", "shopping"], "A lower-friction daytime block for coffee, design, and browsing."),
+      activity("Condesa wine-bar evening", "condesa", ["nightlife", "food"], "An easy social evening with less logistical friction."),
+      activity("Lucha libre night", "centro", ["nightlife", "culture"], "A fun distinctly local entertainment move if the night should feel bigger."),
+    ],
+    food: [
+      food("Pujol", "polanco", ["food", "luxury"], "Contemporary Mexican", "A major splurge dinner if the trip wants one top-table reservation.", "Reserve ahead."),
+      food("Contramar", "roma-norte", ["food"], "Seafood", "A very strong lunch or early dinner with real city energy."),
+      food("Máximo Bistrot", "roma-norte", ["food"], "Seasonal contemporary", "A polished Roma Norte dinner that still feels rooted in the neighborhood."),
+      food("El Cardenal", "centro", ["food"], "Traditional Mexican breakfast", "A classic central breakfast if the day begins in Centro."),
+      food("Lardo", "condesa", ["food", "cafes"], "Mediterranean café", "A useful lighter meal in Condesa."),
+      food("Taquería Orinoco", "roma-norte", ["food", "value"], "Tacos", "A lower-friction taco stop that works well late too."),
+      food("Quintonil", "polanco", ["food", "luxury"], "Contemporary Mexican", "Another major polished splurge if the trip wants a high-end food anchor.", "Reserve ahead."),
+    ],
+  }),
+  "buenos-aires": buildGuide({
+    label: "Buenos Aires",
+    country: "Argentina",
+    currency: "Rideshares help, but the trip works best when each day stays within one cluster of barrios.",
+    transferNote: "Neighborhood personality is the whole point here, so avoid building days that hop around too much.",
+    areas: [
+      { key: "palermo", label: "Palermo", mood: "stylish and restaurant-led", strengths: ["food", "nightlife", "design"] },
+      { key: "recoleta", label: "Recoleta", mood: "elegant and classic", strengths: ["culture", "luxury", "walkability"] },
+      { key: "san-telmo", label: "San Telmo", mood: "historic and atmospheric", strengths: ["culture", "walkability", "nightlife"] },
+      { key: "puerto-madero", label: "Puerto Madero", mood: "modern and cleaner-lined", strengths: ["luxury", "nature", "food"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Alvear Palace Hotel", "recoleta", "A grand classic splurge if Buenos Aires should feel formal and elegant.", ["luxury", "culture", "food"]),
+        hotel("Faena Hotel Buenos Aires", "puerto-madero", "A dramatic design-led luxury stay with stronger nightlife energy.", ["luxury", "design", "nightlife"]),
+        hotel("Four Seasons Buenos Aires", "recoleta", "A polished international luxury base with useful central leverage.", ["luxury", "food", "culture"]),
+      ],
+      premium: [
+        hotel("Palo Santo Hotel", "palermo", "A polished Palermo base for food, bars, and easier local energy.", ["food", "design", "nightlife"]),
+        hotel("Hub Porteño", "recoleta", "A more intimate luxury-leaning boutique stay in a classic district.", ["culture", "food", "luxury"]),
+        hotel("L'Adresse Hôtel Boutique", "san-telmo", "A useful atmospheric stay for a slower historic-core version of the city.", ["culture", "walkability", "food"]),
+      ],
+      smart: [
+        hotel("Mine Hotel", "palermo", "A strong-value Palermo pick that keeps the trip restaurant-led.", ["food", "nightlife", "value"]),
+        hotel("Up Recoleta Hotel", "recoleta", "A practical classic-district base if walking and museums matter more.", ["culture", "value", "walkability"]),
+        hotel("Patios de San Telmo", "san-telmo", "A lower-friction historic-quarter base with real character.", ["culture", "value", "walkability"]),
+      ],
+    },
+    cantMiss: [
+      sight("Recoleta Cemetery area", "recoleta", ["culture"], "A classic first-trip Buenos Aires stop that still earns its place."),
+      sight("San Telmo streets and Plaza Dorrego", "san-telmo", ["culture", "walkability"], "A stronger atmospheric district block than another generic center walk."),
+      sight("Palermo parks and rose garden edge", "palermo", ["nature", "walkability"], "A good reset in a city that can otherwise feel meal-and-bar heavy."),
+      sight("Teatro Colón exterior and central axis", "recoleta", ["culture", "design"], "A useful monumental-city anchor near the center."),
+      sight("Puerto Madero waterfront", "puerto-madero", ["nature", "design"], "A cleaner-lined contrast to the city's older neighborhoods."),
+    ],
+    activities: [
+      activity("MALBA museum stop", "palermo", ["museum", "culture"], "A strong modern-art anchor if the trip wants one serious cultural block."),
+      activity("Palermo Soho boutiques and cafés", "palermo", ["shopping", "cafes"], "A useful browse-heavy day section."),
+      activity("Sunday San Telmo market wander", "san-telmo", ["shopping", "food"], "Best if the dates line up and the trip wants local street energy."),
+      activity("Tango show evening", "san-telmo", ["nightlife", "culture"], "A distinctly Buenos Aires night if you want one bigger entertainment move."),
+      activity("Bookstores and Belle Époque Recoleta walk", "recoleta", ["culture", "walkability"], "A polished daytime route if the trip leans classic city texture."),
+    ],
+    food: [
+      food("Don Julio", "palermo", ["food"], "Parrilla", "Still the most obvious steakhouse move, but it works if booked properly.", "Reserve ahead."),
+      food("El Preferido de Palermo", "palermo", ["food"], "Argentine comfort food", "A stronger classic meal than a random steakhouse fallback."),
+      food("Mishiguene", "palermo", ["food", "luxury"], "Jewish-Argentine", "A more specific destination dinner if the trip wants something beyond steak."),
+      food("Café Tortoni", "recoleta", ["cafes", "culture"], "Historic café", "Worth doing once if you want the canonical old-Buenos-Aires café room."),
+      food("La Brigada", "san-telmo", ["food"], "Parrilla", "A useful San Telmo dinner if the day is already south-side."),
+      food("Niño Gordo", "palermo", ["food", "nightlife"], "Current fusion", "A lively dinner when Palermo nightlife should follow naturally."),
+      food("Sarkis", "palermo", ["food", "value"], "Armenian", "A lower-friction local favorite if the trip wants range beyond steak."),
+    ],
+  }),
+  "dubai": buildGuide({
+    label: "Dubai",
+    country: "United Arab Emirates",
+    currency: "Taxis and Metro are easiest, but each day should stay zone-led because moving between districts takes longer than it looks.",
+    transferNote: "Heat, distance, and mall-scale walking all add up here, so each day needs one clear center of gravity.",
+    areas: [
+      { key: "downtown", label: "Downtown Dubai", mood: "polished and spectacle-driven", strengths: ["luxury", "shopping", "design"] },
+      { key: "jumeirah", label: "Jumeirah", mood: "coastal and upscale", strengths: ["nature", "luxury", "food"] },
+      { key: "old-dubai", label: "Old Dubai", mood: "historic and more textured", strengths: ["culture", "food", "walkability"] },
+      { key: "marina", label: "Dubai Marina", mood: "vertical and nightlife-led", strengths: ["nightlife", "shopping", "food"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Burj Al Arab Jumeirah", "jumeirah", "A full fantasy splurge if the trip wants Dubai at maximum spectacle.", ["luxury", "design", "food"]),
+        hotel("Address Downtown", "downtown", "A strong Downtown luxury base with mall and fountain leverage.", ["luxury", "shopping", "food"]),
+        hotel("One&Only Royal Mirage", "jumeirah", "A calmer resort-leaning luxury stay if beach and slower pacing matter most.", ["luxury", "nature", "wellness"]),
+      ],
+      premium: [
+        hotel("Vida Downtown", "downtown", "A cleaner-lined premium base for a more current version of central Dubai.", ["design", "food", "shopping"]),
+        hotel("25hours Hotel One Central", "downtown", "A playful premium option with stronger personality than the average Dubai tower.", ["design", "nightlife", "food"]),
+        hotel("The First Collection Marina", "marina", "A good-value premium pick if evenings and waterfront towers are the point.", ["nightlife", "food", "value"]),
+      ],
+      smart: [
+        hotel("Rove Downtown", "downtown", "A practical Downtown stay with easier pricing and strong first-trip convenience.", ["shopping", "transit", "value"]),
+        hotel("XVA Art Hotel", "old-dubai", "A more character-rich old-quarter option if texture matters more than towers.", ["culture", "design", "value"]),
+        hotel("Rove La Mer Beach", "jumeirah", "A stronger-value coastal base if beach time should be easy.", ["nature", "food", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Burj Khalifa and Dubai Fountain axis", "downtown", ["design", "shopping"], "Still the city's clearest spectacle anchor."),
+      sight("Dubai Creek and Al Fahidi", "old-dubai", ["culture", "walkability"], "The strongest corrective to thinking Dubai is only towers and malls."),
+      sight("Jumeirah Beach and Burj Al Arab line", "jumeirah", ["nature", "design"], "A useful scenic coastal route if the trip wants some air and light."),
+      sight("Dubai Marina promenade", "marina", ["nightlife", "walkability"], "Best treated as an evening waterfront district rather than a daytime landmark."),
+      sight("Museum of the Future exterior and district", "downtown", ["design"], "A strong visual anchor even if you do not build a whole day around it."),
+    ],
+    activities: [
+      activity("Dubai Mall browse and aquarium option", "downtown", ["shopping", "food"], "A practical spectacle-driven block when the trip leans classic Dubai."),
+      activity("Al Seef and spice-souk drift", "old-dubai", ["culture", "shopping"], "A better old-city add-on than another mall-heavy afternoon."),
+      activity("Beach club afternoon", "jumeirah", ["nature", "nightlife"], "A useful slower luxury afternoon if the trip needs breathing room."),
+      activity("Marina rooftop drinks", "marina", ["nightlife"], "An easy polished night move if the evening should feel high-energy."),
+      activity("Desert dinner excursion", "jumeirah", ["nature", "culture"], "A bigger add-on if the trip wants one Dubai-only set piece."),
+    ],
+    food: [
+      food("Trèsind Studio", "downtown", ["food", "luxury"], "Contemporary Indian", "A major splurge dinner if the trip wants one destination meal.", "Reserve ahead."),
+      food("Orfali Bros", "jumeirah", ["food"], "Current Middle Eastern", "A stronger modern Dubai dinner than a generic hotel restaurant."),
+      food("Al Ustad Special Kabab", "old-dubai", ["food", "value"], "Persian kebabs", "A classic older-Dubai lunch or dinner with real city texture."),
+      food("Arabian Tea House", "old-dubai", ["cafes", "food"], "Emirati café", "A useful heritage-core breakfast or lunch anchor."),
+      food("3 Fils", "jumeirah", ["food"], "Seafood and Asian-influenced small plates", "A strong waterside dinner if the west side is already the point."),
+      food("CÉ LA VI", "downtown", ["food", "nightlife", "luxury"], "Rooftop dinner and cocktails", "A useful polished skyline dinner for a classic Dubai night."),
+      food("Time Out Market Dubai", "downtown", ["food"], "Food hall", "A flexible downtown meal option without overcommitting the night."),
+    ],
+  }),
+  "istanbul": buildGuide({
+    label: "Istanbul",
+    country: "Türkiye",
+    currency: "Ferries and trams are often part of the fun, but crossing between major districts still shapes the whole day.",
+    transferNote: "The Bosphorus and hills make district clustering essential, especially if the trip includes both old-city sights and modern restaurant nights.",
+    areas: [
+      { key: "sultanahmet", label: "Sultanahmet", mood: "historic and monumental", strengths: ["culture", "walkability", "transit"] },
+      { key: "karakoy", label: "Karaköy", mood: "current and ferry-friendly", strengths: ["food", "design", "nightlife"] },
+      { key: "beyoglu", label: "Beyoğlu", mood: "urban and layered", strengths: ["nightlife", "shopping", "culture"] },
+      { key: "nisantasi", label: "Nişantaşı", mood: "polished and upscale", strengths: ["shopping", "luxury", "food"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Çırağan Palace Kempinski", "nisantasi", "A dramatic Bosphorus splurge if the trip wants ceremony and views.", ["luxury", "food", "wellness"]),
+        hotel("Four Seasons Hotel Istanbul at Sultanahmet", "sultanahmet", "A very strong historic-core luxury base for dawn and evening leverage.", ["luxury", "culture", "walkability"]),
+        hotel("The Peninsula Istanbul", "karakoy", "A polished waterfront luxury stay for a more current Bosphorus trip.", ["luxury", "design", "food"]),
+      ],
+      premium: [
+        hotel("Bank Hotel Istanbul", "karakoy", "A strong Karaköy boutique option for food and easier nights out.", ["design", "food", "nightlife"]),
+        hotel("Pera Palace Hotel", "beyoglu", "A historic grand-hotel stay with real literary and urban atmosphere.", ["culture", "nightlife", "food"]),
+        hotel("The Stay Nişantaşı", "nisantasi", "A polished local-feeling premium base if shopping and dining matter most.", ["shopping", "food", "design"]),
+      ],
+      smart: [
+        hotel("Hotel Ibrahim Pasha", "sultanahmet", "A practical old-city stay if monument access should dominate the trip.", ["culture", "walkability", "value"]),
+        hotel("10 Karaköy", "karakoy", "A useful lower-friction base for ferries, galleries, and food.", ["food", "design", "value"]),
+        hotel("The Story Hotel Pera", "beyoglu", "A solid Beyoğlu option for nightlife and central movement.", ["nightlife", "value", "shopping"]),
+      ],
+    },
+    cantMiss: [
+      sight("Hagia Sophia and Sultanahmet Square", "sultanahmet", ["culture"], "The essential old-city anchor and still best done early."),
+      sight("Blue Mosque and Hippodrome axis", "sultanahmet", ["culture"], "A useful historic pairing that belongs in a first trip."),
+      sight("Galata Tower area", "karakoy", ["design", "walkability"], "A strong bridge district for city texture and views."),
+      sight("Bosphorus waterfront walk", "karakoy", ["nature", "walkability"], "A useful route when the day should feel more open and scenic."),
+      sight("Istiklal Avenue and side streets", "beyoglu", ["culture", "shopping", "nightlife"], "A core urban route that works best as part of a bigger Beyoğlu night."),
+    ],
+    activities: [
+      activity("Grand Bazaar block", "sultanahmet", ["shopping", "culture"], "Best treated as a focused browse stop, not a whole day."),
+      activity("Karaköy coffee and gallery route", "karakoy", ["cafes", "design"], "A stronger current-city block than another old-city monument hour."),
+      activity("Meyhane evening in Beyoğlu", "beyoglu", ["nightlife", "food"], "One of the smartest ways to make an Istanbul night feel local and alive."),
+      activity("Nişantaşı shopping streets", "nisantasi", ["shopping", "design"], "A polished district walk if the trip wants one more upscale city side."),
+      activity("Bosphorus ferry crossing", "karakoy", ["nature", "culture"], "A simple move that helps the city feel legible and scenic."),
+    ],
+    food: [
+      food("Mikla", "beyoglu", ["food", "luxury"], "Modern Anatolian", "A major dinner if the trip wants one skyline-and-tasting splurge.", "Reserve ahead."),
+      food("Karaköy Lokantası", "karakoy", ["food"], "Turkish lokanta", "A polished classic that works well in a Karaköy day."),
+      food("Pandeli", "sultanahmet", ["food", "culture"], "Historic Ottoman-style dishes", "Worth doing once if the trip wants an old-Istanbul dining room."),
+      food("Çiya Sofrası", "karakoy", ["food"], "Regional Turkish cooking", "A stronger destination meal if you want depth beyond kebabs."),
+      food("Van Kahvaltı Evi", "beyoglu", ["cafes", "food"], "Turkish breakfast", "A smart breakfast anchor on a Beyoğlu day."),
+      food("Hafız Mustafa", "sultanahmet", ["food", "cafes"], "Desserts and tea", "A useful sweets stop when the old city is already the point."),
+      food("Aheste", "beyoglu", ["food", "nightlife"], "Meyhane-style plates", "A lower-friction dinner if the evening should stay in Beyoğlu."),
+    ],
+  }),
+  "marrakech": buildGuide({
+    label: "Marrakech",
+    country: "Morocco",
+    currency: "Plan with heat and traffic in mind, and use riad-to-district movement carefully because the medina is slower than it looks.",
+    transferNote: "Marrakech feels best when the medina is one day-world and newer districts or gardens are another.",
+    areas: [
+      { key: "medina", label: "Medina", mood: "historic, dense, and atmospheric", strengths: ["culture", "walkability", "shopping"] },
+      { key: "kasbah", label: "Kasbah", mood: "quieter and heritage-rich", strengths: ["culture", "food", "walkability"] },
+      { key: "gueliz", label: "Gueliz", mood: "modern and easier", strengths: ["design", "shopping", "food"] },
+      { key: "palmeraie", label: "Palmeraie", mood: "resort-like and restorative", strengths: ["luxury", "wellness", "nature"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Royal Mansour Marrakech", "medina", "A major palace-style splurge if the trip should feel exceptional from check-in onward.", ["luxury", "design", "food"]),
+        hotel("La Mamounia", "kasbah", "A grand classic luxury stay with gardens and serious Marrakech atmosphere.", ["luxury", "wellness", "food"]),
+        hotel("Amanjena", "palmeraie", "A calmer resort-like splurge if the trip wants more restoration and privacy.", ["luxury", "nature", "wellness"]),
+      ],
+      premium: [
+        hotel("El Fenn", "medina", "A strong design-led medina base if style and atmosphere matter most.", ["design", "food", "nightlife"]),
+        hotel("Riad Yasmine", "medina", "A smaller photogenic riad for a more intimate medina stay.", ["design", "walkability", "food"]),
+        hotel("Les Deux Tours", "palmeraie", "A softer greener premium option if you want a slower edge-of-city mood.", ["wellness", "nature", "food"]),
+      ],
+      smart: [
+        hotel("Riad BE Marrakech", "medina", "A useful stylish medina base with lower friction pricing.", ["design", "culture", "value"]),
+        hotel("Riad Dar One", "kasbah", "A quieter heritage-heavy option near the southern medina edge.", ["culture", "walkability", "value"]),
+        hotel("2Ciels Boutique Hôtel", "gueliz", "A practical modern-district pick if you want easier movement and dining.", ["food", "shopping", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Jemaa el-Fnaa and souk edge", "medina", ["culture", "food"], "The essential sensory core of the city, best treated as a day-and-night anchor."),
+      sight("Bahia Palace", "kasbah", ["culture", "design"], "A strong heritage interior and one of the more visually satisfying palace stops."),
+      sight("Koutoubia Mosque area", "medina", ["culture", "walkability"], "A useful orientation landmark on a first medina day."),
+      sight("Majorelle Garden", "gueliz", ["nature", "design"], "A cleaner modern counterpoint to the density of the medina."),
+      sight("Saadian Tombs", "kasbah", ["culture"], "A compact historic stop that fits naturally into a Kasbah route."),
+    ],
+    activities: [
+      activity("Medina riad-rooftop circuit", "medina", ["design", "nightlife"], "A stronger way to make the evening feel atmospheric without overcommitting."),
+      activity("Spice and textile souk browse", "medina", ["shopping", "culture"], "A useful medina block when you want texture more than a checklist."),
+      activity("Gueliz cafés and concept stores", "gueliz", ["cafes", "shopping", "design"], "A useful modern-district reset after heavier historic days."),
+      activity("Hammam and spa block", "palmeraie", ["wellness"], "A good slower day anchor when the trip needs recovery."),
+      activity("Kasbah garden-and-lane walk", "kasbah", ["walkability", "culture"], "A calmer heritage route than another full medina push."),
+    ],
+    food: [
+      food("Dar Yacout", "medina", ["food", "luxury"], "Moroccan dinner", "A classic atmospheric splurge dinner if the trip wants one theatrical Marrakech night.", "Reserve ahead."),
+      food("Nomad", "medina", ["food", "design"], "Modern Moroccan", "A polished medina meal with a useful rooftop setting."),
+      food("Le Jardin", "medina", ["food", "cafes"], "Garden café", "A strong lighter meal in the middle of the medina maze."),
+      food("Plus61", "gueliz", ["food"], "Contemporary", "A good modern-district dinner if the trip wants a break from strictly traditional rooms."),
+      food("Café Clock", "kasbah", ["food", "culture"], "Moroccan café food", "A useful Kasbah-side stop that still feels specific to the city."),
+      food("Kabana", "medina", ["food", "nightlife"], "Rooftop cocktails and dinner", "A good evening when the night should feel stylish but easy."),
+      food("Amal Center", "gueliz", ["food", "value"], "Moroccan lunch", "A smart purposeful lunch if the day is already in the modern district."),
+    ],
+  }),
+};
+
+export const fallbackCitySupplements = Object.fromEntries(
+  Object.keys(fallbackCityGuides).map((cityKey) => [cityKey, []])
+);

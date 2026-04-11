@@ -8,6 +8,7 @@ import { bangkokGuide, bangkokSupplements } from './bangkok.js';
 import { pragueGuide, pragueSupplements } from './prague.js';
 import { copenhagenGuide, copenhagenSupplements } from './copenhagen.js';
 import { berlinGuide, berlinSupplements } from './berlin.js';
+import { fallbackCityGuides, fallbackCitySupplements } from './fallback-guides.js';
 import { expandedSupplementLibraries } from './expansions.js';
 import { enrichCityGuidesWithHotelDetails } from '../hotel-details.js';
 import { basePlaceName, getPlaceIdentityKeys } from '../../lib/utils.js?v=triptrellis-prague-clock-cleanup-20260411-007';
@@ -21,6 +22,7 @@ const rawCityGuides = {
   prague: pragueGuide,
   copenhagen: copenhagenGuide,
   berlin: berlinGuide,
+  ...fallbackCityGuides,
 };
 
 function scoreCanonicalLibraryEntry(item, source = "") {
@@ -122,4 +124,10 @@ export const categorySupplementLibraries = {
   prague: cleanSupplementsForCity("prague", pragueSupplements),
   copenhagen: cleanSupplementsForCity("copenhagen", copenhagenSupplements),
   berlin: cleanSupplementsForCity("berlin", berlinSupplements),
+  ...Object.fromEntries(
+    Object.entries(fallbackCitySupplements).map(([cityKey, supplements]) => [
+      cityKey,
+      cleanSupplementsForCity(cityKey, supplements),
+    ])
+  ),
 };

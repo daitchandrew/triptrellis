@@ -2146,6 +2146,27 @@ button:active { transform: translateY(0); }
   overflow: hidden;
 }
 
+.utility-section {
+  display: grid;
+  gap: 16px;
+}
+
+.utility-intro {
+  max-width: 60ch;
+  margin: 0;
+}
+
+.utility-section .list-panel {
+  gap: 10px;
+}
+
+.utility-section .list-panel li {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+}
+
 .selected-hotel-card::before,
 .hotel-selector-card::before,
 .utility-section::before,
@@ -2506,6 +2527,63 @@ button:active { transform: translateY(0); }
 .day-summary {
   margin: 0 0 16px;
   line-height: 1.68;
+}
+
+.day-story-panel {
+  display: grid;
+  gap: 10px;
+  margin: 2px 0 4px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(250, 244, 236, 0.58));
+  border: 1px solid rgba(43, 29, 20, 0.08);
+}
+
+.day-story-kicker {
+  margin: 0;
+  color: #b5764d;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.day-story-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.day-story-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  color: rgba(28, 26, 23, 0.82);
+  font-size: 0.79rem;
+  font-weight: 800;
+}
+
+.day-story-chip--base {
+  background: rgba(194, 130, 91, 0.1);
+  border-color: rgba(194, 130, 91, 0.18);
+  color: #8a5135;
+}
+
+.day-story-arrow {
+  color: rgba(181, 118, 77, 0.7);
+  font-weight: 900;
+}
+
+.day-story-copy {
+  margin: 0;
+  color: #675a4f;
+  font-size: 0.88rem;
+  line-height: 1.58;
 }
 
 .strategy-source,
@@ -3510,35 +3588,6 @@ button:active { transform: translateY(0); }
   border: 1px solid rgba(157, 101, 32, 0.14);
   color: #9d6520;
   letter-spacing: 0.12em;
-}
-
-.day-route-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.route-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: var(--r-pill);
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.4;
-  border: 1px solid transparent;
-}
-
-.route-pill--hotel {
-  color: var(--rose);
-  background: rgba(123, 58, 75, 0.08);
-  border-color: rgba(123, 58, 75, 0.18);
-}
-
-.route-pill--flow {
-  color: var(--green);
-  background: rgba(56, 79, 61, 0.08);
-  border-color: rgba(56, 79, 61, 0.18);
 }
 
 .day-reservation-note {
