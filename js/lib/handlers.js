@@ -1,7 +1,7 @@
 // Event handlers
 
 import { getCurrentPlan, setCurrentPlan, loadSavedItineraries, serializePlan, hydratePlan, getDraggedItineraryItem, setDraggedItineraryItem } from "./state.js";
-import { renderTripPlan, renderEmptyState, openPrintView } from "./render.js";
+import { renderTripPlan, renderEmptyState, openPrintView } from "./render.js?v=triptrellis-upgrades-20260411-004";
 import {
   refreshDayState, getSlotLabel, chooseBestSlotForItem,
   createItineraryItemFromLibrary, dayAlreadyHasItem, buildContextualFitNote,
@@ -228,6 +228,79 @@ export function rebuildPlanForSelectedHotel(hotelName, buildTripPlanFn) {
   renderTripPlan(newPlan, getResults());
 }
 
+export function applyTripAdjustment(adjustment, buildTripPlanFn) {
+  const currentPlan = getCurrentPlan();
+  if (!currentPlan || !buildTripPlanFn) {
+    return;
+  }
+
+  const request = currentPlan.tripRequest || {};
+  const nextFocuses = [...new Set([...(request.focuses || currentPlan.focuses || [currentPlan.focus]).filter(Boolean)])];
+  let nextBudget = request.budget || currentPlan.budget;
+  let nextPace = request.pace || currentPlan.pace;
+  let nextHotelStatus = request.hotelStatus || currentPlan.hotelStatus;
+  let nextExistingHotels = request.existingHotels || [];
+  let nextSelectedHotelName = currentPlan.selectedHotelName || "";
+  const noteAdditions = [];
+
+  if (adjustment === "more-local") {
+    noteAdditions.push("Prefer more local, less obvious, not too touristy places.");
+  }
+  if (adjustment === "less-walking") {
+    nextPace = "slow";
+    noteAdditions.push("Keep days more walkable and reduce cross-city movement.");
+  }
+  if (adjustment === "more-food" && !nextFocuses.includes("food")) {
+    nextFocuses.unshift("food");
+  }
+  if (adjustment === "more-premium") {
+    nextBudget = "luxury";
+    noteAdditions.push("Prioritize polished, premium, reservation-worthy choices.");
+  }
+  if (adjustment === "more-relaxed") {
+    nextPace = "slow";
+    noteAdditions.push("Make the itinerary more relaxed with more breathing room.");
+  }
+  if (adjustment === "more-nightlife" && !nextFocuses.includes("nightlife")) {
+    nextFocuses.unshift("nightlife");
+  }
+  if (adjustment === "swap-base") {
+    const alternateHotel = (currentPlan.hotelRecommendations || []).find((hotel) => !hotel.isPrimary);
+    if (alternateHotel) {
+      nextHotelStatus = "need-hotel";
+      nextExistingHotels = [];
+      nextSelectedHotelName = alternateHotel.name;
+      noteAdditions.push(`Try a different hotel base around ${alternateHotel.areaLabel}.`);
+    }
+  }
+
+  const currentNotes = request.notes || currentPlan.notes || "";
+  const nextNotes = [...new Set([currentNotes, ...noteAdditions].map((note) => String(note || "").trim()).filter(Boolean))].join(" ");
+  const newPlan = buildTripPlanFn({
+    cityKey: request.cityKey || currentPlan.cityKey,
+    guide: currentPlan.guide,
+    startDate: request.startDate || currentPlan.startDate,
+    endDate: request.endDate || currentPlan.endDate,
+    arrivalTime: request.arrivalTime || currentPlan.arrivalTime,
+    departureTime: request.departureTime || currentPlan.departureTime,
+    budget: nextBudget,
+    pace: nextPace,
+    focus: nextFocuses[0] || request.focus || currentPlan.focus,
+    focuses: nextFocuses,
+    notes: nextNotes,
+    hotelStatus: nextHotelStatus,
+    existingHotels: nextExistingHotels,
+    selectedHotelName: nextSelectedHotelName,
+  });
+  newPlan.adjustmentHistory = [
+    ...(currentPlan.adjustmentHistory || []),
+    adjustment,
+  ].slice(-6);
+  newPlan.savedTrips = loadSavedItineraries();
+  setCurrentPlan(newPlan);
+  renderTripPlan(newPlan, getResults());
+}
+
 export function syncHotelFields(existingHotelFields) {
   const status = document.querySelector('input[name="hotel-status"]:checked')?.value;
   const hasHotels = status === "have-hotel";
@@ -302,8 +375,18 @@ export function handleResultsClick(event) {
     return;
   }
 
+  if (action === "print-current-itinerary") {
+    openPrintView(currentPlan);
+    return;
+  }
+
   if (action === "select-hotel") {
     rebuildPlanForSelectedHotel(actionTarget.dataset.hotelName, _buildTripPlanFn);
+    return;
+  }
+
+  if (action === "adjust-trip") {
+    applyTripAdjustment(actionTarget.dataset.adjustment, _buildTripPlanFn);
     return;
   }
 

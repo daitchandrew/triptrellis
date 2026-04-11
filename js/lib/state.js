@@ -76,6 +76,7 @@ export function serializePlan(plan) {
     libraryItems,
     bookingWatchlist,
     unresolved,
+    adjustmentHistory,
     days,
   } = plan;
 
@@ -86,6 +87,7 @@ export function serializePlan(plan) {
     days: plan.totalDays,
     dateRange: `${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}`,
     hotelName: plan.hotelBase.hotelName,
+    updatedAt: new Date().toISOString(),
     payload: {
       guide,
       cityKey,
@@ -118,6 +120,7 @@ export function serializePlan(plan) {
       libraryItems,
       bookingWatchlist,
       unresolved,
+      adjustmentHistory,
       days,
       startDate: plan.startDate.toISOString(),
       endDate: plan.endDate.toISOString(),
@@ -139,6 +142,7 @@ export function hydratePlan(savedTrip) {
     libraryPriceFilter: plan.libraryPriceFilter || "all",
     libraryAreaFilter: plan.libraryAreaFilter || "all",
     selectedHotelName: plan.selectedHotelName || "",
+    adjustmentHistory: plan.adjustmentHistory || [],
     arrivalTime: plan.arrivalTime || "afternoon",
     departureTime: plan.departureTime || "morning",
     travelAvailabilityRules: plan.travelAvailabilityRules || plan.tripRequest?.availabilityRules || buildTravelAvailabilityRules(plan.arrivalTime, plan.departureTime),

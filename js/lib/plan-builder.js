@@ -1,6 +1,6 @@
 // Plan construction functions
 
-import { normalizeText, hashString, basePlaceName, formatDate, formatFocus, shiftDate, differenceInDays } from "./utils.js";
+import { normalizeText, hashString, basePlaceName, getPlaceIdentityKeys, formatDate, formatFocus, shiftDate, differenceInDays } from "./utils.js?v=triptrellis-semantic-dedupe-20260411-006";
 import { focusThemes, budgetProfiles, paceRules, buildMergedFocusTheme } from "./constants.js";
 import { categorySupplementLibraries } from "../data/cities/index.js";
 import { categorizeLibraryItem, inferFoodCuisine, inferFoodPriceTier, inferFoodTiming, inferActivityPriceTier, expandLibraryDescription, buildLibraryDetailLine, polishLibraryDescription } from "./infer.js";
@@ -303,13 +303,17 @@ export function buildDontMissList({ rankedCantMiss, rankedActivities, rankedRest
 
   const seen = new Set();
   return pool
+    .sort((left, right) => {
+      const leftPenalty = getPlaceIdentityKeys(left.name).length > 2 ? 1.4 : 0;
+      const rightPenalty = getPlaceIdentityKeys(right.name).length > 2 ? 1.4 : 0;
+      return (right.score - rightPenalty) - (left.score - leftPenalty);
+    })
     .filter((item) => {
-      const key = basePlaceName(item.name);
-      if (seen.has(key)) return false;
-      seen.add(key);
+      const keys = getPlaceIdentityKeys(item.name);
+      if (keys.some((key) => seen.has(key))) return false;
+      keys.forEach((key) => seen.add(key));
       return true;
     })
-    .sort((left, right) => right.score - left.score)
     .slice(0, 8)
     .map((item) => ({
       name: item.name,
@@ -421,6 +425,37 @@ export function normalizeLibraryItem(item, category, index, cityKey = "") {
   };
 }
 
+function scoreLibraryNameForDedupe(item) {
+  const name = normalizeText(item.name);
+  const identityCount = getPlaceIdentityKeys(item.name).length;
+  let score = item.score || 0;
+
+  if (!/\b(?:experience|visit|history deep dive|paper model|spectacle|tick|tower climb|pairing|circuit|wander|walk|evening|morning|afternoon)\b/.test(name)) {
+    score += 20;
+  }
+  if (name === basePlaceName(item.name)) {
+    score += 8;
+  }
+  if (item.category === "supplement") {
+    score += 2;
+  }
+  if (identityCount > 2) {
+    score -= 18;
+  }
+  if (/\b(?:and|to|plus)\b/.test(name) && identityCount > 1) {
+    score -= 8;
+  }
+  score -= Math.max(0, name.length - 36) * 0.03;
+
+  return score;
+}
+
+function chooseCleanerLibraryDuplicate(existing, candidate) {
+  return scoreLibraryNameForDedupe(candidate) > scoreLibraryNameForDedupe(existing)
+    ? candidate
+    : existing;
+}
+
 export function buildLibraryItems({ cityKey, guide, cantMiss, doThese, restaurants }) {
   const combined = [
     ...cantMiss.map((item, index) => normalizeLibraryItem(item, "sight", index, cityKey)),
@@ -429,20 +464,29 @@ export function buildLibraryItems({ cityKey, guide, cantMiss, doThese, restauran
     ...(categorySupplementLibraries[cityKey] || []).map((item, index) => normalizeLibraryItem(item, "supplement", index + 1000, cityKey)),
   ];
 
-  const seen = new Set();
-  return combined
+  const byPlace = new Map();
+  combined
     .map((item) => ({
       ...item,
       areaLabel: guide.hotelAreas[item.area]?.label || item.areaLabel || item.area,
     }))
-    .filter((item) => {
-      const key = basePlaceName(item.name);
-      if (seen.has(key)) {
-        return false;
+    .forEach((item) => {
+      const key = `${item.area || "any"}:${basePlaceName(item.name)}`;
+      const identityKeys = getPlaceIdentityKeys(item.name);
+      const conflictingKey = identityKeys.find((identityKey) => byPlace.has(identityKey));
+      const mapKey = conflictingKey || key;
+      const existing = byPlace.get(mapKey);
+      const chosen = existing ? chooseCleanerLibraryDuplicate(existing, item) : item;
+      if (existing && chosen === item) {
+        [...byPlace.entries()].forEach(([existingKey, value]) => {
+          if (value === existing) byPlace.delete(existingKey);
+        });
       }
-      seen.add(key);
-      return true;
+      identityKeys.forEach((identityKey) => byPlace.set(identityKey, chosen));
+      byPlace.set(key, chosen);
     });
+
+  return [...new Map([...byPlace.values()].map((item) => [item.id, item])).values()];
 }
 
 export function buildTripPlan({ cityKey, guide, startDate, endDate, arrivalTime = "afternoon", departureTime = "morning", budget, pace, focus, focuses, notes, hotelStatus, existingHotels, selectedHotelName = "" }, loadSavedItinerariesFn, populateSuggestedItineraryFn) {

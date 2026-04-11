@@ -1335,6 +1335,138 @@ button:active { transform: translateY(0); }
   gap: 24px;
 }
 
+.trip-adjust-panel,
+.area-compass-section {
+  border-color: rgba(92, 67, 42, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(248, 241, 231, 0.92));
+}
+
+.trip-adjust-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.trip-adjust-head .section-title,
+.area-compass-section .section-title {
+  margin-bottom: 8px;
+}
+
+.adjust-history-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 13px;
+  border-radius: var(--r-pill);
+  background: rgba(157, 101, 32, 0.09);
+  border: 1px solid rgba(157, 101, 32, 0.18);
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.trip-adjust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.trip-adjust-card {
+  width: 100%;
+  min-height: 112px;
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(43, 29, 20, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: none;
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.trip-adjust-card:hover {
+  background: rgba(255, 252, 247, 0.98);
+  border-color: rgba(157, 101, 32, 0.28);
+  box-shadow: none;
+  transform: none;
+}
+
+.trip-adjust-card span {
+  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.trip-adjust-card small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.area-compass-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.76fr) 1.24fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.area-compass-main {
+  padding-right: 18px;
+  border-right: 1px solid rgba(43, 29, 20, 0.08);
+}
+
+.area-compass-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.area-compass-grid article {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+}
+
+.area-compass-grid span,
+.day-quality-pill {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.area-compass-grid strong {
+  display: block;
+  margin: 10px 0 8px;
+  font-family: "Sora", sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.area-compass-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
 /* ─── Empty State ────────────────────────────────────────────────────────── */
 .empty-state {
   display: grid;
@@ -3095,6 +3227,22 @@ button:active { transform: translateY(0); }
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+.day-quality-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.day-quality-pill {
+  min-height: 26px;
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  background: rgba(157, 101, 32, 0.08);
+  border: 1px solid rgba(157, 101, 32, 0.14);
+  color: #9d6520;
+  letter-spacing: 0.12em;
+}
+
 .day-route-pills {
   display: flex;
   flex-wrap: wrap;
@@ -3434,12 +3582,25 @@ button:active { transform: translateY(0); }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .trip-adjust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .overlay-library-grid,
   .itinerary-only-grid,
   .compact-summary-grid,
   .lower-summary-grid,
-  .workspace-stats {
+  .workspace-stats,
+  .area-compass-section,
+  .area-compass-grid {
     grid-template-columns: 1fr;
+  }
+
+  .area-compass-main {
+    padding-right: 0;
+    padding-bottom: 18px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(43, 29, 20, 0.08);
   }
 
   .slot-stack {
@@ -3466,6 +3627,7 @@ button:active { transform: translateY(0); }
   .topbar-status,
   .workspace-note-row,
   .library-filter-summary-row,
+  .trip-adjust-head,
   .library-actions,
   .itinerary-focus-actions,
   .day-heading-actions,
@@ -3477,6 +3639,10 @@ button:active { transform: translateY(0); }
   }
 
   .library-actions .footer-note { max-width: none; }
+
+  .trip-adjust-grid {
+    grid-template-columns: 1fr;
+  }
 
   .hero-copy,
   .planner-card {

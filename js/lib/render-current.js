@@ -68,6 +68,118 @@ function renderWorkspaceStats(plan) {
   `;
 }
 
+function getTripAdjustmentOptions(plan) {
+  const options = [
+    { key: "more-local", label: "More local", detail: "Less obvious, more neighborhood-led picks." },
+    { key: "less-walking", label: "Less walking", detail: "Tighter routing with fewer cross-town jumps." },
+    { key: "more-food", label: "More food", detail: "Restaurants, cafes, markets, and snack stops lead more of the plan." },
+    { key: "more-premium", label: "More premium", detail: "More polished, reservation-worthy, special-feeling choices." },
+    { key: "more-relaxed", label: "More relaxed", detail: "Slower days with more breathing room." },
+    { key: "more-nightlife", label: "More nightlife", detail: "Stronger evening finishes and after-dark energy." },
+  ];
+
+  if ((plan.hotelRecommendations || []).some((hotel) => !hotel.isPrimary)) {
+    options.push({ key: "swap-base", label: "Try another base", detail: "Recenter the trip around another strong hotel area." });
+  }
+
+  return options;
+}
+
+function renderTripAdjustmentPanel(plan) {
+  const history = plan.adjustmentHistory || [];
+  return `
+    <section class="section-card trip-adjust-panel">
+      <div class="trip-adjust-head">
+        <div>
+          <p class="section-kicker">Adjust this trip</p>
+          <h3 class="section-title">Steer the itinerary without starting over</h3>
+          <p class="card-subtitle">Use these quick refinements when the plan is close, but you want it to lean more clearly in one direction.</p>
+        </div>
+        ${history.length ? `<span class="adjust-history-pill">${history.length} refinement${history.length === 1 ? "" : "s"} applied</span>` : ""}
+      </div>
+      <div class="trip-adjust-grid">
+        ${getTripAdjustmentOptions(plan).map((option) => `
+          <button class="trip-adjust-card" type="button" data-action="adjust-trip" data-adjustment="${escapeAttribute(option.key)}">
+            <span>${escapeHtml(option.label)}</span>
+            <small>${escapeHtml(option.detail)}</small>
+          </button>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function getAreaUsage(plan) {
+  const counts = new Map();
+  (plan.days || []).forEach((day) => {
+    (day.itineraryItems || []).forEach((item) => {
+      if (item.type === "transit_anchor") return;
+      const key = item.area || normalizeText(item.areaLabel || "");
+      if (!key) return;
+      const existing = counts.get(key) || {
+        key,
+        label: item.areaLabel || plan.guide.hotelAreas?.[key]?.label || key,
+        count: 0,
+      };
+      existing.count += 1;
+      counts.set(key, existing);
+    });
+  });
+  return [...counts.values()].sort((left, right) => right.count - left.count);
+}
+
+function renderAreaSummary(plan) {
+  const areas = getAreaUsage(plan);
+  const primary = areas[0] || { label: plan.hotelBase.areaLabel, count: 0 };
+  const adjacent = (plan.guide.areaAdjacency?.[plan.hotelBase.areaKey] || [])
+    .map((areaKey) => plan.guide.hotelAreas?.[areaKey]?.label)
+    .filter(Boolean)
+    .slice(0, 3);
+
+  return `
+    <section class="section-card area-compass-section">
+      <div class="area-compass-main">
+        <p class="section-kicker">Where the trip is centered</p>
+        <h3 class="section-title">${escapeHtml(primary.label)}</h3>
+        <p class="card-subtitle">${escapeHtml(plan.hotelBase.hotelName)} anchors the plan in ${escapeHtml(plan.hotelBase.areaLabel)}, with the busiest days clustered around areas that keep transit friction down.</p>
+      </div>
+      <div class="area-compass-grid">
+        <article>
+          <span>Hotel base</span>
+          <strong>${escapeHtml(plan.hotelBase.areaLabel)}</strong>
+          <p>${escapeHtml(plan.hotelBase.vibe)}</p>
+        </article>
+        <article>
+          <span>Most-used area</span>
+          <strong>${escapeHtml(primary.label)}</strong>
+          <p>${primary.count ? `${primary.count} planned stops appear here or connect through it.` : "The plan will build around this once stops are added."}</p>
+        </article>
+        <article>
+          <span>Easy adjacent areas</span>
+          <strong>${adjacent.length ? escapeHtml(adjacent.join(" / ")) : "Nearby cluster"}</strong>
+          <p>These are the easiest areas to pair without making the day feel scattered.</p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+function getDayQualityLabels(day, plan) {
+  const items = day.itineraryItems || [];
+  const areas = [...new Set(items.map((item) => item.area).filter(Boolean))];
+  const categories = items.map((item) => item.categoryLabel).filter(Boolean);
+  const labels = [];
+
+  if (areas.length <= 2) labels.push("Low transit");
+  if (items.some((item) => item.cuisine || item.categoryLabel === "Food")) labels.push("Food-forward");
+  if (categories.some((category) => ["Cultural Sight", "Museum"].includes(category))) labels.push("Culture day");
+  if (items.some((item) => item.slot === "late-night" || item.categoryLabel === "Nightlife & Entertainment")) labels.push("Nightlife finish");
+  if (items.some((item) => ["Museum", "Shopping"].includes(item.categoryLabel))) labels.push("Rain-friendly");
+  if (areas.includes(plan.hotelBase.areaKey)) labels.push("Hotel-adjacent");
+
+  return [...new Set(labels)].slice(0, 4);
+}
+
 function renderDayMeta(day) {
   const plannedStops = (day.itineraryItems || []).length;
   const areaCount = [...new Set((day.itineraryItems || []).map((item) => item.areaLabel || item.area).filter(Boolean))].length;
@@ -104,16 +216,16 @@ export function getOverlayCopy(mode) {
   if (mode === "replace") {
     return {
       kicker: "Replace a stop",
-      title: "Swap in something that fits better",
-      body: "Choose a better-fit restaurant, sight, museum, or neighborhood stop and TripTrellis will replace the current item in place.",
-      subtle: "Only places not already used in the itinerary are shown here, so the swap list stays clean.",
+      title: "Choose the strongest alternate for this exact moment",
+      body: "TripTrellis sorts options by day fit, nearby routing, and variety so replacements feel intentional instead of random.",
+      subtle: "Already-used places are hidden, and the top groups prioritize options that fit this day's area and rhythm.",
     };
   }
 
   return {
     kicker: "Add to itinerary",
     title: "Choose something to add",
-    body: "This is the full city library. Filter by category, search by name or description, and add the next stop only when you actually want it.",
+    body: "Browse the city library with smarter sorting for best fit, nearby areas, and options that add something different to the day.",
     subtle: "If you opened this from a specific day, the new stop will go there. Otherwise TripTrellis will place it in the most logical day.",
   };
 }
@@ -265,6 +377,13 @@ function getSavedTripDescription(trip) {
   return "A saved trip brief with your hotel, pacing, and itinerary edits preserved.";
 }
 
+function formatSavedTripUpdatedAt(trip) {
+  if (!trip.updatedAt) return "";
+  const date = new Date(trip.updatedAt);
+  if (Number.isNaN(date.getTime())) return "";
+  return `Last edited ${date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+}
+
 function renderSavedQuickFilters(savedTrips, activeFilter = "all") {
   const seen = new Set();
   const filters = savedTrips
@@ -341,7 +460,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                   ${getSavedTripTags(trip).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
                 </div>
                 <div class="saved-card-footer">
-                  <span class="saved-card-hotel">${escapeHtml(trip.hotelName || "Hotel base saved")}</span>
+                  <span class="saved-card-hotel">${escapeHtml([trip.hotelName || "Hotel base saved", formatSavedTripUpdatedAt(trip)].filter(Boolean).join(" • "))}</span>
                   <div class="saved-actions">
                     <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Reopen trip</button>
                     <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Download</button>
@@ -412,6 +531,9 @@ export function renderTripPlan(plan, results) {
         </div>
         ${renderWorkspaceStats(plan)}
       </section>
+
+      ${renderTripAdjustmentPanel(plan)}
+      ${renderAreaSummary(plan)}
 
       <section class="summary-grid compact-summary-grid">
         <article class="info-card selected-hotel-card">
@@ -507,6 +629,7 @@ export function renderTripPlan(plan, results) {
         <div class="itinerary-focus-actions">
           <button class="secondary-button" data-action="open-library" type="button">Add to itinerary</button>
           <button class="secondary-button" data-action="save-itinerary" type="button">Save itinerary</button>
+          <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
         </div>
       </div>
       <div class="day-grid itinerary-only-grid">
@@ -523,6 +646,9 @@ export function renderTripPlan(plan, results) {
               </div>
             </div>
             <div class="day-intro">
+              <div class="day-quality-row">
+                ${getDayQualityLabels(day, plan).map((label) => `<span class="day-quality-pill">${escapeHtml(label)}</span>`).join("")}
+              </div>
               <div class="day-route-pills">
                 <span class="route-pill route-pill--hotel">${day.baseNote}</span>
                 <span class="route-pill route-pill--flow">${day.flow}</span>
@@ -571,6 +697,7 @@ export function renderTripPlan(plan, results) {
       </div>
       <div class="itinerary-bottom-actions">
         <button class="secondary-button" data-action="save-itinerary" type="button">Save itinerary</button>
+        <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
       </div>
     </section>
 
@@ -676,7 +803,7 @@ export function buildPrintableItineraryHtml(plan) {
     : ["Double-check reservations, ticketed sights, and any timed entries before you go."];
   const focusLabel = formatFocus((plan?.focuses && plan.focuses.length) ? plan.focuses : [plan?.focus].filter(Boolean)) || "Custom trip";
   const budgetLabel = plan?.budgetProfile?.label || plan?.budget || "Planned budget";
-  const dayMarkup = (plan?.days || []).map((day) => `
+  const dayMarkup = (plan?.days || []).map((day, dayIndex) => `
     <section class="print-day">
       <header class="print-day-head">
         <div>
