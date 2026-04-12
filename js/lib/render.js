@@ -9,8 +9,15 @@ function displayCategoryLabel(category) {
   return category === "Nightlife & Entertainment" ? "Nightlife" : category;
 }
 
+function displayMichelinLabel(status) {
+  const value = String(status || "").trim();
+  if (!value) return "";
+  if (value === "MICHELIN Guide") return "Guide";
+  return value;
+}
+
 export function renderLibraryMetaLine(item) {
-  return [displayCategoryLabel(item.categoryLabel), item.areaLabel, item.cuisine, item.priceTier].filter(Boolean).join(" • ");
+  return [displayCategoryLabel(item.categoryLabel), item.areaLabel, item.cuisine, item.priceTier, displayMichelinLabel(item.michelinStatus)].filter(Boolean).join(" • ");
 }
 
 export function renderItemBadges(item, options = {}) {
@@ -22,6 +29,9 @@ export function renderItemBadges(item, options = {}) {
 
   if (item.categoryLabel) {
     tags.push(`<span class="lib-tag lib-tag--category">${escapeHtml(displayCategoryLabel(item.categoryLabel))}</span>`);
+  }
+  if (item.michelinStatus) {
+    tags.push(`<span class="lib-tag lib-tag--michelin">${escapeHtml(displayMichelinLabel(item.michelinStatus))}</span>`);
   }
   const areaLabel = item.areaLabel || item.area;
   if (areaLabel) {
@@ -309,6 +319,13 @@ function renderFitNote(fitNote) {
       <span>${escapeHtml(note)}</span>
     </div>
   `;
+}
+
+function renderGuideNote(item, className = "library-guide-note") {
+  if (!item?.michelinStatus && !item?.guideNote) return "";
+  const lead = item?.michelinStatus ? `${displayMichelinLabel(item.michelinStatus)}:` : "Guide note:";
+  const note = item?.guideNote || "Verified in the official MICHELIN Guide.";
+  return `<p class="${className}"><strong>${escapeHtml(lead)}</strong> ${escapeHtml(note)}</p>`;
 }
 
 function renderSelectedHotelNarrative(plan) {
@@ -736,9 +753,10 @@ export function renderTripPlan(plan, results) {
                         data-itinerary-id="${item.id}"
                         data-day-index="${dayIndex}"
                       >
-                        ${renderItemBadges({ categoryLabel: item.categoryLabel || "Stop", priceTier: item.priceTier, areaLabel: item.areaLabel || item.area }, { rowClass: "lib-tag-row lib-tag-row--itinerary" })}
+                        ${renderItemBadges({ categoryLabel: item.categoryLabel || "Stop", priceTier: item.priceTier, areaLabel: item.areaLabel || item.area, michelinStatus: item.michelinStatus }, { rowClass: "lib-tag-row lib-tag-row--itinerary" })}
                         <strong>${item.title}</strong>
                         <p>${item.description}</p>
+                        ${renderGuideNote(item, "item-guide-note")}
                         ${renderFitNote(item.fitNote)}
                         ${item.detailLine ? `<p class="footer-note item-detail">${item.detailLine}</p>` : ""}
                         ${item.type === "transit_anchor" ? "" : `<div class="item-actions">
@@ -821,6 +839,7 @@ export function renderTripPlan(plan, results) {
                       ${renderLibraryTags(item)}
                       <h4>${item.name}</h4>
                       <p>${item.description}</p>
+                      ${renderGuideNote(item)}
                       ${item.libraryMatch?.reasons?.length ? `<p class="library-match-line">${item.libraryMatch.reasons.join(" • ")}</p>` : ""}
                       <div class="library-actions">
                         <span class="footer-note">${item.detailLine}</span>

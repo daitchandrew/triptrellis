@@ -421,6 +421,9 @@ export function normalizeLibraryItem(item, category, index, cityKey = "") {
     reservation: normalizedItem.reservation,
     cuisine,
     priceTier,
+    michelinStatus: normalizedItem.michelinStatus || "",
+    guideNote: normalizedItem.guideNote || "",
+    guideUrl: normalizedItem.guideUrl || "",
     score: item.score || 0,
   };
 }

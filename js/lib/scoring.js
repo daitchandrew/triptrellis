@@ -121,7 +121,7 @@ function scoreIntentFlagsForHotel(hotel, guide, noteProfile) {
 
 function scoreIntentFlagsForItem(item, guide, noteProfile, categoryLabel, options) {
   let score = 0;
-  const haystack = normalizeText(`${item.name} ${item.description || ""} ${item.reservation || ""} ${item.cuisine || ""} ${(item.tags || []).join(" ")} ${guide.hotelAreas[item.area]?.label || ""} ${categoryLabel}`);
+  const haystack = normalizeText(`${item.name} ${item.description || ""} ${item.reservation || ""} ${item.cuisine || ""} ${item.michelinStatus || ""} ${item.guideNote || ""} ${(item.tags || []).join(" ")} ${guide.hotelAreas[item.area]?.label || ""} ${categoryLabel}`);
 
   if (noteProfile.intentFlags.includes("walkable")) {
     if ((item.tags || []).includes("walkability")) score += 1.8;
@@ -320,9 +320,17 @@ export function scoreItem(item, guide, hotelBase, noteProfile, focuses, budget, 
     }
   });
 
-  const itemHaystack = normalizeText(`${item.name} ${item.description || ""} ${item.reservation || ""} ${item.cuisine || ""} ${(item.tags || []).join(" ")} ${guide.hotelAreas[item.area]?.label || ""} ${categoryLabel}`);
+  const itemHaystack = normalizeText(`${item.name} ${item.description || ""} ${item.reservation || ""} ${item.cuisine || ""} ${item.michelinStatus || ""} ${item.guideNote || ""} ${(item.tags || []).join(" ")} ${guide.hotelAreas[item.area]?.label || ""} ${categoryLabel}`);
   score += scoreNoteTextMatch(itemHaystack, noteProfile.preferredTerms || [], noteProfile.avoidTerms || [], 1.05, 1.9);
   score += scoreIntentFlagsForItem(item, guide, noteProfile, categoryLabel, options);
+
+  if (categoryLabel === "Food" && item.michelinStatus) {
+    if (item.michelinStatus === "Three Stars") score += 2.8;
+    else if (item.michelinStatus === "Two Stars") score += 2.2;
+    else if (item.michelinStatus === "One Star") score += 1.6;
+    else if (item.michelinStatus === "Bib Gourmand") score += 1.15;
+    else score += 0.7;
+  }
 
   const areaStrengths = guide.hotelAreas[item.area]?.strengths || [];
   areaStrengths.forEach((strength) => {

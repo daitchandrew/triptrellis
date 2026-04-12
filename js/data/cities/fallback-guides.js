@@ -24,8 +24,8 @@ function activity(name, area, tags, description) {
   return { name, area, tags, description };
 }
 
-function food(name, area, tags, cuisine, description, reservation = "") {
-  return { name, area, tags, cuisine, description, reservation };
+function food(name, area, tags, cuisine, description, reservation = "", extras = {}) {
+  return { name, area, tags, cuisine, description, reservation, ...extras };
 }
 
 function buildGuide({
@@ -294,7 +294,11 @@ export const fallbackCityGuides = {
       activity("Le Marais gallery and vintage drift", "marais", ["shopping", "design"], "A stronger current-feeling right-bank block when the trip leans browse-heavy."),
     ],
     food: [
-      food("Septime", "marais", ["food", "luxury"], "Contemporary French", "A destination dinner if you want one headline modern Paris reservation.", "Reserve ahead."),
+      food("Septime", "marais", ["food", "luxury"], "Contemporary French", "A destination dinner if you want one headline modern Paris reservation.", "Reserve ahead.", {
+        michelinStatus: "One Star",
+        guideNote: "Michelin highlights its confident modern cooking and cool industrial room.",
+        guideUrl: "https://guide.michelin.com/es/es/ile-de-france/paris/restaurante/septime",
+      }),
       food("Clamato", "marais", ["food"], "Seafood small plates", "A smart lively dinner that still feels very Paris right now."),
       food("Le Comptoir du Relais", "saint-germain", ["food"], "Bistro", "A classic Left Bank bistro move if you can work around the queues."),
       food("Breizh Café", "marais", ["food"], "Crêpes and cider", "A flexible lighter meal that still feels specific to the city."),
@@ -354,7 +358,11 @@ export const fallbackCityGuides = {
       activity("Montjuïc garden and cable-car edge", "barceloneta", ["nature", "design"], "A worthwhile bigger half-day if the trip wants more views and a different city texture."),
     ],
     food: [
-      food("Disfrutar", "eixample", ["food", "luxury"], "Contemporary tasting menu", "One of the biggest destination dinners in the city.", "Reserve far ahead."),
+      food("Disfrutar", "eixample", ["food", "luxury"], "Contemporary tasting menu", "One of the biggest destination dinners in the city.", "Reserve far ahead.", {
+        michelinStatus: "Three Stars",
+        guideNote: "Michelin positions it as a benchmark Barcelona splurge built around highly inventive creative cooking.",
+        guideUrl: "https://guide.michelin.com/en/catalunya/barcelona/restaurant/disfrutar",
+      }),
       food("Bar Cañete", "gothic", ["food", "nightlife"], "Tapas", "A stronger lively dinner than a generic tourist-tapas stop."),
       food("Cal Pep", "gothic", ["food"], "Seafood tapas", "A classic old-city meal stop if you can handle the queue."),
       food("Xurreria Laietana", "gothic", ["food", "cafes"], "Churros", "A small specific sweet stop that works especially well at night."),
@@ -534,7 +542,11 @@ export const fallbackCityGuides = {
       activity("Feira da Ladra or flea-market texture block", "alfama", ["shopping", "culture"], "A useful local-feeling add-on if the dates line up and the trip wants more texture."),
     ],
     food: [
-      food("Belcanto", "baixa", ["food", "luxury"], "Contemporary Portuguese", "A major splurge dinner if the trip wants one serious reservation.", "Reserve ahead."),
+      food("Belcanto", "baixa", ["food", "luxury"], "Contemporary Portuguese", "A major splurge dinner if the trip wants one serious reservation.", "Reserve ahead.", {
+        michelinStatus: "Two Stars",
+        guideNote: "Michelin describes Belcanto as Jose Avillez's showcase for creative Portuguese cooking in Chiado.",
+        guideUrl: "https://guide.michelin.com/my/en/lisboa-region/lisboa/restaurant/belcanto",
+      }),
       food("Cervejaria Ramiro", "baixa", ["food"], "Seafood", "A high-energy classic that still earns a place if you want one headline seafood meal."),
       food("Taberna Sal Grosso", "alfama", ["food"], "Lisbon small plates", "A stronger neighborhood dinner with more local mood than the obvious options."),
       food("Pastéis de Belém", "belem", ["food", "cafes"], "Pastries", "Still the classic sweet stop if the day is already in Belém."),
@@ -1090,7 +1102,11 @@ export const fallbackCitySupplements = {
     activity("Broadway or jazz-club night", "midtown", ["nightlife", "culture"], "A useful bigger-evening anchor when the trip wants one classic New York night."),
     food("Don Angie", "west-village", ["food"], "Italian-American", "A stronger Village dinner if the trip wants one more polished downtown reservation room."),
     food("Los Tacos No. 1", "soho", ["food", "value"], "Tacos", "A lower-friction stop that still feels very New York in how useful it is."),
-    food("Crown Shy", "midtown", ["food"], "Contemporary American", "A strong polished dinner if the day is running more central or financial-district adjacent."),
+    food("Crown Shy", "midtown", ["food"], "Contemporary American", "A strong polished dinner if the day is running more central or financial-district adjacent.", "", {
+      michelinStatus: "One Star",
+      guideNote: "Michelin praises the soaring Art Deco room and the kitchen's approachable but precise modern American style.",
+      guideUrl: "https://guide.michelin.com/tr/tr/new-york-state/new-york/restaurant/crown-shy",
+    }),
     sight("The Cloisters or upper-Hudson detour", "midtown", ["culture", "nature"], "A bigger northbound move if the trip wants one more unusual and atmospheric museum setting."),
     activity("Williamsburg dinner-and-walk night", "soho", ["nightlife", "food", "design"], "A stronger Brooklyn evening if the trip wants one more current-feeling night out."),
     food("Cervo's", "lower-east-side", ["food", "nightlife"], "Seafood and Iberian small plates", "A smart Lower East Side dinner if the night wants something lively but not too formal."),

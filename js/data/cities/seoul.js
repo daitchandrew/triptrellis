@@ -614,7 +614,10 @@ export const seoulGuide = {
       ],
       "cuisine": "Modern Korean tasting",
       "reservation": "Book 3 to 4 weeks early.",
-      "description": "An elegant ingredient-driven Seoul dinner for your major reservation."
+      "description": "An elegant ingredient-driven Seoul dinner for your major reservation.",
+      "michelinStatus": "Three Stars",
+      "guideNote": "Michelin highlights Mingles for its elegant minimalism and deeply modern use of Korean ferments.",
+      "guideUrl": "https://guide.michelin.com/ae-du/en/seoul-capital-area/kr-seoul/restaurant/mingles"
     },
     {
       "name": "Born & Bred",
@@ -689,7 +692,10 @@ export const seoulGuide = {
       ],
       "cuisine": "Refined Korean",
       "reservation": "Reserve early.",
-      "description": "A composed, beautiful dinner choice for a culture-first Seoul day."
+      "description": "A composed, beautiful dinner choice for a culture-first Seoul day.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin notes its calm palace-side setting and research-driven reinterpretation of traditional Korean cooking.",
+      "guideUrl": "https://guide.michelin.com/en/seoul-capital-area/kr-seoul/restaurant/onjium"
     },
     {
       "name": "Cha Masineun Tteul",

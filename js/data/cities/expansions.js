@@ -20,6 +20,7 @@ export const expandedSupplementLibraries = {
     { categoryLabel: "Place to Wander", name: "Kagurazaka backstreets", area: "shinjuku", description: "Sloping lanes, small restaurants, shrines, and French-Japanese texture make this one of Tokyo's most rewarding evening wanders." },
     { categoryLabel: "Shopping", name: "Kappabashi Kitchen Town", area: "asakusa", description: "A specialty shopping street for knives, ceramics, cookware, and plastic food models between Ueno and Asakusa." },
     { categoryLabel: "Food", name: "Ginza Hachigo", area: "ginza", description: "A precise, quietly elegant ramen shop known for a French-inflected broth and a more refined noodle-stop mood." },
+    { categoryLabel: "Food", name: "Harutaka", area: "ginza", description: "A major Ginza sushi splurge if the trip wants one truly elite, deeply traditional omakase counter.", michelinStatus: "Three Stars", guideNote: "Michelin frames Harutaka as one of Tokyo's defining high-end sushi experiences.", guideUrl: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/harutaka" },
     { categoryLabel: "Food", name: "Maisen Aoyama", area: "shibuya", description: "A beloved tonkatsu restaurant in a former bathhouse, useful for a polished but approachable comfort-food meal." },
     { categoryLabel: "Nightlife & Entertainment", name: "WWW X Shibuya", area: "shibuya", description: "A respected live-music venue for indie, electronic, and touring acts when the night should be music-led rather than bar-led." }
   ],
@@ -87,90 +88,123 @@ export const expandedSupplementLibraries = {
     { categoryLabel: "Food", name: "Tekka Centre breakfast run", area: "chinatown", description: "A great morning hawker stop for prata, biryani, and stronger Little India food texture." },
     { categoryLabel: "Place to Wander", name: "Joo Chiat shophouse walk", area: "kampong-glam", description: "A colorful residential stretch of shophouses, cafés, and Peranakan detail beyond the central core." },
     { categoryLabel: "Nature", name: "Southern Ridges walk segment", area: "marina-bay", description: "A greener elevated trail option if the trip wants one more open-air urban nature block." },
-    { categoryLabel: "Food", name: "Ah Tai Hainanese Chicken Rice", area: "chinatown", description: "A useful Maxwell-area chicken-rice alternative when the hawker day wants another classic benchmark." }
+    { categoryLabel: "Food", name: "Ah Tai Hainanese Chicken Rice", area: "chinatown", description: "A useful Maxwell-area chicken-rice alternative when the hawker day wants another classic benchmark." },
+    { categoryLabel: "Museum", name: "Gillman Barracks galleries", area: "marina-bay", description: "A stronger contemporary-art stop if the trip wants one more current creative layer outside the central core." },
+    { categoryLabel: "Food", name: "328 Katong Laksa", area: "kampong-glam", description: "A classic laksa stop if the east-side day wants something unmistakably Singaporean." }
   ],
   "hong-kong": [
     { categoryLabel: "Place to Wander", name: "Star Street and Wan Chai slope walk", area: "central", description: "A quieter island-side district of cafés, boutiques, and mid-slope streets that fits nicely into a Central day." },
     { categoryLabel: "Cultural Sight", name: "Hong Kong Tram upper-deck ride", area: "causeway-bay", description: "A small but useful city-texture move if the day wants a slower look at the island corridor." },
     { categoryLabel: "Food", name: "Sun Hing Restaurant", area: "causeway-bay", description: "A no-frills dim sum stop that works especially well for an early breakfast or brunch." },
-    { categoryLabel: "Nature", name: "Dragon's Back section hike", area: "causeway-bay", description: "A worthwhile outdoor half-day if the trip wants one real green-and-sea escape from the urban core." }
+    { categoryLabel: "Nature", name: "Dragon's Back section hike", area: "causeway-bay", description: "A worthwhile outdoor half-day if the trip wants one real green-and-sea escape from the urban core." },
+    { categoryLabel: "Museum", name: "M+ West Kowloon", area: "tsim-sha-tsui", description: "A major design-and-visual-culture museum if the trip wants one more serious contemporary anchor on the Kowloon side." },
+    { categoryLabel: "Nightlife & Entertainment", name: "Temple Street night market", area: "tsim-sha-tsui", description: "A useful late-evening wander for food, bustle, and a grittier side of Kowloon energy." }
   ],
   bali: [
     { categoryLabel: "Cultural Sight", name: "Pura Taman Saraswati", area: "ubud", description: "A lotus-lined temple stop in central Ubud that fits naturally into a slower walking day." },
     { categoryLabel: "Nightlife & Entertainment", name: "Potato Head Beach Club sunset", area: "seminyak", description: "A polished beach-club afternoon if the west side of the trip should feel more social and design-forward." },
     { categoryLabel: "Food", name: "Sangsaka", area: "seminyak", description: "A sharper Seminyak dinner for modern Indonesian cooking with more depth than the average stylish room." },
-    { categoryLabel: "Nature", name: "Sidemen valley outlook", area: "ubud", description: "A quieter east-Bali countryside contrast if the trip wants terraced landscapes beyond the closest Ubud loop." }
+    { categoryLabel: "Nature", name: "Sidemen valley outlook", area: "ubud", description: "A quieter east-Bali countryside contrast if the trip wants terraced landscapes beyond the closest Ubud loop." },
+    { categoryLabel: "Nature", name: "Nyang Nyang Beach viewpoint", area: "uluwatu", description: "A more dramatic southern-coast stop if the day wants cliffs and ocean without defaulting to the busiest beaches." },
+    { categoryLabel: "Food", name: "Bambu Indah riverside lunch", area: "ubud", description: "A beautiful Ubud-adjacent meal if the trip wants one more nature-rich daytime table." }
   ],
   paris: [
     { categoryLabel: "Museum", name: "Musée Carnavalet", area: "marais", description: "A strong, quieter museum for the story of Paris right in the middle of a Marais day." },
     { categoryLabel: "Food", name: "Le Bon Georges", area: "opera", description: "A dependable bistro dinner if the trip wants one more traditional Paris room with real warmth." },
     { categoryLabel: "Place to Wander", name: "Rue des Martyrs stroll", area: "montmartre", description: "A lively market-and-bakery street that gives north Paris a stronger everyday rhythm." },
-    { categoryLabel: "Food", name: "Breizh Café Odéon", area: "saint-germain", description: "A useful Left Bank crêpe-and-cider stop when the day wants something easier and still very Paris." }
+    { categoryLabel: "Food", name: "Breizh Café Odéon", area: "saint-germain", description: "A useful Left Bank crêpe-and-cider stop when the day wants something easier and still very Paris." },
+    { categoryLabel: "Museum", name: "Bourse de Commerce", area: "opera", description: "A striking contemporary-art stop if the central Paris day wants one more sharper interior and design moment." },
+    { categoryLabel: "Nature", name: "Parc Monceau loop", area: "opera", description: "A polished green reset if the right-bank day wants one more elegant open-air pause." }
   ],
   barcelona: [
     { categoryLabel: "Cultural Sight", name: "Casa Vicens", area: "gracia", description: "A worthwhile Gaudí stop if the trip wants more architectural depth without repeating the biggest hits." },
     { categoryLabel: "Food", name: "Bar del Pla", area: "gothic", description: "A lively old-city table for tapas and Catalan plates that works well on a central evening." },
     { categoryLabel: "Food", name: "Bodega Biarritz 1881", area: "gothic", description: "A useful Gothic-quarter dinner if the night should stay central and easy." },
-    { categoryLabel: "Shopping", name: "Passeig del Born boutiques", area: "gothic", description: "A polished browse-heavy stretch if the old-city day leans style and design." }
+    { categoryLabel: "Shopping", name: "Passeig del Born boutiques", area: "gothic", description: "A polished browse-heavy stretch if the old-city day leans style and design." },
+    { categoryLabel: "Museum", name: "Fundació Joan Miró", area: "barceloneta", description: "A strong Montjuïc-side art stop if the day wants one more modern cultural anchor." },
+    { categoryLabel: "Food", name: "El Xampanyet", area: "gothic", description: "A classic Born-side cava-and-tapas stop if the old-city evening should feel lively and local." },
+    { categoryLabel: "Food", name: "Mont Bar", area: "eixample", description: "A polished Barcelona reservation if the trip wants one inventive smaller-plates dinner with real technique.", michelinStatus: "Two Stars", guideNote: "Michelin describes Mont Bar as a must-book Barcelona gastro-bar built around refined creative plates.", guideUrl: "https://guide.michelin.com/en/catalunya/barcelona/restaurant/mont-bar" }
   ],
   venice: [
     { categoryLabel: "Nightlife & Entertainment", name: "Fondamenta della Misericordia aperitivo stretch", area: "cannaregio", description: "A stronger Cannaregio evening block if the trip wants local energy away from the busiest ceremonial core." },
     { categoryLabel: "Food", name: "Da Lele", area: "dorsoduro", description: "A great low-friction stop for panini and spritz on a Dorsoduro-heavy day." },
     { categoryLabel: "Place to Wander", name: "Campo Santa Margherita evening", area: "dorsoduro", description: "A useful square-and-side-street zone if the night should stay social but not formal." },
-    { categoryLabel: "Cultural Sight", name: "Madonna dell'Orto", area: "cannaregio", description: "A quieter Tintoretto-rich church stop that deepens a Cannaregio route nicely." }
+    { categoryLabel: "Cultural Sight", name: "Madonna dell'Orto", area: "cannaregio", description: "A quieter Tintoretto-rich church stop that deepens a Cannaregio route nicely." },
+    { categoryLabel: "Shopping", name: "Libreria Acqua Alta", area: "castello", description: "A small, eccentric bookshop stop that works best as part of a slower Castello wander." },
+    { categoryLabel: "Food", name: "Cantina Do Mori", area: "san-marco", description: "A classic cicchetti bar near Rialto if the central Venice day wants one more old-school stop." }
   ],
   amsterdam: [
     { categoryLabel: "Museum", name: "Foam Photography Museum", area: "canal-belt", description: "A strong smaller museum if the canal-belt day wants one more contemporary visual-art stop." },
     { categoryLabel: "Food", name: "Café Winkel 43", area: "jordaan", description: "A classic Jordaan pause for apple pie and coffee that slots naturally into a neighborhood walk." },
     { categoryLabel: "Place to Wander", name: "Haarlemmerdijk and Haarlemmerstraat", area: "jordaan", description: "A useful shopping-and-coffee corridor when the trip wants one more local-feeling central stroll." },
-    { categoryLabel: "Food", name: "De Kas", area: "museumplein", description: "A major garden-to-table dinner if the trip wants one more high-quality Amsterdam splurge." }
+    { categoryLabel: "Food", name: "De Kas", area: "museumplein", description: "A major garden-to-table dinner if the trip wants one more high-quality Amsterdam splurge." },
+    { categoryLabel: "Food", name: "Foodhallen Amsterdam", area: "de-pijp", description: "A useful lower-pressure stop if the day wants a flexible lunch or snack-heavy evening." },
+    { categoryLabel: "Cultural Sight", name: "Our Lord in the Attic Museum", area: "canal-belt", description: "A compact, surprising historic house museum with a hidden church that deepens a central-city day nicely." }
   ],
   lisbon: [
     { categoryLabel: "Food", name: "Tasca da Esquina", area: "principe-real", description: "A stronger neighborhood-led dinner if the trip wants one polished Príncipe Real table." },
     { categoryLabel: "Cultural Sight", name: "Estrela Basilica and garden", area: "principe-real", description: "A calmer west-central heritage stop if the trip wants more breathing room between hill districts." },
     { categoryLabel: "Food", name: "Senhor Uva", area: "principe-real", description: "A smart natural-wine and vegetarian-led dinner when the night should feel current and intimate." },
-    { categoryLabel: "Place to Wander", name: "Mouraria lanes at golden hour", area: "alfama", description: "A textured hillside walk if the trip wants one more local-feeling old-core sequence outside the biggest viewpoints." }
+    { categoryLabel: "Place to Wander", name: "Mouraria lanes at golden hour", area: "alfama", description: "A textured hillside walk if the trip wants one more local-feeling old-core sequence outside the biggest viewpoints." },
+    { categoryLabel: "Nightlife & Entertainment", name: "Pavilhão Chinês", area: "principe-real", description: "A wonderfully eccentric bar if the night should feel atmospheric and distinctly Lisbon." },
+    { categoryLabel: "Food", name: "Cervejaria da Esquina", area: "principe-real", description: "A strong seafood-forward meal if the trip wants one more polished western-central dinner." },
+    { categoryLabel: "Food", name: "100 Maneiras", area: "baixa", description: "A high-concept Lisbon splurge for travelers who want a more theatrical, chef-driven tasting-menu night.", michelinStatus: "MICHELIN Guide", guideNote: "Michelin highlights its risk-taking creative menus and highly personal chef-led point of view.", guideUrl: "https://guide.michelin.com/pt/pt_PT/lisboa-region/lisboa/restaurant/100-maneiras" }
   ],
   "new-york": [
     { categoryLabel: "Place to Wander", name: "McNally Jackson and Nolita browse", area: "soho", description: "A softer downtown block of bookstores, side streets, and coffee if the day wants texture over landmarks." },
     { categoryLabel: "Food", name: "Café Chelsea breakfast room", area: "midtown", description: "A polished morning start if the day begins on the west side of Manhattan." },
     { categoryLabel: "Food", name: "Thai Diner", area: "lower-east-side", description: "A stronger Lower East Side meal if the trip wants one more current downtown restaurant." },
-    { categoryLabel: "Cultural Sight", name: "Jefferson Market Library and Village lanes", area: "west-village", description: "A good Village add-on if the day wants a little more neighborhood detail and less straight-through walking." }
+    { categoryLabel: "Cultural Sight", name: "Jefferson Market Library and Village lanes", area: "west-village", description: "A good Village add-on if the day wants a little more neighborhood detail and less straight-through walking." },
+    { categoryLabel: "Museum", name: "Morgan Library & Museum", area: "midtown", description: "A beautiful smaller museum if the trip wants one more literary and architectural interior in Midtown." },
+    { categoryLabel: "Place to Wander", name: "Harlem brownstone and Lenox stretch", area: "midtown", description: "A worthwhile uptown add-on if the trip wants one more neighborhood-led New York route." },
+    { categoryLabel: "Food", name: "Semma", area: "west-village", description: "A standout West Village reservation if the trip wants one sharply specific, regionally focused Indian dinner.", michelinStatus: "One Star", guideNote: "Michelin highlights its deeply rooted regional South Indian cooking and confident use of spice.", guideUrl: "https://guide.michelin.com/gb/en/new-york-state/new-york/restaurant/semma" }
   ],
   "los-angeles": [
     { categoryLabel: "Food", name: "Petit Trois", area: "west-hollywood", description: "A stronger central dinner if the trip wants one more classic LA room with lively bistro energy." },
     { categoryLabel: "Nature", name: "Huntington gardens half-day", area: "silver-lake", description: "A worthwhile bigger outing if the trip wants one calmer landscape-and-library contrast to the usual LA loop." },
     { categoryLabel: "Food", name: "Langer's Delicatessen", area: "downtown-la", description: "A classic LA lunch stop that gives the city one more old-school institution beyond trendier neighborhoods." },
-    { categoryLabel: "Shopping", name: "Platform Culver City browse", area: "santa-monica", description: "A useful west-side design-and-shopping stop if the trip wants one more polished retail pocket." }
+    { categoryLabel: "Shopping", name: "Platform Culver City browse", area: "santa-monica", description: "A useful west-side design-and-shopping stop if the trip wants one more polished retail pocket." },
+    { categoryLabel: "Cultural Sight", name: "Hollyhock House", area: "silver-lake", description: "A strong architecture stop if the east-side day wants one more specific LA design landmark." },
+    { categoryLabel: "Food", name: "Maru Coffee Los Feliz", area: "silver-lake", description: "A polished coffee stop that fits naturally into a Los Feliz or Silver Lake morning." }
   ],
   "mexico-city": [
     { categoryLabel: "Nature", name: "Parque México and Avenida Amsterdam loop", area: "condesa", description: "A strong Condesa add-on if the trip wants more boulevard-and-park texture built into the day." },
     { categoryLabel: "Food", name: "Tacos Los Alexis", area: "roma-norte", description: "A useful late taco stop when the Roma Norte night runs longer and the trip wants something direct and local." },
     { categoryLabel: "Museum", name: "Museo Tamayo", area: "polanco", description: "A smart west-side modern-art stop if the trip wants one more museum that does not feel too heavy." },
-    { categoryLabel: "Food", name: "Taquería Los Cocuyos", area: "centro", description: "A stronger Centro taco stop if the old-core day wants one more classic local meal." }
+    { categoryLabel: "Food", name: "Taquería Los Cocuyos", area: "centro", description: "A stronger Centro taco stop if the old-core day wants one more classic local meal." },
+    { categoryLabel: "Cultural Sight", name: "Casa Estudio Diego Rivera y Frida Kahlo", area: "condesa", description: "A worthwhile southern-side design-and-history stop if the trip wants one more artist-specific house museum." },
+    { categoryLabel: "Food", name: "El Moro Centro", area: "centro", description: "A classic stop for churros and chocolate if the Centro day needs one more iconic sweet break." }
   ],
   "buenos-aires": [
     { categoryLabel: "Shopping", name: "Mercado de San Telmo", area: "san-telmo", description: "A strong south-side market browse if the timing lines up and the trip wants more local texture." },
     { categoryLabel: "Food", name: "Café Tortoni", area: "san-telmo", description: "Worth doing once if the trip wants a classic Buenos Aires coffee-room moment." },
     { categoryLabel: "Nature", name: "Bosques de Palermo morning walk", area: "palermo", description: "A useful greener add-on if the Palermo day should feel more open and less entirely restaurant-led." },
-    { categoryLabel: "Food", name: "Parrilla Peña", area: "recoleta", description: "A smart lower-key steakhouse if the trip wants one more reliable traditional meal beyond the most famous rooms." }
+    { categoryLabel: "Food", name: "Parrilla Peña", area: "recoleta", description: "A smart lower-key steakhouse if the trip wants one more reliable traditional meal beyond the most famous rooms." },
+    { categoryLabel: "Museum", name: "MALBA", area: "recoleta", description: "A strong modern Latin American art anchor if the elegant side of the trip wants one more serious museum stop." },
+    { categoryLabel: "Nightlife & Entertainment", name: "Tres Monos cocktails", area: "palermo", description: "A lively cocktail stop if the Palermo night should feel current and a bit more design-forward." }
   ],
   dubai: [
     { categoryLabel: "Place to Wander", name: "Dubai Creek sunset abra loop", area: "old-dubai", description: "A stronger old-Dubai evening if the trip wants the city to feel more local and less vertical." },
     { categoryLabel: "Food", name: "SALT at Kite Beach", area: "jumeirah", description: "A useful beachside stop when the coast is the main daytime setting and the meal should stay casual." },
     { categoryLabel: "Shopping", name: "Boxpark Jumeirah browse", area: "jumeirah", description: "A lower-pressure design-and-café strip if the trip wants more urban polish away from the mega-mall core." },
-    { categoryLabel: "Food", name: "Reif Japanese Kushiyaki", area: "downtown", description: "A strong destination dinner if the trip wants something current and sharply executed outside the obvious luxury rooms." }
+    { categoryLabel: "Food", name: "Reif Japanese Kushiyaki", area: "downtown", description: "A strong destination dinner if the trip wants something current and sharply executed outside the obvious luxury rooms." },
+    { categoryLabel: "Food", name: "SMCCU cultural meal", area: "old-dubai", description: "A strong Emirati-cultural lunch or breakfast if the old city day should feel more rooted in place." },
+    { categoryLabel: "Nature", name: "Jumeirah Fishing Harbour stroll", area: "jumeirah", description: "A useful coastal add-on if the trip wants one more quieter waterside pocket between beach and dinner." }
   ],
   istanbul: [
     { categoryLabel: "Place to Wander", name: "Arnavutköy Bosphorus stroll", area: "nisantasi", description: "A worthwhile waterside add-on if the day wants one more elegant residential stretch on the Bosphorus." },
     { categoryLabel: "Food", name: "Meze by Lemon Tree", area: "beyoglu", description: "A polished Beyoğlu dinner when the night should feel atmospheric but more refined than casual meyhane hopping." },
     { categoryLabel: "Food", name: "Mandabatmaz coffee pause", area: "beyoglu", description: "A strong small stop for dense Turkish coffee if the day is already in the Cihangir-Beyoğlu zone." },
-    { categoryLabel: "Cultural Sight", name: "Rustem Pasha Mosque", area: "sultanahmet", description: "A worthwhile İznik-tile-rich stop if the old-city day wants one more intimate Ottoman interior." }
+    { categoryLabel: "Cultural Sight", name: "Rustem Pasha Mosque", area: "sultanahmet", description: "A worthwhile İznik-tile-rich stop if the old-city day wants one more intimate Ottoman interior." },
+    { categoryLabel: "Wellness", name: "Kılıç Ali Paşa Hamamı", area: "karakoy", description: "A beautifully restored hammam if the trip wants one more restorative block built into a Karaköy day." },
+    { categoryLabel: "Shopping", name: "Minoa Pera bookstore stop", area: "beyoglu", description: "A strong literary-and-design pause if the Beyoğlu side of the trip wants one more refined browse stop." }
   ],
   marrakech: [
     { categoryLabel: "Cultural Sight", name: "Dar El Bacha museum stop", area: "medina", description: "A refined palace-scale interior if the medina day wants one more beautiful room beyond the biggest hits." },
     { categoryLabel: "Food", name: "Comptoir Darna dinner and music room", area: "gueliz", description: "A stronger Guéliz-side evening if the night should feel more theatrical and dressed up." },
     { categoryLabel: "Food", name: "Kabana rooftop dinner", area: "gueliz", description: "A good modern-district dinner when the trip wants skyline views and a break from traditional riad rooms." },
-    { categoryLabel: "Nature", name: "Anima Garden half-day", area: "palmeraie", description: "A worthwhile greener excursion if the trip wants one more art-and-garden outing outside the medina." }
+    { categoryLabel: "Nature", name: "Anima Garden half-day", area: "palmeraie", description: "A worthwhile greener excursion if the trip wants one more art-and-garden outing outside the medina." },
+    { categoryLabel: "Food", name: "Café des Épices rooftop pause", area: "medina", description: "A useful medina stop for tea, lunch, or a slower square-overlook break." },
+    { categoryLabel: "Nature", name: "Cyber Park Arsat Moulay Abdeslam", area: "gueliz", description: "A good greener pause between medina and modern district if the trip wants a lighter daytime reset." }
   ]
 };

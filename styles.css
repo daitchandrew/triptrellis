@@ -3169,6 +3169,7 @@ button:active { transform: translateY(0); }
 }
 
 .lib-tag-row--itinerary .lib-tag--category,
+.lib-tag-row--itinerary .lib-tag--michelin,
 .lib-tag-row--itinerary .lib-tag--area,
 .lib-tag-row--itinerary .lib-tag--price,
 .lib-tag-row--itinerary .lib-tag--cuisine {
@@ -3204,6 +3205,12 @@ button:active { transform: translateY(0); }
   background: linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(249, 241, 231, 0.96));
 }
 
+.lib-tag--michelin {
+  color: #7b3a4b;
+  border-color: rgba(123, 58, 75, 0.24);
+  background: linear-gradient(180deg, rgba(255, 248, 250, 0.98), rgba(250, 239, 243, 0.96));
+}
+
 .lib-tag--area {
   color: #6b7b86;
   border-color: rgba(196, 204, 211, 0.88);
@@ -3228,6 +3235,22 @@ button:active { transform: translateY(0); }
   gap: 12px;
   align-items: end;
   margin-top: 12px;
+}
+
+.library-guide-note,
+.item-guide-note {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(123, 58, 75, 0.06);
+  color: rgba(50, 36, 40, 0.84);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.library-guide-note strong,
+.item-guide-note strong {
+  color: #7b3a4b;
 }
 
 .overlay-library-grid {
@@ -6133,6 +6156,7 @@ textarea:focus {
 
 /* ─── Final Landing Editorial Polish ────────────────────────────────────── */
 .trust-stats-section,
+.coverage-band,
 .how-it-works,
 .testimonials-section,
 .faq-section {
@@ -6140,6 +6164,7 @@ textarea:focus {
 }
 
 .trust-stats-section::before,
+.coverage-band::before,
 .how-it-works::before,
 .testimonials-section::before,
 .faq-section::before {
@@ -6230,6 +6255,53 @@ textarea:focus {
 .trust-stats-section {
   gap: 18px;
   margin: 34px 0 62px;
+}
+
+.coverage-band {
+  display: grid;
+  gap: 18px;
+  margin: 0 0 58px;
+  padding: 24px 24px 22px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(157, 101, 32, 0.07), transparent 34%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(247, 240, 231, 0.95));
+  border: 1px solid rgba(67, 48, 33, 0.08);
+}
+
+.coverage-band-head {
+  display: grid;
+  gap: 10px;
+  max-width: 48ch;
+}
+
+.coverage-band-title {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  color: var(--ink);
+}
+
+.coverage-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.coverage-chip-row span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  color: rgba(58, 48, 40, 0.82);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .stat-card {

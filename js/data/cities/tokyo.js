@@ -785,7 +785,10 @@ export const tokyoGuide = {
       ],
       "cuisine": "Creative Japanese tasting",
       "reservation": "Book far in advance.",
-      "description": "A destination Tokyo reservation if you want the city's top end to feel inventive, personal, and distinctly modern."
+      "description": "A destination Tokyo reservation if you want the city's top end to feel inventive, personal, and distinctly modern.",
+      "michelinStatus": "Two Stars",
+      "guideNote": "Michelin praises Den for inventive modern Japanese tasting menus that still feel personal and playful.",
+      "guideUrl": "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/den"
     },
     {
       "name": "Florilege",
@@ -808,7 +811,10 @@ export const tokyoGuide = {
       ],
       "cuisine": "Contemporary French-Japanese",
       "reservation": "Reserve ahead.",
-      "description": "A polished special-occasion dinner that balances French technique with a strong Japanese sense of season."
+      "description": "A polished special-occasion dinner that balances French technique with a strong Japanese sense of season.",
+      "michelinStatus": "Three Stars",
+      "guideNote": "Michelin highlights its three-star contemporary cooking and Green Star sustainability ethos.",
+      "guideUrl": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-effervescence"
     },
     {
       "name": "Sazenka",

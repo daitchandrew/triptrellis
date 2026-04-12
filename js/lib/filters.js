@@ -48,6 +48,8 @@ export function getFilteredLibraryItems(plan) {
       item.categoryLabel,
       item.cuisine,
       item.priceTier,
+      item.michelinStatus,
+      item.guideNote,
       ...(item.tags || []),
     ].some((value) => normalizeText(String(value || "")).includes(term));
     return matchesCategory && matchesCuisine && matchesPrice && matchesArea && matchesSearch;
