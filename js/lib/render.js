@@ -167,7 +167,7 @@ function renderAreaSummary(plan) {
         <article>
           <span>Easy adjacent areas</span>
           <strong>${adjacent.length ? escapeHtml(adjacent.join(" / ")) : "Nearby cluster"}</strong>
-          <p>These are the easiest areas to pair without making the day feel scattered.</p>
+          <p>These are the easiest areas to pair when you want the trip to branch out without losing flow.</p>
         </article>
       </div>
     </section>
@@ -294,6 +294,11 @@ function renderHotelMeta(label, areaLabel, tierLabel = "") {
       ${parts.map((part, index) => `${index ? `<span class="hotel-eyebrow-separator">•</span>` : ""}<span>${escapeHtml(part)}</span>`).join("")}
     </p>
   `;
+}
+
+function renderHotelShiftNote(hotel) {
+  if (!hotel?.strategyLine) return "";
+  return `<p class="hotel-shift-note">${escapeHtml(hotel.strategyLine)}</p>`;
 }
 
 function renderDontMissMeta(categoryLabel, areaLabel) {
@@ -639,6 +644,7 @@ export function renderTripPlan(plan, results) {
                       <h4>${hotel.name}</h4>
                       <p class="hotel-option-summary">${hotel.summary || hotel.vibe}</p>
                       <p class="footer-note">${hotel.matchLine}</p>
+                      ${renderHotelShiftNote(hotel)}
                     </div>
                   </div>
                   <div class="item-actions hotel-select-actions">

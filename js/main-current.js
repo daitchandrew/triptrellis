@@ -1,8 +1,8 @@
-import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansion-20260411-008";
-import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-transit-balanced-20260411-010";
-import { populateSuggestedItinerary } from "./lib/itinerary.js?v=triptrellis-transit-balanced-20260411-010";
+import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansion-20260412-001";
+import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-ui-logic-20260412-001";
+import { populateSuggestedItinerary } from "./lib/itinerary.js?v=triptrellis-ui-logic-20260412-001";
 import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
-import { renderEmptyState, renderGenerationLoading, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-mobile-loading-20260411-011";
+import { renderEmptyState, renderGenerationLoading, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-ui-render-20260412-001";
 import {
   handleDragEnd,
   handleDragOver,
@@ -13,7 +13,7 @@ import {
   handleResultsInput,
   setBuildTripPlanFn,
   syncHotelFields,
-} from "./lib/handlers.js?v=triptrellis-mobile-loading-20260411-011";
+} from "./lib/handlers.js?v=triptrellis-ui-render-20260412-001";
 import { shiftDate, toInputDate } from "./lib/utils.js";
 
 function getResults() {

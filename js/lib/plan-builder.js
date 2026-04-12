@@ -58,6 +58,32 @@ function buildHotelOptionSummary(hotel, area) {
   return `${tierLead} in ${area.label} with ${hotel.vibe.charAt(0).toLowerCase()}${hotel.vibe.slice(1)}`;
 }
 
+function buildHotelRecommendationMatchLine(hotel, area, guide, budgetProfile, focusTheme, noteProfile) {
+  const matchedTags = hotel.bestFor.filter((tag) => (
+    focusTheme.wantedTags.includes(tag)
+    || budgetProfile.wantedTags.includes(tag)
+    || noteProfile.tags.includes(tag)
+  )).slice(0, 2);
+  const nearbyLabels = (guide.areaAdjacency?.[area.areaKey || hotel.area] || [])
+    .map((key) => guide.hotelAreas?.[key]?.label)
+    .filter(Boolean)
+    .slice(0, 2);
+
+  if (matchedTags.length >= 2) {
+    return `Best when you want ${matchedTags.join(" and ")} without giving up a coherent ${area.label} base.`;
+  }
+
+  if (matchedTags.length === 1) {
+    return `Strong for ${matchedTags[0]}, with ${area.label} keeping the trip practical and well-shaped.`;
+  }
+
+  if (nearbyLabels.length) {
+    return `${area.label} works well as a base if you want easy reach to ${nearbyLabels.join(" and ")} without overcommitting to long cross-town jumps.`;
+  }
+
+  return `${area.label} gives the trip a steady base with enough flexibility to branch out when the city is worth the detour.`;
+}
+
 function getFallbackAreaKey(guide) {
   return Object.keys(guide.hotelAreas || {})[0] || "";
 }
@@ -229,14 +255,8 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
 export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budgetProfile, focus, focusTheme, noteProfile, hasExistingHotel = false) {
   const recommendations = rankedHotels.slice(0, 4).map(({ hotel }) => {
     const { areaKey, area } = resolveArea(guide, hotel.area);
-    const matchedTags = hotel.bestFor.filter((tag) => (
-      focusTheme.wantedTags.includes(tag)
-      || budgetProfile.wantedTags.includes(tag)
-      || noteProfile.tags.includes(tag)
-    )).slice(0, 2);
-    const matchLine = matchedTags.length
-      ? `Best for ${matchedTags.join(" and ")}.`
-      : `Best for a ${budgetProfile.label.toLowerCase()} ${formatFocus(focus).toLowerCase()} trip.`;
+    area.areaKey = areaKey;
+    const matchLine = buildHotelRecommendationMatchLine(hotel, area, guide, budgetProfile, focusTheme, noteProfile);
     return {
       name: hotel.name,
       areaKey,
@@ -247,6 +267,7 @@ export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budget
       description: buildHotelRecommendationDescription(hotel, area, guide),
       amenitiesLine: buildHotelAmenityLine(hotel, area),
       matchLine,
+      strategyLine: `${hotel.name} shifts the trip toward ${area.label}, which feels ${area.mood}.`,
       isPrimary: hotel.name === hotelBase.hotelName,
     };
   });
@@ -262,6 +283,7 @@ export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budget
       description: hotelBase.longDescription || hotelBase.vibe,
       amenitiesLine: "",
       matchLine: "Your selected hotel",
+      strategyLine: `This keeps the trip centered around ${hotelBase.areaLabel}.`,
       isPrimary: true,
     }, ...recommendations.slice(0, 3)];
   }

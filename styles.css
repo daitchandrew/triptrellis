@@ -8599,3 +8599,137 @@ textarea {
     text-align: left;
   }
 }
+
+/* ─── Hotel/Base Strategy Upgrade ──────────────────────────────────────── */
+.area-compass-main .card-subtitle {
+  max-width: 58ch;
+}
+
+.area-compass-grid article {
+  position: relative;
+  overflow: hidden;
+}
+
+.area-compass-grid article::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(194, 130, 91, 0.34), transparent 80%);
+  opacity: 0.8;
+}
+
+.area-compass-grid strong {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+  color: #1d1712;
+}
+
+.selected-hotel-card .section-kicker,
+.hotel-selector-card .section-kicker {
+  margin-bottom: 4px;
+}
+
+.strategy-source {
+  margin-bottom: 14px;
+  color: #8f5638;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.selected-hotel-card .notes-callout {
+  margin-top: 14px;
+  border-radius: 16px;
+  background: rgba(194, 130, 91, 0.08);
+  border: 1px solid rgba(194, 130, 91, 0.12);
+  color: #65594f;
+}
+
+.hotel-option-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.hotel-card-eyebrow {
+  margin-bottom: 2px;
+}
+
+.hotel-option-summary {
+  color: #3f342c;
+  font-weight: 700;
+}
+
+.hotel-shift-note {
+  margin: 0;
+  color: #76695e;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.hotel-select-actions {
+  padding-top: 8px;
+  border-top: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.hotel-current-pill,
+.hotel-outline-button {
+  min-height: 36px;
+  padding: 8px 12px !important;
+  font-size: 0.79rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.hotel-current-pill {
+  background: rgba(194, 130, 91, 0.1) !important;
+  border: 1px solid rgba(194, 130, 91, 0.16) !important;
+  color: #8f5638 !important;
+}
+
+.hotel-outline-button {
+  background: rgba(255, 255, 255, 0.84) !important;
+  border: 1px solid rgba(43, 29, 20, 0.08) !important;
+  color: rgba(53, 43, 36, 0.84) !important;
+}
+
+.hotel-outline-button:hover {
+  background: rgba(247, 242, 235, 0.98) !important;
+  border-color: rgba(194, 130, 91, 0.18) !important;
+  color: #2b221c !important;
+  transform: none !important;
+}
+
+.trip-adjust-panel {
+  gap: 16px;
+}
+
+.trip-adjust-head .card-subtitle {
+  max-width: 58ch;
+}
+
+.trip-adjust-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trip-adjust-card {
+  text-align: left;
+}
+
+.trip-adjust-card:hover {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(194, 130, 91, 0.16);
+}
+
+@media (max-width: 1180px) {
+  .trip-adjust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .trip-adjust-grid {
+    grid-template-columns: 1fr;
+  }
+}
