@@ -10120,3 +10120,10 @@ header.hero::after {
     padding: 22px;
   }
 }
+
+/* ─── Anchor Title Width Fix ───────────────────────────────────────────── */
+.dark-anchor-title {
+  max-width: none;
+  width: 100%;
+  text-wrap: balance;
+}
