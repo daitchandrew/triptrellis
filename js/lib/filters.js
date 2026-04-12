@@ -102,7 +102,7 @@ function buildLibraryMatch(item, plan, targetDay) {
   if (targetDay && dayAreas.has(item.area)) {
     routeScore = 4;
     score += routeScore;
-    reasons.push("Near this day's route");
+    reasons.push("Keeps the route compact");
   } else if (nearbyAreas.has(item.area)) {
     routeScore = 2.2;
     score += routeScore;
@@ -114,7 +114,7 @@ function buildLibraryMatch(item, plan, targetDay) {
   if (targetDay && (categoryCounts[item.categoryLabel] || 0) === 0) {
     varietyScore = 1.6;
     score += varietyScore;
-    reasons.push("Adds variety");
+    reasons.push("Adds a different kind of stop");
   } else if ((categoryCounts[item.categoryLabel] || 0) >= 1) {
     score -= 1.6;
   }
@@ -123,14 +123,14 @@ function buildLibraryMatch(item, plan, targetDay) {
   }
 
   if (targetDay && dayFitScore >= 4.5 && routeScore >= 2.2) {
-    reasons.unshift("Best fit for this day");
+    reasons.unshift("Best fit for this moment");
   }
   if (!targetDay && item.area === plan.hotelBase.areaKey) {
     score += 1.8;
-    reasons.push("Close to your hotel base");
+    reasons.push("Easy from your base");
   }
   if (!reasons.length) {
-    reasons.push(targetDay ? "Good alternate for this day" : "Strong city-library option");
+    reasons.push(targetDay ? "Strong alternate for this day" : "Strong city pick");
   }
 
   return {
@@ -183,23 +183,23 @@ export function groupRankedLibraryItems(items, plan) {
       .map((item) => withGroupReason(item, "Strong alternate"));
 
     return [
-      { key: "best", title: "Best fits for this day", subtitle: "Prioritized by route, timing, and what is already planned.", items: best },
-      { key: "variety", title: "Adds something different", subtitle: "Good options that avoid repeating the same kind of stop.", items: variety },
-      { key: "nearby", title: "Near the current route", subtitle: "Easy adds around this day, even if they are less essential.", items: nearby },
-      { key: "more", title: "More strong options", subtitle: "Still useful picks from the city library.", items: more },
+      { key: "best", title: "Best fits right now", subtitle: "The strongest options for this exact part of the day.", items: best },
+      { key: "variety", title: "Adds a different texture", subtitle: "Useful swaps when the day needs more contrast or range.", items: variety },
+      { key: "nearby", title: "Easy to fold into the route", subtitle: "Natural additions that keep the day compact.", items: nearby },
+      { key: "more", title: "More city-wide options", subtitle: "Still strong, but less essential for this exact moment.", items: more },
     ].filter((group) => group.items.length);
   }
 
   const definitions = hasTargetDay
     ? [
         { key: "best", title: "Best fits for this day", subtitle: "Prioritized by route, timing, and what is already planned." },
-        { key: "variety", title: "Adds something different", subtitle: "Good options that avoid repeating the same kind of stop." },
-        { key: "nearby", title: "Near the current route", subtitle: "Easy adds around this day, even if they are less essential." },
-        { key: "more", title: "More strong options", subtitle: "Still useful picks from the city library." },
+        { key: "variety", title: "Adds a different texture", subtitle: "Useful swaps when the day needs more contrast or range." },
+        { key: "nearby", title: "Easy to fold into the route", subtitle: "Natural additions that keep the day compact." },
+        { key: "more", title: "More city-wide options", subtitle: "Still strong, but less essential for this exact moment." },
       ]
     : [
-        { key: "nearBase", title: "Closest to your hotel base", subtitle: "Useful when you want an easy add without reshaping the whole trip." },
-        { key: "more", title: "Best city-library options", subtitle: "Sorted by overall fit for this trip." },
+        { key: "nearBase", title: "Easy near your base", subtitle: "Useful when you want a simple add without reshaping the day." },
+        { key: "more", title: "Broader city options", subtitle: "Sorted by overall fit for the whole trip." },
       ];
 
   return definitions

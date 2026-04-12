@@ -8733,3 +8733,52 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── Itinerary Intelligence Presentation ──────────────────────────────── */
+.library-result-group-head .preview-label {
+  color: #a77048;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.library-result-group-head .footer-note {
+  color: #6b6055;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.library-match-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(56, 79, 61, 0.07);
+  border-color: rgba(56, 79, 61, 0.12);
+  color: #506652 !important;
+}
+
+.library-match-line::before {
+  content: "✦";
+  color: #8f5638;
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.day-story-panel {
+  gap: 9px;
+}
+
+.day-story-route {
+  gap: 7px;
+}
+
+.day-story-chip {
+  min-height: 28px;
+  font-size: 0.76rem;
+}
+
+.day-story-copy {
+  max-width: 64ch;
+  font-size: 0.84rem;
+  line-height: 1.54;
+}

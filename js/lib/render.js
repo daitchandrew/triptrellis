@@ -215,6 +215,29 @@ function renderDayMeta(day) {
   `;
 }
 
+function buildDaySequenceNarrative(day, plan) {
+  const items = (day.itineraryItems || []).filter((item) => item.type !== "transit_anchor");
+  const first = items[0];
+  const last = items[items.length - 1];
+  const areas = getUniqueDayAreas(day, plan);
+
+  if (!items.length) {
+    return `This day is still open enough to steer once you know where you want the strongest energy to land.`;
+  }
+
+  if (first && last && first !== last) {
+    const firstArea = first.areaLabel || plan.guide.hotelAreas?.[first.area]?.label || first.area || plan.hotelBase.areaLabel;
+    const lastArea = last.areaLabel || plan.guide.hotelAreas?.[last.area]?.label || last.area || plan.hotelBase.areaLabel;
+    return `It opens around ${firstArea}, then gradually resolves toward ${lastArea} so the day feels sequenced instead of scattered.`;
+  }
+
+  if (areas.length === 1) {
+    return `Most of the day stays anchored in ${areas[0]}, which helps it feel calm, coherent, and easy to keep editing.`;
+  }
+
+  return `The structure keeps the day readable while still letting it move between ${areas.slice(0, 2).join(" and ")} without losing the route.`;
+}
+
 function renderDayRouteStory(day, plan) {
   const areas = getUniqueDayAreas(day, plan);
   const routeLabels = [plan.hotelBase.areaLabel, ...areas].filter(Boolean).slice(0, 4);
@@ -229,7 +252,7 @@ function renderDayRouteStory(day, plan) {
           <span class="day-story-chip ${index === 0 ? "day-story-chip--base" : ""}">${escapeHtml(label)}</span>
         `).join("")}
       </div>
-      <p class="day-story-copy">${escapeHtml(day.flow)}</p>
+      <p class="day-story-copy">${escapeHtml(buildDaySequenceNarrative(day, plan))}</p>
     </div>
   `;
 }
