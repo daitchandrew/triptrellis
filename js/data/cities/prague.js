@@ -749,14 +749,17 @@ export const pragueGuide = {
     },
     {
       "name": "Eska",
-      "area": "vinohrady",
+      "area": "karlin",
       "tags": [
         "food",
         "design"
       ],
       "cuisine": "Modern Czech/Bakery",
       "reservation": "Reserve ahead.",
-      "description": "Taste highly inventive, Michelin-Bib-Gourmand-awarded modern Czech cuisine and incredible freshly baked sourdough."
+      "description": "A Karlín standard-bearer for modern Czech cooking, wood-fired technique, and some of the city's best bread.",
+      "michelinStatus": "Bib Gourmand",
+      "guideNote": "Michelin continues to rate Eska for good-value, ingredient-driven Czech cooking with a serious bakery attached.",
+      "guideUrl": "https://guide.michelin.com/en/article/news-and-views/the-new-michelin-guide-prague-selection-goes-online"
     },
     {
       "name": "La Degustation Bohême Bourgeoise",
@@ -767,18 +770,24 @@ export const pragueGuide = {
       ],
       "cuisine": "Modern Czech Fine Dining",
       "reservation": "Book well in advance.",
-      "description": "A spectacular Michelin-starred tasting journey that elevates late-19th-century Czech recipes to modern fine-dining perfection."
+      "description": "A major Prague tasting-menu reservation that reworks Czech ingredients and historical references with real precision.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin highlights its seasonal Czech ingredients, open kitchen, and elegant modern set-menu format.",
+      "guideUrl": "https://guide.michelin.com/gb/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise?millesime=df548b"
     },
     {
       "name": "Field",
-      "area": "vinohrady",
+      "area": "josefov",
       "tags": [
         "luxury",
         "food"
       ],
       "cuisine": "Modern European Fine Dining",
       "reservation": "Reserve ahead.",
-      "description": "A fiercely seasonal Michelin-starred menu focusing on raw, farm-to-table ingredients with striking, minimalist plating."
+      "description": "A sleek special-occasion room for seasonal Czech-led tasting menus that feel minimal, polished, and exacting.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin praises Field for balanced creative cooking centered on seasonal produce and Czech ingredients.",
+      "guideUrl": "https://guide.michelin.com/en/prague/prague/restaurant/field"
     },
     {
       "name": "Naše Maso",
@@ -978,7 +987,25 @@ export const pragueGuide = {
       ],
       "cuisine": "Modern Czech",
       "reservation": "Reserve ahead.",
-      "description": "A current Prague dining room for seasonal Czech cooking that feels chef-driven without turning stiff or ceremonial."
+      "description": "A sharper contemporary Czech bistro for a destination-worthy dinner that still feels informal, energetic, and good value.",
+      "michelinStatus": "Bib Gourmand",
+      "guideNote": "Michelin calls out its contemporary Czech cooking, industrial room, and especially strong value for the quality.",
+      "guideUrl": "https://guide.michelin.com/ca/en/prague/prague/restaurant/the-eatery"
+    },
+    {
+      "name": "Štangl",
+      "area": "karlin",
+      "tags": [
+        "luxury",
+        "food",
+        "design"
+      ],
+      "cuisine": "Seasonal modern Czech",
+      "reservation": "Reserve ahead.",
+      "description": "A relaxed-but-serious Prague splurge built around seasonal Czech ingredients, visible-kitchen energy, and elegant modern plates.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin praises Štangl for delicate modern cooking, strong sourcing, and a notably relaxed atmosphere.",
+      "guideUrl": "https://guide.michelin.com/en/prague/prague/restaurant/stangl"
     },
     {
       "name": "Aromi",
@@ -1255,12 +1282,12 @@ export const pragueSupplements = [
   },
   {
     "categoryLabel": "Cultural Sight",
-    "name": "Jogyesa Temple",
-    "area": "oldtown",
+    "name": "Vyšehrad basilica and cemetery",
+    "area": "vinohrady",
     "tags": [
       "culture"
     ],
-    "description": "A central Buddhist-inspired spiritual site that is easy to add to a historic Prague day."
+    "description": "A stronger south-side historic block for ramparts, national memory, and views over the Vltava beyond the Old Town core."
   },
   {
     "categoryLabel": "Cultural Sight",
@@ -1821,5 +1848,68 @@ export const pragueSupplements = [
       "culture"
     ],
     "description": "Attend a classical music concert, opera, or ballet performance for a refined Prague evening."
+  },
+  {
+    "categoryLabel": "Museum",
+    "name": "DOX Centre for Contemporary Art",
+    "area": "karlin",
+    "tags": [
+      "museum",
+      "design"
+    ],
+    "description": "Prague's strongest large-format contemporary-art stop, especially good when the trip wants something sharper and more current than the historic core."
+  },
+  {
+    "categoryLabel": "Museum",
+    "name": "Trade Fair Palace modern collections",
+    "area": "karlin",
+    "tags": [
+      "museum",
+      "design"
+    ],
+    "description": "The National Gallery's big modern-art building in Prague 7, useful for Cubism, Czech modernism, and a more spacious museum rhythm."
+  },
+  {
+    "categoryLabel": "Cultural Sight",
+    "name": "Vrtba Garden terraces",
+    "area": "malastrana",
+    "tags": [
+      "culture",
+      "design",
+      "wellness"
+    ],
+    "description": "A beautifully layered baroque hillside garden that makes Lesser Town feel quieter, greener, and more aristocratic."
+  },
+  {
+    "categoryLabel": "Museum",
+    "name": "Kunsthalle Prague",
+    "area": "malastrana",
+    "tags": [
+      "museum",
+      "design"
+    ],
+    "description": "A polished modern-art venue below the castle where the architecture, café, and exhibitions all feel more current than ceremonial."
+  },
+  {
+    "categoryLabel": "Place to Wander",
+    "name": "Letná and Metronome plateau",
+    "area": "karlin",
+    "tags": [
+      "design",
+      "walkability",
+      "wellness"
+    ],
+    "description": "A high, open Prague walk for river bends, bridge views, and a more lived-in local panorama than the usual postcard overlooks."
+  },
+  {
+    "categoryLabel": "Food",
+    "name": "Café Letka",
+    "area": "karlin",
+    "tags": [
+      "cafes",
+      "food",
+      "design"
+    ],
+    "description": "A relaxed Prague 7 breakfast and coffee stop with the kind of airy neighborhood energy that balances heavier castle-and-clock days."
   }
 ];

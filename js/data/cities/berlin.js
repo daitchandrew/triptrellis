@@ -670,14 +670,17 @@ export const berlinGuide = {
   "food": [
     {
       "name": "Tim Raue",
-      "area": "mitte",
+      "area": "kreuzberg",
       "tags": [
         "luxury",
         "food"
       ],
       "cuisine": "Modern Asian-inspired fine dining",
       "reservation": "Reserve well in advance.",
-      "description": "One of Berlin's best-known big-ticket dinners."
+      "description": "One of Berlin's clearest high-end reservations, with a distinctive Asian-leaning style that still feels rooted in the city.",
+      "michelinStatus": "Two Stars",
+      "guideNote": "Michelin highlights Tim Raue's original German cooking with Asian influences and a confident set-menu format.",
+      "guideUrl": "https://guide.michelin.com/us/en/berlin-region/berlin/restaurant/tim-raue"
     },
     {
       "name": "Nobelhart & Schmutzig",
@@ -689,7 +692,10 @@ export const berlinGuide = {
       ],
       "cuisine": "Regional tasting",
       "reservation": "Book ahead.",
-      "description": "A very Berlin fine-dining experience with a strong point of view."
+      "description": "A very Berlin fine-dining reservation built around regional sourcing, counter-style interaction, and a strong 'brutal local' point of view.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin highlights Nobelhart & Schmutzig for its rigorous regional sourcing and sophisticated local-first cooking.",
+      "guideUrl": "https://guide.michelin.com/tr/tr/berlin-region/berlin/restaurant/nobelhart-schmutzig"
     },
     {
       "name": "Coda",
@@ -701,7 +707,10 @@ export const berlinGuide = {
       ],
       "cuisine": "Dessert-forward tasting",
       "reservation": "Reserve ahead.",
-      "description": "One of the more unusual and memorable upscale Berlin meals."
+      "description": "One of Berlin's most unusual destination dinners, using pastry technique to build a genuinely original tasting-menu night.",
+      "michelinStatus": "Two Stars",
+      "guideNote": "Michelin calls CODA a very special fine-dining experience built around patisserie technique and inventive pairings.",
+      "guideUrl": "https://guide.michelin.com/tr/tr/berlin-region/berlin/restaurant/coda-dessert-dining"
     },
     {
       "name": "Grill Royal",
@@ -744,7 +753,10 @@ export const berlinGuide = {
       ],
       "cuisine": "Fine dining and wine",
       "reservation": "Book ahead.",
-      "description": "A polished high-end central Berlin option."
+      "description": "Berlin's flagship tasting-menu splurge, with serious wine strength and a more precise, composed style than the city's louder dining rooms.",
+      "michelinStatus": "Three Stars",
+      "guideNote": "Michelin positions Rutz as Berlin's defining three-star destination, known for precision, narrative structure, and exceptional sourcing.",
+      "guideUrl": "https://guide.michelin.com/tw/zh_TW/berlin-region/berlin/restaurant/rutz"
     },
     {
       "name": "Cookies Cream",
@@ -755,7 +767,10 @@ export const berlinGuide = {
       ],
       "cuisine": "Vegetarian fine dining",
       "reservation": "Reserve ahead.",
-      "description": "A very good Berlin dinner if the trip leans design-forward and modern."
+      "description": "A classic Berlin design-night reservation, with a hidden entrance, relaxed energy, and one of the city's strongest vegetarian tasting menus.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin praises Cookies Cream for its distinctive Berlin setting and deeply considered vegetarian cooking.",
+      "guideUrl": "https://guide.michelin.com/en/berlin-region/berlin/restaurant/cookies-cream"
     },
     {
       "name": "893 Ryōtei",
@@ -867,7 +882,10 @@ export const berlinGuide = {
       ],
       "cuisine": "Austrian-inspired fine dining",
       "reservation": "Reserve ahead.",
-      "description": "A Kreuzberg splurge that feels rooted in central Europe rather than generic contemporary tasting-menu luxury."
+      "description": "A Kreuzberg splurge with real central-European personality, best when you want the food to feel intelligent, regional, and not generic.",
+      "michelinStatus": "Two Stars",
+      "guideNote": "Michelin highlights Horváth's creative Austrian-rooted cooking, sustainability focus, and intimate canal-side setting.",
+      "guideUrl": "https://guide.michelin.com/tw/zh_TW/berlin-region/berlin/restaurant/horvath"
     },
     {
       "name": "Facil",
@@ -916,14 +934,17 @@ export const berlinGuide = {
     },
     {
       "name": "Tulus Lotrek",
-      "area": "prenzlauerberg",
+      "area": "kreuzberg",
       "tags": [
         "luxury",
         "food"
       ],
       "cuisine": "Creative tasting menu",
       "reservation": "Reserve ahead.",
-      "description": "A more intimate Berlin splurge if you want fine dining away from the most obvious central addresses."
+      "description": "A more intimate Berlin splurge for premium ingredients, warmer service, and a less formal kind of Michelin-level dinner.",
+      "michelinStatus": "One Star",
+      "guideNote": "Michelin praises tulus lotrek for its laid-back atmosphere, premium ingredients, and beautifully integrated sauces.",
+      "guideUrl": "https://guide.michelin.com/us/en/berlin-region/berlin/restaurant/tulus-lotrek"
     },
     {
       "name": "Shaniu's House of Noodles",
@@ -1617,5 +1638,91 @@ export const berlinSupplements = [
     "name": "Urban Nation",
     "area": "charlottenburg",
     "description": "A street-art museum that fits especially well if the trip wants more of Berlin's visual and contemporary culture."
+  },
+  {
+    "categoryLabel": "Museum",
+    "name": "Neue Nationalgalerie",
+    "area": "mitte",
+    "tags": [
+      "museum",
+      "design"
+    ],
+    "description": "Mies van der Rohe architecture and a strong twentieth-century art collection make this one of Berlin's clearest design-and-culture anchors."
+  },
+  {
+    "categoryLabel": "Museum",
+    "name": "Hamburger Bahnhof",
+    "area": "mitte",
+    "tags": [
+      "museum",
+      "design"
+    ],
+    "description": "Berlin's big contemporary-art museum in a former railway station, especially good when you want industrial scale and serious current art."
+  },
+  {
+    "categoryLabel": "Museum",
+    "name": "C/O Berlin",
+    "area": "charlottenburg",
+    "tags": [
+      "museum",
+      "design"
+    ],
+    "description": "A focused photography and visual-culture stop near Zoo station that fits nicely into a Charlottenburg afternoon."
+  },
+  {
+    "categoryLabel": "Place to Wander",
+    "name": "Bergmannkiez",
+    "area": "kreuzberg",
+    "tags": [
+      "walkability",
+      "food",
+      "design"
+    ],
+    "description": "A stronger polished Kreuzberg pocket for cafés, wine bars, and side-street Berlin that feels more local than spectacle-driven."
+  },
+  {
+    "categoryLabel": "Nature",
+    "name": "Schlachtensee lake edge",
+    "area": "charlottenburg",
+    "tags": [
+      "nature",
+      "wellness"
+    ],
+    "description": "A calmer southwest Berlin reset for forest-and-water walking when the trip needs one real outdoors block."
+  },
+  {
+    "categoryLabel": "Cultural Sight",
+    "name": "Teufelsberg outlook",
+    "area": "charlottenburg",
+    "tags": [
+      "culture",
+      "design",
+      "nature"
+    ],
+    "description": "A former Cold War listening station on an artificial hill, useful when the trip wants one stranger, more atmospheric Berlin viewpoint."
+  },
+  {
+    "categoryLabel": "Food",
+    "name": "Julius",
+    "area": "mitte",
+    "tags": [
+      "food",
+      "design"
+    ],
+    "description": "A younger, more casual sibling to Ernst that works beautifully for breakfast, lunch, or a creative but lower-pressure dinner.",
+    "michelinStatus": "MICHELIN Guide",
+    "guideNote": "Michelin highlights Julius for its relaxed all-day format and creative counter cooking.",
+    "guideUrl": "https://guide.michelin.com/es/es/berlin-region/berlin/restaurante/julius"
+  },
+  {
+    "categoryLabel": "Food",
+    "name": "Rutz Weinbar",
+    "area": "mitte",
+    "tags": [
+      "food",
+      "nightlife",
+      "design"
+    ],
+    "description": "A smarter central night when the trip wants serious wine and polished plates without committing to the full tasting-menu format."
   }
 ];
