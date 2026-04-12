@@ -12,6 +12,9 @@ import { STORAGE_KEY } from "./constants.js";
 // ---- DOM references (resolved lazily via getters to avoid TDZ issues) ----
 function getResults() { return document.querySelector("#results"); }
 function getEmptyStateTemplate() { return document.querySelector("#empty-state-template"); }
+function showToast(message, type = "info") {
+  globalThis.TripTrellisToast?.(message, type);
+}
 
 // ---- Injected dependencies set up at init time ----
 let _buildTripPlanFn = null;
@@ -31,6 +34,7 @@ export function saveCurrentItinerary() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   currentPlan.savedTrips = next;
   renderTripPlan(currentPlan, getResults());
+  showToast("Itinerary saved to My Trips.", "success");
 }
 
 export function downloadSavedItinerary(saveId) {
@@ -53,6 +57,7 @@ export function deleteSavedItinerary(saveId) {
     return;
   }
   renderEmptyState(getResults(), getEmptyStateTemplate());
+  showToast("Saved trip deleted.", "info");
 }
 
 export function removeItineraryItem(dayIndex, itemId) {
@@ -68,6 +73,7 @@ export function removeItineraryItem(dayIndex, itemId) {
   refreshDayState(day, currentPlan);
   currentPlan.savedTrips = loadSavedItineraries();
   renderTripPlan(currentPlan, getResults());
+  showToast("Stop removed from the itinerary.", "info");
 }
 
 export function openLibraryOverlay({ mode = "add", dayIndex = null, itemId = null, slot = "" } = {}) {
@@ -326,6 +332,11 @@ export function handleResultsClick(event) {
     return;
   }
 
+  if (action === "open-saved-drawer") {
+    document.dispatchEvent(new CustomEvent("triptrellis:open-saved-drawer"));
+    return;
+  }
+
   const currentPlan = getCurrentPlan();
   if (!currentPlan) {
     return;
@@ -456,10 +467,12 @@ export function handleDragStart(event) {
     itineraryId: item.dataset.itineraryId,
     fromDayIndex: Number(item.dataset.dayIndex),
   });
+  item.classList.add("is-dragging");
   event.dataTransfer.effectAllowed = "move";
 }
 
 export function handleDragEnd() {
+  document.querySelectorAll(".itinerary-item.is-dragging").forEach((item) => item.classList.remove("is-dragging"));
   setDraggedItineraryItem(null);
 }
 
@@ -507,4 +520,5 @@ export function handleDrop(event) {
   refreshDayState(targetDay, currentPlan);
   setDraggedItineraryItem(null);
   renderTripPlan(currentPlan, getResults());
+  showToast("Stop moved to a new slot.", "success");
 }

@@ -1,0 +1,15 @@
+{
+  "name": "TripTrellis",
+  "short_name": "TripTrellis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5f2",
+  "theme_color": "#1b140f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

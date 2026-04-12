@@ -782,6 +782,7 @@ export function renderTripPlan(plan, results) {
                         data-itinerary-id="${item.id}"
                         data-day-index="${dayIndex}"
                       >
+                        ${item.type === "transit_anchor" ? "" : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Drag to reorder</span></div>`}
                         ${renderItemBadges({ categoryLabel: item.categoryLabel || "Stop", priceTier: item.priceTier, areaLabel: item.areaLabel || item.area, michelinStatus: item.michelinStatus }, { rowClass: "lib-tag-row lib-tag-row--itinerary" })}
                         <strong>${item.title}</strong>
                         <p>${item.description}</p>

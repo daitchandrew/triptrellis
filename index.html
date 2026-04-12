@@ -4,6 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TripTrellis | Detailed Travel Planner</title>
+    <meta
+      name="description"
+      content="TripTrellis builds hotel-aware city itineraries with smarter routing, stronger neighborhood logic, editable day plans, and curated restaurant and activity picks."
+    />
+    <meta name="theme-color" content="#1b140f" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content="TripTrellis | Detailed Travel Planner" />
+    <meta
+      property="og:description"
+      content="Plan city days that actually make sense with hotel-aware routing, curated libraries, and editable itineraries."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://triptrellis.vercel.app/" />
+    <meta property="og:image" content="https://triptrellis.vercel.app/favicon.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TripTrellis | Detailed Travel Planner" />
+    <meta
+      name="twitter:description"
+      content="Build concierge-grade city itineraries with smarter hotel-aware planning and editable day flow."
+    />
+    <meta name="twitter:image" content="https://triptrellis.vercel.app/favicon.svg" />
+    <link rel="canonical" href="https://triptrellis.vercel.app/" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +37,7 @@
     <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-007" />
   </head>
   <body>
+    <a class="skip-link" href="#planner-form">Skip to trip planner</a>
     <script>
       window.TripTrellisShowLoadError = function () {
         const results = document.querySelector("#results");
@@ -75,7 +100,7 @@
     </script>
     <div class="page-shell">
       <header class="hero">
-        <nav class="topbar">
+        <nav class="topbar" aria-label="Primary">
           <div class="brand-lockup">
             <span class="brand-mark">TripTrellis</span>
             <span class="brand-tag">Hotel-aware city itineraries</span>
@@ -84,6 +109,7 @@
             <span>One city at a time</span>
             <span>Hotel-aware</span>
             <span>Buildable itinerary</span>
+            <button class="topbar-link theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">Dark mode</button>
             <button class="topbar-link" id="my-trips-button" type="button" aria-controls="saved-trips-drawer" aria-expanded="false">My Trips</button>
           </div>
         </nav>
@@ -620,11 +646,12 @@
 
       </header>
 
-      <main id="results" class="results" aria-live="polite"></main>
+      <main id="results" class="results" aria-live="polite" tabindex="-1"></main>
     </div>
 
+    <div class="toast-viewport" id="toast-viewport" aria-live="polite" aria-atomic="true"></div>
     <div class="drawer-backdrop" id="saved-trips-backdrop" hidden></div>
-    <aside class="saved-trips-drawer" id="saved-trips-drawer" aria-hidden="true" aria-labelledby="saved-trips-title">
+    <aside class="saved-trips-drawer" id="saved-trips-drawer" aria-hidden="true" aria-labelledby="saved-trips-title" role="dialog" aria-modal="true">
       <div class="saved-drawer-head">
         <div>
           <p class="section-kicker">My Trips</p>
@@ -635,7 +662,17 @@
       <div class="saved-drawer-body" id="saved-trips-content"></div>
     </aside>
 
-    <template id="empty-state-template"></template>
+    <template id="empty-state-template">
+      <section class="section-card empty-state-shell">
+        <p class="section-kicker">Start with the brief</p>
+        <h2 class="section-title">No trip generated yet.</h2>
+        <p class="card-subtitle">Set the city, travel window, and priorities first. TripTrellis will build the first itinerary version with hotel logic, day flow, and edit-ready stops.</p>
+        <div class="empty-state-actions">
+          <a class="secondary-button empty-state-primary" href="#planner-form">Build a trip</a>
+          <button class="secondary-button" type="button" data-action="open-saved-drawer">Open saved trips</button>
+        </div>
+      </section>
+    </template>
 
     <footer class="site-footer">
       <div class="footer-content">

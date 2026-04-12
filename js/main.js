@@ -1,4 +1,3 @@
-import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansion-20260412-003";
 import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-ui-logic-20260412-001";
 import { populateSuggestedItinerary } from "./lib/itinerary.js?v=triptrellis-ui-logic-20260412-001";
 import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
@@ -52,8 +51,69 @@ function getSavedButton() {
   return document.querySelector("#my-trips-button");
 }
 
+function getThemeToggle() {
+  return document.querySelector("#theme-toggle");
+}
+
+function getToastViewport() {
+  return document.querySelector("#toast-viewport");
+}
+
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
+const THEME_KEY = "triptrellis-theme";
+let cityGuidesPromise = null;
+
+async function getCityGuides() {
+  if (!cityGuidesPromise) {
+    cityGuidesPromise = import("./data/cities/index.js?v=triptrellis-library-expansion-20260412-003")
+      .then((module) => module.cityGuides);
+  }
+  return cityGuidesPromise;
+}
+
+function showToast(message, type = "info") {
+  const viewport = getToastViewport();
+  if (!viewport || !message) return;
+
+  const toast = document.createElement("div");
+  toast.className = `toast toast--${type}`;
+  toast.setAttribute("role", "status");
+  toast.innerHTML = `
+    <strong>${type === "success" ? "Done" : type === "error" ? "Check this" : "TripTrellis"}</strong>
+    <span>${message}</span>
+  `;
+  viewport.appendChild(toast);
+  window.requestAnimationFrame(() => toast.classList.add("is-visible"));
+  window.setTimeout(() => {
+    toast.classList.remove("is-visible");
+    window.setTimeout(() => toast.remove(), 220);
+  }, 2600);
+}
+
+function applyTheme(theme) {
+  const normalizedTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = normalizedTheme;
+  localStorage.setItem(THEME_KEY, normalizedTheme);
+
+  const toggle = getThemeToggle();
+  if (toggle) {
+    const isDark = normalizedTheme === "dark";
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.textContent = isDark ? "Light mode" : "Dark mode";
+  }
+
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute("content", normalizedTheme === "dark" ? "#14110d" : "#1b140f");
+  }
+}
+
+function getInitialTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
 
 function getHotelStatusInputs() {
   return document.querySelectorAll('input[name="hotel-status"]');
@@ -276,6 +336,7 @@ function saveFormPreferences() {
     saveBtn.classList.add("saved");
     setTimeout(() => saveBtn.classList.remove("saved"), 2000);
   }
+  showToast("Setup saved to this browser.", "success");
 }
 
 function loadFormPreferences() {
@@ -377,7 +438,7 @@ function clearFieldError(field, errorEl) {
   errorEl.hidden = true;
 }
 
-export function generateFromForm(form) {
+export async function generateFromForm(form) {
   if (!form) {
     showGenerationError(new Error("TripTrellis could not find the planner form."));
     return;
@@ -399,6 +460,7 @@ export function generateFromForm(form) {
 
   const results = getResults();
   try {
+    const cityGuides = await getCityGuides();
     const formData = new FormData(form);
     const cityKey = String(formData.get("city") || "");
     const guide = cityGuides[cityKey];
@@ -469,11 +531,13 @@ function handlePlannerSubmit(event) {
 }
 
 globalThis.TripTrellisGenerate = generateFromForm;
+globalThis.TripTrellisToast = showToast;
 globalThis.TripTrellisShowLoadError = () => {
   showGenerationError(new Error("The app script has not finished loading. Refresh the local server page and try again."));
 };
 
 function initializeApp() {
+  applyTheme(getInitialTheme());
   setAllTrips(loadSavedItineraries());
   initializeDates();
   renderEmptyState(getResults(), getEmptyStateTemplate());
@@ -491,6 +555,12 @@ function initializeApp() {
   
   // Load stored preferences if available
   loadFormPreferences();
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(() => {
+      getCityGuides().catch(() => {});
+    });
+  }
 }
 
 function bindEvents() {
@@ -502,6 +572,7 @@ function bindEvents() {
   const savedDrawer = getSavedDrawer();
   const savedBackdrop = getSavedBackdrop();
   const savedClose = document.querySelector("#saved-trips-close");
+  const themeToggle = getThemeToggle();
 
   form?.addEventListener("submit", handlePlannerSubmit);
   generateButton?.addEventListener("click", () => {
@@ -552,9 +623,15 @@ function bindEvents() {
   const resetButton = document.querySelector("#reset-form-button");
   resetButton?.addEventListener("click", () => {
     form?.reset();
+    localStorage.removeItem(FORM_PREFS_KEY);
     initializeDates();
     updateDurationCounter();
     updateFormSummary();
+    validateDates();
+    if (existingHotelFields) {
+      syncHotelFields(existingHotelFields);
+    }
+    showToast("Planner cleared. Start a fresh brief.", "info");
   });
 
   // Save form preferences
@@ -566,6 +643,17 @@ function bindEvents() {
   savedButton?.addEventListener("click", () => setSavedDrawerOpen(true));
   savedClose?.addEventListener("click", () => setSavedDrawerOpen(false));
   savedBackdrop?.addEventListener("click", () => setSavedDrawerOpen(false));
+  document.addEventListener("triptrellis:open-saved-drawer", () => setSavedDrawerOpen(true));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && savedDrawer?.classList.contains("is-open")) {
+      setSavedDrawerOpen(false);
+    }
+  });
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    showToast(`Switched to ${nextTheme} mode.`, "info");
+  });
   savedDrawer?.addEventListener("input", (event) => {
     if (event.target?.id !== "saved-trips-search") return;
     savedTripsSearch = event.target.value || "";

@@ -1068,6 +1068,320 @@ h1 {
   font-size: 0.84rem;
 }
 
+/* ─── Foundation Upgrade Pass ───────────────────────────────────────────── */
+html,
+body,
+button,
+input,
+select,
+textarea,
+a {
+  transition:
+    background-color var(--t-base) var(--ease),
+    color var(--t-base) var(--ease),
+    border-color var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease),
+    opacity var(--t-base) var(--ease);
+}
+
+body {
+  color-scheme: light;
+}
+
+.skip-link {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 50;
+  padding: 12px 16px;
+  border-radius: var(--r-pill);
+  background: #fffaf4;
+  border: 1px solid rgba(38, 24, 14, 0.12);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 800;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.theme-toggle {
+  min-width: 118px;
+}
+
+.toast-viewport {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 70;
+  display: grid;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  min-width: min(320px, calc(100vw - 40px));
+  max-width: 360px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(26, 20, 15, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.18);
+  color: #fff8ef;
+  display: grid;
+  gap: 3px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast strong {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e4ad62;
+}
+
+.toast span {
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.toast--success strong {
+  color: #a8d0ab;
+}
+
+.toast--error strong {
+  color: #efb2b2;
+}
+
+.empty-state-shell {
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+
+.empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.empty-state-primary {
+  text-decoration: none;
+}
+
+.itinerary-item-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: rgba(38, 24, 14, 0.05);
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  cursor: grab;
+}
+
+.drag-hint {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-2);
+}
+
+.itinerary-item[draggable="true"] {
+  cursor: grab;
+}
+
+.itinerary-item.is-dragging {
+  opacity: 0.52;
+  box-shadow: inset 0 0 0 2px rgba(157, 101, 32, 0.18);
+}
+
+button,
+.secondary-button,
+.mini-button,
+.topbar-link,
+.saved-filter-chip,
+.focus-card,
+.toggle-option {
+  min-height: 44px;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(157, 101, 32, 0.34);
+  outline-offset: 3px;
+}
+
+.topbar {
+  gap: 16px;
+}
+
+.topbar-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.site-footer {
+  margin-top: 56px;
+}
+
+@media (max-width: 960px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .topbar-status {
+    justify-content: flex-start;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .toast-viewport {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    min-width: 0;
+    max-width: none;
+  }
+
+  .empty-state-actions {
+    flex-direction: column;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #181512;
+  --bg-deep: #110f0d;
+  --paper: rgba(30, 25, 21, 0.92);
+  --paper-strong: rgba(24, 21, 18, 0.98);
+  --paper-soft: rgba(255, 255, 255, 0.04);
+  --paper-luxe: rgba(28, 24, 20, 0.95);
+  --ink: #f3ede4;
+  --ink-soft: #fff8ef;
+  --muted: #c0b2a3;
+  --muted-2: #948678;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+}
+
+:root[data-theme="dark"] body {
+  color-scheme: dark;
+  background:
+    radial-gradient(ellipse 74% 62% at 8% 0%, rgba(157, 101, 32, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 46% at 96% 8%, rgba(56, 79, 61, 0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #15120f 0%, #181411 48%, #110f0d 100%);
+}
+
+:root[data-theme="dark"] .topbar,
+:root[data-theme="dark"] .planner-card,
+:root[data-theme="dark"] .section-card,
+:root[data-theme="dark"] .info-card,
+:root[data-theme="dark"] .day-card,
+:root[data-theme="dark"] .slot-card,
+:root[data-theme="dark"] .recommendation-card,
+:root[data-theme="dark"] .saved-trip-card,
+:root[data-theme="dark"] .saved-search-panel,
+:root[data-theme="dark"] .site-footer,
+:root[data-theme="dark"] .library-overlay-panel,
+:root[data-theme="dark"] .trip-snapshot-card,
+:root[data-theme="dark"] .workspace-stat,
+:root[data-theme="dark"] .how-step,
+:root[data-theme="dark"] .testimonial-card,
+:root[data-theme="dark"] .faq-item,
+:root[data-theme="dark"] .coverage-band,
+:root[data-theme="dark"] .summary-item,
+:root[data-theme="dark"] .focus-card,
+:root[data-theme="dark"] .toggle-option {
+  background: rgba(30, 25, 21, 0.9);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .dark-anchor {
+  background: linear-gradient(180deg, rgba(35, 30, 25, 0.98), rgba(27, 24, 21, 0.98));
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="dark"] .hero-chips span,
+:root[data-theme="dark"] .tag,
+:root[data-theme="dark"] .trip-meta-pill,
+:root[data-theme="dark"] .day-meta-pill,
+:root[data-theme="dark"] .day-quality-pill,
+:root[data-theme="dark"] .saved-card-tags span,
+:root[data-theme="dark"] .saved-filter-chip,
+:root[data-theme="dark"] .lib-tag,
+:root[data-theme="dark"] .trip-adjust-card,
+:root[data-theme="dark"] .summary-item,
+:root[data-theme="dark"] .drag-handle {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.09);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4,
+:root[data-theme="dark"] strong,
+:root[data-theme="dark"] .brand-mark,
+:root[data-theme="dark"] .section-title,
+:root[data-theme="dark"] .trip-title,
+:root[data-theme="dark"] .card-heading h2 {
+  color: var(--ink-soft);
+}
+
+:root[data-theme="dark"] p,
+:root[data-theme="dark"] .planner-intro,
+:root[data-theme="dark"] .card-subtitle,
+:root[data-theme="dark"] .footer-note,
+:root[data-theme="dark"] .hero-text,
+:root[data-theme="dark"] .how-step-desc,
+:root[data-theme="dark"] .testimonial-text,
+:root[data-theme="dark"] .faq-answer p,
+:root[data-theme="dark"] .slot-status,
+:root[data-theme="dark"] .day-summary,
+:root[data-theme="dark"] .saved-card-body,
+:root[data-theme="dark"] .summary-helper,
+:root[data-theme="dark"] .drag-hint {
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
 /* ─── Form ───────────────────────────────────────────────────────────────── */
 .planner-form,
 .date-grid,
@@ -8939,14 +9253,14 @@ textarea {
 #generate-trip-button {
   background: linear-gradient(180deg, #241b14, #1b140f) !important;
   box-shadow:
-    0 18px 38px rgba(28, 26, 23, 0.12) !important,
+    0 18px 38px rgba(28, 26, 23, 0.12),
     inset 0 1px 0 rgba(255, 248, 238, 0.08) !important;
 }
 
 #generate-trip-button:hover {
   background: linear-gradient(180deg, #34271e, #221a14) !important;
   box-shadow:
-    0 20px 42px rgba(28, 26, 23, 0.15) !important,
+    0 20px 42px rgba(28, 26, 23, 0.15),
     inset 0 1px 0 rgba(255, 248, 238, 0.08) !important;
 }
 
