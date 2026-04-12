@@ -82,8 +82,9 @@ function getPlannerStepTabs() {
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
 const THEME_KEY = "triptrellis-theme";
-let rawCityGuidesPromise = null;
-let cityGuidesPromise = null;
+let cityDataModulePromise = null;
+const cityGuidePromises = new Map();
+const supplementLibraryPromises = new Map();
 let currentPlannerStep = 1;
 
 const plannerStepMeta = {
@@ -101,24 +102,37 @@ const plannerStepMeta = {
   },
 };
 
-async function getRawCityGuides() {
-  if (!rawCityGuidesPromise) {
-    rawCityGuidesPromise = import("./data/cities/index.js?v=triptrellis-library-expansion-20260412-003")
-      .then((module) => module.cityGuides);
+async function getCityDataModule() {
+  if (!cityDataModulePromise) {
+    cityDataModulePromise = import("./data/cities/index.js?v=triptrellis-library-expansion-20260412-004");
   }
-  return rawCityGuidesPromise;
+  return cityDataModulePromise;
 }
 
-async function getCityGuides() {
-  if (!cityGuidesPromise) {
-    cityGuidesPromise = Promise.all([
-      getRawCityGuides(),
-      import("./data/hotel-details.js?v=triptrellis-hotel-details-20260412-001"),
-    ]).then(([cityGuides, hotelDetailsModule]) =>
-      hotelDetailsModule.enrichCityGuidesWithHotelDetails(cityGuides)
-    );
+async function getCityGuide(cityKey) {
+  if (cityGuidePromises.has(cityKey)) {
+    return cityGuidePromises.get(cityKey);
   }
-  return cityGuidesPromise;
+
+  const loadPromise = Promise.all([
+    getCityDataModule(),
+    import("./data/hotel-details.js?v=triptrellis-hotel-details-20260412-001"),
+  ]).then(async ([module, hotelDetailsModule]) => {
+    const guide = await module.loadCityGuide(cityKey);
+    return hotelDetailsModule.enrichCityGuideWithHotelDetails(cityKey, guide);
+  });
+
+  cityGuidePromises.set(cityKey, loadPromise);
+  return loadPromise;
+}
+
+async function getCategorySupplementLibrary(cityKey) {
+  if (supplementLibraryPromises.has(cityKey)) {
+    return supplementLibraryPromises.get(cityKey);
+  }
+  const loadPromise = getCityDataModule().then((module) => module.loadCategorySupplementLibrary(cityKey));
+  supplementLibraryPromises.set(cityKey, loadPromise);
+  return loadPromise;
 }
 
 function showToast(message, type = "info") {
@@ -587,10 +601,9 @@ export async function generateFromForm(form) {
 
   const results = getResults();
   try {
-    const cityGuides = await getCityGuides();
     const formData = new FormData(form);
     const cityKey = String(formData.get("city") || "");
-    const guide = cityGuides[cityKey];
+    const guide = await getCityGuide(cityKey);
     const startDate = new Date(String(formData.get("start-date") || ""));
     const endDate = new Date(String(formData.get("end-date") || ""));
     const arrivalTime = String(formData.get("arrival-time") || "afternoon");
@@ -616,8 +629,9 @@ export async function generateFromForm(form) {
     setGenerateButtonLoading(true);
     startGenerationLoading(results);
 
-    window.setTimeout(() => {
+    window.setTimeout(async () => {
       try {
+        const supplements = await getCategorySupplementLibrary(cityKey);
         const plan = buildPlan({
           cityKey,
           guide,
@@ -632,6 +646,7 @@ export async function generateFromForm(form) {
           existingHotels,
           arrivalTime,
           departureTime,
+          supplements,
         });
 
         setCurrentPlan(plan);
@@ -688,11 +703,6 @@ function initializeApp() {
   loadFormPreferences();
   renderPlannerStep();
 
-  if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(() => {
-      getRawCityGuides().catch(() => {});
-    });
-  }
 }
 
 function bindEvents() {

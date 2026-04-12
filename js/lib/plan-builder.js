@@ -2,7 +2,6 @@
 
 import { normalizeText, hashString, basePlaceName, getPlaceIdentityKeys, formatDate, formatFocus, shiftDate, differenceInDays } from "./utils.js?v=triptrellis-prague-clock-cleanup-20260411-007";
 import { focusThemes, budgetProfiles, paceRules, buildMergedFocusTheme } from "./constants.js";
-import { categorySupplementLibraries } from "../data/cities/index.js";
 import { categorizeLibraryItem, inferFoodCuisine, inferFoodPriceTier, inferFoodTiming, inferActivityPriceTier, expandLibraryDescription, buildLibraryDetailLine, polishLibraryDescription } from "./infer.js";
 import { buildTravelAvailabilityRules } from "./itinerary.js";
 import { buildNoteProfile, rankHotels, scoreCollection, detectAreaFromText, bestAreaFromNotes } from "./scoring.js?v=triptrellis-transit-balanced-20260411-010";
@@ -481,12 +480,12 @@ function chooseCleanerLibraryDuplicate(existing, candidate) {
     : existing;
 }
 
-export function buildLibraryItems({ cityKey, guide, cantMiss, doThese, restaurants }) {
+export function buildLibraryItems({ cityKey, guide, cantMiss, doThese, restaurants, supplements = [] }) {
   const combined = [
     ...cantMiss.map((item, index) => normalizeLibraryItem(item, "sight", index, cityKey)),
     ...doThese.map((item, index) => normalizeLibraryItem(item, "activity", index, cityKey)),
     ...restaurants.map((item, index) => normalizeLibraryItem(item, "food", index, cityKey)),
-    ...(categorySupplementLibraries[cityKey] || []).map((item, index) => normalizeLibraryItem(item, "supplement", index + 1000, cityKey)),
+    ...supplements.map((item, index) => normalizeLibraryItem(item, "supplement", index + 1000, cityKey)),
   ];
 
   const byPlace = new Map();
@@ -514,7 +513,7 @@ export function buildLibraryItems({ cityKey, guide, cantMiss, doThese, restauran
   return [...new Map([...byPlace.values()].map((item) => [item.id, item])).values()];
 }
 
-export function buildTripPlan({ cityKey, guide, startDate, endDate, arrivalTime = "afternoon", departureTime = "morning", budget, pace, focus, focuses, notes, hotelStatus, existingHotels, selectedHotelName = "" }, loadSavedItinerariesFn, populateSuggestedItineraryFn) {
+export function buildTripPlan({ cityKey, guide, startDate, endDate, arrivalTime = "afternoon", departureTime = "morning", budget, pace, focus, focuses, notes, hotelStatus, existingHotels, selectedHotelName = "", supplements = [] }, loadSavedItinerariesFn, populateSuggestedItineraryFn) {
   focuses = focuses && focuses.length ? focuses : [focus || "culture"];
   const totalDays = differenceInDays(startDate, endDate) + 1;
   const mergedFocusTheme = buildMergedFocusTheme(focuses);
@@ -530,7 +529,7 @@ export function buildTripPlan({ cityKey, guide, startDate, endDate, arrivalTime 
   const cantMiss = rankedCantMiss.slice(0, 10);
   const doThese = rankedActivities.slice(0, 14);
   const restaurants = rankedRestaurants.slice(0, 14);
-  const libraryItems = buildLibraryItems({ cityKey, guide, cantMiss: rankedCantMiss, doThese: rankedActivities, restaurants: rankedRestaurants });
+  const libraryItems = buildLibraryItems({ cityKey, guide, cantMiss: rankedCantMiss, doThese: rankedActivities, restaurants: rankedRestaurants, supplements });
   const days = Array.from({ length: totalDays }, (_, index) =>
     buildDayPlan({
       guide,

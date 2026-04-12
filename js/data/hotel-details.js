@@ -399,19 +399,15 @@ function enrichHotel(hotel, cityKey, tier) {
   };
 }
 
-export function enrichCityGuidesWithHotelDetails(cityGuides) {
-  return Object.fromEntries(
-    Object.entries(cityGuides).map(([cityKey, guide]) => [
-      cityKey,
-      {
-        ...guide,
-        hotels: Object.fromEntries(
-          Object.entries(guide.hotels || {}).map(([tier, hotels]) => [
-            tier,
-            (hotels || []).map((hotel) => enrichHotel(hotel, cityKey, tier)),
-          ])
-        ),
-      },
-    ])
-  );
+export function enrichCityGuideWithHotelDetails(cityKey, guide) {
+  if (!guide) return guide;
+  return {
+    ...guide,
+    hotels: Object.fromEntries(
+      Object.entries(guide.hotels || {}).map(([tier, hotels]) => [
+        tier,
+        (hotels || []).map((hotel) => enrichHotel(hotel, cityKey, tier)),
+      ])
+    ),
+  };
 }
