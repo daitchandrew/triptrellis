@@ -8953,6 +8953,262 @@ textarea {
   }
 }
 
+/* Generated results editorial refinement */
+.hero-result {
+  gap: 28px;
+  padding: 36px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(194, 130, 91, 0.08), transparent 26%),
+    radial-gradient(circle at 10% 100%, rgba(123, 58, 75, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(255, 252, 248, 0.99), rgba(245, 237, 226, 0.965));
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.trip-header {
+  gap: 34px !important;
+  margin-bottom: 28px !important;
+}
+
+.trip-hero-copy {
+  gap: 14px;
+}
+
+.trip-title {
+  color: #1c1712;
+  letter-spacing: -0.05em !important;
+}
+
+.trip-lede {
+  max-width: 58ch;
+  color: rgba(72, 60, 51, 0.8);
+  font-size: 1.01rem;
+  line-height: 1.72;
+}
+
+.trip-meta-pills {
+  gap: 10px;
+}
+
+.trip-meta-pill {
+  min-height: 34px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  color: rgba(63, 53, 46, 0.78);
+}
+
+.confidence-note {
+  max-width: 360px;
+  gap: 12px;
+  padding: 22px 22px 20px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 238, 229, 0.84));
+  border: 1px solid rgba(43, 29, 20, 0.075);
+}
+
+.confidence-kicker {
+  margin: 0;
+  color: #ab6c42;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.confidence-note strong {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.06rem;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
+  color: #1f1813;
+}
+
+.confidence-note p {
+  margin: 0;
+  color: rgba(70, 58, 49, 0.76);
+}
+
+.trip-at-a-glance {
+  gap: 12px;
+}
+
+.glance-card {
+  padding: 18px 18px 17px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(249, 243, 235, 0.76));
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.glance-card strong {
+  font-size: 1.03rem;
+}
+
+.glance-card p {
+  color: rgba(71, 60, 52, 0.74);
+}
+
+.tag-row {
+  gap: 9px;
+}
+
+.tag {
+  min-height: 34px;
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  box-shadow: none;
+}
+
+.workspace-stats {
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.workspace-stat {
+  padding: 17px 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(249, 243, 235, 0.74));
+  border: 1px solid rgba(43, 29, 20, 0.07);
+  box-shadow: none;
+}
+
+.dont-miss-section {
+  padding: 32px;
+}
+
+.dont-miss-section .section-head {
+  margin-bottom: 18px;
+}
+
+.dont-miss-intro {
+  max-width: 60ch;
+}
+
+.recommendation-grid {
+  gap: 14px;
+}
+
+.dont-miss-card {
+  padding: 18px 18px 17px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 241, 233, 0.78));
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.dont-miss-rank-number {
+  color: #b5764d;
+}
+
+.dont-miss-card h4 {
+  color: #1f1813;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.08rem;
+  letter-spacing: -0.03em;
+}
+
+.dont-miss-card p {
+  color: rgba(70, 58, 49, 0.78);
+}
+
+.dont-miss-why {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.itinerary-focus-shell {
+  padding: 32px;
+}
+
+.itinerary-focus-head {
+  margin-bottom: 16px;
+}
+
+.day-card {
+  padding: 26px;
+  border-radius: 26px;
+}
+
+.day-heading {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.day-intro {
+  padding: 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(250, 245, 239, 0.72));
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.day-story-panel {
+  padding: 13px 14px;
+  border-radius: 16px;
+  background: rgba(251, 247, 241, 0.9);
+  border: 1px solid rgba(194, 130, 91, 0.12);
+}
+
+.day-story-kicker {
+  color: #ab6c42;
+}
+
+.day-story-chip {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.day-story-chip--base {
+  background: rgba(194, 130, 91, 0.08);
+  border-color: rgba(194, 130, 91, 0.14);
+}
+
+.slot-card {
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 241, 233, 0.76));
+}
+
+.highlight-list li {
+  border-radius: 18px;
+}
+
+.trip-adjust-panel {
+  padding: 30px;
+}
+
+.trip-adjust-head {
+  margin-bottom: 16px;
+}
+
+.trip-adjust-card {
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 242, 235, 0.76));
+}
+
+.trip-adjust-card small {
+  max-width: 30ch;
+}
+
+@media (max-width: 760px) {
+  .hero-result,
+  .dont-miss-section,
+  .itinerary-focus-shell,
+  .trip-adjust-panel,
+  .day-card {
+    padding: 22px;
+  }
+
+  .trip-header {
+    gap: 18px !important;
+  }
+}
+
 @media (max-width: 760px) {
   .planner-brief-steps {
     gap: 6px;

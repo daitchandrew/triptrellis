@@ -601,7 +601,7 @@ export function renderTripPlan(plan, results) {
             </div>
           </div>
           <div class="confidence-note">
-            <p class="confidence-kicker">Trip logic</p>
+            <p class="confidence-kicker">Why this route works</p>
             <strong>${plan.focusTheme.headline}</strong>
             <p>${plan.hotelBase.influence}</p>
             <p>${plan.budgetProfile.headline}</p>
@@ -652,8 +652,8 @@ export function renderTripPlan(plan, results) {
         <article class="info-card hotel-selector-card">
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Hotel options</p>
-            <h3 class="section-title">Base options for this itinerary</h3>
-            <p class="card-subtitle hotel-selector-intro">If you want the trip to orbit a different neighborhood, these are the strongest alternate bases without breaking the overall logic.</p>
+            <h3 class="section-title">Other strong ways to center the trip</h3>
+            <p class="card-subtitle hotel-selector-intro">If you want the city to revolve around another neighborhood, these are the alternates that still keep the trip coherent.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -681,7 +681,7 @@ export function renderTripPlan(plan, results) {
             </div>
           ` : `
             <p class="section-kicker">Money + booking</p>
-            <h3 class="section-title">Pre-trip notes</h3>
+            <h3 class="section-title">Before you book</h3>
             <ul class="detail-list">
               <li>${plan.guide.currency}</li>
               ${plan.bookingWatchlist.map((item) => `<li>${item}</li>`).join("")}
@@ -694,7 +694,7 @@ export function renderTripPlan(plan, results) {
     ${plan.hotelRecommendations.length ? `
       <section class="section-card utility-section">
         <p class="section-kicker">Money + booking</p>
-        <h3 class="section-title">Pre-trip notes</h3>
+        <h3 class="section-title">Before you book</h3>
         <ul class="detail-list">
           <li>${plan.guide.currency}</li>
           ${plan.bookingWatchlist.map((item) => `<li>${item}</li>`).join("")}
@@ -706,8 +706,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head">
         <div>
           <p class="section-kicker">Don't miss</p>
-          <h3 class="section-title">Highest-fit picks for this version of the trip</h3>
-          <p class="card-subtitle dont-miss-intro">The places carrying the most weight in this version of the brief, before you start reshaping the edges.</p>
+          <h3 class="section-title">Curated anchors for this version of the trip</h3>
+          <p class="card-subtitle dont-miss-intro">The places doing the most work in this build of the brief, before you start tailoring the edges around your taste.</p>
         </div>
       </div>
       <div class="recommendation-grid">
@@ -732,8 +732,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head itinerary-focus-head">
         <div>
           <p class="section-kicker">Suggested itinerary</p>
-          <h3 class="section-title">A day-by-day plan you can keep refining</h3>
-          <p class="card-subtitle">The itinerary already accounts for your base, pace, and notes. Add, replace, remove, and reorder stops until it feels fully yours.</p>
+          <h3 class="section-title">A routeable draft you can keep refining</h3>
+          <p class="card-subtitle">This first version already accounts for your base, pace, and notes. Keep editing until it feels less like a draft and more like your trip.</p>
         </div>
         <div class="itinerary-focus-actions">
           <button class="secondary-button" data-action="open-library" type="button">Add to itinerary</button>
