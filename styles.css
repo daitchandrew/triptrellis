@@ -10499,3 +10499,198 @@ header.hero::after,
     justify-content: flex-start;
   }
 }
+
+/* Planner wizard + landing cleanup */
+header.hero {
+  position: relative;
+  overflow: visible;
+}
+
+header.hero::before {
+  content: "";
+  position: absolute;
+  inset: 88px 0 auto;
+  height: min(640px, 72vh);
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 24%, rgba(181, 118, 77, 0.045), transparent 18%),
+    radial-gradient(circle at 80% 18%, rgba(99, 120, 101, 0.04), transparent 20%),
+    linear-gradient(rgba(181, 118, 77, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181, 118, 77, 0.03) 1px, transparent 1px);
+  background-size: auto, auto, 140px 140px, 140px 140px;
+  background-position: center, center, center, center;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.18) 72%, transparent);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.hero-grid {
+  align-items: flex-start;
+}
+
+.planner-card {
+  position: sticky;
+  top: 84px;
+  align-self: flex-start;
+}
+
+.planner-wizard-progress {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 16px 18px 15px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(38, 24, 14, 0.07);
+}
+
+.planner-progress-head {
+  display: grid;
+  gap: 4px;
+}
+
+.planner-progress-label {
+  margin: 0;
+  color: #ab6c42;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.planner-progress-copy {
+  margin: 0;
+  color: rgba(67, 56, 47, 0.76);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.planner-progress-track {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(38, 24, 14, 0.08);
+}
+
+.planner-progress-fill {
+  display: block;
+  width: 33.333%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #b5764d, #d19c73);
+  transition: width 0.24s ease-in-out;
+}
+
+.planner-step {
+  display: grid;
+  gap: 14px;
+}
+
+.planner-step[hidden] {
+  display: none !important;
+}
+
+.planner-step-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.planner-step-actions--single {
+  grid-template-columns: 1fr;
+}
+
+.wizard-next-button,
+.wizard-back-button {
+  min-height: 58px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.wizard-next-button {
+  background: rgba(38, 24, 14, 0.94);
+  border-color: rgba(38, 24, 14, 0.94);
+  color: #fff7ec;
+}
+
+.wizard-next-button:hover {
+  background: #34271e;
+  border-color: #34271e;
+}
+
+.wizard-back-button {
+  background: rgba(255, 255, 255, 0.82);
+  color: rgba(53, 43, 36, 0.82);
+}
+
+.wizard-back-button:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(38, 24, 14, 0.12);
+  color: #241a14;
+}
+
+.form-actions {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.35fr) minmax(0, 0.83fr);
+  align-items: stretch;
+}
+
+.form-actions-secondary {
+  align-self: stretch;
+}
+
+.site-footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  padding-bottom: 22px;
+}
+
+@media (max-width: 1180px) {
+  .planner-card {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  header.hero::before {
+    inset: 78px 0 auto;
+    height: 48vh;
+    background-size: auto, auto, 110px 110px, 110px 110px;
+    opacity: 0.56;
+  }
+
+  .planner-wizard-progress {
+    padding: 14px 15px;
+    border-radius: 20px;
+  }
+
+  .planner-progress-copy {
+    font-size: 0.84rem;
+  }
+
+  .planner-step-actions,
+  .form-actions,
+  .form-actions-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-next-button,
+  .wizard-back-button {
+    min-height: 54px;
+  }
+
+  .site-footer {
+    margin-top: 18px;
+  }
+}

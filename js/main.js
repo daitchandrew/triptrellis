@@ -59,11 +59,43 @@ function getToastViewport() {
   return document.querySelector("#toast-viewport");
 }
 
+function getPlannerSteps() {
+  return Array.from(document.querySelectorAll(".planner-step"));
+}
+
+function getPlannerStepLabel() {
+  return document.querySelector("#planner-step-label");
+}
+
+function getPlannerStepCopy() {
+  return document.querySelector("#planner-step-copy");
+}
+
+function getPlannerProgressFill() {
+  return document.querySelector("#planner-progress-fill");
+}
+
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
 const THEME_KEY = "triptrellis-theme";
 let rawCityGuidesPromise = null;
 let cityGuidesPromise = null;
+let currentPlannerStep = 1;
+
+const plannerStepMeta = {
+  1: {
+    label: "Step 1 of 3",
+    copy: "Basics: set the city, travel window, and overall trip length.",
+  },
+  2: {
+    label: "Step 2 of 3",
+    copy: "Logistics: define the stay setup, budget, and pacing logic.",
+  },
+  3: {
+    label: "Step 3 of 3",
+    copy: "Details: set the vibe, add notes, and generate the brief.",
+  },
+};
 
 async function getRawCityGuides() {
   if (!rawCityGuidesPromise) {
@@ -451,6 +483,79 @@ function clearFieldError(field, errorEl) {
   errorEl.hidden = true;
 }
 
+function renderPlannerStep() {
+  const steps = getPlannerSteps();
+  const stepLabel = getPlannerStepLabel();
+  const stepCopy = getPlannerStepCopy();
+  const progressFill = getPlannerProgressFill();
+  const safeStep = Math.min(Math.max(currentPlannerStep, 1), steps.length || 3);
+  currentPlannerStep = safeStep;
+
+  steps.forEach((stepEl) => {
+    const stepNumber = Number(stepEl.dataset.step || "1");
+    const isActive = stepNumber === safeStep;
+    stepEl.hidden = !isActive;
+    stepEl.classList.toggle("is-active", isActive);
+  });
+
+  const meta = plannerStepMeta[safeStep];
+  if (stepLabel && meta) stepLabel.textContent = meta.label;
+  if (stepCopy && meta) stepCopy.textContent = meta.copy;
+  if (progressFill) {
+    progressFill.style.width = `${(safeStep / 3) * 100}%`;
+  }
+}
+
+function focusPlannerStepStart(step) {
+  const stepEl = getPlannerSteps().find((node) => Number(node.dataset.step || "0") === step);
+  if (!stepEl) return;
+  const focusTarget = stepEl.querySelector("select, input, textarea, button");
+  if (focusTarget instanceof HTMLElement) {
+    focusTarget.focus({ preventScroll: true });
+  }
+}
+
+function validatePlannerStep(step) {
+  const form = getForm();
+  if (!form) return false;
+
+  if (step === 1) {
+    const cityField = form.querySelector("#city");
+    const startField = form.querySelector("#start-date");
+    const endField = form.querySelector("#end-date");
+    const fields = [cityField, startField, endField].filter(Boolean);
+    const hasNativeValidityError = fields.some((field) => typeof field.reportValidity === "function" && !field.reportValidity());
+    if (hasNativeValidityError) return false;
+    if (!validateDates()) return false;
+  }
+
+  if (step === 2) {
+    const budgetField = form.querySelector("#budget");
+    const paceField = form.querySelector("#pace");
+    const hotelStatus = form.querySelector('input[name="hotel-status"]:checked');
+    if (!hotelStatus) return false;
+    if ((typeof budgetField?.reportValidity === "function" && !budgetField.reportValidity())
+      || (typeof paceField?.reportValidity === "function" && !paceField.reportValidity())) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function setPlannerStep(step, { force = false, focus = true } = {}) {
+  const nextStep = Number(step);
+  if (!force && nextStep > currentPlannerStep && !validatePlannerStep(currentPlannerStep)) {
+    return false;
+  }
+  currentPlannerStep = nextStep;
+  renderPlannerStep();
+  if (focus) {
+    focusPlannerStepStart(currentPlannerStep);
+  }
+  return true;
+}
+
 export async function generateFromForm(form) {
   if (!form) {
     showGenerationError(new Error("TripTrellis could not find the planner form."));
@@ -540,6 +645,10 @@ export async function generateFromForm(form) {
 
 function handlePlannerSubmit(event) {
   event.preventDefault();
+  if (currentPlannerStep < 3) {
+    setPlannerStep(currentPlannerStep + 1);
+    return;
+  }
   generateFromForm(event.currentTarget);
 }
 
@@ -568,6 +677,7 @@ function initializeApp() {
   
   // Load stored preferences if available
   loadFormPreferences();
+  renderPlannerStep();
 
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(() => {
@@ -586,15 +696,29 @@ function bindEvents() {
   const savedBackdrop = getSavedBackdrop();
   const savedClose = document.querySelector("#saved-trips-close");
   const themeToggle = getThemeToggle();
+  const plannerNextButtons = document.querySelectorAll('[data-action="planner-next"]');
+  const plannerBackButtons = document.querySelectorAll('[data-action="planner-back"]');
 
   form?.addEventListener("submit", handlePlannerSubmit);
   generateButton?.addEventListener("click", () => {
     generateFromForm(form);
   });
+  plannerNextButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setPlannerStep(currentPlannerStep + 1);
+    });
+  });
+  plannerBackButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setPlannerStep(currentPlannerStep - 1, { force: true });
+    });
+  });
 
   // Date and duration tracking
   const startField = document.querySelector("#start-date");
   const endField = document.querySelector("#end-date");
+  const arrivalTimeField = document.querySelector("#arrival-time");
+  const departureTimeField = document.querySelector("#departure-time");
   startField?.addEventListener("change", () => {
     updateDurationCounter();
     updateFormSummary();
@@ -611,10 +735,13 @@ function bindEvents() {
   // Validate on blur too
   startField?.addEventListener("blur", validateDates);
   endField?.addEventListener("blur", validateDates);
+  arrivalTimeField?.addEventListener("change", saveFormPreferences);
+  departureTimeField?.addEventListener("change", saveFormPreferences);
 
   // Form summary updates
   const citySelect = form?.querySelector("#city");
   const budgetSelect = form?.querySelector("#budget");
+  const paceSelect = form?.querySelector("#pace");
   const focusCheckboxes = form?.querySelectorAll('input[name="focus"]');
   
   citySelect?.addEventListener("change", () => {
@@ -625,6 +752,7 @@ function bindEvents() {
     updateFormSummary();
     saveFormPreferences();
   });
+  paceSelect?.addEventListener("change", saveFormPreferences);
   focusCheckboxes?.forEach(cb => {
     cb.addEventListener("change", () => {
       updateFormSummary();
@@ -641,6 +769,7 @@ function bindEvents() {
     updateDurationCounter();
     updateFormSummary();
     validateDates();
+    setPlannerStep(1, { force: true, focus: false });
     if (existingHotelFields) {
       syncHotelFields(existingHotelFields);
     }
