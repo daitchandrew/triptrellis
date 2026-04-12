@@ -8352,3 +8352,250 @@ textarea {
     max-width: none;
   }
 }
+
+/* ─── Planner Interaction Upgrade ──────────────────────────────────────── */
+.planner-brief-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.planner-brief-steps span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(247, 242, 234, 0.96);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+  color: rgba(75, 64, 55, 0.72);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.planner-form {
+  gap: 14px;
+}
+
+.form-block {
+  position: relative;
+  gap: 12px;
+  padding: 16px;
+}
+
+.form-block::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(194, 130, 91, 0.24), rgba(194, 130, 91, 0));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.form-block:focus-within {
+  background: rgba(255, 255, 255, 0.76);
+  border-color: rgba(194, 130, 91, 0.14);
+}
+
+.form-block:focus-within::before {
+  opacity: 1;
+}
+
+.form-block label {
+  display: grid;
+  gap: 8px;
+  color: #2a2019;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.form-block select,
+.form-block input:not([type="radio"]):not([type="checkbox"]),
+.form-block textarea {
+  color: #241b15;
+}
+
+.choice-group,
+.conditional-fields,
+.arrival-departure-grid,
+.duration-display,
+.form-summary {
+  background: rgba(255, 250, 244, 0.8);
+}
+
+.arrival-departure-grid {
+  gap: 12px;
+}
+
+.field-wrapper {
+  display: grid;
+  gap: 6px;
+}
+
+.field-error {
+  margin: 0;
+  color: #8f5638;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.duration-display {
+  display: grid;
+  gap: 6px;
+}
+
+.duration-label {
+  margin: 0;
+  color: #a77048;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.duration-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.duration-days {
+  color: #1c1712;
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.duration-nights {
+  color: #665b50;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.duration-helper,
+.summary-helper {
+  margin: 0;
+  color: rgba(75, 64, 55, 0.68);
+  font-size: 0.8rem;
+  line-height: 1.48;
+}
+
+.summary-items {
+  display: grid;
+  gap: 0;
+}
+
+.summary-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.summary-meta {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.summary-item strong {
+  text-align: right;
+}
+
+.conditional-fields {
+  gap: 10px;
+  border-style: dashed;
+}
+
+.focus-grid {
+  gap: 9px;
+}
+
+.focus-card {
+  position: relative;
+}
+
+.focus-card::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(43, 29, 20, 0.12);
+  background: rgba(255, 255, 255, 0.78);
+  opacity: 0;
+  transition: opacity 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.focus-card:has(input:checked)::after {
+  opacity: 1;
+  background: #1c1a17;
+  border-color: #1c1a17;
+  box-shadow: inset 0 0 0 4px rgba(255, 248, 238, 0.96);
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px;
+}
+
+#generate-trip-button {
+  min-height: 50px;
+  padding-inline: 18px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.reset-btn,
+.save-form-btn {
+  min-height: 46px;
+  padding-inline: 16px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.save-form-btn.saved {
+  background: rgba(194, 130, 91, 0.12) !important;
+  border-color: rgba(194, 130, 91, 0.16) !important;
+  color: #8f5638 !important;
+}
+
+@media (max-width: 760px) {
+  .planner-brief-steps {
+    gap: 6px;
+  }
+
+  .planner-brief-steps span {
+    min-height: 26px;
+    font-size: 0.68rem;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .summary-item strong {
+    text-align: left;
+  }
+}

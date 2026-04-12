@@ -224,7 +224,10 @@ function updateFormSummary() {
   
   if (document.querySelector("#summary-dates")) {
     const durationText = document.querySelector("#duration-counter")?.querySelector(".duration-days")?.textContent || "—";
-    document.querySelector("#summary-dates").textContent = `${durationText} days`;
+    const numericDuration = Number(durationText);
+    document.querySelector("#summary-dates").textContent = Number.isFinite(numericDuration) && numericDuration > 0
+      ? `${durationText} ${numericDuration === 1 ? "day" : "days"}`
+      : "Choose dates";
   }
   
   if (document.querySelector("#summary-interests")) {
@@ -232,11 +235,11 @@ function updateFormSummary() {
     let interestsText = "No interests selected";
     if (count === 1) {
       const firstFocus = focusCheckboxes[0].closest(".focus-card");
-      const titleText = firstFocus?.querySelector(".focus-card-label")?.textContent;
+      const titleText = firstFocus?.querySelector(".focus-card-label")?.textContent?.replace(/\s+/g, " ").trim();
       interestsText = titleText || "1 interest";
     } else if (count > 1) {
       const firstFocus = focusCheckboxes[0].closest(".focus-card");
-      const firstTitle = firstFocus?.querySelector(".focus-card-label")?.textContent?.split("\n")[0];
+      const firstTitle = firstFocus?.querySelector(".focus-card-label")?.textContent?.replace(/\s+/g, " ").trim();
       interestsText = `${firstTitle}, and ${count - 1} more`;
     }
     document.querySelector("#summary-interests").textContent = interestsText;

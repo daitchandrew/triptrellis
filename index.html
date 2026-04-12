@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-002" />
+    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-003" />
   </head>
   <body>
     <script>
@@ -34,7 +34,7 @@
         }
 
         try {
-          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-002");
+          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-003");
           const generator = window.TripTrellisGenerate || app.generateFromForm;
           if (!generator) {
             throw new Error("TripTrellis loaded, but the Generate function was not found.");
@@ -316,6 +316,12 @@
               <p class="planner-banner-kicker">Start with the brief</p>
               <strong>Shape the bones of the trip before the itinerary fills in.</strong>
               <p>Choose one city, define the travel window, then tell us how you want the days to feel.</p>
+              <div class="planner-brief-steps" aria-hidden="true">
+                <span>City</span>
+                <span>Stay</span>
+                <span>Dates</span>
+                <span>Interests</span>
+              </div>
             </div>
 
             <form id="planner-form" class="planner-form" action="#" onsubmit="window.TripTrellisGenerateNow(this); return false;">
@@ -457,6 +463,7 @@
                   <div class="duration-counter" id="duration-counter">
                     <span class="duration-days">4</span> <span class="duration-nights">nights</span>
                   </div>
+                  <p class="duration-helper">We use this to balance ambition, routing, and how many neighborhoods the trip should realistically cover.</p>
                 </div>
 
                 <div class="detail-grid">
@@ -575,6 +582,7 @@
                     <div class="summary-item"><span class="summary-meta">Budget</span><strong id="summary-budget">Premium</strong></div>
                     <div class="summary-item"><span class="summary-meta">Focus</span><strong id="summary-interests">Culture, and 1 more</strong></div>
                   </div>
+                  <p class="summary-helper">This is the brief TripTrellis uses before it starts building the route.</p>
                 </div>
               </div>
 
@@ -658,6 +666,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./js/main-current.js?v=triptrellis-ui-polish-20260412-002"></script>
+    <script type="module" src="./js/main-current.js?v=triptrellis-ui-polish-20260412-003"></script>
   </body>
 </html>
