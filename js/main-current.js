@@ -2,7 +2,7 @@ import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansi
 import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-ui-logic-20260412-001";
 import { populateSuggestedItinerary } from "./lib/itinerary.js?v=triptrellis-ui-logic-20260412-001";
 import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
-import { renderEmptyState, renderGenerationLoading, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-ui-render-20260412-001";
+import { renderEmptyState, renderGenerationLoading, renderInputError, renderTripPlan, renderSavedItinerariesSection } from "./lib/render-current.js?v=triptrellis-ui-render-20260412-002";
 import {
   handleDragEnd,
   handleDragOver,

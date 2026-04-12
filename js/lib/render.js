@@ -281,16 +281,16 @@ export function getOverlayCopy(mode) {
     return {
       kicker: "Replace a stop",
       title: "Choose the strongest alternate for this exact moment",
-      body: "TripTrellis sorts options by day fit, nearby routing, and variety so replacements feel intentional instead of random.",
-      subtle: "Already-used places are hidden, and the top groups prioritize options that fit this day's area and rhythm.",
+      body: "These options are ranked by route fit, nearby flow, and contrast, so the replacement feels edited into the day rather than dropped in at random.",
+      subtle: "Already-used places are hidden, and the top groups lean toward options that keep the day coherent while still adding something fresh.",
     };
   }
 
   return {
     kicker: "Add to itinerary",
     title: "Choose something to add",
-    body: "Browse the city library with smarter sorting for best fit, nearby areas, and options that add something different to the day.",
-    subtle: "If you opened this from a specific day, the new stop will go there. Otherwise TripTrellis will place it in the most logical day.",
+    body: "Browse the city library with sorting that favors day fit, nearby areas, and additions that make the trip richer instead of repetitive.",
+    subtle: "Open from a specific day to place the stop there. Otherwise TripTrellis will route it into the most natural part of the itinerary.",
   };
 }
 
@@ -413,7 +413,7 @@ export function renderInputError(results) {
     <section class="section-card">
       <p class="section-kicker">Input check</p>
       <h2 class="section-title">Choose a city and valid dates.</h2>
-      <p class="card-subtitle">This build currently supports Seoul, Tokyo, Kyoto, Osaka, Bangkok, Prague, Copenhagen, and Berlin.</p>
+      <p class="card-subtitle">Make sure the trip has a destination and a valid travel window so TripTrellis can build the first routeable version of the brief.</p>
     </section>
   `;
 }

@@ -9416,3 +9416,131 @@ textarea {
   font-size: 0.84rem;
   line-height: 1.54;
 }
+
+/* Final composition + overlay refinement */
+.proof-cluster {
+  display: grid;
+  gap: 18px;
+}
+
+.coverage-band-copy {
+  margin: 0;
+  max-width: 56ch;
+  color: rgba(68, 57, 48, 0.74);
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.hero-col-left .trust-stats-section {
+  margin: 12px 0 0;
+}
+
+.hero-col-left .coverage-band {
+  margin: 0;
+}
+
+.how-it-works,
+.testimonials-section,
+.faq-section {
+  margin-top: 52px;
+}
+
+.mini-button {
+  background: rgba(255, 255, 255, 0.88);
+  color: #1f1813;
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  box-shadow: none;
+}
+
+.mini-button:hover,
+.secondary-button:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.danger-button:hover {
+  background: rgba(123, 58, 75, 0.16) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.library-overlay {
+  padding: 32px;
+}
+
+.library-overlay-panel {
+  padding: 30px;
+  border-radius: 32px;
+}
+
+.library-overlay-head {
+  margin-bottom: 20px;
+}
+
+.builder-toolbar {
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.library-results-stack {
+  gap: 30px;
+}
+
+.library-result-group {
+  gap: 16px;
+}
+
+.library-result-group-head {
+  padding: 0 4px 12px;
+}
+
+.library-card {
+  padding: 22px;
+  border-radius: 24px;
+}
+
+.library-card h4 {
+  font-size: 1.06rem;
+  line-height: 1.16;
+}
+
+.library-actions {
+  align-items: end;
+}
+
+.library-choose-button {
+  background: #1f1813;
+  color: #fff8ee;
+  border: 1px solid #1f1813;
+}
+
+.library-choose-button:hover {
+  background: #30251d;
+  border-color: #30251d;
+}
+
+.section-head {
+  align-items: start;
+}
+
+@media (max-width: 980px) {
+  .proof-cluster {
+    gap: 16px;
+  }
+
+  .library-overlay {
+    padding: 18px;
+  }
+
+  .library-overlay-panel {
+    width: min(1280px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+    padding: 22px;
+  }
+}
