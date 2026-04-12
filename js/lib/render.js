@@ -525,8 +525,8 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
       <div class="section-head">
         <div>
           <p class="section-kicker">${isFrontPage ? "Saved itineraries" : "Saved itineraries"}</p>
-          <h3 class="section-title">${isFrontPage ? "Jump back into a saved trip before planning a new one" : "Saved trips worth reopening"}</h3>
-          ${isFrontPage ? `<p class="card-subtitle">Your saved plans live here too, so you can download or delete them without generating a new trip first.</p>` : ""}
+          <h3 class="section-title">${isFrontPage ? "Reopen a saved trip before building a new one" : "Saved trips worth reopening"}</h3>
+          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, download, or keep refining them without starting over.</p>` : ""}
         </div>
       </div>
       <div class="saved-search-panel">
@@ -889,15 +889,15 @@ export function renderTripPlan(plan, results) {
     <section class="summary-grid lower-summary-grid">
       <article class="section-card utility-section">
         <p class="section-kicker">Still unresolved</p>
-        <h3 class="section-title">Things to keep flexible</h3>
-        <p class="card-subtitle utility-intro">These are the soft edges of the plan, most likely to shift once weather, energy, or reservation timing becomes real.</p>
+        <h3 class="section-title">Soft edges to keep flexible</h3>
+        <p class="card-subtitle utility-intro">These are the parts most likely to shift once weather, energy, and real reservation timing start to shape the trip.</p>
         <ul class="list-panel">
           ${plan.unresolved.map((item) => `<li>${item}</li>`).join("")}
         </ul>
       </article>
       <article class="section-card utility-section">
         <p class="section-kicker">Hotel impact</p>
-        <h3 class="section-title">How the base shaped the trip</h3>
+        <h3 class="section-title">How the base is steering the trip</h3>
         <p class="card-subtitle">${plan.hotelBase.influence}</p>
         <p class="footer-note utility-intro">Change the hotel area or mention a different neighborhood in the notes, and the mix of restaurants, districts, and daily flow will change too.</p>
       </article>
