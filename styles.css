@@ -10424,20 +10424,22 @@ header.hero::after,
 }
 
 .planner-card-banner {
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  background: rgba(255, 255, 255, 0.62);
+  padding: 13px 16px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.58);
   box-shadow: none;
 }
 
 .planner-card-banner strong {
   max-width: none;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.24;
 }
 
 .planner-card-banner p {
   max-width: none;
+  font-size: 0.84rem;
+  line-height: 1.56;
 }
 
 .site-footer {
@@ -10536,11 +10538,11 @@ header.hero::before {
 
 .planner-wizard-progress {
   display: grid;
-  gap: 10px;
-  margin-bottom: 18px;
-  padding: 16px 18px 15px;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 15px 16px 14px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.74);
   border: 1px solid rgba(38, 24, 14, 0.07);
 }
 
@@ -10581,6 +10583,33 @@ header.hero::before {
   border-radius: inherit;
   background: linear-gradient(90deg, #b5764d, #d19c73);
   transition: width 0.24s ease-in-out;
+}
+
+.planner-step-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.planner-step-tab {
+  min-height: 34px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(38, 24, 14, 0.06);
+  color: rgba(67, 56, 47, 0.7);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.planner-step-tab.is-active {
+  background: rgba(194, 130, 91, 0.1);
+  border-color: rgba(194, 130, 91, 0.18);
+  color: #8f5638;
 }
 
 .planner-step {
@@ -10650,9 +10679,9 @@ header.hero::before {
 }
 
 .site-footer {
-  margin-top: 28px;
-  padding-top: 24px;
-  padding-bottom: 22px;
+  margin-top: 18px;
+  padding-top: 22px;
+  padding-bottom: 20px;
 }
 
 @media (max-width: 1180px) {
@@ -10677,6 +10706,10 @@ header.hero::before {
 
   .planner-progress-copy {
     font-size: 0.84rem;
+  }
+
+  .planner-step-tabs {
+    grid-template-columns: 1fr;
   }
 
   .planner-step-actions,

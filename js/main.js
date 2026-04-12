@@ -75,6 +75,10 @@ function getPlannerProgressFill() {
   return document.querySelector("#planner-progress-fill");
 }
 
+function getPlannerStepTabs() {
+  return Array.from(document.querySelectorAll("[data-step-tab]"));
+}
+
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
 const THEME_KEY = "triptrellis-theme";
@@ -488,6 +492,7 @@ function renderPlannerStep() {
   const stepLabel = getPlannerStepLabel();
   const stepCopy = getPlannerStepCopy();
   const progressFill = getPlannerProgressFill();
+  const stepTabs = getPlannerStepTabs();
   const safeStep = Math.min(Math.max(currentPlannerStep, 1), steps.length || 3);
   currentPlannerStep = safeStep;
 
@@ -504,6 +509,10 @@ function renderPlannerStep() {
   if (progressFill) {
     progressFill.style.width = `${(safeStep / 3) * 100}%`;
   }
+  stepTabs.forEach((tab) => {
+    const stepNumber = Number(tab.dataset.stepTab || "1");
+    tab.classList.toggle("is-active", stepNumber === safeStep);
+  });
 }
 
 function focusPlannerStepStart(step) {
