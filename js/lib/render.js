@@ -561,9 +561,9 @@ export function renderTripPlan(plan, results) {
       <section class="section-card hero-result">
         <div class="trip-header">
           <div class="trip-hero-copy">
-            <p class="section-kicker">Generated city plan</p>
+            <p class="section-kicker">Trip brief</p>
             <h2 class="trip-title">${plan.guide.label}</h2>
-            <p class="trip-lede">A sharper ${plan.totalDays}-day brief built around ${plan.hotelBase.areaLabel}, with stronger day flow, editable stops, and a city library you can keep shaping.</p>
+            <p class="trip-lede">A ${plan.totalDays}-day city brief built around ${plan.hotelBase.areaLabel}, with cleaner routing, stronger neighborhood logic, and enough flexibility to keep editing without losing the shape of the trip.</p>
             <div class="trip-meta-pills">
               <span class="trip-meta-pill">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}</span>
               <span class="trip-meta-pill">${plan.totalDays} days</span>
@@ -624,8 +624,8 @@ export function renderTripPlan(plan, results) {
         <article class="info-card hotel-selector-card">
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Hotel options</p>
-            <h3 class="section-title">Best hotels for this trip</h3>
-            <p class="card-subtitle hotel-selector-intro">These are the strongest alternate bases if you want to shift the trip's center of gravity without losing the logic.</p>
+            <h3 class="section-title">Base options for this itinerary</h3>
+            <p class="card-subtitle hotel-selector-intro">If you want the trip to orbit a different neighborhood, these are the strongest alternate bases without breaking the overall logic.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -678,7 +678,7 @@ export function renderTripPlan(plan, results) {
         <div>
           <p class="section-kicker">Don't miss</p>
           <h3 class="section-title">Highest-fit picks for this version of the trip</h3>
-          <p class="card-subtitle dont-miss-intro">The strongest places to protect in this version of the plan before you start editing around the edges.</p>
+          <p class="card-subtitle dont-miss-intro">The places carrying the most weight in this version of the brief, before you start reshaping the edges.</p>
         </div>
       </div>
       <div class="recommendation-grid">
@@ -703,8 +703,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head itinerary-focus-head">
         <div>
           <p class="section-kicker">Suggested itinerary</p>
-          <h3 class="section-title">Start from a strong plan, then edit it however you want</h3>
-          <p class="card-subtitle">The main itinerary is already shaped by your budget, trip type, hotel base, and notes. Add, remove, replace, and drag things until the trip feels right.</p>
+          <h3 class="section-title">A day-by-day plan you can keep refining</h3>
+          <p class="card-subtitle">The itinerary already accounts for your base, pace, and notes. Add, replace, remove, and reorder stops until it feels fully yours.</p>
         </div>
         <div class="itinerary-focus-actions">
           <button class="secondary-button" data-action="open-library" type="button">Add to itinerary</button>
@@ -860,15 +860,15 @@ export function renderTripPlan(plan, results) {
     <section class="summary-grid lower-summary-grid">
       <article class="section-card utility-section">
         <p class="section-kicker">Still unresolved</p>
-        <h3 class="section-title">Keep an eye on these</h3>
-        <p class="card-subtitle utility-intro">These are the soft edges of the plan, the parts most likely to shift once weather, energy, or reservation timing gets real.</p>
+        <h3 class="section-title">Things to keep flexible</h3>
+        <p class="card-subtitle utility-intro">These are the soft edges of the plan, most likely to shift once weather, energy, or reservation timing becomes real.</p>
         <ul class="list-panel">
           ${plan.unresolved.map((item) => `<li>${item}</li>`).join("")}
         </ul>
       </article>
       <article class="section-card utility-section">
         <p class="section-kicker">Hotel impact</p>
-        <h3 class="section-title">How your hotel changed the trip</h3>
+        <h3 class="section-title">How the base shaped the trip</h3>
         <p class="card-subtitle">${plan.hotelBase.influence}</p>
         <p class="footer-note utility-intro">Change the hotel area or mention a different neighborhood in the notes, and the mix of restaurants, districts, and daily flow will change too.</p>
       </article>

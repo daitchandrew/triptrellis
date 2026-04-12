@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-001" />
+    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-002" />
   </head>
   <body>
     <script>
@@ -34,7 +34,7 @@
         }
 
         try {
-          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-001");
+          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-002");
           const generator = window.TripTrellisGenerate || app.generateFromForm;
           if (!generator) {
             throw new Error("TripTrellis loaded, but the Generate function was not found.");
@@ -658,6 +658,6 @@
       </div>
     </footer>
 
-    <script type="module" src="./js/main-current.js?v=triptrellis-ui-polish-20260412-001"></script>
+    <script type="module" src="./js/main-current.js?v=triptrellis-ui-polish-20260412-002"></script>
   </body>
 </html>

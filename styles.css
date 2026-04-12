@@ -7439,3 +7439,607 @@ textarea {
     width: 100%;
   }
 }
+
+/* ─── Generated Trip Editorial Upgrade ─────────────────────────────────── */
+.overview-shell {
+  gap: 22px;
+}
+
+.hero-result,
+.area-compass-section,
+.selected-hotel-card,
+.hotel-selector-card,
+.dont-miss-section,
+.itinerary-focus-shell,
+.utility-section,
+.trip-adjust-panel {
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.06), transparent 28%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.99), rgba(247, 240, 231, 0.96));
+  border: 1px solid rgba(43, 29, 20, 0.08);
+}
+
+.hero-result {
+  gap: 24px;
+  padding: 30px;
+}
+
+.trip-header {
+  gap: 28px;
+  align-items: stretch;
+}
+
+.trip-hero-copy {
+  gap: 12px;
+}
+
+.trip-title {
+  letter-spacing: -0.055em;
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: #1c1712;
+}
+
+.trip-lede {
+  max-width: 56ch;
+  color: #665b50;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.trip-meta-pills {
+  gap: 8px;
+}
+
+.trip-meta-pill {
+  min-height: 32px;
+  padding: 7px 11px;
+  background: rgba(255, 255, 255, 0.82);
+  color: rgba(63, 53, 46, 0.78);
+  font-size: 0.78rem;
+}
+
+.confidence-note {
+  align-content: start;
+  max-width: 340px;
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 238, 228, 0.82));
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.confidence-note strong {
+  font-size: 1rem;
+}
+
+.confidence-note p {
+  font-size: 0.9rem;
+  line-height: 1.58;
+}
+
+.trip-at-a-glance {
+  gap: 10px;
+}
+
+.glance-card {
+  padding: 16px 16px 15px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  min-height: auto;
+}
+
+.glance-card strong {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+  color: #1d1712;
+}
+
+.glance-card p {
+  color: #685d53;
+  font-size: 0.8rem;
+}
+
+.tag-row {
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.tag {
+  min-height: 32px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.78);
+  color: rgba(64, 54, 46, 0.78);
+  font-size: 0.78rem;
+}
+
+.workspace-stats {
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.workspace-stat {
+  padding: 15px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.workspace-stat strong {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1.42rem;
+  letter-spacing: -0.05em;
+}
+
+.workspace-stat p {
+  font-size: 0.82rem;
+  color: #685d53;
+}
+
+.area-compass-section {
+  padding: 28px;
+}
+
+.area-compass-main {
+  gap: 8px;
+}
+
+.area-compass-grid {
+  gap: 12px;
+}
+
+.area-compass-grid article {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.summary-grid {
+  gap: 18px;
+}
+
+.selected-hotel-card,
+.hotel-selector-card,
+.utility-section {
+  padding: 26px;
+}
+
+.selected-hotel-card .section-title,
+.hotel-selector-card .section-title,
+.dont-miss-section .section-title,
+.itinerary-focus-shell .section-title,
+.utility-section .section-title,
+.trip-adjust-panel .section-title,
+.area-compass-section .section-title {
+  font-size: clamp(1.45rem, 2.1vw, 1.95rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  margin-bottom: 6px;
+  color: #1c1712;
+}
+
+.hotel-hero-image {
+  height: 210px;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(246, 239, 229, 0.98), rgba(232, 223, 200, 0.82));
+  border: 1px solid rgba(132, 113, 91, 0.16);
+  box-shadow: none;
+}
+
+.hotel-hero-image span {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 2.4rem;
+  letter-spacing: -0.08em;
+  color: rgba(78, 67, 58, 0.62);
+}
+
+.hotel-hero-image small {
+  color: rgba(78, 67, 58, 0.7);
+}
+
+.selected-hotel-copy {
+  gap: 22px;
+}
+
+.hotel-story-section {
+  gap: 8px;
+}
+
+.hotel-story-section + .hotel-story-section {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.hotel-story-kicker {
+  color: #a77048;
+}
+
+.hotel-amenity-list {
+  column-gap: 22px;
+  row-gap: 9px;
+}
+
+.hotel-amenity-list li {
+  padding-left: 16px;
+  line-height: 1.55;
+}
+
+.hotel-selector-intro,
+.dont-miss-intro,
+.utility-intro {
+  color: #685d53;
+  font-size: 0.92rem;
+  line-height: 1.64;
+}
+
+.stacked-cards {
+  gap: 12px;
+}
+
+.hotel-option-card {
+  gap: 12px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.hotel-option-card::before {
+  height: 3px;
+  opacity: 0.66;
+}
+
+.hotel-option-card.is-selected {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.05), transparent 42%),
+    linear-gradient(180deg, rgba(255, 252, 248, 0.99), rgba(249, 243, 235, 0.97));
+  border: 1px solid rgba(194, 130, 91, 0.22);
+}
+
+.hotel-option-layout {
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.hotel-thumb {
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(245, 239, 229, 0.96), rgba(232, 223, 200, 0.74));
+  box-shadow: none;
+}
+
+.hotel-thumb span {
+  font-size: 1.15rem;
+}
+
+.hotel-option-card h4 {
+  font-size: 1.08rem;
+}
+
+.hotel-option-summary,
+.hotel-option-card .footer-note {
+  font-size: 0.88rem;
+  line-height: 1.56;
+}
+
+.hotel-current-pill,
+.hotel-outline-button {
+  min-height: 36px;
+}
+
+.dont-miss-section {
+  padding: 26px;
+  gap: 14px;
+}
+
+.dont-miss-card {
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(220, 212, 202, 0.8);
+}
+
+.dont-miss-card-body {
+  gap: 6px;
+  max-width: 54rem;
+}
+
+.dont-miss-rank-number {
+  width: 56px;
+  font-size: 0.96rem;
+  padding-top: 4px;
+}
+
+.dont-miss-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+}
+
+.dont-miss-card h4 {
+  font-size: 1.04rem;
+}
+
+.dont-miss-card-body > p {
+  font-size: 0.9rem;
+  line-height: 1.54;
+}
+
+.dont-miss-card .dont-miss-why p {
+  font-size: 0.8rem;
+}
+
+.itinerary-focus-shell {
+  padding: 28px;
+}
+
+.itinerary-focus-head {
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.itinerary-focus-actions {
+  gap: 8px;
+}
+
+.day-grid {
+  gap: 18px;
+}
+
+.day-card {
+  padding: 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.05), transparent 28%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.995) 0%, rgba(245, 238, 229, 0.97) 100%);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.day-card::after,
+.day-heading::before,
+.slot-card::after,
+.highlight-list li::before {
+  display: none;
+}
+
+.day-heading {
+  gap: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+}
+
+.day-heading h3 {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1.38rem;
+  letter-spacing: -0.05em;
+  color: #1d1712;
+}
+
+.trip-meta {
+  font-size: 0.92rem;
+}
+
+.day-meta-row {
+  margin-top: 10px;
+}
+
+.day-meta-pill {
+  min-height: 28px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 0.74rem;
+}
+
+.day-intro {
+  margin-bottom: 18px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: none;
+}
+
+.day-quality-pill {
+  min-height: 24px;
+  padding: 5px 9px;
+  font-size: 0.67rem;
+}
+
+.day-story-panel {
+  padding: 12px 13px;
+  border-radius: 16px;
+  background: rgba(251, 247, 241, 0.82);
+}
+
+.day-story-copy,
+.day-summary,
+.day-reservation-note {
+  color: #675d52;
+}
+
+.slot-stack {
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.slot-card {
+  min-height: 264px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+  box-shadow: none;
+}
+
+.slot-head {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+
+.slot-kicker {
+  font-size: 0.76rem;
+}
+
+.slot-status {
+  font-size: 0.9rem;
+}
+
+.slot-list {
+  gap: 10px;
+}
+
+.highlight-list li {
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(220, 212, 202, 0.78);
+  box-shadow: none;
+}
+
+.itinerary-item {
+  gap: 10px;
+}
+
+.itinerary-item strong {
+  color: #1e1712;
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.highlight-list p,
+.item-guide-note,
+.item-detail {
+  font-size: 0.88rem;
+  line-height: 1.56;
+}
+
+.item-fit-note {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(194, 130, 91, 0.06);
+  border: 1px solid rgba(194, 130, 91, 0.12);
+}
+
+.item-fit-note strong {
+  color: #8f5638;
+}
+
+.transit-anchor-item {
+  background:
+    linear-gradient(180deg, rgba(244, 240, 232, 0.92), rgba(237, 231, 220, 0.82)) !important;
+}
+
+.item-actions {
+  gap: 8px;
+}
+
+.item-actions .mini-button,
+.day-heading-actions .mini-button,
+.itinerary-focus-actions .secondary-button,
+.itinerary-bottom-actions .secondary-button,
+.trip-adjust-card {
+  min-height: 36px;
+  box-shadow: none !important;
+}
+
+.trip-adjust-panel {
+  padding: 26px;
+}
+
+.trip-adjust-head {
+  align-items: start;
+}
+
+.trip-adjust-grid {
+  gap: 12px;
+}
+
+.trip-adjust-card {
+  padding: 16px 16px 15px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.trip-adjust-card span {
+  color: #1d1712;
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.trip-adjust-card small {
+  color: #675d52;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.lower-summary-grid {
+  gap: 18px;
+}
+
+.detail-list,
+.list-panel {
+  gap: 10px;
+}
+
+.detail-list li,
+.list-panel li {
+  color: #655a50;
+  line-height: 1.58;
+}
+
+@media (max-width: 1180px) {
+  .trip-header {
+    flex-direction: column;
+  }
+
+  .confidence-note {
+    max-width: none;
+    width: 100%;
+  }
+
+  .trip-at-a-glance {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-result,
+  .area-compass-section,
+  .selected-hotel-card,
+  .hotel-selector-card,
+  .dont-miss-section,
+  .itinerary-focus-shell,
+  .utility-section,
+  .trip-adjust-panel,
+  .day-card {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .trip-at-a-glance {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head,
+  .itinerary-focus-head {
+    align-items: start;
+  }
+
+  .hotel-option-layout {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .day-heading {
+    flex-direction: column;
+  }
+
+  .slot-card {
+    min-height: 0;
+  }
+}
