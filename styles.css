@@ -9500,6 +9500,31 @@ header.hero::after {
   padding-top: 20px;
 }
 
+.hero-grid {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+
+.planner-card {
+  padding: 40px;
+}
+
+.card-heading h2 {
+  max-width: none;
+  font-size: clamp(2.15rem, 2.6vw, 2.65rem);
+}
+
+.planner-intro {
+  max-width: 58ch;
+}
+
+.planner-card-banner strong {
+  max-width: 34ch;
+}
+
+.planner-card-banner p {
+  max-width: 58ch;
+}
+
 .hero-intro .eyebrow {
   padding: 8px 13px;
   box-shadow: none;
