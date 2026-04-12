@@ -10021,9 +10021,8 @@ header.hero::after {
 }
 
 .how-it-works,
-.testimonials-section,
 .faq-section {
-  margin-top: 52px;
+  margin-top: 36px;
 }
 
 .mini-button {
@@ -10351,7 +10350,6 @@ header.hero::after,
 
 .coverage-band,
 .how-it-works,
-.testimonials-section,
 .faq-section {
   padding: 28px 30px;
   border-radius: 28px;
@@ -10382,13 +10380,11 @@ header.hero::after,
 }
 
 .how-grid,
-.testimonials-grid,
 .faq-grid {
   gap: 14px;
 }
 
 .how-step,
-.testimonial-card,
 .faq-item {
   border-radius: 22px;
   background: rgba(255, 252, 248, 0.88);
@@ -10482,11 +10478,9 @@ header.hero::after,
   .topbar,
   .coverage-band,
   .how-it-works,
-  .testimonials-section,
   .faq-section,
   .planner-card,
   .dark-anchor,
-  .trip-snapshot-card,
   .site-footer {
     padding-left: 20px;
     padding-right: 20px;
@@ -10528,6 +10522,33 @@ header.hero::before {
 
 .hero-grid {
   align-items: flex-start;
+}
+
+.hero-col-left {
+  gap: 18px;
+}
+
+.anchor-set {
+  display: grid;
+  gap: 0;
+}
+
+.proof-cluster {
+  gap: 14px;
+}
+
+.trust-stats-section {
+  gap: 12px;
+}
+
+.coverage-band-head,
+.section-heading-block {
+  gap: 10px;
+}
+
+.section-intro,
+.coverage-band-copy {
+  max-width: 54ch;
 }
 
 .planner-card {
@@ -10688,6 +10709,10 @@ header.hero::before {
   .planner-card {
     position: static;
     top: auto;
+  }
+
+  .hero-grid {
+    gap: 24px;
   }
 }
 
