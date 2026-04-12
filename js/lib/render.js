@@ -1,7 +1,7 @@
 // HTML rendering functions
 
 import { escapeHtml, escapeAttribute, formatDate, formatDateSafe, formatFocus, normalizeText } from "./utils.js";
-import { getRankedLibraryItems, groupRankedLibraryItems, renderCategoryOptions, renderCuisineOptions, renderAllPriceOptions, renderAreaOptions } from "./filters-current.js";
+import { getRankedLibraryItems, groupRankedLibraryItems, renderCategoryOptions, renderCuisineOptions, renderAllPriceOptions, renderAreaOptions } from "./filters.js";
 import { enforceTravelAnchorsAndBoundaries, getSlotLabel, getSlotItems, getVisibleSlotsForDay } from "./itinerary.js";
 import { loadSavedItineraries } from "./state.js";
 
