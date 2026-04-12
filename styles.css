@@ -9439,6 +9439,221 @@ textarea {
   line-height: 1.54;
 }
 
+/* Professional restraint pass */
+body::before {
+  opacity: 0.08;
+}
+
+.page-shell::before,
+.page-shell::after,
+header.hero::before,
+header.hero::after {
+  opacity: 0.78;
+  filter: blur(10px);
+}
+
+.topbar {
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  border-radius: 20px;
+  background: rgba(255, 252, 248, 0.88) !important;
+  box-shadow: 0 10px 28px rgba(28, 16, 8, 0.06), inset 0 1px 0 rgba(255, 252, 248, 0.7);
+}
+
+.topbar::after {
+  opacity: 0.35;
+}
+
+.brand-mark {
+  font-size: 1.34rem;
+  letter-spacing: -0.04em;
+}
+
+.brand-tag {
+  color: rgba(71, 60, 51, 0.7);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.topbar-status span,
+.topbar-link {
+  min-height: 34px;
+  padding: 7px 12px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: rgba(71, 60, 51, 0.76) !important;
+  font-size: 0.76rem !important;
+  border-color: rgba(38, 24, 14, 0.08) !important;
+}
+
+.topbar-status span:hover,
+.topbar-link:hover {
+  background: rgba(255, 255, 255, 0.88) !important;
+  color: #221a14 !important;
+}
+
+.hero-grid {
+  gap: 42px;
+}
+
+.hero-col-left {
+  gap: 22px;
+  padding-top: 20px;
+}
+
+.hero-intro .eyebrow {
+  padding: 8px 13px;
+  box-shadow: none;
+}
+
+.hero-intro .eyebrow:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.hero-intro h1 {
+  max-width: 10ch;
+  font-size: clamp(3.7rem, 6vw, 6rem);
+  letter-spacing: -0.075em;
+}
+
+.hero-text {
+  max-width: 38rem;
+  color: rgba(67, 56, 47, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.72;
+}
+
+.hero-chips span {
+  min-height: 38px;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  box-shadow: none;
+}
+
+.tag {
+  box-shadow: none;
+}
+
+.dark-anchor,
+.trip-snapshot-card,
+.stat-card,
+.coverage-band,
+.how-step,
+.testimonial-card,
+.faq-item,
+.planner-card,
+.form-block,
+.hero-result,
+.glance-card,
+.workspace-stat,
+.selected-hotel-card,
+.hotel-selector-card,
+.utility-section,
+.dont-miss-section,
+.day-card,
+.slot-card,
+.saved-section,
+.saved-trip-card,
+.library-overlay-panel,
+.library-card,
+.trip-adjust-panel,
+.trip-adjust-card {
+  box-shadow: none !important;
+}
+
+.dark-anchor,
+.trip-snapshot-card,
+.stat-card,
+.coverage-band,
+.how-step,
+.testimonial-card,
+.faq-item,
+.planner-card,
+.hero-result,
+.selected-hotel-card,
+.hotel-selector-card,
+.utility-section,
+.dont-miss-section,
+.itinerary-focus-shell,
+.saved-section,
+.library-overlay-panel,
+.trip-adjust-panel,
+.day-card,
+.slot-card,
+.saved-trip-card,
+.library-card {
+  border-color: rgba(43, 29, 20, 0.07);
+}
+
+.planner-card {
+  padding: 38px;
+}
+
+.card-heading h2,
+.section-title,
+.trip-title {
+  letter-spacing: -0.045em;
+}
+
+.planner-card-banner,
+.form-summary,
+.day-intro,
+.confidence-note,
+.builder-toolbar {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.section-head,
+.itinerary-focus-head {
+  margin-bottom: 14px;
+}
+
+.section-kicker,
+.section-eyebrow,
+.card-kicker,
+.preview-label,
+.summary-label,
+.stat-kicker,
+.planner-banner-kicker,
+.confidence-kicker {
+  letter-spacing: 0.16em;
+}
+
+.trip-lede,
+.card-subtitle,
+.section-intro,
+.planner-intro,
+.form-block-note,
+.summary-helper,
+.glance-card p,
+.confidence-note p,
+.day-summary,
+.footer-note {
+  color: rgba(71, 60, 51, 0.74);
+}
+
+.secondary-button,
+.mini-button,
+.reset-btn,
+.save-form-btn {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.secondary-button:hover,
+.mini-button:hover,
+.reset-btn:hover,
+.save-form-btn:hover,
+.recommendation-card:hover,
+.saved-trip-card:hover,
+.trip-adjust-card:hover,
+.faq-item:hover,
+.how-step:hover,
+.testimonial-card:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
 /* Final composition + overlay refinement */
 .proof-cluster {
   display: grid;

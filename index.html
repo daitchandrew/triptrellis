@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-005" />
+    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-006" />
   </head>
   <body>
     <script>
@@ -34,7 +34,7 @@
         }
 
         try {
-          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-005");
+          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-006");
           const generator = window.TripTrellisGenerate || app.generateFromForm;
           if (!generator) {
             throw new Error("TripTrellis loaded, but the Generate function was not found.");
@@ -78,7 +78,7 @@
         <nav class="topbar">
           <div class="brand-lockup">
             <span class="brand-mark">TripTrellis</span>
-            <span class="brand-tag">Trip planning with actual taste</span>
+            <span class="brand-tag">Hotel-aware city itineraries</span>
           </div>
           <div class="topbar-status">
             <span>One city at a time</span>
