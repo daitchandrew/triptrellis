@@ -6401,3 +6401,293 @@ textarea:focus {
     min-height: auto;
   }
 }
+
+/* ─── Cleaner Front Page Pass ───────────────────────────────────────────── */
+body::before {
+  opacity: 0.12;
+}
+
+.page-shell::before,
+.page-shell::after,
+header.hero::before,
+header.hero::after,
+.planner-card::before,
+.planner-card::after,
+.hero .hero-copy::before,
+.hero .hero-copy::after {
+  opacity: 0.72;
+}
+
+.topbar {
+  padding: 16px 22px;
+  margin-bottom: 28px;
+}
+
+.topbar::after {
+  opacity: 0.55;
+}
+
+.topbar-status {
+  gap: 10px;
+}
+
+.topbar-status span {
+  padding: 6px 12px;
+  background: rgba(255, 252, 248, 0.52);
+  border-color: rgba(38, 24, 14, 0.08);
+  color: rgba(58, 48, 40, 0.74);
+}
+
+.hero-grid {
+  gap: 40px;
+}
+
+.hero-col-left {
+  gap: 26px;
+}
+
+.hero .hero-chips {
+  gap: 10px !important;
+  margin-top: 24px !important;
+}
+
+.hero .hero-chips span,
+.hero .topbar-status span,
+.topbar-link {
+  box-shadow: none !important;
+}
+
+.hero .hero-chips span {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(38, 24, 14, 0.08) !important;
+  color: rgba(58, 48, 40, 0.82) !important;
+}
+
+.hero .hero-chips span:hover {
+  transform: none !important;
+  color: rgba(58, 48, 40, 0.82) !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(38, 24, 14, 0.12) !important;
+}
+
+.dark-anchor,
+.trip-snapshot-card,
+.stat-card,
+.how-step,
+.testimonial-card,
+.faq-item,
+.planner-card,
+.form-block,
+.choice-group,
+.conditional-fields,
+.arrival-departure-grid,
+.planner-card-banner {
+  box-shadow: none !important;
+}
+
+.planner-card {
+  padding: 32px;
+  border-top-width: 1px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98) 0%, rgba(246, 238, 225, 0.96) 100%);
+}
+
+.card-heading {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+}
+
+.card-heading::after {
+  width: 92px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(157, 101, 32, 0.42), transparent);
+}
+
+.card-heading h2 {
+  font-size: 1.6rem;
+  line-height: 1.08;
+}
+
+.planner-intro {
+  max-width: 42ch;
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.planner-card-banner {
+  padding: 14px 16px 15px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.52);
+  border-color: rgba(38, 24, 14, 0.08);
+}
+
+.planner-card-banner strong {
+  font-size: 1.02rem;
+  line-height: 1.22;
+}
+
+.planner-card-banner p {
+  font-size: 0.86rem;
+}
+
+.planner-form {
+  gap: 14px;
+}
+
+.form-block {
+  gap: 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.54);
+  border-color: rgba(43, 29, 20, 0.06);
+}
+
+.form-block--final {
+  background: rgba(249, 243, 233, 0.72);
+}
+
+.form-block-head {
+  gap: 5px;
+}
+
+.form-block-note,
+.footer-note {
+  color: rgba(59, 48, 39, 0.62);
+  font-size: 0.83rem;
+}
+
+.form-section-label {
+  color: rgba(38, 24, 14, 0.46);
+  font-size: 0.62rem;
+}
+
+.form-section-label::after {
+  opacity: 0.55;
+}
+
+.choice-group,
+.conditional-fields,
+.arrival-departure-grid {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(43, 29, 20, 0.07);
+}
+
+.toggle-option {
+  padding: 12px 14px;
+  background: rgba(245, 237, 224, 0.42);
+}
+
+.toggle-option:has(input:checked) {
+  box-shadow: none;
+}
+
+.focus-picker {
+  padding: 14px;
+}
+
+.focus-grid {
+  gap: 8px;
+}
+
+.focus-card {
+  min-height: 112px;
+  padding: 14px 26px 14px 14px;
+  border-radius: 16px;
+  background: rgba(248, 240, 228, 0.56);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.focus-card:hover:not(:has(input:checked)) {
+  background: rgba(251, 245, 236, 0.82);
+  border-color: rgba(43, 29, 20, 0.1);
+  box-shadow: none;
+}
+
+.focus-card:has(input:checked) {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(123, 58, 75, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.focus-card-label {
+  font-size: 0.88rem;
+}
+
+.focus-card-desc {
+  font-size: 0.76rem;
+  color: rgba(59, 48, 39, 0.66);
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+input:not([type="radio"]):not([type="checkbox"]):focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(123, 58, 75, 0.12);
+}
+
+button {
+  animation: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+#generate-trip-button {
+  background: #22160f;
+  color: #fdf7f0;
+  box-shadow: none;
+}
+
+#generate-trip-button:hover {
+  transform: none;
+  background: #342117;
+  box-shadow: none;
+}
+
+#generate-trip-button span {
+  transition: transform 0.2s ease;
+}
+
+#generate-trip-button:hover span {
+  transform: translateX(3px);
+}
+
+.reset-btn,
+.save-form-btn {
+  box-shadow: none !important;
+}
+
+.trust-stats-section,
+.how-it-works,
+.testimonials-section,
+.faq-section {
+  margin-top: 54px;
+}
+
+.section-heading-block {
+  margin-bottom: 24px;
+}
+
+.stat-card,
+.how-step,
+.testimonial-card,
+.faq-item {
+  border-radius: 20px;
+}
+
+@media (max-width: 1180px) {
+  .hero-grid {
+    gap: 28px;
+  }
+
+  .planner-card {
+    padding: 28px;
+  }
+}
