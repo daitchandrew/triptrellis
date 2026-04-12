@@ -62,12 +62,25 @@ function getToastViewport() {
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
 const THEME_KEY = "triptrellis-theme";
+let rawCityGuidesPromise = null;
 let cityGuidesPromise = null;
+
+async function getRawCityGuides() {
+  if (!rawCityGuidesPromise) {
+    rawCityGuidesPromise = import("./data/cities/index.js?v=triptrellis-library-expansion-20260412-003")
+      .then((module) => module.cityGuides);
+  }
+  return rawCityGuidesPromise;
+}
 
 async function getCityGuides() {
   if (!cityGuidesPromise) {
-    cityGuidesPromise = import("./data/cities/index.js?v=triptrellis-library-expansion-20260412-003")
-      .then((module) => module.cityGuides);
+    cityGuidesPromise = Promise.all([
+      getRawCityGuides(),
+      import("./data/hotel-details.js?v=triptrellis-hotel-details-20260412-001"),
+    ]).then(([cityGuides, hotelDetailsModule]) =>
+      hotelDetailsModule.enrichCityGuidesWithHotelDetails(cityGuides)
+    );
   }
   return cityGuidesPromise;
 }
@@ -558,7 +571,7 @@ function initializeApp() {
 
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(() => {
-      getCityGuides().catch(() => {});
+      getRawCityGuides().catch(() => {});
     });
   }
 }

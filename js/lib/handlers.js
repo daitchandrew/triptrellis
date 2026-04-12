@@ -7,7 +7,7 @@ import {
   createItineraryItemFromLibrary, dayAlreadyHasItem, buildContextualFitNote,
 } from "./itinerary.js";
 import { scoreDayForItem } from "./scoring.js?v=triptrellis-transit-balanced-20260411-010";
-import { STORAGE_KEY } from "./constants.js";
+import { DAY_SLOT_ORDER, STORAGE_KEY } from "./constants.js";
 
 // ---- DOM references (resolved lazily via getters to avoid TDZ issues) ----
 function getResults() { return document.querySelector("#results"); }
@@ -74,6 +74,52 @@ export function removeItineraryItem(dayIndex, itemId) {
   currentPlan.savedTrips = loadSavedItineraries();
   renderTripPlan(currentPlan, getResults());
   showToast("Stop removed from the itinerary.", "info");
+}
+
+export function moveItineraryItemToAdjacentSlot(dayIndex, itemId, direction = 1) {
+  const currentPlan = getCurrentPlan();
+  if (!currentPlan) {
+    return;
+  }
+
+  const day = currentPlan.days[Number(dayIndex)];
+  if (!day) {
+    return;
+  }
+
+  const itemIndex = (day.itineraryItems || []).findIndex((item) => item.id === itemId);
+  if (itemIndex === -1) {
+    return;
+  }
+
+  const item = day.itineraryItems[itemIndex];
+  if (!item || item.type === "transit_anchor") {
+    return;
+  }
+
+  const currentSlotIndex = DAY_SLOT_ORDER.indexOf(item.slot || "");
+  if (currentSlotIndex === -1) {
+    return;
+  }
+
+  const nextSlotIndex = currentSlotIndex + Number(direction);
+  if (nextSlotIndex < 0 || nextSlotIndex >= DAY_SLOT_ORDER.length) {
+    return;
+  }
+
+  const nextSlot = DAY_SLOT_ORDER[nextSlotIndex];
+  const movedItem = {
+    ...item,
+    slot: nextSlot,
+    label: getSlotLabel(nextSlot),
+  };
+
+  day.itineraryItems[itemIndex] = movedItem;
+  movedItem.fitNote = buildContextualFitNote(day, movedItem, currentPlan, nextSlot);
+  refreshDayState(day, currentPlan);
+  currentPlan.savedTrips = loadSavedItineraries();
+  renderTripPlan(currentPlan, getResults());
+  showToast(`Moved ${item.title} to ${getSlotLabel(nextSlot).toLowerCase()}.`, "success");
 }
 
 export function openLibraryOverlay({ mode = "add", dayIndex = null, itemId = null, slot = "" } = {}) {
@@ -403,6 +449,16 @@ export function handleResultsClick(event) {
 
   if (action === "remove-item") {
     removeItineraryItem(actionTarget.dataset.dayIndex, actionTarget.dataset.itineraryId);
+    return;
+  }
+
+  if (action === "move-item-earlier") {
+    moveItineraryItemToAdjacentSlot(actionTarget.dataset.dayIndex, actionTarget.dataset.itineraryId, -1);
+    return;
+  }
+
+  if (action === "move-item-later") {
+    moveItineraryItemToAdjacentSlot(actionTarget.dataset.dayIndex, actionTarget.dataset.itineraryId, 1);
     return;
   }
 }

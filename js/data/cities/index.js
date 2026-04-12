@@ -24,7 +24,6 @@ import { dubaiGuide, dubaiSupplements } from './dubai.js';
 import { istanbulGuide, istanbulSupplements } from './istanbul.js';
 import { marrakechGuide, marrakechSupplements } from './marrakech.js';
 import { expandedSupplementLibraries } from './expansions.js';
-import { enrichCityGuidesWithHotelDetails } from '../hotel-details.js';
 import { basePlaceName, getPlaceIdentityKeys } from '../../lib/utils.js?v=triptrellis-prague-clock-cleanup-20260411-007';
 
 const rawCityGuides = {
@@ -123,7 +122,7 @@ const cleanedCityGuides = Object.fromEntries(
   Object.entries(rawCityGuides).map(([cityKey, guide]) => [cityKey, cleanGuideLibrary(guide)])
 );
 
-export const cityGuides = enrichCityGuidesWithHotelDetails(cleanedCityGuides);
+export const cityGuides = cleanedCityGuides;
 
 function cleanSupplementsForCity(cityKey, supplements) {
   const guide = cleanedCityGuides[cityKey];

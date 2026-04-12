@@ -782,7 +782,7 @@ export function renderTripPlan(plan, results) {
                         data-itinerary-id="${item.id}"
                         data-day-index="${dayIndex}"
                       >
-                        ${item.type === "transit_anchor" ? "" : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Drag to reorder</span></div>`}
+                        ${item.type === "transit_anchor" ? "" : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Drag or move earlier/later</span></div>`}
                         ${renderItemBadges({ categoryLabel: item.categoryLabel || "Stop", priceTier: item.priceTier, areaLabel: item.areaLabel || item.area, michelinStatus: item.michelinStatus }, { rowClass: "lib-tag-row lib-tag-row--itinerary" })}
                         <strong>${item.title}</strong>
                         <p>${item.description}</p>
@@ -790,6 +790,8 @@ export function renderTripPlan(plan, results) {
                         ${renderFitNote(item.fitNote)}
                         ${item.detailLine ? `<p class="footer-note item-detail">${item.detailLine}</p>` : ""}
                         ${item.type === "transit_anchor" ? "" : `<div class="item-actions">
+                          <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Earlier</button>
+                          <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Later</button>
                           <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Replace</button>
                           <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
                         </div>`}
