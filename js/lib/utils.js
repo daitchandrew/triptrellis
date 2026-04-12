@@ -43,10 +43,10 @@ export function formatDateSafe(date, fallback = "") {
 export function formatFocus(focus) {
   const labels = {
     food: "Food & Drink",
-    culture: "Culture & History",
+    culture: "Culture",
     wellness: "Wellness",
     nightlife: "Nightlife",
-    design: "Design",
+    design: "Architecture",
     museum: "Museums",
     shopping: "Shopping & Style",
     nature: "Nature",

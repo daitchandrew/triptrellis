@@ -1574,8 +1574,8 @@ button,
   align-items: center;
   justify-content: flex-start;
   gap: 0;
-  min-height: 110px;
-  padding: 14px 24px 14px 14px;
+  min-height: 118px;
+  padding: 15px 16px 15px;
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(248, 240, 228, 0.78), rgba(244, 235, 222, 0.64));
   cursor: pointer;
@@ -1598,22 +1598,24 @@ button,
   font-size: 0.87rem;
   color: var(--ink);
   display: block;
-  line-height: 1.25;
+  line-height: 1.2;
   max-width: none;
   padding-right: 0;
-  text-wrap: balance;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 100%;
   text-align: center;
 }
 
 .focus-card-title {
-  height: 2.5rem;
-  flex: 0 0 2.5rem;
+  height: 1.25rem;
+  flex: 0 0 1.25rem;
   min-height: 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  margin: 0;
+  margin: 0 0 6px;
   width: 100%;
 }
 
@@ -7608,7 +7610,7 @@ button {
 
 .focus-card {
   min-height: 118px;
-  padding: 15px 14px 14px;
+  padding: 15px 16px 15px;
   border-radius: 16px;
   background: rgba(248, 241, 231, 0.6);
   border: 1px solid rgba(43, 29, 20, 0.06);
@@ -7618,7 +7620,7 @@ button {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  min-height: 2.5rem;
+  min-height: 1.25rem;
   margin-bottom: 6px;
 }
 
@@ -7628,6 +7630,9 @@ button {
   font-size: 0.87rem;
   font-weight: 800;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .focus-card-desc {
@@ -10126,4 +10131,371 @@ header.hero::after {
   max-width: none;
   width: 100%;
   text-wrap: balance;
+}
+
+/* ─── Front Page Cleanup Pass ──────────────────────────────────────────── */
+.page-shell {
+  max-width: 1500px;
+  padding: 0 28px 96px;
+}
+
+header.hero::before,
+header.hero::after,
+.page-shell::before,
+.page-shell::after,
+.planner-card::before,
+.planner-card::after,
+.dark-anchor::before,
+.coverage-band::before,
+.how-it-works::before,
+.testimonials-section::before,
+.faq-section::before,
+.site-footer::before {
+  opacity: 0.45;
+}
+
+.topbar {
+  padding: 16px 22px;
+  margin-bottom: 28px;
+  border-radius: 0 0 26px 26px;
+  background: rgba(250, 245, 236, 0.9);
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  border-top: none;
+  box-shadow: 0 10px 28px rgba(28, 16, 8, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.topbar::after {
+  inset: auto 22px 0;
+  background: linear-gradient(90deg, rgba(157, 101, 32, 0.24), transparent 78%);
+}
+
+.brand-mark {
+  font-size: 1.32rem;
+  letter-spacing: -0.04em;
+}
+
+.brand-tag {
+  font-size: 0.82rem;
+  color: #73675c;
+}
+
+.topbar-status {
+  gap: 8px;
+}
+
+.topbar-status span,
+.topbar-link {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 252, 248, 0.82);
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  color: #61564d;
+  box-shadow: none;
+}
+
+.topbar-status span:hover,
+.topbar-link:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(157, 101, 32, 0.18);
+  color: #3a2d24;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: 36px;
+}
+
+.hero-col-left {
+  gap: 24px;
+  padding-top: 22px;
+}
+
+.hero-intro .eyebrow {
+  margin-bottom: 16px;
+  padding: 8px 13px;
+  box-shadow: none;
+}
+
+.hero-intro .eyebrow:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.hero-intro h1 {
+  margin-bottom: 16px;
+  max-width: 11ch;
+  font-size: clamp(3.55rem, 5.8vw, 5.6rem);
+  line-height: 0.94;
+  letter-spacing: -0.075em;
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: #17120d;
+}
+
+.hero-intro .hero-text {
+  max-width: 60ch;
+  margin-bottom: 18px;
+  font-size: 1.02rem;
+  line-height: 1.72;
+  color: #6d6156;
+}
+
+.hero-chips {
+  gap: 10px;
+}
+
+.hero-chips span {
+  padding: 10px 16px;
+  background: rgba(255, 252, 248, 0.84);
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  box-shadow: none;
+}
+
+.anchor-set {
+  gap: 12px;
+}
+
+.dark-anchor,
+.trip-snapshot-card,
+.coverage-band,
+.how-it-works,
+.testimonials-section,
+.faq-section,
+.planner-card,
+.stat-card {
+  box-shadow: 0 14px 34px rgba(28, 16, 8, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.dark-anchor {
+  padding: 24px 26px;
+  gap: 14px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(253, 250, 245, 0.98), rgba(244, 235, 222, 0.96));
+  border: 1px solid rgba(92, 67, 42, 0.08);
+}
+
+.dark-anchor:hover {
+  transform: none;
+  box-shadow: 0 14px 34px rgba(28, 16, 8, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.dark-anchor-kicker {
+  padding: 8px 14px;
+  border-radius: 12px;
+  letter-spacing: 0.16em;
+  box-shadow: none;
+}
+
+.dark-anchor-title {
+  font-size: clamp(1.38rem, 1.8vw, 1.9rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.dark-anchor-items {
+  gap: 0;
+}
+
+.dark-anchor-item {
+  gap: 18px;
+  padding: 15px 0;
+}
+
+.dark-anchor-item h4 {
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+}
+
+.dark-anchor-item p {
+  font-size: 0.92rem;
+  line-height: 1.56;
+}
+
+.trip-snapshot-card {
+  padding: 22px 24px;
+  border-radius: 24px;
+}
+
+.trip-snapshot-title {
+  margin-bottom: 12px;
+}
+
+.trip-snapshot-list {
+  gap: 8px;
+}
+
+.trip-snapshot-list li {
+  font-size: 0.92rem;
+}
+
+.proof-cluster {
+  gap: 18px;
+}
+
+.trust-stats-section {
+  gap: 14px;
+}
+
+.stat-card {
+  padding: 20px 20px 18px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.95), rgba(246, 238, 228, 0.92));
+  border: 1px solid rgba(38, 24, 14, 0.08);
+}
+
+.stat-number {
+  letter-spacing: -0.05em;
+}
+
+.coverage-band,
+.how-it-works,
+.testimonials-section,
+.faq-section {
+  padding: 28px 30px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(245, 237, 225, 0.93));
+  border: 1px solid rgba(38, 24, 14, 0.08);
+}
+
+.coverage-band-head,
+.section-heading-block {
+  max-width: 56rem;
+}
+
+.coverage-band-title,
+.how-title,
+.faq-title {
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.coverage-chip-row {
+  gap: 10px;
+}
+
+.coverage-chip-row span {
+  background: rgba(255, 252, 248, 0.86);
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  box-shadow: none;
+}
+
+.how-grid,
+.testimonials-grid,
+.faq-grid {
+  gap: 14px;
+}
+
+.how-step,
+.testimonial-card,
+.faq-item {
+  border-radius: 22px;
+  background: rgba(255, 252, 248, 0.88);
+  border: 1px solid rgba(38, 24, 14, 0.07);
+  box-shadow: none;
+}
+
+.planner-card {
+  padding: 34px;
+  top: 72px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(246, 238, 226, 0.95));
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  border-top: 1px solid rgba(38, 24, 14, 0.08);
+}
+
+.card-heading {
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+}
+
+.card-heading h2 {
+  font-size: clamp(2rem, 2.45vw, 2.55rem);
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+  max-width: none;
+}
+
+.planner-intro {
+  max-width: 58ch;
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+.planner-card-banner {
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: none;
+}
+
+.planner-card-banner strong {
+  max-width: none;
+  font-size: 0.98rem;
+  line-height: 1.24;
+}
+
+.planner-card-banner p {
+  max-width: none;
+}
+
+.site-footer {
+  margin-top: 48px;
+  padding: 30px 32px 26px;
+  border-radius: 28px 28px 0 0;
+  background: rgba(250, 245, 236, 0.86);
+  border: 1px solid rgba(38, 24, 14, 0.08);
+  box-shadow: none;
+}
+
+.footer-links {
+  gap: 28px;
+}
+
+.footer-link {
+  color: #675c53;
+}
+
+.footer-link:hover {
+  color: #2d231c;
+}
+
+@media (max-width: 1180px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .planner-card {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    padding: 0 18px 72px;
+  }
+
+  .topbar,
+  .coverage-band,
+  .how-it-works,
+  .testimonials-section,
+  .faq-section,
+  .planner-card,
+  .dark-anchor,
+  .trip-snapshot-card,
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-intro h1 {
+    font-size: clamp(2.9rem, 11vw, 4rem);
+    max-width: 9.8ch;
+  }
+
+  .topbar-status {
+    justify-content: flex-start;
+  }
 }

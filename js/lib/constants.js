@@ -20,13 +20,13 @@ export const LEGACY_STORAGE_KEYS = [`${"voy"}${"agr"}-saved-itineraries-v1`];
 
 export const focusThemes = {
   food: { label: "Food & Drink", headline: "Optimized for meals worth building the trip around.", wantedTags: ["food", "luxury", "nightlife"], defaultCommentTags: ["food"] },
-  culture: { label: "Culture & History", headline: "Optimized for the city's most meaningful places.", wantedTags: ["culture", "design", "walkability"], defaultCommentTags: ["culture"] },
-  wellness: { label: "Wellness & Recharge", headline: "Optimized to feel elegant, balanced, and restorative.", wantedTags: ["wellness", "culture", "food"], defaultCommentTags: ["wellness"] },
-  nightlife: { label: "Nightlife & Energy", headline: "Optimized for energy after dark without wasting the days.", wantedTags: ["nightlife", "food", "design"], defaultCommentTags: ["nightlife"] },
-  design: { label: "Design & Architecture", headline: "Optimized for architecture, design districts, and visual texture.", wantedTags: ["design", "culture", "museum"], defaultCommentTags: ["design"] },
-  museum: { label: "Museums & Galleries", headline: "Optimized for galleries, collections, and cultural institutions.", wantedTags: ["museum", "culture", "design"], defaultCommentTags: ["culture", "museum"] },
+  culture: { label: "Culture", headline: "Optimized for the city's most meaningful places.", wantedTags: ["culture", "design", "walkability"], defaultCommentTags: ["culture"] },
+  wellness: { label: "Wellness", headline: "Optimized to feel elegant, balanced, and restorative.", wantedTags: ["wellness", "culture", "food"], defaultCommentTags: ["wellness"] },
+  nightlife: { label: "Nightlife", headline: "Optimized for energy after dark without wasting the days.", wantedTags: ["nightlife", "food", "design"], defaultCommentTags: ["nightlife"] },
+  design: { label: "Architecture", headline: "Optimized for architecture, design districts, and visual texture.", wantedTags: ["design", "culture", "museum"], defaultCommentTags: ["design"] },
+  museum: { label: "Museums", headline: "Optimized for galleries, collections, and cultural institutions.", wantedTags: ["museum", "culture", "design"], defaultCommentTags: ["culture", "museum"] },
   shopping: { label: "Shopping & Style", headline: "Optimized for markets, boutiques, and the city's best retail.", wantedTags: ["shopping", "food", "design"], defaultCommentTags: ["shopping"] },
-  nature: { label: "Nature & Outdoors", headline: "Optimized for parks, outdoor spaces, and natural settings.", wantedTags: ["nature", "wellness", "culture"], defaultCommentTags: ["wellness", "nature"] },
+  nature: { label: "Nature", headline: "Optimized for parks, outdoor spaces, and natural settings.", wantedTags: ["nature", "wellness", "culture"], defaultCommentTags: ["wellness", "nature"] },
   luxury: { label: "Luxury & Splurge", headline: "Optimized for the best hotels, restaurants, and experiences.", wantedTags: ["luxury", "food", "design"], defaultCommentTags: ["luxury"] },
 };
 
