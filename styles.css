@@ -10186,12 +10186,14 @@ header.hero::after,
 
 .topbar-status span,
 .topbar-link {
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(255, 252, 248, 0.82);
+  background: rgba(255, 252, 248, 0.72);
   border: 1px solid rgba(38, 24, 14, 0.08);
   color: #61564d;
   box-shadow: none;
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .topbar-status span:hover,
@@ -10203,12 +10205,12 @@ header.hero::after,
 
 .hero-grid {
   grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-  gap: 36px;
+  gap: 32px;
 }
 
 .hero-col-left {
-  gap: 24px;
-  padding-top: 22px;
+  gap: 20px;
+  padding-top: 18px;
 }
 
 .hero-intro .eyebrow {
@@ -10224,7 +10226,7 @@ header.hero::after,
 
 .hero-intro h1 {
   margin-bottom: 16px;
-  max-width: 11ch;
+  max-width: 12.4ch;
   font-size: clamp(3.55rem, 5.8vw, 5.6rem);
   line-height: 0.94;
   letter-spacing: -0.075em;
@@ -10236,8 +10238,8 @@ header.hero::after,
 .hero-intro .hero-text {
   max-width: 60ch;
   margin-bottom: 18px;
-  font-size: 1.02rem;
-  line-height: 1.72;
+  font-size: 0.99rem;
+  line-height: 1.68;
   color: #6d6156;
 }
 
@@ -10253,7 +10255,7 @@ header.hero::after,
 }
 
 .anchor-set {
-  gap: 12px;
+  gap: 10px;
 }
 
 .dark-anchor,
@@ -10264,20 +10266,20 @@ header.hero::after,
 .faq-section,
 .planner-card,
 .stat-card {
-  box-shadow: 0 14px 34px rgba(28, 16, 8, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  box-shadow: 0 10px 24px rgba(28, 16, 8, 0.035), inset 0 1px 0 rgba(255, 255, 255, 0.76);
 }
 
 .dark-anchor {
-  padding: 24px 26px;
-  gap: 14px;
+  padding: 22px 24px;
+  gap: 12px;
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(253, 250, 245, 0.98), rgba(244, 235, 222, 0.96));
+  background: linear-gradient(180deg, rgba(254, 251, 247, 0.98), rgba(247, 240, 231, 0.96));
   border: 1px solid rgba(92, 67, 42, 0.08);
 }
 
 .dark-anchor:hover {
   transform: none;
-  box-shadow: 0 14px 34px rgba(28, 16, 8, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  box-shadow: 0 10px 24px rgba(28, 16, 8, 0.035), inset 0 1px 0 rgba(255, 255, 255, 0.76);
 }
 
 .dark-anchor-kicker {
@@ -10288,8 +10290,8 @@ header.hero::after,
 }
 
 .dark-anchor-title {
-  font-size: clamp(1.38rem, 1.8vw, 1.9rem);
-  line-height: 1.04;
+  font-size: clamp(1.34rem, 1.72vw, 1.82rem);
+  line-height: 1.06;
   letter-spacing: -0.05em;
 }
 
@@ -10330,30 +10332,31 @@ header.hero::after,
 }
 
 .proof-cluster {
-  gap: 18px;
+  gap: 12px;
 }
 
 .trust-stats-section {
-  gap: 14px;
+  gap: 10px;
 }
 
 .stat-card {
-  padding: 20px 20px 18px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.95), rgba(246, 238, 228, 0.92));
+  padding: 18px 18px 16px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.94), rgba(248, 241, 232, 0.92));
   border: 1px solid rgba(38, 24, 14, 0.08);
 }
 
 .stat-number {
   letter-spacing: -0.05em;
+  line-height: 1.02;
 }
 
 .coverage-band,
 .how-it-works,
 .faq-section {
-  padding: 28px 30px;
+  padding: 24px 26px;
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(245, 237, 225, 0.93));
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(248, 241, 232, 0.93));
   border: 1px solid rgba(38, 24, 14, 0.08);
 }
 
@@ -10370,7 +10373,7 @@ header.hero::after,
 }
 
 .coverage-chip-row {
-  gap: 10px;
+  gap: 9px;
 }
 
 .coverage-chip-row span {
@@ -10381,22 +10384,31 @@ header.hero::after,
 
 .how-grid,
 .faq-grid {
-  gap: 14px;
+  gap: 12px;
 }
 
 .how-step,
 .faq-item {
   border-radius: 22px;
-  background: rgba(255, 252, 248, 0.88);
+  background: rgba(255, 252, 248, 0.82);
   border: 1px solid rgba(38, 24, 14, 0.07);
   box-shadow: none;
+}
+
+.how-step {
+  padding: 18px 18px 16px;
+}
+
+.how-step-desc {
+  color: #6d6156;
+  line-height: 1.58;
 }
 
 .planner-card {
   padding: 34px;
   top: 72px;
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(246, 238, 226, 0.95));
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(249, 242, 234, 0.95));
   border: 1px solid rgba(38, 24, 14, 0.08);
   border-top: 1px solid rgba(38, 24, 14, 0.08);
 }
@@ -10420,9 +10432,9 @@ header.hero::after,
 }
 
 .planner-card-banner {
-  padding: 13px 16px;
+  padding: 12px 15px;
   margin-bottom: 10px;
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: none;
 }
 
@@ -10439,30 +10451,18 @@ header.hero::after,
 }
 
 .site-footer {
-  margin-top: 48px;
-  padding: 30px 32px 26px;
+  margin-top: 24px;
+  padding: 24px 28px 20px;
   border-radius: 28px 28px 0 0;
-  background: rgba(250, 245, 236, 0.86);
+  background: rgba(250, 245, 236, 0.72);
   border: 1px solid rgba(38, 24, 14, 0.08);
   box-shadow: none;
-}
-
-.footer-links {
-  gap: 28px;
-}
-
-.footer-link {
-  color: #675c53;
-}
-
-.footer-link:hover {
-  color: #2d231c;
 }
 
 @media (max-width: 1180px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
   }
 
   .planner-card {
@@ -10538,7 +10538,7 @@ header.hero::before {
 }
 
 .trust-stats-section {
-  gap: 12px;
+  gap: 10px;
 }
 
 .coverage-band-head,
@@ -10705,6 +10705,49 @@ header.hero::before {
   padding-bottom: 20px;
 }
 
+.footer-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.footer-summary {
+  max-width: 54ch;
+  margin: 10px 0 0;
+  color: #6f6258;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.footer-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.footer-fact {
+  padding: 14px 14px 12px;
+  border-radius: 18px;
+  background: rgba(255, 252, 248, 0.58);
+  border: 1px solid rgba(38, 24, 14, 0.06);
+}
+
+.footer-fact-value {
+  margin: 4px 0 0;
+  color: #211811;
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.footer-bottom {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(38, 24, 14, 0.08);
+}
+
 @media (max-width: 1180px) {
   .planner-card {
     position: static;
@@ -10713,6 +10756,10 @@ header.hero::before {
 
   .hero-grid {
     gap: 24px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -10740,6 +10787,10 @@ header.hero::before {
   .planner-step-actions,
   .form-actions,
   .form-actions-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-facts {
     grid-template-columns: 1fr;
   }
 
