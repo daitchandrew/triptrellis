@@ -153,22 +153,29 @@
             <!-- Trust & Stats Section -->
             <section class="trust-stats-section">
               <div class="stat-card">
+                <p class="stat-kicker">Depth</p>
                 <p class="stat-number">50K+</p>
-                <p class="stat-label">Itineraries generated</p>
+                <p class="stat-label">Itineraries generated with routing, dining, and pacing logic.</p>
               </div>
               <div class="stat-card">
+                <p class="stat-kicker">Use</p>
                 <p class="stat-number">18K+</p>
-                <p class="stat-label">Travelers planned with</p>
+                <p class="stat-label">Travelers have used it to shape playable city trips.</p>
               </div>
               <div class="stat-card">
+                <p class="stat-kicker">Signal</p>
                 <p class="stat-number">4.8★</p>
-                <p class="stat-label">Average rating</p>
+                <p class="stat-label">Average traveler rating for clarity, taste, and editability.</p>
               </div>
             </section>
 
             <!-- How It Works Section -->
             <section class="how-it-works">
-              <h3 class="how-title">How it works</h3>
+              <p class="section-eyebrow">How TripTrellis works</p>
+              <div class="section-heading-block">
+                <h3 class="how-title">A clearer way to build city days.</h3>
+                <p class="section-intro">The flow is simple: define the brief, let the engine structure a smart first version, then keep refining without losing the shape of the trip.</p>
+              </div>
               <div class="how-grid">
                 <div class="how-step">
                   <div class="how-step-number">01</div>
@@ -191,16 +198,23 @@
             <!-- Testimonials Section -->
             <section class="testimonials-section">
               <p class="section-eyebrow">Loved by travelers</p>
+              <div class="section-heading-block">
+                <h3 class="how-title">The trip feels thought through before you land.</h3>
+                <p class="section-intro">People use it when they want stronger structure than a notes app, but more flexibility than a rigid tour plan.</p>
+              </div>
               <div class="testimonials-grid">
                 <div class="testimonial-card">
+                  <p class="testimonial-kicker">Playable days</p>
                   <p class="testimonial-text">"This completely changed how I plan trips. No more generic guides—just thoughtful, playable itineraries."</p>
                   <p class="testimonial-author">— Sarah M., San Francisco</p>
                 </div>
                 <div class="testimonial-card">
+                  <p class="testimonial-kicker">Smarter base</p>
                   <p class="testimonial-text">"The hotel-aware planning is game-changing. I actually know where I'm going before I arrive."</p>
                   <p class="testimonial-author">— James L., Brooklyn</p>
                 </div>
                 <div class="testimonial-card">
+                  <p class="testimonial-kicker">Easy to refine</p>
                   <p class="testimonial-text">"Finally, an itinerary I don't feel like I have to ditch halfway through. It actually makes sense."</p>
                   <p class="testimonial-author">— Elena T., Berlin</p>
                 </div>
@@ -209,7 +223,11 @@
 
             <!-- FAQ Section -->
             <section class="faq-section">
-              <h3 class="faq-title">Frequently asked</h3>
+              <p class="section-eyebrow">Frequently asked</p>
+              <div class="section-heading-block">
+                <h3 class="faq-title">Questions that usually come up before the first trip.</h3>
+                <p class="section-intro">A few practical answers on detail level, editing, hotel awareness, and how the generator behaves once you hit build.</p>
+              </div>
               <div class="faq-grid">
                 <details class="faq-item">
                   <summary class="faq-question">How detailed is the itinerary?</summary>
@@ -256,236 +274,275 @@
             <div class="card-heading">
               <p class="card-kicker">Plan a trip</p>
               <h2>Build a concierge-grade itinerary</h2>
+              <p class="planner-intro">
+                Set the city, timing, and trip style first. TripTrellis uses that
+                to build a stronger base, cleaner routing, and better day flow.
+              </p>
+            </div>
+
+            <div class="planner-card-banner">
+              <p class="planner-banner-kicker">Start with the brief</p>
+              <strong>Shape the bones of the trip before the itinerary fills in.</strong>
+              <p>Choose one city, define the travel window, then tell us how you want the days to feel.</p>
             </div>
 
             <form id="planner-form" class="planner-form" action="#" onsubmit="window.TripTrellisGenerateNow(this); return false;">
-              <p class="form-section-label">Trip basics</p>
-
-              <label>
-                City
-                <select id="city" name="city" required>
-                  <optgroup label="Asia">
-                    <option value="seoul" selected>Seoul</option>
-                    <option value="tokyo">Tokyo</option>
-                    <option value="kyoto">Kyoto</option>
-                    <option value="osaka">Osaka</option>
-                    <option value="bangkok">Bangkok</option>
-                    <option value="singapore">Singapore</option>
-                    <option value="hong-kong">Hong Kong</option>
-                    <option value="bali">Bali</option>
-                  </optgroup>
-                  <optgroup label="Europe">
-                    <option value="prague">Prague</option>
-                    <option value="copenhagen">Copenhagen</option>
-                    <option value="berlin">Berlin</option>
-                    <option value="paris">Paris</option>
-                    <option value="barcelona">Barcelona</option>
-                    <option value="venice">Venice</option>
-                    <option value="amsterdam">Amsterdam</option>
-                    <option value="lisbon">Lisbon</option>
-                  </optgroup>
-                  <optgroup label="Americas">
-                    <option value="new-york">New York</option>
-                    <option value="los-angeles">Los Angeles</option>
-                    <option value="mexico-city">Mexico City</option>
-                    <option value="buenos-aires">Buenos Aires</option>
-                  </optgroup>
-                  <optgroup label="Middle East & Africa">
-                    <option value="dubai">Dubai</option>
-                    <option value="istanbul">Istanbul</option>
-                    <option value="marrakech">Marrakech</option>
-                  </optgroup>
-                </select>
-              </label>
-
-              <p class="footer-note">
-                Choose one city and TripTrellis will build the best version of that trip for the exact number of days.
-              </p>
-
-              <p class="form-section-label">Stay setup</p>
-
-              <fieldset class="choice-group segmented-group">
-                <legend>Do you already have hotel picks?</legend>
-                <div class="toggle-grid segmented-control">
-                  <label class="toggle-option">
-                    <input
-                      type="radio"
-                      name="hotel-status"
-                      value="need-hotel"
-                      checked
-                    />
-                    <span>I want hotel recommendations</span>
-                  </label>
-                  <label class="toggle-option">
-                    <input type="radio" name="hotel-status" value="have-hotel" />
-                    <span>I already booked my hotel</span>
-                  </label>
+              <div class="form-block">
+                <div class="form-block-head">
+                  <p class="form-section-label">Trip basics</p>
+                  <p class="form-block-note">Choose the destination and the broad shape of the stay.</p>
                 </div>
-              </fieldset>
 
-              <div
-                id="existing-hotel-fields"
-                class="conditional-fields hidden"
-                aria-hidden="true"
-              >
                 <label>
-                  Existing hotel details
-                  <textarea
-                    id="existing-hotels"
-                    name="existing-hotels"
-                    rows="4"
-                    placeholder="One per line. Example:&#10;Seoul - Ryse Hotel - Hongdae&#10;Tokyo - Trunk Hotel Yoyogi Park - Shibuya"
-                  ></textarea>
+                  City
+                  <select id="city" name="city" required>
+                    <optgroup label="Asia">
+                      <option value="seoul" selected>Seoul</option>
+                      <option value="tokyo">Tokyo</option>
+                      <option value="kyoto">Kyoto</option>
+                      <option value="osaka">Osaka</option>
+                      <option value="bangkok">Bangkok</option>
+                      <option value="singapore">Singapore</option>
+                      <option value="hong-kong">Hong Kong</option>
+                      <option value="bali">Bali</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                      <option value="prague">Prague</option>
+                      <option value="copenhagen">Copenhagen</option>
+                      <option value="berlin">Berlin</option>
+                      <option value="paris">Paris</option>
+                      <option value="barcelona">Barcelona</option>
+                      <option value="venice">Venice</option>
+                      <option value="amsterdam">Amsterdam</option>
+                      <option value="lisbon">Lisbon</option>
+                    </optgroup>
+                    <optgroup label="Americas">
+                      <option value="new-york">New York</option>
+                      <option value="los-angeles">Los Angeles</option>
+                      <option value="mexico-city">Mexico City</option>
+                      <option value="buenos-aires">Buenos Aires</option>
+                    </optgroup>
+                    <optgroup label="Middle East & Africa">
+                      <option value="dubai">Dubai</option>
+                      <option value="istanbul">Istanbul</option>
+                      <option value="marrakech">Marrakech</option>
+                    </optgroup>
+                  </select>
                 </label>
+
                 <p class="footer-note">
-                  Include city, hotel name, and neighborhood if you know it. The itinerary
-                  will cluster days around that area when possible.
+                  Choose one city and TripTrellis will build the best version of that trip for the exact number of days.
                 </p>
               </div>
 
-              <p class="form-section-label">Trip shape</p>
+              <div class="form-block">
+                <div class="form-block-head">
+                  <p class="form-section-label">Stay setup</p>
+                  <p class="form-block-note">Tell us whether we should choose the base or work around one you already have.</p>
+                </div>
 
-              <div class="arrival-departure-grid">
-                <div class="field-wrapper">
+                <fieldset class="choice-group segmented-group">
+                  <legend>Do you already have hotel picks?</legend>
+                  <div class="toggle-grid segmented-control">
+                    <label class="toggle-option">
+                      <input
+                        type="radio"
+                        name="hotel-status"
+                        value="need-hotel"
+                        checked
+                      />
+                      <span>I want hotel recommendations</span>
+                    </label>
+                    <label class="toggle-option">
+                      <input type="radio" name="hotel-status" value="have-hotel" />
+                      <span>I already booked my hotel</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div
+                  id="existing-hotel-fields"
+                  class="conditional-fields hidden"
+                  aria-hidden="true"
+                >
                   <label>
-                    Arrival Date
-                    <input type="date" id="start-date" name="start-date" required />
+                    Existing hotel details
+                    <textarea
+                      id="existing-hotels"
+                      name="existing-hotels"
+                      rows="4"
+                      placeholder="One per line. Example:&#10;Seoul - Ryse Hotel - Hongdae&#10;Tokyo - Trunk Hotel Yoyogi Park - Shibuya"
+                    ></textarea>
                   </label>
-                  <p class="field-error" id="start-date-error" hidden></p>
+                  <p class="footer-note">
+                    Include city, hotel name, and neighborhood if you know it. The itinerary
+                    will cluster days around that area when possible.
+                  </p>
                 </div>
-                <label>
-                  Arrival Time
-                  <select id="arrival-time" name="arrival-time">
-                    <option value="morning">Morning</option>
-                    <option value="afternoon" selected>Afternoon</option>
-                    <option value="evening">Evening</option>
-                  </select>
-                </label>
-                <div class="field-wrapper">
+              </div>
+
+              <div class="form-block">
+                <div class="form-block-head">
+                  <p class="form-section-label">Trip shape</p>
+                  <p class="form-block-note">Set the real travel window, then tune the budget and pace.</p>
+                </div>
+
+                <div class="arrival-departure-grid">
+                  <div class="field-wrapper">
+                    <label>
+                      Arrival Date
+                      <input type="date" id="start-date" name="start-date" required />
+                    </label>
+                    <p class="field-error" id="start-date-error" hidden></p>
+                  </div>
                   <label>
-                    Departure Date
-                    <input type="date" id="end-date" name="end-date" required />
+                    Arrival Time
+                    <select id="arrival-time" name="arrival-time">
+                      <option value="morning">Morning</option>
+                      <option value="afternoon" selected>Afternoon</option>
+                      <option value="evening">Evening</option>
+                    </select>
                   </label>
-                  <p class="field-error" id="end-date-error" hidden></p>
-                </div>
-                <label>
-                  Departure Time
-                  <select id="departure-time" name="departure-time">
-                    <option value="morning" selected>Morning</option>
-                    <option value="afternoon">Afternoon</option>
-                    <option value="evening">Evening</option>
-                  </select>
-                </label>
-              </div>
-
-              <div class="duration-display">
-                <p class="duration-label">Trip length</p>
-                <div class="duration-counter" id="duration-counter">
-                  <span class="duration-days">4</span> <span class="duration-nights">nights</span>
-                </div>
-              </div>
-
-              <div class="detail-grid">
-                <label>
-                  Budget
-                  <select id="budget" name="budget">
-                    <option value="luxury">Luxury</option>
-                    <option value="premium" selected>Premium</option>
-                    <option value="smart">Smart spend</option>
-                  </select>
-                </label>
-
-                <label>
-                  Travel pace
-                  <select id="pace" name="pace">
-                    <option value="slow">Slow</option>
-                    <option value="balanced" selected>Balanced</option>
-                    <option value="packed">Packed</option>
-                  </select>
-                </label>
-              </div>
-
-              <fieldset class="choice-group focus-picker" id="focus-group">
-                <legend>Select all that apply</legend>
-                <div class="focus-grid">
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="culture" checked />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Culture &amp;<br />History</span></div>
-                    <span class="focus-card-desc">Temples, palaces, and heritage districts.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="food" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Food &amp;<br />Drink</span></div>
-                    <span class="focus-card-desc">Markets, local spots, and destination meals.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="design" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Design &amp; Architecture</span></div>
-                    <span class="focus-card-desc">Architecture and design-forward places.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="museum" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Museums &amp; Galleries</span></div>
-                    <span class="focus-card-desc">Art collections and major cultural institutions.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="wellness" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Wellness &amp; Recharge</span></div>
-                    <span class="focus-card-desc">Parks, spas, and slower restorative days.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="nightlife" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Nightlife &amp; Energy</span></div>
-                    <span class="focus-card-desc">Bars, late-night food, and after-dark energy.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="shopping" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Shopping &amp; Style</span></div>
-                    <span class="focus-card-desc">Markets, boutiques, and standout retail streets.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="nature" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Nature &amp; Outdoors</span></div>
-                    <span class="focus-card-desc">Parks, hikes, rivers, and open-air escapes.</span>
-                  </label>
-                  <label class="focus-card">
-                    <input type="checkbox" name="focus" value="luxury" />
-                    <span class="focus-card-icon" aria-hidden="true"></span>
-                    <div class="focus-card-title"><span class="focus-card-label">Luxury &amp; Splurge</span></div>
-                    <span class="focus-card-desc">High-end stays, meals, and worth-it splurges.</span>
+                  <div class="field-wrapper">
+                    <label>
+                      Departure Date
+                      <input type="date" id="end-date" name="end-date" required />
+                    </label>
+                    <p class="field-error" id="end-date-error" hidden></p>
+                  </div>
+                  <label>
+                    Departure Time
+                    <select id="departure-time" name="departure-time">
+                      <option value="morning" selected>Morning</option>
+                      <option value="afternoon">Afternoon</option>
+                      <option value="evening">Evening</option>
+                    </select>
                   </label>
                 </div>
-              </fieldset>
 
-              <p class="footer-note">
-                This shapes hotel ranking, don’t-miss picks, and how items get placed into the itinerary.
-              </p>
+                <div class="duration-display">
+                  <p class="duration-label">Trip length</p>
+                  <div class="duration-counter" id="duration-counter">
+                    <span class="duration-days">4</span> <span class="duration-nights">nights</span>
+                  </div>
+                </div>
 
-              <label>
-                Notes
-                <textarea
-                  id="notes"
-                  name="notes"
-                  rows="4"
-                  placeholder="Rooftop hotel preferred, one splurge dinner, no museums on arrival day."
-                ></textarea>
-              </label>
+                <div class="detail-grid">
+                  <label>
+                    Budget
+                    <select id="budget" name="budget">
+                      <option value="luxury">Luxury</option>
+                      <option value="premium" selected>Premium</option>
+                      <option value="smart">Smart spend</option>
+                    </select>
+                  </label>
 
-              <div class="form-summary">
-                <p class="summary-label">Your trip setup</p>
-                <div class="summary-items" id="form-summary-items">
-                  <div class="summary-item"><span class="summary-icon">📍</span><span id="summary-city">Seoul</span></div>
-                  <div class="summary-item"><span class="summary-icon">📅</span><span id="summary-dates">4 days</span></div>
-                  <div class="summary-item"><span class="summary-icon">💰</span><span id="summary-budget">Premium</span></div>
-                  <div class="summary-item"><span class="summary-icon">🎯</span><span id="summary-interests">Culture, and 1 more</span></div>
+                  <label>
+                    Travel pace
+                    <select id="pace" name="pace">
+                      <option value="slow">Slow</option>
+                      <option value="balanced" selected>Balanced</option>
+                      <option value="packed">Packed</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-block">
+                <div class="form-block-head">
+                  <p class="form-section-label">Interests</p>
+                  <p class="form-block-note">This determines which neighborhoods, meals, and experiences get extra weight.</p>
+                </div>
+
+                <fieldset class="choice-group focus-picker" id="focus-group">
+                  <legend>Select all that apply</legend>
+                  <div class="focus-grid">
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="culture" checked />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Culture &amp;<br />History</span></div>
+                      <span class="focus-card-desc">Temples, palaces, and heritage districts.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="food" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Food &amp;<br />Drink</span></div>
+                      <span class="focus-card-desc">Markets, local spots, and destination meals.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="design" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Design &amp; Architecture</span></div>
+                      <span class="focus-card-desc">Architecture and design-forward places.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="museum" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Museums &amp; Galleries</span></div>
+                      <span class="focus-card-desc">Art collections and major cultural institutions.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="wellness" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Wellness &amp; Recharge</span></div>
+                      <span class="focus-card-desc">Parks, spas, and slower restorative days.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="nightlife" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Nightlife &amp; Energy</span></div>
+                      <span class="focus-card-desc">Bars, late-night food, and after-dark energy.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="shopping" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Shopping &amp; Style</span></div>
+                      <span class="focus-card-desc">Markets, boutiques, and standout retail streets.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="nature" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Nature &amp; Outdoors</span></div>
+                      <span class="focus-card-desc">Parks, hikes, rivers, and open-air escapes.</span>
+                    </label>
+                    <label class="focus-card">
+                      <input type="checkbox" name="focus" value="luxury" />
+                      <span class="focus-card-icon" aria-hidden="true"></span>
+                      <div class="focus-card-title"><span class="focus-card-label">Luxury &amp; Splurge</span></div>
+                      <span class="focus-card-desc">High-end stays, meals, and worth-it splurges.</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <p class="footer-note">
+                  This shapes hotel ranking, don’t-miss picks, and how items get placed into the itinerary.
+                </p>
+              </div>
+
+              <div class="form-block form-block--final">
+                <div class="form-block-head">
+                  <p class="form-section-label">Final notes</p>
+                  <p class="form-block-note">Add any preferences that should meaningfully change the scoring or tone of the trip.</p>
+                </div>
+
+                <label>
+                  Notes
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    rows="4"
+                    placeholder="Rooftop hotel preferred, one splurge dinner, no museums on arrival day."
+                  ></textarea>
+                </label>
+
+                <div class="form-summary">
+                  <p class="summary-label">Your trip setup</p>
+                  <div class="summary-items" id="form-summary-items">
+                    <div class="summary-item"><span class="summary-icon">📍</span><span id="summary-city">Seoul</span></div>
+                    <div class="summary-item"><span class="summary-icon">📅</span><span id="summary-dates">4 days</span></div>
+                    <div class="summary-item"><span class="summary-icon">💰</span><span id="summary-budget">Premium</span></div>
+                    <div class="summary-item"><span class="summary-icon">🎯</span><span id="summary-interests">Culture, and 1 more</span></div>
+                  </div>
                 </div>
               </div>
 
