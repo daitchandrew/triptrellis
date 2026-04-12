@@ -79,6 +79,10 @@ function getPlannerStepTabs() {
   return Array.from(document.querySelectorAll("[data-step-tab]"));
 }
 
+function getCityChipButtons() {
+  return Array.from(document.querySelectorAll("[data-city-chip]"));
+}
+
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
 const THEME_KEY = "triptrellis-theme";
@@ -367,6 +371,14 @@ function updateFormSummary() {
     }
     document.querySelector("#summary-interests").textContent = interestsText;
   }
+}
+
+function syncCityChipSelection(selectedCity) {
+  getCityChipButtons().forEach((button) => {
+    const isSelected = button.dataset.cityChip === selectedCity;
+    button.classList.toggle("is-selected", isSelected);
+    button.setAttribute("aria-pressed", String(isSelected));
+  });
 }
 
 // ---- Form Save/Load Functions ----
@@ -701,6 +713,7 @@ function initializeApp() {
   
   // Load stored preferences if available
   loadFormPreferences();
+  syncCityChipSelection(document.querySelector("#city")?.value || "seoul");
   renderPlannerStep();
 
 }
@@ -764,8 +777,18 @@ function bindEvents() {
   const focusCheckboxes = form?.querySelectorAll('input[name="focus"]');
   
   citySelect?.addEventListener("change", () => {
+    syncCityChipSelection(citySelect.value);
     updateFormSummary();
     saveFormPreferences();
+  });
+  getCityChipButtons().forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!citySelect) return;
+      const nextCity = button.dataset.cityChip || "";
+      if (!nextCity || citySelect.value === nextCity) return;
+      citySelect.value = nextCity;
+      citySelect.dispatchEvent(new Event("change", { bubbles: true }));
+    });
   });
   budgetSelect?.addEventListener("change", () => {
     updateFormSummary();

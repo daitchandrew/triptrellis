@@ -337,9 +337,34 @@
                     <p class="form-block-note">Choose the destination and the real travel window first so the itinerary can anchor itself correctly.</p>
                   </div>
 
-                  <label>
-                    City
-                    <select id="city" name="city" required>
+                  <div class="field-group">
+                    <label for="city">City</label>
+                    <div class="city-chip-grid" role="list" aria-label="Available cities">
+                      <button type="button" class="city-chip is-selected" data-city-chip="seoul" aria-pressed="true">Seoul</button>
+                      <button type="button" class="city-chip" data-city-chip="tokyo" aria-pressed="false">Tokyo</button>
+                      <button type="button" class="city-chip" data-city-chip="kyoto" aria-pressed="false">Kyoto</button>
+                      <button type="button" class="city-chip" data-city-chip="osaka" aria-pressed="false">Osaka</button>
+                      <button type="button" class="city-chip" data-city-chip="bangkok" aria-pressed="false">Bangkok</button>
+                      <button type="button" class="city-chip" data-city-chip="singapore" aria-pressed="false">Singapore</button>
+                      <button type="button" class="city-chip" data-city-chip="hong-kong" aria-pressed="false">Hong Kong</button>
+                      <button type="button" class="city-chip" data-city-chip="bali" aria-pressed="false">Bali</button>
+                      <button type="button" class="city-chip" data-city-chip="prague" aria-pressed="false">Prague</button>
+                      <button type="button" class="city-chip" data-city-chip="copenhagen" aria-pressed="false">Copenhagen</button>
+                      <button type="button" class="city-chip" data-city-chip="berlin" aria-pressed="false">Berlin</button>
+                      <button type="button" class="city-chip" data-city-chip="paris" aria-pressed="false">Paris</button>
+                      <button type="button" class="city-chip" data-city-chip="barcelona" aria-pressed="false">Barcelona</button>
+                      <button type="button" class="city-chip" data-city-chip="venice" aria-pressed="false">Venice</button>
+                      <button type="button" class="city-chip" data-city-chip="amsterdam" aria-pressed="false">Amsterdam</button>
+                      <button type="button" class="city-chip" data-city-chip="lisbon" aria-pressed="false">Lisbon</button>
+                      <button type="button" class="city-chip" data-city-chip="new-york" aria-pressed="false">New York</button>
+                      <button type="button" class="city-chip" data-city-chip="los-angeles" aria-pressed="false">Los Angeles</button>
+                      <button type="button" class="city-chip" data-city-chip="mexico-city" aria-pressed="false">Mexico City</button>
+                      <button type="button" class="city-chip" data-city-chip="buenos-aires" aria-pressed="false">Buenos Aires</button>
+                      <button type="button" class="city-chip" data-city-chip="dubai" aria-pressed="false">Dubai</button>
+                      <button type="button" class="city-chip" data-city-chip="istanbul" aria-pressed="false">Istanbul</button>
+                      <button type="button" class="city-chip" data-city-chip="marrakech" aria-pressed="false">Marrakech</button>
+                    </div>
+                    <select id="city" name="city" required class="visually-hidden-select" tabindex="-1" aria-hidden="true">
                       <optgroup label="Asia">
                         <option value="seoul" selected>Seoul</option>
                         <option value="tokyo">Tokyo</option>
@@ -372,7 +397,7 @@
                         <option value="marrakech">Marrakech</option>
                       </optgroup>
                     </select>
-                  </label>
+                  </div>
 
                   <div class="arrival-departure-grid">
                     <div class="field-wrapper">

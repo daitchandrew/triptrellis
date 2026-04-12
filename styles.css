@@ -10653,6 +10653,56 @@ header.hero::before {
   grid-template-columns: 1fr;
 }
 
+.hero-grid {
+  align-items: start;
+}
+
+.visually-hidden-select {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.city-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.city-chip {
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 999px;
+  border: 1px solid rgba(38, 24, 14, 0.1);
+  background: rgba(255, 255, 255, 0.74);
+  color: #5f544b;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.city-chip:hover,
+.city-chip:focus-visible {
+  background: rgba(194, 130, 91, 0.12);
+  border-color: rgba(194, 130, 91, 0.22);
+  color: #3a2d24;
+  outline: none;
+}
+
+.city-chip.is-selected {
+  background: rgba(38, 24, 14, 0.94);
+  border-color: rgba(38, 24, 14, 0.94);
+  color: #fff7ec;
+}
+
 .wizard-next-button,
 .wizard-back-button {
   min-height: 58px;
@@ -10703,6 +10753,52 @@ header.hero::before {
   margin-top: 18px;
   padding-top: 22px;
   padding-bottom: 20px;
+}
+
+.form-summary {
+  margin-top: 8px;
+  padding: 22px 24px 20px;
+}
+
+.summary-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: auto;
+  padding: 12px 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(43, 29, 20, 0.08);
+}
+
+.summary-item:last-child {
+  border-bottom: 0;
+}
+
+.summary-meta {
+  color: rgba(78, 63, 52, 0.58);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.summary-item strong {
+  width: auto;
+  text-align: right;
+  color: #201913;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .footer-content {
@@ -10788,6 +10884,14 @@ header.hero::before {
   .form-actions,
   .form-actions-secondary {
     grid-template-columns: 1fr;
+  }
+
+  .summary-item {
+    align-items: flex-start;
+  }
+
+  .summary-item strong {
+    text-align: right;
   }
 
   .footer-facts {
