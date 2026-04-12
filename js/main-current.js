@@ -1,4 +1,4 @@
-import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansion-20260412-001";
+import { cityGuides } from "./data/cities/index.js?v=triptrellis-library-expansion-20260412-002";
 import { buildTripPlan, parseExistingHotels } from "./lib/plan-builder.js?v=triptrellis-ui-logic-20260412-001";
 import { populateSuggestedItinerary } from "./lib/itinerary.js?v=triptrellis-ui-logic-20260412-001";
 import { hydratePlan, loadSavedItineraries, setAllTrips, setCurrentPlan } from "./lib/state.js";
