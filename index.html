@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-003" />
+    <link rel="stylesheet" href="./styles.css?v=triptrellis-ui-polish-20260412-004" />
   </head>
   <body>
     <script>
@@ -34,7 +34,7 @@
         }
 
         try {
-          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-003");
+          const app = await import("./js/main-current.js?v=triptrellis-ui-polish-20260412-004");
           const generator = window.TripTrellisGenerate || app.generateFromForm;
           if (!generator) {
             throw new Error("TripTrellis loaded, but the Generate function was not found.");
@@ -314,13 +314,13 @@
 
             <div class="planner-card-banner">
               <p class="planner-banner-kicker">Start with the brief</p>
-              <strong>Shape the bones of the trip before the itinerary fills in.</strong>
-              <p>Choose one city, define the travel window, then tell us how you want the days to feel.</p>
+              <strong>Build the trip logic first, then let the itinerary take shape around it.</strong>
+              <p>Choose the city, define the travel window, and set the tone of the days so the first version already feels intentional.</p>
               <div class="planner-brief-steps" aria-hidden="true">
-                <span>City</span>
-                <span>Stay</span>
-                <span>Dates</span>
-                <span>Interests</span>
+                <span>City base</span>
+                <span>Stay logic</span>
+                <span>Travel window</span>
+                <span>Priorities</span>
               </div>
             </div>
 
@@ -582,7 +582,7 @@
                     <div class="summary-item"><span class="summary-meta">Budget</span><strong id="summary-budget">Premium</strong></div>
                     <div class="summary-item"><span class="summary-meta">Focus</span><strong id="summary-interests">Culture, and 1 more</strong></div>
                   </div>
-                  <p class="summary-helper">This is the brief TripTrellis uses before it starts building the route.</p>
+                  <p class="summary-helper">This is the planning brief TripTrellis uses before it starts shaping the route, hotels, and day flow.</p>
                 </div>
               </div>
 

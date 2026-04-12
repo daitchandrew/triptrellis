@@ -8739,6 +8739,220 @@ textarea {
   }
 }
 
+/* Premium planner refinement pass */
+.planner-card {
+  padding: 42px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(194, 130, 91, 0.08), transparent 24%),
+    radial-gradient(circle at 8% 100%, rgba(123, 58, 75, 0.06), transparent 28%),
+    linear-gradient(180deg, rgba(255, 251, 245, 0.985), rgba(247, 239, 229, 0.965));
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  border-top: 1px solid rgba(43, 29, 20, 0.08);
+  box-shadow:
+    0 22px 54px rgba(33, 21, 12, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.planner-card::before {
+  height: 0;
+  background: none;
+}
+
+.planner-card::after {
+  top: 88px;
+  right: -44px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(194, 130, 91, 0.1) 0%, transparent 72%);
+}
+
+.card-heading {
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.card-heading::after {
+  width: 118px;
+  background: linear-gradient(90deg, rgba(181, 118, 77, 0.46), rgba(181, 118, 77, 0.06), transparent);
+}
+
+.card-kicker {
+  margin-bottom: 10px;
+  color: #ab6c42;
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+}
+
+.card-heading h2 {
+  font-size: clamp(2rem, 2.3vw, 2.35rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  max-width: 11ch;
+}
+
+.planner-intro {
+  margin-top: 12px;
+  max-width: 44ch;
+  font-size: 0.96rem;
+  line-height: 1.66;
+  color: rgba(67, 56, 47, 0.8);
+}
+
+.planner-card-banner {
+  gap: 10px;
+  padding: 18px 18px 17px;
+  margin-bottom: 18px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(249, 242, 233, 0.88));
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.planner-banner-kicker {
+  margin-bottom: 0;
+  color: #9c6743;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+}
+
+.planner-card-banner strong {
+  display: block;
+  max-width: 28ch;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  letter-spacing: -0.032em;
+}
+
+.planner-card-banner p {
+  max-width: 50ch;
+  font-size: 0.86rem;
+  line-height: 1.58;
+  color: rgba(69, 58, 49, 0.72);
+}
+
+.planner-brief-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.planner-brief-steps span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  color: rgba(63, 52, 43, 0.74);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.planner-form {
+  gap: 14px;
+}
+
+.form-block {
+  gap: 14px;
+  padding: 19px 18px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.92), rgba(248, 240, 231, 0.78));
+  border: 1px solid rgba(43, 29, 20, 0.065);
+}
+
+.form-block--final {
+  background:
+    linear-gradient(180deg, rgba(251, 245, 237, 0.94), rgba(245, 236, 224, 0.82));
+}
+
+.form-block-head {
+  gap: 6px;
+}
+
+.form-section-label {
+  color: rgba(63, 50, 40, 0.52);
+  font-size: 0.65rem;
+  letter-spacing: 0.19em;
+}
+
+.form-block-note {
+  color: rgba(66, 55, 47, 0.64);
+  font-size: 0.83rem;
+  line-height: 1.56;
+}
+
+.arrival-departure-grid,
+.choice-group,
+.conditional-fields,
+.focus-picker {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.duration-display {
+  padding: 18px 18px 16px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(251, 246, 238, 0.9), rgba(246, 238, 227, 0.78));
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.duration-label {
+  color: rgba(72, 58, 47, 0.5);
+}
+
+.duration-counter {
+  align-items: baseline;
+}
+
+.duration-days {
+  font-size: clamp(2rem, 2.4vw, 2.45rem);
+  letter-spacing: -0.06em;
+}
+
+#generate-trip-button {
+  background: linear-gradient(180deg, #241b14, #1b140f) !important;
+  box-shadow:
+    0 18px 38px rgba(28, 26, 23, 0.12) !important,
+    inset 0 1px 0 rgba(255, 248, 238, 0.08) !important;
+}
+
+#generate-trip-button:hover {
+  background: linear-gradient(180deg, #34271e, #221a14) !important;
+  box-shadow:
+    0 20px 42px rgba(28, 26, 23, 0.15) !important,
+    inset 0 1px 0 rgba(255, 248, 238, 0.08) !important;
+}
+
+.reset-btn,
+.save-form-btn {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 243, 236, 0.78)) !important;
+  border: 1px solid rgba(43, 29, 20, 0.08) !important;
+  color: rgba(55, 45, 38, 0.82) !important;
+}
+
+.reset-btn:hover,
+.save-form-btn:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 243, 236, 0.9)) !important;
+  border-color: rgba(43, 29, 20, 0.12) !important;
+  color: #201913 !important;
+}
+
+@media (max-width: 980px) {
+  .planner-card {
+    padding: 30px 24px;
+    border-radius: 28px;
+  }
+
+  .card-heading h2 {
+    max-width: none;
+  }
+}
+
 @media (max-width: 760px) {
   .planner-brief-steps {
     gap: 6px;
