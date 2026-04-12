@@ -1045,6 +1045,8 @@ export const fallbackCitySupplements = {
     food("Scheepskameel", "canal-belt", ["food"], "Seafood-focused Dutch", "A strong quieter dinner if the trip wants something more polished than casual grazing."),
     activity("Hortus Botanicus pause", "museumplein", ["nature", "wellness"], "A useful greener add-on if the trip wants a softer museum-side hour."),
     food("Fiaschetteria Pistoia", "jordaan", ["food", "nightlife"], "Italian and wine", "A strong Jordaan evening if the trip wants one more cozy, social dinner room."),
+    activity("Eastern Docklands architecture loop", "canal-belt", ["design", "walkability"], "A useful add-on if the trip wants one more modern side of Amsterdam beyond the classic canal belt."),
+    food("Gebr. Hartering", "canal-belt", ["food"], "Seasonal Dutch-influenced plates", "A strong canal-belt dinner if the trip wants one more current but grounded Amsterdam table."),
   ],
   "lisbon": [
     sight("LX Factory", "baixa", ["design", "shopping"], "A useful design-and-browse block when the trip wants a more current Lisbon angle."),
@@ -1059,6 +1061,8 @@ export const fallbackCitySupplements = {
     food("Café de São Bento", "principe-real", ["food"], "Steakhouse", "A classic Lisbon dinner move if the night should feel simple and dependable."),
     activity("Belém riverside cycle or walk stretch", "belem", ["nature", "walkability"], "A useful lower-pressure add-on if the Belém day wants more openness and air."),
     food("Manteigaria tart stop", "baixa", ["cafes", "food"], "Pastéis de nata", "A good central sweet stop if the trip wants one more easy Lisbon-specific snack moment."),
+    activity("Graça viewpoint circuit", "alfama", ["nature", "walkability"], "A stronger hilltop add-on if the trip wants one more dramatic Lisbon skyline sequence."),
+    food("Taberna do Calhau", "alfama", ["food"], "Contemporary Alentejo-influenced cooking", "A smart old-core dinner if the trip wants one more specific and less obvious Lisbon table."),
   ],
   "new-york": [
     sight("The Met steps and Upper East Side edge", "midtown", ["culture", "museum"], "A strong classic-city move if the trip wants one uptown culture block."),
@@ -1073,6 +1077,8 @@ export const fallbackCitySupplements = {
     food("Russ & Daughters Appetizers counter stop", "lower-east-side", ["food", "cafes"], "Appetizing and smoked fish", "A good quick local add-on when the day is already downtown."),
     activity("Upper West Side bookstore-and-brownstone drift", "midtown", ["walkability", "culture"], "A softer Manhattan add-on if the trip wants one more residential city rhythm."),
     food("Lucali-style Brooklyn pizza night", "soho", ["food", "nightlife"], "Pizza", "A stronger cross-river evening if the trip intentionally heads into Brooklyn for dinner."),
+    activity("Lower Manhattan harbor-front walk", "midtown", ["walkability", "design"], "A useful downtown add-on if the trip wants one more skyline-and-water edge without turning into a full ferry excursion."),
+    food("Raoul's", "soho", ["food"], "French downtown classic", "A strong SoHo dinner if the trip wants one more old-school New York room."),
   ],
   "los-angeles": [
     sight("Getty Center terraces", "west-hollywood", ["culture", "design", "nature"], "A strong visual-and-museum anchor if the trip wants one more expansive LA daytime move."),
@@ -1089,6 +1095,8 @@ export const fallbackCitySupplements = {
     food("Quarter Sheets", "silver-lake", ["food"], "Pizza and desserts", "A strong neighborhood dinner if the trip wants one more relaxed but excellent east-side table."),
     food("Cara Hotel courtyard breakfast", "silver-lake", ["cafes", "food"], "Breakfast and brunch", "A softer Los Feliz-side breakfast if the day starts east."),
     sight("Point Dume overlook detour", "santa-monica", ["nature"], "A worthwhile scenic add-on if the trip wants one more ocean-and-cliff moment."),
+    activity("Arts District coffee-and-design drift", "downtown-la", ["cafes", "design", "walkability"], "A useful lower-pressure DTLA add-on if the day wants texture beyond a museum block."),
+    food("Jon & Vinny's", "west-hollywood", ["food"], "Italian-American", "A dependable LA table when the trip wants one more polished but easy dinner option."),
   ],
   "mexico-city": [
     sight("Casa Luis Barragán", "condesa", ["design", "culture"], "A strong architecture stop if the trip wants one more serious design anchor."),
@@ -1105,6 +1113,8 @@ export const fallbackCitySupplements = {
     food("Masala y Maíz", "roma-norte", ["food"], "Afro-Asian-Latin fusion", "A smart current-feeling table if the trip wants one more inventive Roma dinner."),
     food("Café Nin", "roma-norte", ["cafes", "food"], "Breakfast and pastries", "A useful polished breakfast stop if the morning starts in Roma or Condesa."),
     sight("Monumento a la Revolución and plaza line", "centro", ["culture", "design"], "A broader civic-axis stop if the trip wants one more central monumental layer."),
+    activity("Roma and Condesa art-bookstore drift", "roma-norte", ["cafes", "shopping", "design"], "A softer neighborhood add-on if the trip wants more browse-heavy daytime texture."),
+    food("Merotoro", "roma-norte", ["food"], "Baja-Mediterranean", "A strong Roma Norte dinner if the trip wants one more polished local favorite."),
   ],
   "buenos-aires": [
     sight("El Ateneo Grand Splendid", "recoleta", ["culture", "design"], "A very useful city-specific stop if the trip wants one more elegant indoor landmark."),
