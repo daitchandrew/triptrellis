@@ -497,7 +497,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
       <div class="section-head">
         <div>
           <p class="section-kicker">${isFrontPage ? "Saved itineraries" : "Saved itineraries"}</p>
-          <h3 class="section-title">${isFrontPage ? "Jump back into a saved trip before planning a new one" : "Come back to your trip plans"}</h3>
+          <h3 class="section-title">${isFrontPage ? "Jump back into a saved trip before planning a new one" : "Saved trips worth reopening"}</h3>
           ${isFrontPage ? `<p class="card-subtitle">Your saved plans live here too, so you can download or delete them without generating a new trip first.</p>` : ""}
         </div>
       </div>
@@ -513,7 +513,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
         />
         ${renderSavedQuickFilters(savedTrips, activeFilter)}
       </div>
-      <p class="saved-result-count">${filteredTrips.length} ${filteredTrips.length === 1 ? "trip" : "trips"} found</p>
+      <p class="saved-result-count">${filteredTrips.length} ${filteredTrips.length === 1 ? "saved trip" : "saved trips"} in view</p>
       <div class="saved-grid">
         ${filteredTrips.length
           ? filteredTrips.map((trip) => `
@@ -843,7 +843,7 @@ export function renderTripPlan(plan, results) {
                       ${item.libraryMatch?.reasons?.length ? `<p class="library-match-line">${item.libraryMatch.reasons.join(" • ")}</p>` : ""}
                       <div class="library-actions">
                         <span class="footer-note">${item.detailLine}</span>
-                        <button class="mini-button" type="button" data-action="choose-library-item" data-item-id="${item.id}">${plan.libraryOverlay.mode === "replace" ? "Replace with this" : "Add to itinerary"}</button>
+                        <button class="mini-button library-choose-button" type="button" data-action="choose-library-item" data-item-id="${item.id}">${plan.libraryOverlay.mode === "replace" ? "Replace with this" : "Add to itinerary"}</button>
                       </div>
                     </article>
                   `).join("")}
