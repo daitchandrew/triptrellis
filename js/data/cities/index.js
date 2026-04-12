@@ -8,7 +8,21 @@ import { bangkokGuide, bangkokSupplements } from './bangkok.js';
 import { pragueGuide, pragueSupplements } from './prague.js';
 import { copenhagenGuide, copenhagenSupplements } from './copenhagen.js';
 import { berlinGuide, berlinSupplements } from './berlin.js';
-import { fallbackCityGuides, fallbackCitySupplements } from './fallback-guides.js';
+import { singaporeGuide, singaporeSupplements } from './singapore.js';
+import { hongKongGuide, hongKongSupplements } from './hong-kong.js';
+import { baliGuide, baliSupplements } from './bali.js';
+import { parisGuide, parisSupplements } from './paris.js';
+import { barcelonaGuide, barcelonaSupplements } from './barcelona.js';
+import { veniceGuide, veniceSupplements } from './venice.js';
+import { amsterdamGuide, amsterdamSupplements } from './amsterdam.js';
+import { lisbonGuide, lisbonSupplements } from './lisbon.js';
+import { newYorkGuide, newYorkSupplements } from './new-york.js';
+import { losAngelesGuide, losAngelesSupplements } from './los-angeles.js';
+import { mexicoCityGuide, mexicoCitySupplements } from './mexico-city.js';
+import { buenosAiresGuide, buenosAiresSupplements } from './buenos-aires.js';
+import { dubaiGuide, dubaiSupplements } from './dubai.js';
+import { istanbulGuide, istanbulSupplements } from './istanbul.js';
+import { marrakechGuide, marrakechSupplements } from './marrakech.js';
 import { expandedSupplementLibraries } from './expansions.js';
 import { enrichCityGuidesWithHotelDetails } from '../hotel-details.js';
 import { basePlaceName, getPlaceIdentityKeys } from '../../lib/utils.js?v=triptrellis-prague-clock-cleanup-20260411-007';
@@ -22,7 +36,21 @@ const rawCityGuides = {
   prague: pragueGuide,
   copenhagen: copenhagenGuide,
   berlin: berlinGuide,
-  ...fallbackCityGuides,
+  singapore: singaporeGuide,
+  "hong-kong": hongKongGuide,
+  bali: baliGuide,
+  paris: parisGuide,
+  barcelona: barcelonaGuide,
+  venice: veniceGuide,
+  amsterdam: amsterdamGuide,
+  lisbon: lisbonGuide,
+  "new-york": newYorkGuide,
+  "los-angeles": losAngelesGuide,
+  "mexico-city": mexicoCityGuide,
+  "buenos-aires": buenosAiresGuide,
+  dubai: dubaiGuide,
+  istanbul: istanbulGuide,
+  marrakech: marrakechGuide,
 };
 
 function scoreCanonicalLibraryEntry(item, source = "") {
@@ -124,10 +152,19 @@ export const categorySupplementLibraries = {
   prague: cleanSupplementsForCity("prague", pragueSupplements),
   copenhagen: cleanSupplementsForCity("copenhagen", copenhagenSupplements),
   berlin: cleanSupplementsForCity("berlin", berlinSupplements),
-  ...Object.fromEntries(
-    Object.entries(fallbackCitySupplements).map(([cityKey, supplements]) => [
-      cityKey,
-      cleanSupplementsForCity(cityKey, supplements),
-    ])
-  ),
+  singapore: cleanSupplementsForCity("singapore", singaporeSupplements),
+  "hong-kong": cleanSupplementsForCity("hong-kong", hongKongSupplements),
+  bali: cleanSupplementsForCity("bali", baliSupplements),
+  paris: cleanSupplementsForCity("paris", parisSupplements),
+  barcelona: cleanSupplementsForCity("barcelona", barcelonaSupplements),
+  venice: cleanSupplementsForCity("venice", veniceSupplements),
+  amsterdam: cleanSupplementsForCity("amsterdam", amsterdamSupplements),
+  lisbon: cleanSupplementsForCity("lisbon", lisbonSupplements),
+  "new-york": cleanSupplementsForCity("new-york", newYorkSupplements),
+  "los-angeles": cleanSupplementsForCity("los-angeles", losAngelesSupplements),
+  "mexico-city": cleanSupplementsForCity("mexico-city", mexicoCitySupplements),
+  "buenos-aires": cleanSupplementsForCity("buenos-aires", buenosAiresSupplements),
+  dubai: cleanSupplementsForCity("dubai", dubaiSupplements),
+  istanbul: cleanSupplementsForCity("istanbul", istanbulSupplements),
+  marrakech: cleanSupplementsForCity("marrakech", marrakechSupplements),
 };
