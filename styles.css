@@ -10552,196 +10552,46 @@ header.hero::before {
 }
 
 .planner-card {
-  position: sticky;
-  top: 84px;
-  align-self: flex-start;
-}
-
-.planner-wizard-progress {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding: 15px 16px 14px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(38, 24, 14, 0.07);
-}
-
-.planner-progress-head {
-  display: grid;
-  gap: 4px;
-}
-
-.planner-progress-label {
-  margin: 0;
-  color: #ab6c42;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.planner-progress-copy {
-  margin: 0;
-  color: rgba(67, 56, 47, 0.76);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.planner-progress-track {
-  position: relative;
-  width: 100%;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(38, 24, 14, 0.08);
-}
-
-.planner-progress-fill {
-  display: block;
-  width: 33.333%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #b5764d, #d19c73);
-  transition: width 0.24s ease-in-out;
-}
-
-.planner-step-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.planner-step-tab {
-  min-height: 34px;
-  padding: 8px 10px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.66);
-  border: 1px solid rgba(38, 24, 14, 0.06);
-  color: rgba(67, 56, 47, 0.7);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-.planner-step-tab.is-active {
-  background: rgba(194, 130, 91, 0.1);
-  border-color: rgba(194, 130, 91, 0.18);
-  color: #8f5638;
-}
-
-.planner-step {
-  display: grid;
-  gap: 14px;
-}
-
-.planner-step[hidden] {
-  display: none !important;
-}
-
-.planner-step-actions {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-}
-
-.planner-step-actions--single {
-  grid-template-columns: 1fr;
+  position: static;
+  top: auto;
+  align-self: start;
 }
 
 .hero-grid {
   align-items: start;
 }
 
-.visually-hidden-select {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.planner-form {
+  display: grid;
+  gap: 16px;
 }
 
-.city-chip-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
+.planner-form-card {
+  padding: 22px 22px 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(38, 24, 14, 0.07);
 }
 
-.city-chip {
-  min-height: 42px;
-  padding: 0 15px;
-  border-radius: 999px;
-  border: 1px solid rgba(38, 24, 14, 0.1);
-  background: rgba(255, 255, 255, 0.74);
-  color: #5f544b;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+.planner-form-card .form-block + .form-block {
+  margin-top: 18px;
 }
 
-.city-chip:hover,
-.city-chip:focus-visible {
-  background: rgba(194, 130, 91, 0.12);
-  border-color: rgba(194, 130, 91, 0.22);
-  color: #3a2d24;
-  outline: none;
-}
-
-.city-chip.is-selected {
-  background: rgba(38, 24, 14, 0.94);
-  border-color: rgba(38, 24, 14, 0.94);
-  color: #fff7ec;
-}
-
-.wizard-next-button,
-.wizard-back-button {
-  min-height: 58px;
-  padding: 0 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(38, 24, 14, 0.08);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.98rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-}
-
-.wizard-next-button {
-  background: rgba(38, 24, 14, 0.94);
-  border-color: rgba(38, 24, 14, 0.94);
-  color: #fff7ec;
-}
-
-.wizard-next-button:hover {
-  background: #34271e;
-  border-color: #34271e;
-}
-
-.wizard-back-button {
-  background: rgba(255, 255, 255, 0.82);
-  color: rgba(53, 43, 36, 0.82);
-}
-
-.wizard-back-button:hover {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(38, 24, 14, 0.12);
-  color: #241a14;
+.planner-form-card select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(38, 24, 14, 0.55) 50%),
+    linear-gradient(135deg, rgba(38, 24, 14, 0.55) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% - 3px),
+    calc(100% - 14px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 44px;
 }
 
 .form-actions {
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.35fr) minmax(0, 0.83fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
   align-items: stretch;
 }
 
@@ -10753,52 +10603,6 @@ header.hero::before {
   margin-top: 18px;
   padding-top: 22px;
   padding-bottom: 20px;
-}
-
-.form-summary {
-  margin-top: 8px;
-  padding: 22px 24px 20px;
-}
-
-.summary-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-}
-
-.summary-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  min-height: auto;
-  padding: 12px 0;
-  border-radius: 0;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(43, 29, 20, 0.08);
-}
-
-.summary-item:last-child {
-  border-bottom: 0;
-}
-
-.summary-meta {
-  color: rgba(78, 63, 52, 0.58);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.summary-item strong {
-  width: auto;
-  text-align: right;
-  color: #201913;
-  font-size: 0.98rem;
-  line-height: 1.35;
-  font-weight: 800;
-  letter-spacing: -0.02em;
 }
 
 .footer-content {
@@ -10845,11 +10649,6 @@ header.hero::before {
 }
 
 @media (max-width: 1180px) {
-  .planner-card {
-    position: static;
-    top: auto;
-  }
-
   .hero-grid {
     gap: 24px;
   }
@@ -10867,40 +10666,13 @@ header.hero::before {
     opacity: 0.56;
   }
 
-  .planner-wizard-progress {
-    padding: 14px 15px;
-    border-radius: 20px;
-  }
-
-  .planner-progress-copy {
-    font-size: 0.84rem;
-  }
-
-  .planner-step-tabs {
-    grid-template-columns: 1fr;
-  }
-
-  .planner-step-actions,
   .form-actions,
   .form-actions-secondary {
     grid-template-columns: 1fr;
   }
 
-  .summary-item {
-    align-items: flex-start;
-  }
-
-  .summary-item strong {
-    text-align: right;
-  }
-
   .footer-facts {
     grid-template-columns: 1fr;
-  }
-
-  .wizard-next-button,
-  .wizard-back-button {
-    min-height: 54px;
   }
 
   .site-footer {

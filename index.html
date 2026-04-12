@@ -305,66 +305,21 @@
 
             <div class="planner-card-banner">
               <p class="planner-banner-kicker">Start with the brief</p>
-              <strong>Three quick decisions shape the whole trip.</strong>
-              <p>Move from basics to logistics to vibe, then generate a first draft that already feels routed and intentional.</p>
-              <div class="planner-brief-steps" aria-hidden="true">
-                <span>Basics</span>
-                <span>Logistics</span>
-                <span>Details</span>
-              </div>
+              <strong>Set the key inputs once, then generate the first routed draft.</strong>
+              <p>The form is grouped into the practical decisions that matter most: trip basics, stay logic, and the kind of trip you actually want to take.</p>
             </div>
 
             <form id="planner-form" class="planner-form" action="#" onsubmit="window.TripTrellisGenerateNow(this); return false;">
-              <div class="planner-wizard-progress" aria-live="polite">
-                <div class="planner-progress-head">
-                  <p class="planner-progress-label" id="planner-step-label">Step 1 of 3</p>
-                  <p class="planner-progress-copy" id="planner-step-copy">Basics: set the city, travel window, and overall trip length.</p>
-                </div>
-                <div class="planner-progress-track" aria-hidden="true">
-                  <span class="planner-progress-fill" id="planner-progress-fill"></span>
-                </div>
-                <div class="planner-step-tabs" aria-hidden="true">
-                  <span class="planner-step-tab is-active" data-step-tab="1">Basics</span>
-                  <span class="planner-step-tab" data-step-tab="2">Logistics</span>
-                  <span class="planner-step-tab" data-step-tab="3">Details</span>
-                </div>
-              </div>
-
-              <section class="planner-step is-active" data-step="1" aria-labelledby="planner-step-1-title">
+              <section class="planner-form-card" aria-labelledby="planner-step-1-title">
                 <div class="form-block">
                   <div class="form-block-head">
                     <p class="form-section-label" id="planner-step-1-title">Trip basics</p>
                     <p class="form-block-note">Choose the destination and the real travel window first so the itinerary can anchor itself correctly.</p>
                   </div>
 
-                  <div class="field-group">
-                    <label for="city">City</label>
-                    <div class="city-chip-grid" role="list" aria-label="Available cities">
-                      <button type="button" class="city-chip is-selected" data-city-chip="seoul" aria-pressed="true">Seoul</button>
-                      <button type="button" class="city-chip" data-city-chip="tokyo" aria-pressed="false">Tokyo</button>
-                      <button type="button" class="city-chip" data-city-chip="kyoto" aria-pressed="false">Kyoto</button>
-                      <button type="button" class="city-chip" data-city-chip="osaka" aria-pressed="false">Osaka</button>
-                      <button type="button" class="city-chip" data-city-chip="bangkok" aria-pressed="false">Bangkok</button>
-                      <button type="button" class="city-chip" data-city-chip="singapore" aria-pressed="false">Singapore</button>
-                      <button type="button" class="city-chip" data-city-chip="hong-kong" aria-pressed="false">Hong Kong</button>
-                      <button type="button" class="city-chip" data-city-chip="bali" aria-pressed="false">Bali</button>
-                      <button type="button" class="city-chip" data-city-chip="prague" aria-pressed="false">Prague</button>
-                      <button type="button" class="city-chip" data-city-chip="copenhagen" aria-pressed="false">Copenhagen</button>
-                      <button type="button" class="city-chip" data-city-chip="berlin" aria-pressed="false">Berlin</button>
-                      <button type="button" class="city-chip" data-city-chip="paris" aria-pressed="false">Paris</button>
-                      <button type="button" class="city-chip" data-city-chip="barcelona" aria-pressed="false">Barcelona</button>
-                      <button type="button" class="city-chip" data-city-chip="venice" aria-pressed="false">Venice</button>
-                      <button type="button" class="city-chip" data-city-chip="amsterdam" aria-pressed="false">Amsterdam</button>
-                      <button type="button" class="city-chip" data-city-chip="lisbon" aria-pressed="false">Lisbon</button>
-                      <button type="button" class="city-chip" data-city-chip="new-york" aria-pressed="false">New York</button>
-                      <button type="button" class="city-chip" data-city-chip="los-angeles" aria-pressed="false">Los Angeles</button>
-                      <button type="button" class="city-chip" data-city-chip="mexico-city" aria-pressed="false">Mexico City</button>
-                      <button type="button" class="city-chip" data-city-chip="buenos-aires" aria-pressed="false">Buenos Aires</button>
-                      <button type="button" class="city-chip" data-city-chip="dubai" aria-pressed="false">Dubai</button>
-                      <button type="button" class="city-chip" data-city-chip="istanbul" aria-pressed="false">Istanbul</button>
-                      <button type="button" class="city-chip" data-city-chip="marrakech" aria-pressed="false">Marrakech</button>
-                    </div>
-                    <select id="city" name="city" required class="visually-hidden-select" tabindex="-1" aria-hidden="true">
+                  <label>
+                    City
+                    <select id="city" name="city" required>
                       <optgroup label="Asia">
                         <option value="seoul" selected>Seoul</option>
                         <option value="tokyo">Tokyo</option>
@@ -397,7 +352,7 @@
                         <option value="marrakech">Marrakech</option>
                       </optgroup>
                     </select>
-                  </div>
+                  </label>
 
                   <div class="arrival-departure-grid">
                     <div class="field-wrapper">
@@ -444,13 +399,9 @@
                     Choose one city and TripTrellis will build the best version of that trip for the exact number of days.
                   </p>
                 </div>
-
-                <div class="planner-step-actions planner-step-actions--single">
-                  <button type="button" class="wizard-next-button" data-action="planner-next">Next: Logistics</button>
-                </div>
               </section>
 
-              <section class="planner-step" data-step="2" hidden aria-labelledby="planner-step-2-title">
+              <section class="planner-form-card" aria-labelledby="planner-step-2-title">
                 <div class="form-block">
                   <div class="form-block-head">
                     <p class="form-section-label" id="planner-step-2-title">Stay setup</p>
@@ -523,14 +474,9 @@
                     </label>
                   </div>
                 </div>
-
-                <div class="planner-step-actions">
-                  <button type="button" class="wizard-back-button" data-action="planner-back">Back</button>
-                  <button type="button" class="wizard-next-button" data-action="planner-next">Next: Vibe</button>
-                </div>
               </section>
 
-              <section class="planner-step" data-step="3" hidden aria-labelledby="planner-step-3-title">
+              <section class="planner-form-card" aria-labelledby="planner-step-3-title">
                 <div class="form-block">
                   <div class="form-block-head">
                     <p class="form-section-label" id="planner-step-3-title">Interests</p>
@@ -617,47 +563,35 @@
                       placeholder="Rooftop hotel preferred, one splurge dinner, no museums on arrival day."
                     ></textarea>
                   </label>
-
-                  <div class="form-summary">
-                    <p class="summary-label">Your trip setup</p>
-                    <div class="summary-items" id="form-summary-items">
-                      <div class="summary-item"><span class="summary-meta">City</span><strong id="summary-city">Seoul</strong></div>
-                      <div class="summary-item"><span class="summary-meta">Dates</span><strong id="summary-dates">4 days</strong></div>
-                      <div class="summary-item"><span class="summary-meta">Budget</span><strong id="summary-budget">Premium</strong></div>
-                      <div class="summary-item"><span class="summary-meta">Focus</span><strong id="summary-interests">Culture, and 1 more</strong></div>
-                    </div>
-                    <p class="summary-helper">This is the planning brief TripTrellis uses before it starts shaping the route, hotels, and day flow.</p>
-                  </div>
-                </div>
-
-                <div class="form-actions">
-                  <button type="button" class="wizard-back-button" data-action="planner-back">Back</button>
-                  <button
-                    id="generate-trip-button"
-                    type="button"
-                    onclick="window.TripTrellisGenerateNow(this.form); return false;"
-                  >
-                    Generate my trip brief <span aria-hidden="true">→</span>
-                  </button>
-                  <div class="form-actions-secondary">
-                    <button
-                      id="reset-form-button"
-                      type="reset"
-                      class="reset-btn"
-                    >
-                      Clear form
-                    </button>
-                    <button
-                      id="save-form-button"
-                      type="button"
-                      class="save-form-btn"
-                      title="Save your current form setup to browser"
-                    >
-                      Save setup
-                    </button>
-                  </div>
                 </div>
               </section>
+
+              <div class="form-actions">
+                <button
+                  id="generate-trip-button"
+                  type="button"
+                  onclick="window.TripTrellisGenerateNow(this.form); return false;"
+                >
+                  Generate my trip brief <span aria-hidden="true">→</span>
+                </button>
+                <div class="form-actions-secondary">
+                  <button
+                    id="reset-form-button"
+                    type="reset"
+                    class="reset-btn"
+                  >
+                    Clear form
+                  </button>
+                  <button
+                    id="save-form-button"
+                    type="button"
+                    class="save-form-btn"
+                    title="Save your current form setup to browser"
+                  >
+                    Save setup
+                  </button>
+                </div>
+              </div>
             </form>
           </aside>
         </div>

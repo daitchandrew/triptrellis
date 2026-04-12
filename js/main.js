@@ -59,52 +59,12 @@ function getToastViewport() {
   return document.querySelector("#toast-viewport");
 }
 
-function getPlannerSteps() {
-  return Array.from(document.querySelectorAll(".planner-step"));
-}
-
-function getPlannerStepLabel() {
-  return document.querySelector("#planner-step-label");
-}
-
-function getPlannerStepCopy() {
-  return document.querySelector("#planner-step-copy");
-}
-
-function getPlannerProgressFill() {
-  return document.querySelector("#planner-progress-fill");
-}
-
-function getPlannerStepTabs() {
-  return Array.from(document.querySelectorAll("[data-step-tab]"));
-}
-
-function getCityChipButtons() {
-  return Array.from(document.querySelectorAll("[data-city-chip]"));
-}
-
 let savedTripsSearch = "";
 let savedTripsFilter = "all";
 const THEME_KEY = "triptrellis-theme";
 let cityDataModulePromise = null;
 const cityGuidePromises = new Map();
 const supplementLibraryPromises = new Map();
-let currentPlannerStep = 1;
-
-const plannerStepMeta = {
-  1: {
-    label: "Step 1 of 3",
-    copy: "Basics: set the city, travel window, and overall trip length.",
-  },
-  2: {
-    label: "Step 2 of 3",
-    copy: "Logistics: define the stay setup, budget, and pacing logic.",
-  },
-  3: {
-    label: "Step 3 of 3",
-    copy: "Details: set the vibe, add notes, and generate the brief.",
-  },
-};
 
 async function getCityDataModule() {
   if (!cityDataModulePromise) {
@@ -331,56 +291,6 @@ function updateDurationCounter() {
   durationCounter.innerHTML = `<span class="duration-days">${diffDays}</span> <span class="duration-nights">${diffDays === 1 ? 'day' : 'days'}</span>`;
 }
 
-function updateFormSummary() {
-  const form = getForm();
-  if (!form) return;
-  
-  const citySelect = form.querySelector("#city");
-  const budgetSelect = form.querySelector("#budget");
-  const durationCounter = document.querySelector("#duration-counter");
-  const focusCheckboxes = form.querySelectorAll('input[name="focus"]:checked');
-  
-  if (document.querySelector("#summary-city")) {
-    document.querySelector("#summary-city").textContent = citySelect?.options[citySelect.selectedIndex]?.text || "Select city";
-  }
-  
-  if (document.querySelector("#summary-budget")) {
-    const budgetOption = budgetSelect?.options[budgetSelect.selectedIndex]?.text;
-    document.querySelector("#summary-budget").textContent = budgetOption || "Select budget";
-  }
-  
-  if (document.querySelector("#summary-dates")) {
-    const durationText = document.querySelector("#duration-counter")?.querySelector(".duration-days")?.textContent || "—";
-    const numericDuration = Number(durationText);
-    document.querySelector("#summary-dates").textContent = Number.isFinite(numericDuration) && numericDuration > 0
-      ? `${durationText} ${numericDuration === 1 ? "day" : "days"}`
-      : "Choose dates";
-  }
-  
-  if (document.querySelector("#summary-interests")) {
-    const count = focusCheckboxes.length;
-    let interestsText = "No interests selected";
-    if (count === 1) {
-      const firstFocus = focusCheckboxes[0].closest(".focus-card");
-      const titleText = firstFocus?.querySelector(".focus-card-label")?.textContent?.replace(/\s+/g, " ").trim();
-      interestsText = titleText || "1 interest";
-    } else if (count > 1) {
-      const firstFocus = focusCheckboxes[0].closest(".focus-card");
-      const firstTitle = firstFocus?.querySelector(".focus-card-label")?.textContent?.replace(/\s+/g, " ").trim();
-      interestsText = `${firstTitle}, and ${count - 1} more`;
-    }
-    document.querySelector("#summary-interests").textContent = interestsText;
-  }
-}
-
-function syncCityChipSelection(selectedCity) {
-  getCityChipButtons().forEach((button) => {
-    const isSelected = button.dataset.cityChip === selectedCity;
-    button.classList.toggle("is-selected", isSelected);
-    button.setAttribute("aria-pressed", String(isSelected));
-  });
-}
-
 // ---- Form Save/Load Functions ----
 
 const FORM_PREFS_KEY = "triptrellis-form-prefs";
@@ -444,8 +354,6 @@ function loadFormPreferences() {
 
     // Trigger updates
     updateDurationCounter();
-    updateFormSummary();
-    
     const existingHotelFields = getExistingHotelFields();
     if (existingHotelFields) {
       syncHotelFields(existingHotelFields);
@@ -511,84 +419,6 @@ function clearFieldError(field, errorEl) {
   field.removeAttribute("aria-invalid");
   errorEl.textContent = "";
   errorEl.hidden = true;
-}
-
-function renderPlannerStep() {
-  const steps = getPlannerSteps();
-  const stepLabel = getPlannerStepLabel();
-  const stepCopy = getPlannerStepCopy();
-  const progressFill = getPlannerProgressFill();
-  const stepTabs = getPlannerStepTabs();
-  const safeStep = Math.min(Math.max(currentPlannerStep, 1), steps.length || 3);
-  currentPlannerStep = safeStep;
-
-  steps.forEach((stepEl) => {
-    const stepNumber = Number(stepEl.dataset.step || "1");
-    const isActive = stepNumber === safeStep;
-    stepEl.hidden = !isActive;
-    stepEl.classList.toggle("is-active", isActive);
-  });
-
-  const meta = plannerStepMeta[safeStep];
-  if (stepLabel && meta) stepLabel.textContent = meta.label;
-  if (stepCopy && meta) stepCopy.textContent = meta.copy;
-  if (progressFill) {
-    progressFill.style.width = `${(safeStep / 3) * 100}%`;
-  }
-  stepTabs.forEach((tab) => {
-    const stepNumber = Number(tab.dataset.stepTab || "1");
-    tab.classList.toggle("is-active", stepNumber === safeStep);
-  });
-}
-
-function focusPlannerStepStart(step) {
-  const stepEl = getPlannerSteps().find((node) => Number(node.dataset.step || "0") === step);
-  if (!stepEl) return;
-  const focusTarget = stepEl.querySelector("select, input, textarea, button");
-  if (focusTarget instanceof HTMLElement) {
-    focusTarget.focus({ preventScroll: true });
-  }
-}
-
-function validatePlannerStep(step) {
-  const form = getForm();
-  if (!form) return false;
-
-  if (step === 1) {
-    const cityField = form.querySelector("#city");
-    const startField = form.querySelector("#start-date");
-    const endField = form.querySelector("#end-date");
-    const fields = [cityField, startField, endField].filter(Boolean);
-    const hasNativeValidityError = fields.some((field) => typeof field.reportValidity === "function" && !field.reportValidity());
-    if (hasNativeValidityError) return false;
-    if (!validateDates()) return false;
-  }
-
-  if (step === 2) {
-    const budgetField = form.querySelector("#budget");
-    const paceField = form.querySelector("#pace");
-    const hotelStatus = form.querySelector('input[name="hotel-status"]:checked');
-    if (!hotelStatus) return false;
-    if ((typeof budgetField?.reportValidity === "function" && !budgetField.reportValidity())
-      || (typeof paceField?.reportValidity === "function" && !paceField.reportValidity())) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function setPlannerStep(step, { force = false, focus = true } = {}) {
-  const nextStep = Number(step);
-  if (!force && nextStep > currentPlannerStep && !validatePlannerStep(currentPlannerStep)) {
-    return false;
-  }
-  currentPlannerStep = nextStep;
-  renderPlannerStep();
-  if (focus) {
-    focusPlannerStepStart(currentPlannerStep);
-  }
-  return true;
 }
 
 export async function generateFromForm(form) {
@@ -681,10 +511,6 @@ export async function generateFromForm(form) {
 
 function handlePlannerSubmit(event) {
   event.preventDefault();
-  if (currentPlannerStep < 3) {
-    setPlannerStep(currentPlannerStep + 1);
-    return;
-  }
   generateFromForm(event.currentTarget);
 }
 
@@ -709,12 +535,8 @@ function initializeApp() {
   
   // Initialize new form features
   updateDurationCounter();
-  updateFormSummary();
-  
   // Load stored preferences if available
   loadFormPreferences();
-  syncCityChipSelection(document.querySelector("#city")?.value || "seoul");
-  renderPlannerStep();
 
 }
 
@@ -728,22 +550,10 @@ function bindEvents() {
   const savedBackdrop = getSavedBackdrop();
   const savedClose = document.querySelector("#saved-trips-close");
   const themeToggle = getThemeToggle();
-  const plannerNextButtons = document.querySelectorAll('[data-action="planner-next"]');
-  const plannerBackButtons = document.querySelectorAll('[data-action="planner-back"]');
 
   form?.addEventListener("submit", handlePlannerSubmit);
   generateButton?.addEventListener("click", () => {
     generateFromForm(form);
-  });
-  plannerNextButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      setPlannerStep(currentPlannerStep + 1);
-    });
-  });
-  plannerBackButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      setPlannerStep(currentPlannerStep - 1, { force: true });
-    });
   });
 
   // Date and duration tracking
@@ -753,13 +563,11 @@ function bindEvents() {
   const departureTimeField = document.querySelector("#departure-time");
   startField?.addEventListener("change", () => {
     updateDurationCounter();
-    updateFormSummary();
     validateDates();
     saveFormPreferences();
   });
   endField?.addEventListener("change", () => {
     updateDurationCounter();
-    updateFormSummary();
     validateDates();
     saveFormPreferences();
   });
@@ -777,27 +585,14 @@ function bindEvents() {
   const focusCheckboxes = form?.querySelectorAll('input[name="focus"]');
   
   citySelect?.addEventListener("change", () => {
-    syncCityChipSelection(citySelect.value);
-    updateFormSummary();
     saveFormPreferences();
   });
-  getCityChipButtons().forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!citySelect) return;
-      const nextCity = button.dataset.cityChip || "";
-      if (!nextCity || citySelect.value === nextCity) return;
-      citySelect.value = nextCity;
-      citySelect.dispatchEvent(new Event("change", { bubbles: true }));
-    });
-  });
   budgetSelect?.addEventListener("change", () => {
-    updateFormSummary();
     saveFormPreferences();
   });
   paceSelect?.addEventListener("change", saveFormPreferences);
   focusCheckboxes?.forEach(cb => {
     cb.addEventListener("change", () => {
-      updateFormSummary();
       saveFormPreferences();
     });
   });
@@ -809,9 +604,7 @@ function bindEvents() {
     localStorage.removeItem(FORM_PREFS_KEY);
     initializeDates();
     updateDurationCounter();
-    updateFormSummary();
     validateDates();
-    setPlannerStep(1, { force: true, focus: false });
     if (existingHotelFields) {
       syncHotelFields(existingHotelFields);
     }
