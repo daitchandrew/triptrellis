@@ -635,15 +635,51 @@ function bindEvents() {
 
   // Reset form
   const resetButton = document.querySelector("#reset-form-button");
-  resetButton?.addEventListener("click", () => {
-    form?.reset();
+  resetButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (!form) return;
+
+    const cityField = form.querySelector("#city");
+    const startDateField = form.querySelector("#start-date");
+    const endDateField = form.querySelector("#end-date");
+    const arrivalSelect = form.querySelector("#arrival-time");
+    const departureSelect = form.querySelector("#departure-time");
+    const budgetField = form.querySelector("#budget");
+    const paceField = form.querySelector("#pace");
+    const notesField = form.querySelector("#notes");
+    const existingHotelsField = form.querySelector("#existing-hotels");
+    const hotelNeedField = form.querySelector('input[name="hotel-status"][value="need-hotel"]');
+    const focusFields = form.querySelectorAll('input[name="focus"]');
+    const startError = document.querySelector("#start-date-error");
+    const endError = document.querySelector("#end-date-error");
+
+    if (cityField) cityField.value = "";
+    if (startDateField) startDateField.value = "";
+    if (endDateField) endDateField.value = "";
+    if (arrivalSelect) arrivalSelect.value = "afternoon";
+    if (departureSelect) departureSelect.value = "morning";
+    if (budgetField) budgetField.value = "premium";
+    if (paceField) paceField.value = "balanced";
+    if (notesField) notesField.value = "";
+    if (existingHotelsField) existingHotelsField.value = "";
+    focusFields.forEach((field) => {
+      field.checked = false;
+    });
+    getHotelStatusInputs().forEach((field) => {
+      field.checked = false;
+    });
+    if (hotelNeedField) hotelNeedField.checked = true;
+
     localStorage.removeItem(FORM_PREFS_KEY);
-    initializeDates();
+
+    clearFieldError(startDateField, startError);
+    clearFieldError(endDateField, endError);
     updateDurationCounter();
-    validateDates();
     if (existingHotelFields) {
       syncHotelFields(existingHotelFields);
     }
+    const saveButton = document.querySelector("#save-form-button");
+    saveButton?.classList.remove("saved");
     showToast("Planner cleared. Start a fresh brief.", "info");
   });
 
