@@ -62,17 +62,17 @@ function renderWorkspaceStats(plan) {
       <article class="workspace-stat">
         <span class="workspace-stat-label">Draft scope</span>
         <strong>${totalPlannedStops}</strong>
-        <p>${plan.totalDays} days of anchors, meals, and routeable moments already carrying the brief before you start tailoring the edges.</p>
+        <p>${plan.totalDays} days of anchors, meals, and routeable stops already holding the brief together.</p>
       </article>
       <article class="workspace-stat">
         <span class="workspace-stat-label">Area balance</span>
         <strong>${uniqueAreas || 1}</strong>
-        <p>Areas already represented across this version before you begin tightening, simplifying, or pulling the trip in another direction.</p>
+        <p>Areas already represented in this version before you tighten, simplify, or pull the trip another way.</p>
       </article>
       <article class="workspace-stat">
         <span class="workspace-stat-label">Editing depth</span>
         <strong>${plan.libraryItems.length}</strong>
-        <p>Places you can add, replace, and reorder without throwing away the whole brief and starting from scratch.</p>
+        <p>Places you can add, replace, and reorder without throwing away the whole brief.</p>
       </article>
     </div>
   `;
@@ -103,7 +103,7 @@ function renderTripAdjustmentPanel(plan) {
         <div>
           <p class="section-kicker">Refine after review</p>
           <h3 class="section-title">Steer the brief without rebuilding it</h3>
-          <p class="card-subtitle">Use these once you know what should change next, whether that is pace, neighborhood mix, restaurant weight, or evening tone.</p>
+          <p class="card-subtitle">Shift the pace, neighborhood mix, restaurant weight, or evening tone once you know what should change next.</p>
         </div>
         ${history.length ? `<span class="adjust-history-pill">${history.length} refinement${history.length === 1 ? "" : "s"} applied</span>` : ""}
       </div>
@@ -779,15 +779,15 @@ export function renderTripPlan(plan, results) {
         <div>
           <p class="section-kicker">Suggested itinerary</p>
           <h3 class="section-title">The working itinerary</h3>
-          <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels less like a draft and more like something you would genuinely book, save, and share.</p>
+          <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels like something you would genuinely book, save, and share.</p>
         </div>
         <div class="itinerary-focus-actions">
           <div class="results-action-group">
-            <span class="results-action-label">Edit the draft</span>
+            <span class="results-action-label">Shape this version</span>
             <button class="secondary-button secondary-button--strong" data-action="open-library" type="button">Open city library</button>
           </div>
           <div class="results-action-group results-action-group--secondary">
-            <span class="results-action-label">Keep this version</span>
+            <span class="results-action-label">Keep or export</span>
             <button class="secondary-button" data-action="save-itinerary" type="button">Save draft</button>
             <button class="secondary-button" data-action="print-current-itinerary" type="button">Export / print</button>
           </div>
@@ -848,7 +848,7 @@ export function renderTripPlan(plan, results) {
                           <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
                         </div>`}
                       </li>
-                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Nothing is placed here yet. Add something for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the route coherent around it instead of letting the day collapse into filler.</li>`}
+                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Nothing is placed here yet. Add something for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the route coherent around it.</li>`}
                   </ul>
                 </section>
               `}).join("")}

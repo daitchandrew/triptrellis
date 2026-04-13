@@ -108,7 +108,6 @@ header.hero::after {
 .stat-card,
 .coverage-band,
 .how-step,
-.testimonial-card,
 .faq-item,
 .planner-card,
 .form-block,
@@ -135,7 +134,6 @@ header.hero::after {
 .stat-card,
 .coverage-band,
 .how-step,
-.testimonial-card,
 .faq-item,
 .planner-card,
 .hero-result,
@@ -182,7 +180,6 @@ header.hero::after {
 .preview-label,
 .summary-label,
 .stat-kicker,
-.planner-banner-kicker,
 .confidence-kicker {
   letter-spacing: 0.16em;
 }
@@ -216,8 +213,7 @@ header.hero::after {
 .saved-trip-card:hover,
 .trip-adjust-card:hover,
 .faq-item:hover,
-.how-step:hover,
-.testimonial-card:hover {
+.how-step:hover {
   box-shadow: none !important;
   transform: none !important;
 }
@@ -1236,24 +1232,6 @@ header.hero::before {
   font-size: 0.97rem;
 }
 
-.planner-card-banner {
-  margin-bottom: 14px;
-  padding: 13px 15px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.92), rgba(248, 240, 228, 0.76));
-  border: 1px solid rgba(43, 29, 20, 0.06);
-}
-
-.planner-card-banner strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 0.98rem;
-}
-
-.planner-card-banner p {
-  max-width: 58ch;
-}
-
 .planner-form {
   gap: 16px;
 }
@@ -1279,30 +1257,6 @@ header.hero::before {
   margin-bottom: 4px;
   display: grid;
   gap: 6px;
-}
-
-.form-guidance-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.form-guidance-row span {
-  min-height: 28px;
-  padding: 7px 11px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(43, 29, 20, 0.06);
-  color: rgba(78, 66, 57, 0.76);
-  font-size: 0.73rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-.form-guidance-row--final span {
-  background: rgba(15, 123, 108, 0.06);
-  border-color: rgba(15, 123, 108, 0.12);
-  color: #29524d;
 }
 
 .form-section-label {
@@ -1702,14 +1656,6 @@ header.hero::before {
   gap: 0.45rem;
 }
 
-.form-guidance-row {
-  row-gap: 0.55rem;
-}
-
-.form-guidance-row span {
-  min-height: 2.35rem;
-}
-
 .footer-note,
 .footer-note--examples {
   max-width: 60ch;
@@ -1873,8 +1819,7 @@ header.hero::before {
 
 .coverage-band,
 .how-it-works,
-.faq-section,
-.brief-advantage {
+.faq-section {
   border-radius: 30px;
 }
 
@@ -1924,13 +1869,6 @@ header.hero::before {
   max-width: 50ch;
   font-size: 0.95rem;
   line-height: 1.6;
-}
-
-.planner-card-banner {
-  margin-bottom: 16px;
-  padding: 14px 15px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(249, 242, 233, 0.72));
 }
 
 .planner-form {
@@ -2034,7 +1972,6 @@ header.hero::before {
 
   .hero-value-grid,
   .trust-stats-section,
-  .brief-advantage-grid,
   .footer-facts {
     grid-template-columns: 1fr;
   }
@@ -2239,15 +2176,6 @@ header.hero::before {
   font-size: 0.93rem;
 }
 
-.planner-card-banner {
-  margin-bottom: 14px;
-  padding: 13px 14px;
-}
-
-.planner-card-banner strong {
-  max-width: 25ch;
-}
-
 .planner-form {
   gap: 12px;
 }
@@ -2258,11 +2186,6 @@ header.hero::before {
 
 .form-block-head {
   gap: 5px;
-}
-
-.form-guidance-row span {
-  min-height: 2.15rem;
-  font-size: 0.72rem;
 }
 
 .form-actions {
@@ -3204,4 +3127,92 @@ header.hero::before {
 
 .dark-anchor {
   padding: var(--tt-space-5);
+}
+
+/* Final planner polish + front-page copy rhythm */
+.hero-text,
+.section-intro,
+.planner-intro,
+.form-block-note,
+.footer-summary {
+  max-width: 66ch;
+}
+
+.hero-text {
+  line-height: 1.66;
+}
+
+.section-intro,
+.planner-intro,
+.form-block-note {
+  line-height: 1.58;
+}
+
+.field-wrapper {
+  display: grid;
+  gap: 6px;
+}
+
+.field-error {
+  margin: 0;
+  color: #ad4a36;
+  font-size: 0.77rem;
+  font-weight: 700;
+  line-height: 1.42;
+}
+
+.planner-form-card label {
+  gap: 8px;
+}
+
+.planner-form-card input[type="date"],
+.planner-form-card select,
+.planner-form-card textarea {
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.planner-form-card input[type="date"]::placeholder,
+.planner-form-card textarea::placeholder {
+  color: rgba(99, 88, 79, 0.58);
+}
+
+.planner-form-card input[aria-invalid="true"],
+.planner-form-card select[aria-invalid="true"],
+.planner-form-card textarea[aria-invalid="true"] {
+  border-color: rgba(173, 74, 54, 0.42);
+  background: rgba(255, 249, 247, 0.96);
+  box-shadow: 0 0 0 3px rgba(173, 74, 54, 0.08);
+}
+
+.planner-form-card input[aria-invalid="true"]:focus,
+.planner-form-card select[aria-invalid="true"]:focus,
+.planner-form-card textarea[aria-invalid="true"]:focus {
+  border-color: rgba(173, 74, 54, 0.55);
+  box-shadow: 0 0 0 3px rgba(173, 74, 54, 0.11);
+}
+
+.duration-display,
+#existing-hotel-fields {
+  background: rgba(255, 252, 248, 0.78);
+}
+
+.form-actions {
+  margin-top: 4px;
+}
+
+#generate-trip-button,
+.reset-btn,
+.save-form-btn {
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.save-form-btn.saved {
+  border-color: rgba(15, 123, 108, 0.26);
+  background: rgba(15, 123, 108, 0.08);
+  color: #174b43;
 }

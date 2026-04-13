@@ -1024,7 +1024,7 @@ export const bangkokSupplements = [
   },
   {
     "categoryLabel": "Museum",
-    "name": "The Jim Thompson Art Center",
+    "name": "Jim Thompson Art Center",
     "area": "silom",
     "description": "A smaller contemporary-art and cultural space connected to the Jim Thompson world."
   },

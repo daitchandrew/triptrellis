@@ -15,6 +15,8 @@ import {
 } from "./lib/handlers.js?v=triptrellis-ui-render-20260412-001";
 import { shiftDate, toInputDate } from "./lib/utils.js";
 
+const GENERATE_BUTTON_TEXT = "Generate the brief";
+
 function getResults() {
   return document.querySelector("#results");
 }
@@ -267,8 +269,8 @@ function setGenerateButtonLoading(loading) {
   button.classList.toggle("is-loading", loading);
   button.setAttribute("aria-busy", String(loading));
   button.innerHTML = loading
-    ? `Building your trip <span aria-hidden="true">…</span>`
-    : `Generate my trip brief <span aria-hidden="true">→</span>`;
+    ? `Building the brief <span aria-hidden="true">…</span>`
+    : `${GENERATE_BUTTON_TEXT} <span aria-hidden="true">→</span>`;
 }
 
 function startGenerationLoading(results) {

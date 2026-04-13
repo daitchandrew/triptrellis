@@ -21,10 +21,41 @@ async function readPlannerCityOptions() {
   return [...citySelectMatch[1].matchAll(/<option\s+value="([^"]+)"/g)].map((match) => match[1]);
 }
 
+function normalizeEntryName(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\b(the|a|an)\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function assertNoDuplicateLabels(entries, label) {
+  const seen = new Map();
+
+  entries.forEach((entry) => {
+    const normalized = normalizeEntryName(entry?.name);
+    if (!normalized) return;
+    if (seen.has(normalized)) {
+      throw new Error(`${label} contains duplicate entries: "${seen.get(normalized)}" and "${entry.name}"`);
+    }
+    seen.set(normalized, entry.name);
+  });
+}
+
 async function main() {
   const plannerCities = await readPlannerCityOptions();
   const supportedCities = listSupportedCities();
+  const duplicatePlannerCities = plannerCities.filter((cityKey, index) => plannerCities.indexOf(cityKey) !== index);
   const missingLoaders = plannerCities.filter((cityKey) => !supportedCities.includes(cityKey));
+
+  if (duplicatePlannerCities.length) {
+    throw new Error(`Duplicate city options found in planner select: ${[...new Set(duplicatePlannerCities)].join(", ")}`);
+  }
 
   if (missingLoaders.length) {
     throw new Error(`Cities present in the planner but missing loaders: ${missingLoaders.join(", ")}`);
@@ -66,6 +97,22 @@ async function main() {
       ...(guide.activities || []),
       ...(guide.food || []),
     ];
+
+    assertNoDuplicateLabels(guide.cantMiss || [], `${cityKey} cant-miss library`);
+    assertNoDuplicateLabels(guide.activities || [], `${cityKey} activities library`);
+    assertNoDuplicateLabels(guide.food || [], `${cityKey} food library`);
+
+    const supplementsByCategory = new Map();
+    supplements.forEach((entry) => {
+      const category = entry?.categoryLabel || "Other";
+      const existing = supplementsByCategory.get(category) || [];
+      existing.push(entry);
+      supplementsByCategory.set(category, existing);
+    });
+    supplementsByCategory.forEach((entries, category) => {
+      assertNoDuplicateLabels(entries, `${cityKey} supplements (${category})`);
+    });
+
     const invalidGuideLabels = guideCollections
       .map((entry) => entry?.categoryLabel)
       .filter((label) => label && !isValidCategoryLabel(label));
