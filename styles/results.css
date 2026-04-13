@@ -587,3 +587,168 @@
 .saved-empty-actions {
   margin-top: 1rem;
 }
+
+/* Final results polish */
+.hero-result {
+  gap: 28px;
+  padding: 38px 38px 34px;
+}
+
+.trip-header {
+  gap: 26px !important;
+  margin-bottom: 22px !important;
+}
+
+.trip-hero-copy {
+  gap: 12px;
+}
+
+.trip-title {
+  max-width: 11ch;
+  font-size: clamp(2.9rem, 5vw, 4.2rem);
+  line-height: 0.96;
+}
+
+.trip-lede {
+  max-width: 58ch;
+  font-size: 0.98rem;
+  line-height: 1.66;
+}
+
+.trip-meta-pills {
+  gap: 9px;
+}
+
+.trip-meta-pill {
+  min-height: 32px;
+  font-size: 0.8rem;
+}
+
+.confidence-note {
+  max-width: 372px;
+  padding: 20px 20px 18px;
+  border-radius: 20px;
+}
+
+.trip-at-a-glance {
+  gap: 10px;
+}
+
+.glance-card {
+  min-height: 100%;
+  padding: 18px 17px 16px;
+}
+
+.glance-card strong {
+  font-size: 1.02rem;
+}
+
+.workspace-stats {
+  gap: 10px;
+}
+
+.workspace-stat {
+  padding: 18px 17px 16px;
+}
+
+.area-compass-section,
+.dont-miss-section,
+.itinerary-focus-shell,
+.trip-adjust-panel,
+.utility-section {
+  border-radius: 30px;
+}
+
+.hotel-option-card {
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.hotel-option-layout {
+  gap: 14px;
+}
+
+.hotel-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+}
+
+.hotel-option-copy h4 {
+  line-height: 1.15;
+}
+
+.dont-miss-section .section-head,
+.itinerary-focus-head {
+  margin-bottom: 20px;
+}
+
+.recommendation-grid {
+  gap: 16px;
+}
+
+.dont-miss-card {
+  padding: 19px 19px 18px;
+}
+
+.itinerary-focus-shell {
+  padding: 34px 32px 32px;
+}
+
+.day-grid {
+  gap: 16px;
+}
+
+.day-card {
+  padding: 24px;
+  border-radius: 26px;
+}
+
+.day-heading {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+}
+
+.day-intro {
+  padding: 16px;
+}
+
+.slot-stack {
+  gap: 12px;
+}
+
+.slot-card {
+  border-radius: 18px;
+}
+
+.trip-adjust-grid {
+  gap: 12px;
+}
+
+.trip-adjust-card {
+  padding: 16px 15px 15px;
+  border-radius: 18px;
+}
+
+.library-overlay-panel {
+  border-radius: 28px;
+}
+
+.library-result-group {
+  gap: 12px;
+}
+
+.library-card {
+  padding: 18px;
+  border-radius: 20px;
+}
+
+.library-card h4 {
+  line-height: 1.16;
+}
+
+@media (max-width: 1180px) {
+  .trip-title {
+    max-width: none;
+  }
+}

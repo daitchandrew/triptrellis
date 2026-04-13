@@ -60,17 +60,17 @@ function renderWorkspaceStats(plan) {
   return `
     <div class="workspace-stats">
       <article class="workspace-stat">
-        <span class="workspace-stat-label">Draft depth</span>
+        <span class="workspace-stat-label">Draft scope</span>
         <strong>${totalPlannedStops}</strong>
         <p>${plan.totalDays} days of anchors, meals, and routeable moments already carrying the brief before you start tailoring the edges.</p>
       </article>
       <article class="workspace-stat">
-        <span class="workspace-stat-label">Neighborhood spread</span>
+        <span class="workspace-stat-label">Area balance</span>
         <strong>${uniqueAreas || 1}</strong>
-        <p>Areas already represented across this version, before you begin swapping, tightening, or pulling the trip in another direction.</p>
+        <p>Areas already represented across this version before you begin tightening, simplifying, or pulling the trip in another direction.</p>
       </article>
       <article class="workspace-stat">
-        <span class="workspace-stat-label">Editing library</span>
+        <span class="workspace-stat-label">Editing depth</span>
         <strong>${plan.libraryItems.length}</strong>
         <p>Places you can add, replace, and reorder without throwing away the whole brief and starting from scratch.</p>
       </article>
@@ -103,7 +103,7 @@ function renderTripAdjustmentPanel(plan) {
         <div>
           <p class="section-kicker">Refine after review</p>
           <h3 class="section-title">Steer the brief without rebuilding it</h3>
-          <p class="card-subtitle">Use these once you have scanned the itinerary and know what should change next, whether that is pace, neighborhood mix, restaurant weight, or evening tone.</p>
+          <p class="card-subtitle">Use these once you know what should change next, whether that is pace, neighborhood mix, restaurant weight, or evening tone.</p>
         </div>
         ${history.length ? `<span class="adjust-history-pill">${history.length} refinement${history.length === 1 ? "" : "s"} applied</span>` : ""}
       </div>
@@ -151,7 +151,7 @@ function renderAreaSummary(plan) {
       <div class="area-compass-main">
         <p class="section-kicker">Where the trip is centered</p>
         <h3 class="section-title">${escapeHtml(primary.label)}</h3>
-        <p class="card-subtitle">${escapeHtml(plan.hotelBase.hotelName)} anchors the plan in ${escapeHtml(plan.hotelBase.areaLabel)}, with the busiest days clustered around the areas that keep transit friction lower and transitions more believable.</p>
+        <p class="card-subtitle">${escapeHtml(plan.hotelBase.hotelName)} anchors the plan in ${escapeHtml(plan.hotelBase.areaLabel)}, with the busiest days clustered around the areas that keep transit friction lower and the trip easier to live inside.</p>
       </div>
       <div class="area-compass-grid">
         <article>
@@ -282,7 +282,7 @@ export function getOverlayCopy(mode) {
       kicker: "Replace a stop",
       title: "Choose the strongest alternate for this exact moment",
       body: "These options are ranked by route fit, nearby flow, and contrast, so the replacement feels edited into the day rather than dropped in at random.",
-      subtle: "Already-used places are hidden, and the strongest groups lean toward options that keep the day coherent while still changing its texture in a meaningful way.",
+      subtle: "Already-used places are hidden, and the strongest groups lean toward options that keep the day coherent while still giving it a noticeably different feel.",
     };
   }
 
@@ -567,7 +567,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                 </div>
               </article>
             `).join("")
-          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can reopen it, download it, or keep refining it when you come back."}</p><div class="saved-empty-actions"><a class="mini-button" href="#planner-form">Build a new trip</a></div></article>`
+          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can reopen it, download it, or keep refining it when you come back."}</p><div class="saved-empty-actions"><a class="mini-button" href="#planner-form">Start a new brief</a></div></article>`
         }
       </div>
     </section>
@@ -591,7 +591,7 @@ export function renderTripPlan(plan, results) {
           <div class="trip-hero-copy">
             <p class="section-kicker">Generated city brief</p>
             <h2 class="trip-title">${plan.guide.label}</h2>
-            <p class="trip-lede">A ${plan.totalDays}-day brief shaped around ${plan.hotelBase.areaLabel}, with a stronger base, cleaner day flow, and enough flexibility to keep refining without losing the point of the trip.</p>
+            <p class="trip-lede">A ${plan.totalDays}-day city brief shaped around ${plan.hotelBase.areaLabel}, with a stronger base, cleaner day flow, and enough flexibility to keep refining without losing the point of the trip.</p>
             <div class="trip-meta-pills">
               <span class="trip-meta-pill">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}</span>
               <span class="trip-meta-pill">${plan.totalDays} days</span>
@@ -601,7 +601,7 @@ export function renderTripPlan(plan, results) {
             </div>
           </div>
           <div class="confidence-note">
-            <p class="confidence-kicker">Why this version works</p>
+            <p class="confidence-kicker">What is steering this version</p>
             <strong>${plan.focusTheme.headline}</strong>
             <p>${plan.hotelBase.influence}</p>
             <p>${plan.budgetProfile.headline}</p>
@@ -609,22 +609,22 @@ export function renderTripPlan(plan, results) {
         </div>
         <div class="trip-at-a-glance">
           <article class="glance-card">
-            <span class="glance-label">Base</span>
+            <span class="glance-label">Hotel base</span>
             <strong>${plan.hotelBase.areaLabel}</strong>
             <p>${plan.hotelStatus === "have-hotel" ? "Built around your selected stay." : "Currently centered on the hotel area giving this version its strongest overall shape."}</p>
           </article>
           <article class="glance-card">
-            <span class="glance-label">Lean</span>
+            <span class="glance-label">Priority</span>
             <strong>${formatFocus(plan.focuses || [plan.focus])}</strong>
             <p>${plan.focusTheme.headline}</p>
           </article>
           <article class="glance-card">
-            <span class="glance-label">Pace</span>
+            <span class="glance-label">Tempo</span>
             <strong>${plan.paceRule.label}</strong>
             <p>${plan.paceRule.summary || "The itinerary is paced to avoid cluster-heavy routing and keep each day readable."}</p>
           </article>
           <article class="glance-card">
-            <span class="glance-label">Version</span>
+            <span class="glance-label">Current draft</span>
             <strong>${plan.totalDays}-day draft</strong>
             <p>${plan.notes ? "Custom notes are already steering the shape of the brief." : "Add notes if you want the neighborhoods, meals, and pacing to lean more specifically in your direction."}</p>
           </article>
@@ -652,8 +652,8 @@ export function renderTripPlan(plan, results) {
         <article class="info-card hotel-selector-card">
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Alternate bases</p>
-            <h3 class="section-title">Other strong ways to re-center the trip</h3>
-          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent, routeable, and easy to keep living inside once you start editing.</p>
+            <h3 class="section-title">Other strong ways to center the trip</h3>
+          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent, routeable, and easy to live inside once you start editing.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -736,8 +736,8 @@ export function renderTripPlan(plan, results) {
           <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels less like a draft and more like something you would genuinely book, save, and share.</p>
         </div>
         <div class="itinerary-focus-actions">
-          <button class="secondary-button" data-action="open-library" type="button">Add to trip</button>
-          <button class="secondary-button" data-action="save-itinerary" type="button">Save itinerary</button>
+          <button class="secondary-button" data-action="open-library" type="button">Open library</button>
+          <button class="secondary-button" data-action="save-itinerary" type="button">Save this version</button>
           <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
         </div>
       </div>
@@ -806,7 +806,7 @@ export function renderTripPlan(plan, results) {
         `).join("")}
       </div>
       <div class="itinerary-bottom-actions">
-        <button class="secondary-button" data-action="save-itinerary" type="button">Save itinerary</button>
+        <button class="secondary-button" data-action="save-itinerary" type="button">Save this version</button>
         <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
       </div>
     </section>
@@ -881,7 +881,7 @@ export function renderTripPlan(plan, results) {
                   `).join("")}
                 </div>
               </section>
-            `).join("") : `<article class="recommendation-card saved-card saved-empty"><h4>No library items match that filter</h4><p>Try another category, search term, or area filter. The strongest results usually come back once the library is a little less constrained.</p></article>`}
+            `).join("") : `<article class="recommendation-card saved-card saved-empty"><h4>No library items match that filter</h4><p>Try another category, search term, or area filter. The strongest results usually return once the library is a little less constrained.</p></article>`}
           </div>
         </div>
       </section>

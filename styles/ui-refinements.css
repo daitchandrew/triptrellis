@@ -2578,3 +2578,250 @@ header.hero::before {
     grid-template-columns: 1fr;
   }
 }
+
+/* Final premium product pass */
+.topbar {
+  padding: 14px 18px;
+}
+
+.topbar-status {
+  gap: 10px;
+}
+
+.topbar-status span,
+.topbar-link {
+  position: relative;
+}
+
+.topbar-link {
+  padding-inline: 16px;
+  font-weight: 800;
+}
+
+.topbar-link::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(15, 123, 108, 0.72);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.topbar-link:hover::after,
+.topbar-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.03fr) minmax(0, 0.97fr);
+  gap: 28px;
+}
+
+.hero-col-left {
+  gap: 18px;
+  padding-top: 12px;
+}
+
+.hero-intro h1 {
+  max-width: 11.8ch;
+  font-size: clamp(3.2rem, 5vw, 5rem);
+  line-height: 0.96;
+}
+
+.hero-intro .hero-text {
+  max-width: 56ch;
+  font-size: 0.98rem;
+  line-height: 1.66;
+}
+
+.hero-value-grid {
+  gap: 12px;
+}
+
+.hero-value-card {
+  gap: 8px;
+  min-height: 148px;
+  padding: 16px 16px 15px;
+  border-radius: 20px;
+}
+
+.hero-value-card strong {
+  font-size: 0.88rem;
+  line-height: 1.52;
+}
+
+.dark-anchor {
+  padding: 24px 24px 22px;
+  gap: 14px;
+}
+
+.dark-anchor-title {
+  max-width: 28ch;
+  line-height: 1.04;
+}
+
+.dark-anchor-item {
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.dark-anchor-num {
+  width: 38px;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(194, 130, 91, 0.1);
+  border: 1px solid rgba(194, 130, 91, 0.18);
+}
+
+.trust-stats-section {
+  gap: 12px;
+}
+
+.trust-stats-section > .stat-card {
+  min-height: 100%;
+}
+
+.stat-card {
+  padding: 22px 21px 20px;
+}
+
+.stat-card .stat-number {
+  max-width: 11ch;
+}
+
+.section-heading-block {
+  gap: 10px;
+}
+
+.how-it-works,
+.faq-section {
+  padding: 26px 26px 24px;
+}
+
+.how-grid {
+  gap: 14px;
+}
+
+.how-step {
+  padding: 19px 18px 17px;
+}
+
+.how-step-number {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(194, 130, 91, 0.1);
+  border: 1px solid rgba(194, 130, 91, 0.16);
+}
+
+.faq-grid {
+  gap: 12px;
+}
+
+.faq-question {
+  padding: 19px 20px;
+  min-height: 72px;
+}
+
+.faq-answer {
+  padding: 0 20px 20px;
+}
+
+.planner-card {
+  padding: 32px 30px;
+}
+
+.card-heading {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+}
+
+.card-heading h2 {
+  max-width: 12ch;
+  font-size: clamp(1.9rem, 2.25vw, 2.4rem);
+  line-height: 1.04;
+}
+
+.planner-intro {
+  max-width: 50ch;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.form-block {
+  padding: 18px 18px 17px;
+  border-radius: 22px;
+}
+
+.form-block-head {
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.form-section-label {
+  font-size: 0.77rem;
+  letter-spacing: 0.18em;
+}
+
+.form-block-note {
+  font-size: 0.89rem;
+  line-height: 1.54;
+}
+
+.duration-display {
+  padding: 14px 15px;
+  border-radius: 18px;
+}
+
+.form-actions {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.82fr) minmax(0, 0.82fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+#generate-trip-button,
+.reset-btn,
+.save-form-btn {
+  min-height: 54px;
+  border-radius: 18px;
+}
+
+#generate-trip-button {
+  font-size: 0.94rem;
+  letter-spacing: -0.02em;
+}
+
+.reset-btn,
+.save-form-btn {
+  font-size: 0.88rem;
+}
+
+.site-footer {
+  margin-top: 18px;
+  padding: 22px 26px 18px;
+}
+
+@media (max-width: 1180px) {
+  .hero-grid {
+    gap: 20px;
+  }
+
+  .hero-intro h1,
+  .card-heading h2,
+  .dark-anchor-title {
+    max-width: none;
+  }
+
+  .hero-value-card {
+    min-height: 0;
+  }
+}
