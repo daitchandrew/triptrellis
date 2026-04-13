@@ -279,48 +279,71 @@ header.hero::after {
 .library-overlay-panel {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
-  gap: 16px;
+  gap: 12px;
   width: min(1180px, calc(100vw - 48px));
   max-height: calc(100vh - 48px);
   min-height: min(900px, calc(100vh - 48px));
-  padding: 24px 24px 20px;
+  padding: 22px 22px 18px;
   border-radius: 32px;
   overflow: hidden;
 }
 
 .library-overlay-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   margin-bottom: 0;
-  gap: 16px;
+  gap: 14px;
+}
+
+.library-overlay-head > div {
+  min-width: 0;
+}
+
+.library-overlay-head .section-title {
+  max-width: none;
+  white-space: nowrap;
+  font-size: clamp(2rem, 2.2vw, 2.45rem);
+  line-height: 1.02;
+}
+
+.library-overlay-head .card-subtitle {
+  max-width: 56ch;
+  margin-top: 6px;
 }
 
 .builder-toolbar {
   margin-bottom: 0;
-  padding: 14px;
+  padding: 12px 14px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.74);
 }
 
 .library-results-stack {
   min-height: 0;
-  gap: 20px;
-}
-
-.library-result-group {
   gap: 16px;
 }
 
+.library-result-group {
+  gap: 10px;
+}
+
 .library-result-group-head {
-  padding: 0 4px 12px;
+  padding: 0 4px 8px;
 }
 
 .library-card {
-  padding: 22px;
+  padding: 18px 18px 16px;
   border-radius: 24px;
 }
 
 .library-card h4 {
   font-size: 1.06rem;
   line-height: 1.16;
+}
+
+.library-card p {
+  line-height: 1.48;
 }
 
 .library-actions {
@@ -364,12 +387,12 @@ header.hero::after {
 }
 
 .overlay-toolbar .builder-controls {
-  gap: 10px;
+  gap: 8px;
 }
 
 .overlay-toolbar .workspace-note-row {
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .overlay-toolbar .footer-note {
