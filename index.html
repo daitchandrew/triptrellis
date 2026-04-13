@@ -275,18 +275,12 @@
 
           <aside class="planner-card">
             <div class="card-heading">
-              <p class="card-kicker">Plan a trip</p>
-              <h2 class="heading-full-width">Build a concierge-grade itinerary</h2>
+              <p class="card-kicker">Build the brief</p>
+              <h2 class="heading-full-width">Build a city brief worth booking.</h2>
               <p class="planner-intro">
-                Set the city, timing, and trip style first. TripTrellis uses that
-                to build a stronger base, cleaner routing, and better day flow.
+                Set the city, timing, and trip style once. TripTrellis uses that
+                to build a stronger base, cleaner routing, and a first draft you can keep refining.
               </p>
-            </div>
-
-            <div class="planner-card-banner">
-              <p class="planner-banner-kicker">Start with the brief</p>
-              <strong>Set the key inputs once, then generate the first routed draft.</strong>
-              <p>The form is grouped around the decisions that change the trip most: where you stay, how ambitious the days should feel, and what kind of city energy should lead.</p>
             </div>
 
             <form id="planner-form" class="planner-form" action="#" onsubmit="window.TripTrellisGenerateNow(this); return false;">
@@ -294,12 +288,7 @@
                 <div class="form-block">
                   <div class="form-block-head">
                     <p class="form-section-label" id="planner-step-1-title">Trip basics</p>
-                  <p class="form-block-note">Choose the destination and the real travel window first so the itinerary can anchor itself around the right arrival energy, pacing, and trip length.</p>
-                </div>
-                <div class="form-guidance-row" aria-label="What trip basics controls">
-                  <span>City library depth</span>
-                  <span>Arrival / departure framing</span>
-                  <span>Trip-length ambition</span>
+                  <p class="form-block-note">Choose the destination and real travel window first so the itinerary can anchor itself correctly.</p>
                 </div>
 
                   <label>
@@ -382,7 +371,7 @@
                   </div>
 
                   <p class="footer-note">
-                    Choose one city and TripTrellis will build the strongest first version of that trip for the exact number of days you actually have.
+                    Choose one city and TripTrellis will build the strongest first version for the exact number of days you have.
                   </p>
                 </div>
               </section>
@@ -390,13 +379,8 @@
               <section class="planner-form-card" aria-labelledby="planner-step-2-title">
                 <div class="form-block">
                   <div class="form-block-head">
-                    <p class="form-section-label" id="planner-step-2-title">Stay setup</p>
-                    <p class="form-block-note">Tell us whether we should choose the base or work around one you already have, because that single choice changes route shape more than almost anything else.</p>
-                  </div>
-                  <div class="form-guidance-row" aria-label="What stay setup controls">
-                    <span>Hotel ranking</span>
-                    <span>Neighborhood clustering</span>
-                    <span>Transit friction</span>
+                    <p class="form-section-label" id="planner-step-2-title">Stay logic</p>
+                    <p class="form-block-note">Tell us whether we should choose the base or work around one you already have.</p>
                   </div>
 
                   <fieldset class="choice-group segmented-group">
@@ -433,21 +417,15 @@
                       ></textarea>
                     </label>
                     <p class="footer-note">
-                      Include city, hotel name, and neighborhood if you know it. The itinerary
-                      will cluster days around that area when possible.
+                      Include the city, hotel, and neighborhood if you know it. The itinerary will cluster around that area when it can.
                     </p>
                   </div>
                 </div>
 
                 <div class="form-block">
                   <div class="form-block-head">
-                    <p class="form-section-label">Trip shape</p>
-                    <p class="form-block-note">Tune the budget and pacing so the first draft feels realistically matched to the kind of trip you want to live through, not just admire on paper.</p>
-                  </div>
-                  <div class="form-guidance-row" aria-label="What trip shape controls">
-                    <span>Reservation weight</span>
-                    <span>Route density</span>
-                    <span>Price profile</span>
+                    <p class="form-section-label">Trip tone</p>
+                    <p class="form-block-note">Tune the budget and pace so the first draft feels realistically matched to the kind of trip you want.</p>
                   </div>
 
                   <div class="detail-grid">
@@ -476,12 +454,7 @@
                 <div class="form-block">
                   <div class="form-block-head">
                     <p class="form-section-label" id="planner-step-3-title">Interests</p>
-                    <p class="form-block-note">This determines which neighborhoods, meals, and experiences get extra weight when the planner has to decide what deserves the best hours.</p>
-                  </div>
-                  <div class="form-guidance-row" aria-label="What interests controls">
-                    <span>Neighborhood bias</span>
-                    <span>Meal selection</span>
-                    <span>After-dark tone</span>
+                    <p class="form-block-note">This determines which neighborhoods, meals, and experiences get extra weight.</p>
                   </div>
 
                   <fieldset class="choice-group focus-picker" id="focus-group">
@@ -613,13 +586,7 @@
                 <div class="form-block form-block--final">
                   <div class="form-block-head">
                     <p class="form-section-label">Final notes</p>
-                    <p class="form-block-note">Add anything that should meaningfully change the scoring, the hotel logic, or the emotional tone of the trip.</p>
-                  </div>
-                  <div class="form-guidance-row form-guidance-row--final" aria-label="Useful note ideas">
-                    <span>celebration dinner</span>
-                    <span>shopping-first afternoon</span>
-                    <span>one calmer day</span>
-                    <span>less transit</span>
+                    <p class="form-block-note">Add anything that should meaningfully change the scoring, hotel logic, or tone of the trip.</p>
                   </div>
 
                   <label>
@@ -658,11 +625,6 @@
                 >
                   Save setup
                 </button>
-              </div>
-              <div class="planner-action-note" aria-label="What happens next">
-                <span>Save locally in your browser</span>
-                <span>Generate a full working draft</span>
-                <span>Keep refining after the first version lands</span>
               </div>
             </form>
           </aside>

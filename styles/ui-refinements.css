@@ -2270,3 +2270,209 @@ header.hero::before {
     padding-right: 18px;
   }
 }
+
+/* Final right-column premium pass */
+.planner-card {
+  padding: 28px 28px 24px;
+  gap: 0;
+}
+
+.card-heading {
+  margin-bottom: 14px;
+}
+
+.card-kicker {
+  margin-bottom: 8px;
+}
+
+.card-heading h2 {
+  max-width: 11.2ch;
+  margin-bottom: 8px;
+  font-size: clamp(1.85rem, 2.2vw, 2.35rem);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
+
+.planner-intro {
+  max-width: 43ch;
+  font-size: 0.91rem;
+  line-height: 1.58;
+  color: #6e6257;
+}
+
+.planner-form {
+  gap: 10px;
+}
+
+.planner-form-card {
+  padding: 16px 16px 14px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(249, 242, 233, 0.72));
+}
+
+.form-block {
+  gap: 11px;
+}
+
+.planner-form-card .form-block + .form-block {
+  margin-top: 14px;
+}
+
+.form-block-head {
+  gap: 4px;
+  margin-bottom: 0;
+}
+
+.form-section-label {
+  font-size: 0.71rem;
+  letter-spacing: 0.17em;
+}
+
+.form-block-note {
+  max-width: 46ch;
+  font-size: 0.84rem;
+  line-height: 1.52;
+}
+
+.planner-form-card label {
+  gap: 7px;
+  font-size: 0.8rem;
+}
+
+.planner-form-card input[type="date"],
+.planner-form-card select,
+.planner-form-card textarea {
+  min-height: 52px;
+  border-radius: 15px;
+  font-size: 0.94rem;
+}
+
+.planner-form-card textarea {
+  min-height: 108px;
+  padding-top: 13px;
+}
+
+.arrival-departure-grid,
+.detail-grid {
+  gap: 10px;
+}
+
+.duration-display {
+  padding: 14px 14px 12px;
+  border-radius: 18px;
+}
+
+.duration-counter {
+  margin-top: 4px;
+}
+
+.duration-days {
+  font-size: 1.75rem;
+}
+
+.duration-helper {
+  margin-top: 7px;
+  font-size: 0.82rem;
+}
+
+.segmented-control {
+  padding: 4px;
+  gap: 5px;
+  border-radius: 16px;
+}
+
+.segmented-control .toggle-option {
+  min-height: 48px;
+  padding: 11px 12px;
+  border-radius: 12px;
+}
+
+.segmented-control .toggle-option span {
+  font-size: 0.84rem;
+  line-height: 1.34;
+}
+
+#existing-hotel-fields {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.focus-grid {
+  gap: 10px;
+}
+
+.focus-grid .focus-card,
+.focus-grid .focus-card--stretch {
+  min-height: 164px;
+  padding: 15px 16px 16px;
+  border-radius: 18px;
+}
+
+.focus-grid .focus-card-title {
+  min-height: 1.22em;
+}
+
+.focus-grid .focus-card-label {
+  font-size: 0.88rem;
+}
+
+.focus-grid .focus-card-desc {
+  font-size: 0.82rem;
+  line-height: 1.48;
+}
+
+.footer-note,
+.footer-note--examples {
+  max-width: 48ch;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.form-actions {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(0, 0.9fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+#generate-trip-button,
+.reset-btn,
+.save-form-btn {
+  min-height: 52px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+}
+
+#generate-trip-button {
+  padding: 0 18px;
+}
+
+.reset-btn,
+.save-form-btn {
+  padding: 0 14px;
+}
+
+@media (max-width: 1180px) {
+  .card-heading h2,
+  .planner-intro,
+  .form-block-note,
+  .footer-note,
+  .footer-note--examples {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .planner-card {
+    padding: 24px 18px 20px;
+  }
+
+  .card-heading h2 {
+    max-width: none;
+    font-size: clamp(1.72rem, 7vw, 2.08rem);
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+}
