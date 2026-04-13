@@ -205,7 +205,7 @@ export const tokyoGuide = {
         "design",
         "shopping"
       ],
-      "description": "The strongest design-and-fashion corridor in Tokyo."
+      "description": "Tokyo's cleanest design-and-fashion corridor, where flagship architecture, sharp retail, and side-street café culture all land in one walk."
     },
     {
       "name": "Shibuya after dark",
@@ -249,7 +249,7 @@ export const tokyoGuide = {
       "tags": [
         "food"
       ],
-      "description": "Still useful for a food-first morning even in modern Tokyo."
+      "description": "Still one of the city's best food-first mornings, especially if you want market energy before central Tokyo fully wakes up."
     },
     {
       "name": "Yanaka old Tokyo lanes",
@@ -266,7 +266,7 @@ export const tokyoGuide = {
       "tags": [
         "design"
       ],
-      "description": "A more polished architecture-and-city-texture block."
+      "description": "A composed Tokyo block of station architecture, broad avenues, and business-district scale that makes the city feel orderly rather than frantic."
     },
     {
       "name": "TeamLab or modern digital art",
@@ -283,7 +283,7 @@ export const tokyoGuide = {
         "food",
         "culture"
       ],
-      "description": "Still one of the strongest food-first morning anchors in central Tokyo."
+      "description": "Still one of central Tokyo's best food-first morning anchors, with market bustle, knife shops, and easy onward movement into Ginza."
     },
     {
       "name": "Daikanyama",
@@ -292,7 +292,7 @@ export const tokyoGuide = {
         "design",
         "shopping"
       ],
-      "description": "A calmer, more stylish side of Tokyo with strong retail and café texture."
+      "description": "A calmer, more taste-driven side of Tokyo, built around bookstores, fashion, coffee, and a softer neighborhood rhythm."
     },
     {
       "name": "Nakameguro canal area",
@@ -301,7 +301,7 @@ export const tokyoGuide = {
         "wellness",
         "design"
       ],
-      "description": "A very good wandering district when you want slower pace and visual charm."
+      "description": "A canal-side wandering district that feels slower, prettier, and more residential than Tokyo's louder headline neighborhoods."
     },
     {
       "name": "Tokyo Metropolitan Government views",
@@ -359,7 +359,7 @@ export const tokyoGuide = {
         "shopping"
       ],
       "timing": "morning",
-      "description": "A strong heritage morning with a useful design and kitchenware add-on."
+      "description": "A heritage-rich Tokyo morning that pairs temple atmosphere with Kappabashi's kitchenware and restaurant-supply texture."
     },
     {
       "name": "Ueno Park and Tokyo National Museum pairing",
@@ -411,7 +411,7 @@ export const tokyoGuide = {
         "shopping"
       ],
       "timing": "afternoon",
-      "description": "Beautiful, flexible, and excellent for a design-heavy day."
+      "description": "An elegant, flexible afternoon of architecture, fashion, and coffee that gives a design-led Tokyo day real shape."
     },
     {
       "name": "Daikanyama and Nakameguro loop",
@@ -422,7 +422,7 @@ export const tokyoGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "A stronger low-key day if you care more about taste than spectacle."
+      "description": "A quieter Tokyo loop for travelers who care more about taste, retail texture, and neighborhood atmosphere than spectacle."
     },
     {
       "name": "Shibuya scramble and skyline block",
@@ -442,7 +442,7 @@ export const tokyoGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "Useful when the trip wants current retail and youth energy."
+      "description": "Best when the trip wants current retail, skate-and-fashion energy, and a more youth-driven slice of modern Tokyo."
     },
     {
       "name": "Shinjuku Gyoen reset",
@@ -663,7 +663,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Ramen",
       "reservation": "Flexible.",
-      "description": "A stylish ramen stop that fits naturally into a design-heavy day."
+      "description": "A ramen stop that still feels sharp and city-current, especially when the day already leans design-forward."
     },
     {
       "name": "Little Nap Coffee Stand",
@@ -686,7 +686,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Coffee",
       "reservation": "Flexible.",
-      "description": "A great cafe stop for a slower, more taste-driven Tokyo afternoon."
+      "description": "A café stop for a slower, more taste-driven Tokyo afternoon built around browsing rather than spectacle."
     },
     {
       "name": "Gonpachi Nishi-Azabu",
@@ -763,7 +763,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Coffee",
       "reservation": "Flexible.",
-      "description": "A strong café add-on for a more modern design-heavy day."
+      "description": "A café add-on that fits especially well into a more modern, design-heavy Tokyo day."
     },
     {
       "name": "Tsukiji sushi breakfast stop",
@@ -774,7 +774,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Casual sushi breakfast",
       "reservation": "Go early.",
-      "description": "A useful food-first city move that fits well before museum or shopping blocks."
+      "description": "A food-first city move that sits neatly before museum time or a longer shopping block."
     },
     {
       "name": "Den",
@@ -800,7 +800,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "French-Japanese tasting",
       "reservation": "Reserve ahead.",
-      "description": "A current-feeling fine-dining room for travelers who want Tokyo's modern side rather than pure tradition."
+      "description": "A fine-dining room for travelers who want Tokyo's modern side to feel as compelling as its traditions."
     },
     {
       "name": "L'Effervescence",

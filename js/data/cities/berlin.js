@@ -198,7 +198,7 @@ export const berlinGuide = {
       "tags": [
         "culture"
       ],
-      "description": "Still one of the strongest cultural anchors in Berlin."
+      "description": "Still one of Berlin's defining cultural anchors, where the city feels oldest, grandest, and most museum-heavy in one concentrated stretch."
     },
     {
       "name": "Brandenburg Gate and Reichstag zone",
@@ -232,7 +232,7 @@ export const berlinGuide = {
         "wellness",
         "nightlife"
       ],
-      "description": "A strong way to experience the city's more social and creative side."
+      "description": "One of the clearest ways to feel Berlin's more social, creative, and riverside side in motion."
     },
     {
       "name": "Charlottenburg Palace area",
@@ -260,7 +260,7 @@ export const berlinGuide = {
         "wellness",
         "design"
       ],
-      "description": "A softer more local side of Berlin with great daytime rhythm."
+      "description": "A softer, more local side of Berlin built around cafés, tree-lined streets, and an easy daytime rhythm."
     },
     {
       "name": "Mauerpark area",
@@ -277,7 +277,7 @@ export const berlinGuide = {
       "tags": [
         "nightlife"
       ],
-      "description": "Even if clubs are not the point, one strong Berlin night should still be in the plan."
+      "description": "Even if clubs are not the point, one real Berlin night still belongs in the trip."
     },
     {
       "name": "Hackescher Markt and side streets",
@@ -286,7 +286,7 @@ export const berlinGuide = {
         "shopping",
         "design"
       ],
-      "description": "A useful central texture-and-retail zone for a first Berlin trip."
+      "description": "A central texture-and-retail zone that works well on a first Berlin trip when you want movement, shops, and side-street energy."
     },
     {
       "name": "Tempelhofer Feld",
@@ -304,7 +304,7 @@ export const berlinGuide = {
         "museum",
         "design"
       ],
-      "description": "A very good contemporary-art and Berlin-creative-history stop."
+      "description": "A contemporary-art stop that also explains Berlin's creative history better than many of the bigger institutions."
     },
     {
       "name": "Kollwitzplatz area",
@@ -400,7 +400,7 @@ export const berlinGuide = {
         "culture"
       ],
       "timing": "morning",
-      "description": "The strongest history-first Berlin morning."
+      "description": "The clearest history-first Berlin morning, especially if you want the city to feel serious before it feels cool."
     },
     {
       "name": "Brandenburg Gate, Reichstag, and Tiergarten edge",
@@ -420,7 +420,7 @@ export const berlinGuide = {
         "culture"
       ],
       "timing": "afternoon",
-      "description": "Useful when the trip wants more city texture than museum density."
+      "description": "Best when the trip wants more city texture, boulevard architecture, and civic scale than museum density."
     },
     {
       "name": "Checkpoint Charlie and memorial context loop",
@@ -439,7 +439,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A great slower Berlin block with more neighborhood energy."
+      "description": "A slower Berlin block with more neighborhood energy, canal light, and room to drift rather than march."
     },
     {
       "name": "Street art and Kreuzberg side streets",
@@ -469,7 +469,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "morning",
-      "description": "A useful historical and visual anchor for an eastern-side day."
+      "description": "A strong historical and visual anchor for an eastern-side day, especially when you want the Wall to feel present rather than abstract."
     },
     {
       "name": "Charlottenburg Palace and gardens",
@@ -500,7 +500,7 @@ export const berlinGuide = {
         "luxury"
       ],
       "timing": "afternoon",
-      "description": "Useful if the trip wants one polished shopping pass."
+      "description": "Best if the trip wants one polished shopping pass with a more classic west-Berlin mood."
     },
     {
       "name": "Prenzlauer Berg cafe loop",
@@ -531,7 +531,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A very good local-feeling district for cafes, side streets, and drift."
+      "description": "A local-feeling district for cafés, side streets, and slow drift rather than major sights."
     },
     {
       "name": "Berlin concert or cultural evening",
@@ -541,7 +541,7 @@ export const berlinGuide = {
         "nightlife"
       ],
       "timing": "evening",
-      "description": "Useful if nightlife is not the goal but you still want a strong Berlin night."
+      "description": "Best if nightlife is not the goal but you still want one Berlin night with cultural weight."
     },
     {
       "name": "Hackescher Markt shopping and side streets",
@@ -551,7 +551,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A simple useful central shopping-and-wandering block."
+      "description": "An easy central shopping-and-wandering block when you want to keep the day flexible."
     },
     {
       "name": "Tempelhofer Feld open-space loop",
@@ -571,7 +571,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A strong contemporary-art and design anchor in the east-central part of the city."
+      "description": "A contemporary-art and design anchor in the east-central city, especially good when the trip needs a sharper modern note."
     },
     {
       "name": "Savignyplatz wine and dinner drift",
@@ -581,7 +581,7 @@ export const berlinGuide = {
         "nightlife"
       ],
       "timing": "evening",
-      "description": "A calmer, more polished west-Berlin evening if Kreuzberg is not the mood."
+      "description": "A calmer, more polished west-Berlin evening if Kreuzberg feels too loud or too obvious."
     },
     {
       "name": "Neues Museum visit",
@@ -601,7 +601,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A strong contemporary-art stop if the trip wants a more modern cultural anchor."
+      "description": "A contemporary-art stop if the trip wants a more modern cultural anchor than Museum Island."
     },
     {
       "name": "Berlinische Galerie visit",
@@ -611,7 +611,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A very good modern-art and architecture museum with a strong Berlin focus."
+      "description": "A modern-art and architecture museum with a distinctly Berlin point of view, rather than a generic international-program feel."
     },
     {
       "name": "Gendarmenmarkt to Bebelplatz architecture walk",
