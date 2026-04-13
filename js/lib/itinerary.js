@@ -389,7 +389,7 @@ function getOsakaTemplateRotation(plan) {
   if (focuses.includes("nature") || focuses.includes("wellness")) {
     rotation.unshift(OSAKA_DAY_TEMPLATES.natureEscape);
   }
-  if (focuses.includes("shopping") || focuses.includes("design")) {
+  if (focuses.includes("shopping") || focuses.includes("amusement") || focuses.includes("design")) {
     rotation.unshift(OSAKA_DAY_TEMPLATES.shinsaibashiStyle);
   }
   if (focuses.includes("museum") || focuses.includes("culture")) {
@@ -779,7 +779,7 @@ export function pickBestSuggestedItem({ day, sortedPool, usedNames, plan, filter
     if (pf.includes("culture") && ["Cultural Sight", "Museum", "Place to Wander"].includes(item.categoryLabel)) score += 1.8;
     if (pf.includes("wellness") && ["Nature", "Place to Wander", "Food"].includes(item.categoryLabel)) score += 1.4;
     if (pf.includes("nightlife") && ["Nightlife & Entertainment", "Food", "Amusement & Activities"].includes(item.categoryLabel)) score += 1.8;
-    if (pf.includes("design") && ["Place to Wander", "Cultural Sight"].includes(item.categoryLabel)) score += 1.6;
+    if ((pf.includes("amusement") || pf.includes("design")) && ["Amusement & Activities", "Nightlife & Entertainment", "Food", "Place to Wander"].includes(item.categoryLabel)) score += 1.7;
     if (pf.includes("museum") && item.categoryLabel === "Museum") score += 2.2;
     if (pf.includes("shopping") && item.categoryLabel === "Shopping") score += 2;
     if (pf.includes("nature") && item.categoryLabel === "Nature") score += 2.2;
@@ -835,8 +835,8 @@ function buildItemFitNote(day, item, plan, slot) {
     reasons.push("stronger earlier before the area gets busier");
   }
   const focuses = plan.focuses || [plan.focus];
-  if (focuses.includes("design") && ["Museum", "Place to Wander", "Cultural Sight"].includes(item.categoryLabel)) {
-    reasons.push("supports the trip's design focus");
+  if ((focuses.includes("amusement") || focuses.includes("design")) && ["Amusement & Activities", "Nightlife & Entertainment", "Food", "Place to Wander"].includes(item.categoryLabel)) {
+    reasons.push("supports the trip's amusement focus");
   }
   if (focuses.includes("food") && item.categoryLabel === "Food") {
     reasons.push("fits the food-forward version of the trip");

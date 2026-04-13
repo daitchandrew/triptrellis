@@ -23,7 +23,18 @@ export const focusThemes = {
   culture: { label: "Culture", headline: "Optimized for the city's most meaningful places.", wantedTags: ["culture", "design", "walkability"], defaultCommentTags: ["culture"] },
   wellness: { label: "Wellness", headline: "Optimized to feel elegant, balanced, and restorative.", wantedTags: ["wellness", "culture", "food"], defaultCommentTags: ["wellness"] },
   nightlife: { label: "Nightlife", headline: "Optimized for energy after dark without wasting the days.", wantedTags: ["nightlife", "food", "design"], defaultCommentTags: ["nightlife"] },
-  design: { label: "Architecture", headline: "Optimized for architecture, design districts, and visual texture.", wantedTags: ["design", "culture", "museum"], defaultCommentTags: ["design"] },
+  amusement: {
+    label: "Amusement",
+    headline: "Optimized for playful districts, arcades, rides, and the most fun version of the city.",
+    wantedTags: ["nightlife", "food", "design", "luxury"],
+    defaultCommentTags: ["nightlife", "food"],
+  },
+  design: {
+    label: "Amusement",
+    headline: "Optimized for playful districts, arcades, rides, and the most fun version of the city.",
+    wantedTags: ["nightlife", "food", "design", "luxury"],
+    defaultCommentTags: ["nightlife", "food"],
+  },
   museum: { label: "Museums", headline: "Optimized for galleries, collections, and cultural institutions.", wantedTags: ["museum", "culture", "design"], defaultCommentTags: ["culture", "museum"] },
   shopping: { label: "Shopping & Style", headline: "Optimized for markets, boutiques, and the city's best retail.", wantedTags: ["shopping", "food", "design"], defaultCommentTags: ["shopping"] },
   nature: { label: "Nature", headline: "Optimized for parks, outdoor spaces, and natural settings.", wantedTags: ["nature", "wellness", "culture"], defaultCommentTags: ["wellness", "nature"] },
@@ -82,7 +93,7 @@ export const noteKeywordRules = [
   { match: ["local", "street food", "authentic"], tags: ["food", "culture"] },
   { match: ["design", "architecture", "modern"], tags: ["design"] },
   { match: ["nature", "park", "garden", "river"], tags: ["wellness"] },
-  { match: ["kid", "family"], tags: ["wellness", "culture"] },
+  { match: ["kid", "family", "theme park", "arcade", "funfair", "rides"], tags: ["amusement", "wellness", "culture"] },
   { match: ["romantic"], tags: ["luxury", "wellness", "nightlife"] },
   { match: ["view", "sunset", "rooftop"], tags: ["design", "nightlife", "wellness"] },
 ];

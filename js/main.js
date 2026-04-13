@@ -346,8 +346,9 @@ function loadFormPreferences() {
       if (radioBtn) radioBtn.checked = true;
     }
     if (data.focus && data.focus.length > 0) {
+      const normalizedFocuses = data.focus.map((value) => (value === "design" ? "amusement" : value));
       form.querySelectorAll('input[name="focus"]').forEach(cb => {
-        cb.checked = data.focus.includes(cb.value);
+        cb.checked = normalizedFocuses.includes(cb.value);
       });
     }
     if (data.notes) form.querySelector("#notes").value = data.notes;

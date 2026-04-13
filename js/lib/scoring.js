@@ -363,7 +363,7 @@ export function scoreItem(item, guide, hotelBase, noteProfile, focuses, budget, 
   if (focusArr.includes("culture") && ["Cultural Sight", "Museum", "Place to Wander"].includes(categoryLabel)) score += 2.6;
   if (focusArr.includes("wellness") && ["Nature", "Place to Wander", "Food"].includes(categoryLabel)) score += 2.1;
   if (focusArr.includes("nightlife") && ["Nightlife & Entertainment", "Food", "Amusement & Activities"].includes(categoryLabel)) score += 2.8;
-  if (focusArr.includes("design") && ["Place to Wander", "Cultural Sight", "Museum"].includes(categoryLabel)) score += 2.2;
+  if ((focusArr.includes("amusement") || focusArr.includes("design")) && ["Amusement & Activities", "Nightlife & Entertainment", "Food", "Place to Wander"].includes(categoryLabel)) score += 2.4;
   if (focusArr.includes("museum") && categoryLabel === "Museum") score += 3.2;
   if (focusArr.includes("shopping") && categoryLabel === "Shopping") score += 3;
   if (focusArr.includes("nature") && categoryLabel === "Nature") score += 3.2;
