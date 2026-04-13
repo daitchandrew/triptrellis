@@ -2044,12 +2044,9 @@ header.hero::before {
   line-height: 1.64;
 }
 
-.hero-chips {
-  margin-bottom: 14px;
-}
-
 .hero-value-grid {
   gap: 10px;
+  margin-top: 2px;
 }
 
 .hero-value-card {
