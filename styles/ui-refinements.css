@@ -269,17 +269,17 @@ header.hero::after {
 }
 
 .library-overlay {
-  padding: 14px;
+  padding: 12px;
 }
 
 .library-overlay-panel {
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
-  gap: 8px;
-  width: min(1240px, calc(100vw - 28px));
-  max-height: calc(100vh - 28px);
-  min-height: min(780px, calc(100vh - 28px));
-  padding: 16px 16px 12px;
+  gap: 6px;
+  width: min(1260px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  min-height: min(748px, calc(100vh - 24px));
+  padding: 14px 14px 10px;
   border-radius: 28px;
   overflow: hidden;
 }
@@ -289,7 +289,7 @@ header.hero::after {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   margin-bottom: 0;
-  gap: 8px;
+  gap: 6px;
 }
 
 .library-overlay-head > div {
@@ -299,59 +299,59 @@ header.hero::after {
 .library-overlay-head .section-title {
   max-width: none;
   white-space: nowrap;
-  font-size: clamp(1.42rem, 1.7vw, 1.85rem);
+  font-size: clamp(1.34rem, 1.55vw, 1.72rem);
   line-height: 1;
 }
 
 .library-overlay-head .card-subtitle {
-  max-width: 70ch;
-  margin-top: 2px;
-  font-size: 0.88rem;
-  line-height: 1.38;
+  max-width: 62ch;
+  margin-top: 1px;
+  font-size: 0.84rem;
+  line-height: 1.3;
 }
 
 .builder-toolbar {
   margin-bottom: 0;
-  gap: 6px;
-  padding: 8px 10px;
+  gap: 5px;
+  padding: 7px 8px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.74);
 }
 
 .library-results-stack {
   min-height: 0;
-  gap: 10px;
+  gap: 8px;
 }
 
 .library-result-group {
-  gap: 6px;
+  gap: 5px;
 }
 
 .library-result-group-head {
-  padding: 0 2px 4px;
+  padding: 0 2px 2px;
 }
 
 .library-card {
-  padding: 12px 12px 10px;
+  padding: 11px 11px 9px;
   border-radius: 16px;
 }
 
 .library-card h4 {
-  margin-top: 6px;
-  font-size: 0.96rem;
+  margin-top: 5px;
+  font-size: 0.94rem;
   line-height: 1.12;
 }
 
 .library-card p {
-  margin-top: 6px;
-  font-size: 0.88rem;
-  line-height: 1.36;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  line-height: 1.32;
 }
 
 .library-card-description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   overflow: hidden;
 }
 
@@ -363,7 +363,7 @@ header.hero::after {
 }
 
 .library-actions {
-  gap: 6px;
+  gap: 5px;
   align-items: end;
 }
 
@@ -405,20 +405,20 @@ header.hero::after {
 
 .overlay-toolbar .builder-controls {
   grid-template-columns: 158px minmax(240px, 1.6fr) 148px 112px;
-  gap: 6px;
+  gap: 5px;
 }
 
 .overlay-toolbar .workspace-note-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
-  gap: 4px 8px;
+  gap: 3px 8px;
 }
 
 .overlay-toolbar .footer-note {
   margin: 0;
-  font-size: 0.8rem;
-  line-height: 1.32;
+  font-size: 0.77rem;
+  line-height: 1.26;
 }
 
 .overlay-toolbar .library-filter-summary,
@@ -427,8 +427,8 @@ header.hero::after {
 }
 
 .overlay-toolbar .library-filter-summary {
-  font-size: 0.78rem;
-  line-height: 1.28;
+  font-size: 0.75rem;
+  line-height: 1.22;
 }
 
 .overlay-toolbar .library-filter-summary-row {
@@ -436,27 +436,27 @@ header.hero::after {
 }
 
 .overlay-toolbar .library-filter-pill {
-  min-height: 28px;
-  padding: 5px 10px;
-  font-size: 0.74rem;
+  min-height: 26px;
+  padding: 4px 9px;
+  font-size: 0.71rem;
 }
 
 .overlay-toolbar .library-count {
-  padding: 5px 9px;
-  font-size: 0.74rem;
+  padding: 4px 8px;
+  font-size: 0.71rem;
 }
 
 .library-actions .footer-note {
   max-width: 58%;
-  font-size: 0.84rem;
-  line-height: 1.34;
+  font-size: 0.8rem;
+  line-height: 1.28;
 }
 
 .overlay-toolbar .library-filter,
 .overlay-toolbar .library-search {
-  min-height: 40px;
-  padding: 10px 12px;
-  font-size: 0.9rem;
+  min-height: 38px;
+  padding: 9px 11px;
+  font-size: 0.88rem;
 }
 
 .overlay-toolbar .library-search {
@@ -468,27 +468,27 @@ header.hero::after {
 }
 
 .library-result-group-head .preview-label {
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 .library-result-group-head .footer-note {
-  font-size: 0.8rem;
-  line-height: 1.3;
+  font-size: 0.77rem;
+  line-height: 1.24;
 }
 
 .overlay-library-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: 9px;
 }
 
 .library-card .lib-tag-row {
-  gap: 6px;
+  gap: 5px;
 }
 
 .library-card .lib-tag {
-  min-height: 26px;
-  padding: 4px 9px;
-  font-size: 0.68rem;
+  min-height: 24px;
+  padding: 4px 8px;
+  font-size: 0.66rem;
 }
 
 @media (max-width: 980px) {
@@ -497,14 +497,14 @@ header.hero::after {
   }
 
   .library-overlay {
-    padding: 10px;
+    padding: 8px;
   }
 
   .library-overlay-panel {
-    width: calc(100vw - 20px);
-    max-height: calc(100vh - 20px);
-    min-height: calc(100vh - 20px);
-    padding: 14px 14px 10px;
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    min-height: calc(100vh - 16px);
+    padding: 12px 12px 9px;
   }
 
   .overlay-toolbar .builder-controls {

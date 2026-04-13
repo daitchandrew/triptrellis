@@ -281,8 +281,8 @@ export function getOverlayCopy(mode) {
     return {
       kicker: "Replace a stop",
       title: "Replace from the library",
-      body: "Ranked by route fit, nearby flow, and contrast so the day still feels edited.",
-      subtle: "Used places are hidden, and the strongest groups keep the day coherent.",
+      body: "Ranked by route fit, nearby flow, and contrast.",
+      subtle: "Used places stay hidden so the strongest options stay readable.",
     };
   }
 
@@ -567,8 +567,8 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
       <div class="section-head">
         <div>
           <p class="section-kicker">Saved itineraries</p>
-          <h3 class="section-title">${isFrontPage ? "Reopen a saved trip before building a new one" : "Saved trips worth reopening"}</h3>
-          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, download, or keep refining them without starting over.</p>` : `<p class="card-subtitle">Your saved versions stay organized here so you can reopen, download, or keep iterating without falling back into a blank planner.</p>`}
+          <h3 class="section-title">${isFrontPage ? "Reopen a saved trip before starting over" : "Saved trips worth reopening"}</h3>
+          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, export, or keep refining them without starting over.</p>` : `<p class="card-subtitle">Saved versions stay organized here so you can reopen, export, or keep iterating without dropping back into a blank planner.</p>`}
         </div>
       </div>
       <div class="saved-search-panel">
@@ -577,7 +577,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
           id="saved-trips-search"
           class="saved-search-input"
           type="search"
-          placeholder="Search city, hotel, dates, focus, or notes..."
+          placeholder="Search city, base, dates, focus, or notes..."
           value="${escapeAttribute(search)}"
           autocomplete="off"
         />
@@ -590,7 +590,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
               <article class="saved-trip-card">
                 <div class="saved-card-head">
                   <div>
-                    <p class="saved-card-kicker">${escapeHtml(trip.city)} itinerary</p>
+                    <p class="saved-card-kicker">${escapeHtml(trip.city)} brief</p>
                     <h4>${escapeHtml(trip.title)}</h4>
                   </div>
                   <span class="saved-card-date">${escapeHtml(getSavedTripMetaLine(trip))}</span>
@@ -600,16 +600,16 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                   ${getSavedTripTags(trip).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
                 </div>
                 <div class="saved-card-footer">
-                  <span class="saved-card-hotel">${escapeHtml(trip.hotelName || "Hotel base saved")}</span>
+                  <span class="saved-card-hotel">${escapeHtml(trip.hotelName ? `Base: ${trip.hotelName}` : "Base saved")}</span>
                   <div class="saved-actions">
-                    <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Reopen trip</button>
+                    <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Open draft</button>
                     <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Export PDF</button>
                     <button class="mini-button saved-delete-button" type="button" data-action="delete-itinerary" data-save-id="${trip.id}">Delete</button>
                   </div>
                 </div>
               </article>
             `).join("")
-          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can reopen it, download it, or keep refining it when you come back."}</p><div class="saved-empty-actions"><a class="mini-button" href="#planner-form">Start a new brief</a></div></article>`
+          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try another city, base, focus, or date search." : "Once you save a trip, it will appear here so you can reopen it, export it, or keep refining it later."}</p><div class="saved-empty-actions"><a class="mini-button" href="#planner-form">Start a new brief</a></div></article>`
         }
       </div>
     </section>
@@ -696,7 +696,7 @@ export function renderTripPlan(plan, results) {
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Alternate bases</p>
             <h3 class="section-title">Other strong ways to center the trip</h3>
-          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent, routeable, and easy to live inside once you start editing.</p>
+          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these alternates still keep the days coherent and easy to live inside.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -783,7 +783,7 @@ export function renderTripPlan(plan, results) {
         </div>
         <div class="itinerary-focus-actions">
           <div class="results-action-group">
-            <span class="results-action-label">Shape this version</span>
+            <span class="results-action-label">Edit in place</span>
             <button class="secondary-button secondary-button--strong" data-action="open-library" type="button">Open city library</button>
           </div>
           <div class="results-action-group results-action-group--secondary">
@@ -863,7 +863,7 @@ export function renderTripPlan(plan, results) {
       </div>
     </section>
 
-    <button class="mobile-add-fab" type="button" data-action="open-library">+ Add to itinerary</button>
+    <button class="mobile-add-fab" type="button" data-action="open-library">Open library</button>
 
     ${plan.libraryOverlay?.open ? `
       <section class="library-overlay" data-overlay="library">
@@ -933,7 +933,7 @@ export function renderTripPlan(plan, results) {
                   `).join("")}
                 </div>
               </section>
-            `).join("") : `<article class="recommendation-card saved-card saved-empty"><h4>No library items match that filter</h4><p>Try another category, search term, or area filter. The strongest results usually return once the library is a little less constrained.</p></article>`}
+            `).join("") : `<article class="recommendation-card saved-card saved-empty"><h4>No library items match that filter</h4><p>Try another category, search term, or area. The strongest results usually return once the library is a little less constrained.</p></article>`}
           </div>
         </div>
       </section>
