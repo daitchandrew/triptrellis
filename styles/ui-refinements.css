@@ -76,14 +76,6 @@ header.hero::after {
   max-width: 58ch;
 }
 
-.planner-card-banner strong {
-  max-width: 34ch;
-}
-
-.planner-card-banner p {
-  max-width: 58ch;
-}
-
 .hero-intro .eyebrow {
   padding: 8px 13px;
   box-shadow: none;
@@ -105,13 +97,6 @@ header.hero::after {
   color: rgba(67, 56, 47, 0.82);
   font-size: 0.98rem;
   line-height: 1.72;
-}
-
-.hero-chips span {
-  min-height: 38px;
-  padding: 8px 14px;
-  font-size: 0.8rem;
-  box-shadow: none;
 }
 
 .tag {
@@ -179,7 +164,6 @@ header.hero::after {
   letter-spacing: -0.045em;
 }
 
-.planner-card-banner,
 .form-summary,
 .day-intro,
 .confidence-note,
@@ -514,17 +498,6 @@ header.hero::after,
   letter-spacing: -0.015em;
 }
 
-.hero-chips {
-  gap: 10px;
-}
-
-.hero-chips span {
-  padding: 10px 16px;
-  background: rgba(255, 252, 248, 0.84);
-  border: 1px solid rgba(38, 24, 14, 0.08);
-  box-shadow: none;
-}
-
 .anchor-set {
   gap: 10px;
 }
@@ -729,25 +702,6 @@ header.hero::after,
   line-height: 1.58;
 }
 
-.planner-card-banner {
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: none;
-}
-
-.planner-card-banner strong {
-  max-width: none;
-  font-size: 0.95rem;
-  line-height: 1.24;
-}
-
-.planner-card-banner p {
-  max-width: none;
-  font-size: 0.84rem;
-  line-height: 1.56;
-}
-
 .site-footer {
   margin-top: 24px;
   padding: 24px 28px 20px;
@@ -891,10 +845,6 @@ header.hero::before {
 .form-actions {
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
   align-items: stretch;
-}
-
-.form-actions-secondary {
-  align-self: stretch;
 }
 
 .site-footer {
@@ -1062,7 +1012,6 @@ header.hero::before {
 }
 
 .dark-anchor-title,
-.coverage-band-title,
 .how-title,
 .faq-title {
   line-height: 0.95;
@@ -1070,9 +1019,7 @@ header.hero::before {
 
 .hero-intro .hero-text,
 .section-intro,
-.coverage-band-copy,
 .planner-intro,
-.planner-card-banner p,
 .how-step-desc,
 .faq-answer p,
 .footer-note {
@@ -1500,29 +1447,6 @@ header.hero::before {
   align-items: stretch;
 }
 
-.form-actions-secondary {
-  display: contents;
-}
-
-.planner-action-note {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.planner-action-note span {
-  min-height: 28px;
-  padding: 7px 11px;
-  border-radius: 999px;
-  background: rgba(255, 252, 248, 0.74);
-  border: 1px solid rgba(43, 29, 20, 0.06);
-  color: rgba(78, 66, 57, 0.72);
-  font-size: 0.73rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
 #generate-trip-button,
 .reset-btn,
 .save-form-btn {
@@ -1580,62 +1504,8 @@ header.hero::before {
 .coverage-band-copy,
 .section-intro,
 .form-block-note,
-.planner-intro,
-.planner-card-banner p {
+.planner-intro {
   max-width: 62ch;
-}
-
-.brief-advantage {
-  display: grid;
-  gap: 1rem;
-  margin-top: 0.35rem;
-}
-
-.brief-advantage-head .section-intro {
-  max-width: 63ch;
-}
-
-.brief-advantage-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.brief-advantage-card {
-  display: grid;
-  gap: 0.7rem;
-  padding: 1.25rem 1.25rem 1.35rem;
-  border-radius: 28px;
-  border: 1px solid rgba(87, 69, 45, 0.12);
-  background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(248, 241, 231, 0.9));
-  box-shadow: 0 18px 40px rgba(79, 57, 26, 0.07);
-}
-
-.brief-advantage-kicker {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(145, 107, 56, 0.78);
-}
-
-.brief-advantage-card strong {
-  font-size: clamp(1rem, 1vw + 0.8rem, 1.18rem);
-  line-height: 1.32;
-  color: #23170f;
-}
-
-.brief-advantage-card p {
-  margin: 0;
-  color: rgba(73, 57, 39, 0.76);
-  line-height: 1.58;
-}
-
-.planner-card-banner {
-  gap: 0.55rem;
-}
-
-.planner-card-banner strong {
-  max-width: 29rem;
 }
 
 .planner-form-card {
@@ -1660,22 +1530,6 @@ header.hero::before {
   max-width: 60ch;
 }
 
-.form-actions {
-  align-items: stretch;
-}
-
-.planner-action-note {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.65rem;
-}
-
-.planner-action-note span {
-  min-height: 100%;
-  text-align: center;
-  justify-content: center;
-}
-
 .faq-section .section-intro,
 .faq-answer p {
   max-width: 64ch;
@@ -1690,22 +1544,12 @@ header.hero::before {
     grid-template-columns: 1fr;
   }
 
-  .brief-advantage-grid {
-    grid-template-columns: 1fr;
-  }
-
   .focus-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .form-actions {
     grid-template-columns: 1fr;
-  }
-
-  .form-actions-secondary {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
   }
 }
 
@@ -1720,8 +1564,7 @@ header.hero::before {
     font-size: clamp(1.8rem, 7.2vw, 2.35rem);
   }
 
-  .focus-grid,
-  .form-actions-secondary {
+  .focus-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1731,10 +1574,6 @@ header.hero::before {
 
   .focus-card {
     min-height: 0;
-  }
-
-  .planner-action-note {
-    grid-template-columns: 1fr;
   }
 
   .faq-question {
@@ -1799,17 +1638,6 @@ header.hero::before {
   max-width: 59ch;
   font-size: 0.97rem;
   line-height: 1.67;
-}
-
-.hero-chips {
-  gap: 8px;
-}
-
-.hero-chips span {
-  min-height: 36px;
-  padding: 8px 13px;
-  font-size: 0.77rem;
-  background: rgba(255, 252, 248, 0.9);
 }
 
 .hero-value-grid {
@@ -1883,13 +1711,11 @@ header.hero::before {
 }
 
 .how-grid,
-.brief-advantage-grid,
 .faq-grid {
   gap: 12px;
 }
 
 .how-step,
-.brief-advantage-card,
 .faq-item {
   border-radius: 24px;
 }
@@ -3058,4 +2884,72 @@ header.hero::before {
   .footer-facts {
     grid-template-columns: 1fr;
   }
+}
+
+/* Consolidated active tokens */
+:root {
+  --tt-space-1: 8px;
+  --tt-space-2: 12px;
+  --tt-space-3: 16px;
+  --tt-space-4: 20px;
+  --tt-space-5: 24px;
+  --tt-space-6: 28px;
+  --tt-radius-card: 24px;
+  --tt-radius-soft: 20px;
+  --tt-radius-pill: 999px;
+}
+
+.topbar,
+.dark-anchor,
+.how-it-works,
+.faq-section,
+.planner-card,
+.site-footer {
+  border-radius: var(--tt-radius-card);
+}
+
+.hero-value-card,
+.stat-card,
+.form-block,
+.focus-grid .focus-card,
+.focus-grid .focus-card--stretch,
+.footer-fact {
+  border-radius: var(--tt-radius-soft);
+}
+
+.hero-grid,
+.proof-cluster,
+.how-grid,
+.faq-grid,
+.planner-form,
+.footer-content {
+  gap: var(--tt-space-3);
+}
+
+.hero-col-left,
+.anchor-set {
+  gap: var(--tt-space-4);
+}
+
+.topbar-status,
+.hero-value-grid,
+.trust-stats-section,
+.footer-facts {
+  gap: var(--tt-space-2);
+}
+
+.card-heading,
+.section-heading-block,
+.form-block-head {
+  gap: var(--tt-space-1);
+}
+
+.planner-card,
+.how-it-works,
+.faq-section {
+  padding: calc(var(--tt-space-5) + 2px) var(--tt-space-5) var(--tt-space-5);
+}
+
+.dark-anchor {
+  padding: var(--tt-space-5);
 }

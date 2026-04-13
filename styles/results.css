@@ -341,31 +341,6 @@
   }
 }
 
-@media (max-width: 760px) {
-  .planner-brief-steps {
-    gap: 6px;
-  }
-
-  .planner-brief-steps span {
-    min-height: 26px;
-    font-size: 0.68rem;
-  }
-
-  .form-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .summary-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-
-  .summary-item strong {
-    text-align: left;
-  }
-}
-
 /* ─── Hotel/Base Strategy Upgrade ──────────────────────────────────────── */
 .area-compass-main .card-subtitle {
   max-width: 58ch;
@@ -761,6 +736,40 @@
   .trip-title {
     max-width: none;
   }
+}
+
+/* Consolidated results rhythm */
+.hero-result,
+.area-compass-section,
+.dont-miss-section,
+.itinerary-focus-shell,
+.trip-adjust-panel,
+.utility-section,
+.library-overlay-panel {
+  border-radius: calc(var(--tt-radius-card, 24px) + 6px);
+}
+
+.glance-card,
+.workspace-stat,
+.dont-miss-card,
+.day-card,
+.slot-card,
+.hotel-option-card,
+.trip-adjust-card,
+.library-card,
+.empty-state-shell {
+  border-radius: var(--tt-radius-soft, 20px);
+}
+
+.trip-at-a-glance,
+.workspace-stats,
+.recommendation-grid,
+.day-grid,
+.trip-adjust-grid,
+.itinerary-focus-actions,
+.itinerary-bottom-actions,
+.saved-actions {
+  gap: var(--tt-space-2, 12px);
 }
 
 /* Supporting actions + empty-state finish */
