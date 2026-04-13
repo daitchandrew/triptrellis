@@ -188,7 +188,7 @@ function getDayQualityLabels(day, plan) {
   if (items.some((item) => ["Museum", "Shopping"].includes(item.categoryLabel))) labels.push("Rain-friendly");
   if (areas.includes(plan.hotelBase.areaKey)) labels.push("Hotel-adjacent");
 
-  return [...new Set(labels)].slice(0, 4);
+  return [...new Set(labels)].slice(0, 3);
 }
 
 function getUniqueDayAreas(day, plan) {
@@ -223,30 +223,30 @@ function buildDaySequenceNarrative(day, plan) {
   const areas = getUniqueDayAreas(day, plan);
 
   if (!items.length) {
-    return `This day is still open enough to steer once you know where you want the strongest energy, reservation, or neighborhood pull to land.`;
+    return `This day is still open enough to steer once you know where the strongest energy should land.`;
   }
 
   if (first && last && first !== last) {
     const firstArea = first.areaLabel || plan.guide.hotelAreas?.[first.area]?.label || first.area || plan.hotelBase.areaLabel;
     const lastArea = last.areaLabel || plan.guide.hotelAreas?.[last.area]?.label || last.area || plan.hotelBase.areaLabel;
-    return `It opens around ${firstArea}, then gradually resolves toward ${lastArea} so the day feels sequenced instead of scattered.`;
+    return `Starts in ${firstArea}, then resolves toward ${lastArea} so the day stays sequenced instead of scattered.`;
   }
 
   if (areas.length === 1) {
-    return `Most of the day stays anchored in ${areas[0]}, which helps it feel calm, coherent, and easy to keep editing.`;
+    return `Mostly anchored in ${areas[0]}, so the day stays calm and coherent.`;
   }
 
-  return `The structure keeps the day readable while still letting it move between ${areas.slice(0, 2).join(" and ")} without losing the route.`;
+  return `Moves between ${areas.slice(0, 2).join(" and ")} while keeping the route readable.`;
 }
 
 function renderDayRouteStory(day, plan) {
   const areas = getUniqueDayAreas(day, plan);
-  const routeLabels = [plan.hotelBase.areaLabel, ...areas].filter(Boolean).slice(0, 4);
+  const routeLabels = [...new Set([plan.hotelBase.areaLabel, ...areas].filter(Boolean))].slice(0, 3);
   if (!routeLabels.length) return "";
 
   return `
     <div class="day-story-panel">
-      <p class="day-story-kicker">Route logic</p>
+      <p class="day-story-kicker">Day route</p>
       <div class="day-story-route">
         ${routeLabels.map((label, index) => `
           ${index ? `<span class="day-story-arrow" aria-hidden="true">→</span>` : ""}
@@ -819,7 +819,7 @@ export function renderTripPlan(plan, results) {
                   <div class="slot-head">
                     <div class="slot-head-copy">
                       <p class="slot-kicker">${getSlotLabel(slot)}</p>
-                      <p class="slot-status">${slotItems.length ? `${slotItems.length} planned` : "Open slot"}</p>
+                      <p class="slot-status">${slotItems.length ? `${slotItems.length} ${slotItems.length === 1 ? "stop" : "stops"}` : "Open slot"}</p>
                     </div>
                     <button class="secondary-button mini-button" type="button" data-action="open-add-slot" data-day-index="${dayIndex}" data-slot="${slot}">Add</button>
                   </div>
@@ -831,7 +831,7 @@ export function renderTripPlan(plan, results) {
                         data-itinerary-id="${item.id}"
                         data-day-index="${dayIndex}"
                       >
-                        ${item.type === "transit_anchor" ? "" : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Drag or move earlier/later</span></div>`}
+                        ${item.type === "transit_anchor" ? "" : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Reorder within day</span></div>`}
                         ${renderItemBadges({ categoryLabel: item.categoryLabel || "Stop", priceTier: item.priceTier, areaLabel: item.areaLabel || item.area, michelinStatus: item.michelinStatus }, { rowClass: "lib-tag-row lib-tag-row--itinerary" })}
                         <strong>${item.title}</strong>
                         <p>${item.description}</p>
@@ -839,13 +839,13 @@ export function renderTripPlan(plan, results) {
                         ${renderFitNote(item.fitNote)}
                         ${item.detailLine ? `<p class="footer-note item-detail">${item.detailLine}</p>` : ""}
                         ${item.type === "transit_anchor" ? "" : `<div class="item-actions">
-                          <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Move earlier</button>
-                          <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Move later</button>
-                          <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Swap stop</button>
+                          <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Earlier</button>
+                          <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Later</button>
+                          <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Swap</button>
                           <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
                         </div>`}
                       </li>
-                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Nothing is placed here yet. Add something for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the route coherent around it.</li>`}
+                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Open slot. Add something for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the route coherent.</li>`}
                   </ul>
                 </section>
               `}).join("")}
