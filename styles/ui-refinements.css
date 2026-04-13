@@ -2952,3 +2952,110 @@ header.hero::before {
   max-width: 58ch;
   color: #6c6056;
 }
+
+@media (max-width: 760px) {
+  .topbar {
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 22px;
+  }
+
+  .brand-lockup {
+    gap: 4px;
+  }
+
+  .brand-mark {
+    font-size: 1.18rem;
+  }
+
+  .brand-tag {
+    font-size: 0.72rem;
+  }
+
+  .topbar-status {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .topbar-status span,
+  .topbar-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-col-left {
+    gap: 16px;
+    padding-top: 8px;
+  }
+
+  .hero-intro h1 {
+    font-size: clamp(2.8rem, 10vw, 3.7rem);
+    line-height: 0.98;
+  }
+
+  .hero-intro .hero-text,
+  .section-intro,
+  .planner-intro {
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .hero-value-grid,
+  .trust-stats-section,
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-anchor,
+  .how-it-works,
+  .faq-section,
+  .planner-card,
+  .site-footer {
+    border-radius: 24px;
+  }
+
+  .planner-card {
+    padding: 24px 18px 20px;
+  }
+
+  .planner-form {
+    gap: 14px;
+  }
+
+  .planner-form-card {
+    padding: 18px 16px 16px;
+    border-radius: 20px;
+  }
+
+  .arrival-departure-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .duration-display {
+    padding: 13px 14px;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  #generate-trip-button,
+  .reset-btn,
+  .save-form-btn {
+    width: 100%;
+  }
+
+  .footer-content {
+    gap: 16px;
+  }
+
+  .footer-facts {
+    grid-template-columns: 1fr;
+  }
+}

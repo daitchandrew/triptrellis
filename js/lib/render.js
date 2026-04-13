@@ -663,7 +663,7 @@ export function renderTripPlan(plan, results) {
                       <span>${escapeHtml(hotelInitials(hotel.name))}</span>
                     </div>
                     <div class="hotel-option-copy">
-                      ${renderHotelMeta(hotel.isPrimary ? "Selected hotel" : "Also strong", hotel.areaLabel, hotel.tierLabel)}
+                      ${renderHotelMeta(hotel.isPrimary ? "Current base" : "Alternative base", hotel.areaLabel, hotel.tierLabel)}
                       <h4>${hotel.name}</h4>
                       <p class="hotel-option-summary">${hotel.summary || hotel.vibe}</p>
                       <p class="footer-note">${hotel.matchLine}</p>
@@ -672,8 +672,8 @@ export function renderTripPlan(plan, results) {
                   </div>
                   <div class="item-actions hotel-select-actions">
                     ${hotel.isPrimary
-                      ? `<span class="hotel-current-pill">Current pick</span>`
-                      : `<button class="mini-button hotel-outline-button" type="button" data-action="select-hotel" data-hotel-name="${escapeAttribute(hotel.name)}">Choose this hotel</button>`
+                      ? `<span class="hotel-current-pill">Current base</span>`
+                      : `<button class="mini-button hotel-outline-button" type="button" data-action="select-hotel" data-hotel-name="${escapeAttribute(hotel.name)}">Recenter here</button>`
                     }
                   </div>
                 </article>

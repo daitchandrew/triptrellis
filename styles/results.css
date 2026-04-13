@@ -427,6 +427,10 @@
   font-weight: 700;
 }
 
+.hotel-option-copy .footer-note {
+  max-width: 36ch;
+}
+
 .hotel-shift-note {
   margin: 0;
   color: #76695e;
@@ -797,6 +801,56 @@
 .saved-card-hotel,
 .library-actions .footer-note {
   line-height: 1.56;
+}
+
+@media (max-width: 760px) {
+  .trip-meta-pills {
+    gap: 8px;
+  }
+
+  .trip-meta-pill {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .trip-at-a-glance,
+  .workspace-stats,
+  .recommendation-grid,
+  .day-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hotel-option-card {
+    padding: 16px;
+  }
+
+  .hotel-option-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hotel-thumb {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hotel-select-actions {
+    padding-top: 10px;
+  }
+
+  .hotel-current-pill,
+  .hotel-outline-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .itinerary-focus-actions,
+  .itinerary-bottom-actions,
+  .saved-actions {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
 }
 
 .saved-trip-card h4,
