@@ -437,6 +437,14 @@
   font-weight: 700;
 }
 
+.hotel-positioning-line {
+  margin: 0;
+  color: #8e644d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
 .hotel-fit-row {
   display: flex;
   flex-wrap: wrap;
@@ -467,6 +475,13 @@
   color: #76695e;
   font-size: 0.82rem;
   line-height: 1.5;
+}
+
+.hotel-tradeoff-line {
+  margin: 0;
+  color: rgba(82, 68, 58, 0.78);
+  font-size: 0.8rem;
+  line-height: 1.56;
 }
 
 .hotel-select-actions {
@@ -871,6 +886,16 @@
 .saved-card-hotel,
 .library-actions .footer-note {
   line-height: 1.56;
+}
+
+.saved-card-date {
+  max-width: 24ch;
+  text-align: right;
+}
+
+.saved-card-hotel {
+  font-weight: 600;
+  color: rgba(69, 58, 50, 0.82);
 }
 
 @media (max-width: 760px) {

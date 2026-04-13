@@ -1,13 +1,13 @@
 // Event handlers
 
-import { getCurrentPlan, setCurrentPlan, loadSavedItineraries, serializePlan, hydratePlan, getDraggedItineraryItem, setDraggedItineraryItem } from "./state.js";
+import { getCurrentPlan, setCurrentPlan, loadSavedItineraries, saveTrips, serializePlan, hydratePlan, getDraggedItineraryItem, setDraggedItineraryItem } from "./state.js";
 import { renderTripPlan, renderEmptyState, openPrintView } from "./render.js?v=triptrellis-upgrades-20260411-004";
 import {
   refreshDayState, getSlotLabel, chooseBestSlotForItem,
   createItineraryItemFromLibrary, dayAlreadyHasItem, buildContextualFitNote,
 } from "./itinerary.js";
 import { scoreDayForItem } from "./scoring.js?v=triptrellis-transit-balanced-20260411-010";
-import { DAY_SLOT_ORDER, STORAGE_KEY } from "./constants.js";
+import { DAY_SLOT_ORDER } from "./constants.js";
 
 // ---- DOM references (resolved lazily via getters to avoid TDZ issues) ----
 function getResults() { return document.querySelector("#results"); }
@@ -29,12 +29,13 @@ export function saveCurrentItinerary() {
   }
   const saved = loadSavedItineraries();
   const payload = serializePlan(currentPlan);
+  const existing = saved.find((trip) => trip.id === payload.id);
   const withoutSame = saved.filter((trip) => trip.id !== payload.id);
   const next = [payload, ...withoutSame].slice(0, 12);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  saveTrips(next);
   currentPlan.savedTrips = next;
   renderTripPlan(currentPlan, getResults());
-  showToast("Itinerary saved to My Trips.", "success");
+  showToast(existing ? "Saved draft updated in My Trips." : "Draft saved to My Trips.", "success");
 }
 
 export function downloadSavedItinerary(saveId) {
@@ -49,11 +50,12 @@ export function downloadSavedItinerary(saveId) {
 
 export function deleteSavedItinerary(saveId) {
   const next = loadSavedItineraries().filter((trip) => trip.id !== saveId);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  saveTrips(next);
   const currentPlan = getCurrentPlan();
   if (currentPlan) {
     currentPlan.savedTrips = next;
     renderTripPlan(currentPlan, getResults());
+    showToast("Saved trip deleted.", "info");
     return;
   }
   renderEmptyState(getResults(), getEmptyStateTemplate());

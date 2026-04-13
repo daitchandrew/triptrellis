@@ -3,6 +3,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { loadCategorySupplementLibrary, loadCityGuide, listSupportedCities } from "../js/data/cities/index.js";
+import { buildTripPlan } from "../js/lib/plan-builder.js";
+import { populateSuggestedItinerary } from "../js/lib/itinerary.js";
+import { hydratePlan, serializePlan } from "../js/lib/state.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -50,8 +53,58 @@ async function main() {
     summaries.push(`${guide.label}: ${hotelCount} hotels, ${coreCount} core picks, ${supplements.length} supplements`);
   }
 
+  const sampleCityKeys = ["seoul", "hoi-an", "paris", "new-york"];
+  for (const cityKey of sampleCityKeys) {
+    const guide = await loadCityGuide(cityKey);
+    const supplements = await loadCategorySupplementLibrary(cityKey);
+    const startDate = new Date("2026-05-01");
+    const endDate = new Date("2026-05-04");
+    const plan = buildTripPlan({
+      cityKey,
+      guide,
+      startDate,
+      endDate,
+      budget: "premium",
+      pace: "balanced",
+      focus: "culture",
+      focuses: ["culture", "food"],
+      notes: "Walkable base, one special dinner, and calmer arrival day.",
+      hotelStatus: "need-hotel",
+      existingHotels: [],
+      supplements,
+    }, () => [], populateSuggestedItinerary);
+
+    if (!plan.hotelBase?.hotelName) {
+      throw new Error(`Trip generation failed to choose a hotel base for "${cityKey}".`);
+    }
+
+    if (!plan.days?.length) {
+      throw new Error(`Trip generation failed to create days for "${cityKey}".`);
+    }
+
+    if (!plan.dontMiss?.length) {
+      throw new Error(`Trip generation failed to create anchors for "${cityKey}".`);
+    }
+
+    const serialized = serializePlan(plan);
+    const hydrated = hydratePlan(serialized);
+
+    if (!serialized.title?.includes(guide.label)) {
+      throw new Error(`Serialized title failed for "${cityKey}".`);
+    }
+
+    if (hydrated.hotelBase?.hotelName !== plan.hotelBase?.hotelName) {
+      throw new Error(`Hydration changed the hotel base for "${cityKey}".`);
+    }
+
+    if ((hydrated.days || []).length !== (plan.days || []).length) {
+      throw new Error(`Hydration changed the day count for "${cityKey}".`);
+    }
+  }
+
   console.log("TripTrellis smoke check passed.");
   summaries.forEach((summary) => console.log(`- ${summary}`));
+  console.log("- Sample generation checks: seoul, hoi-an, paris, new-york");
 }
 
 main().catch((error) => {

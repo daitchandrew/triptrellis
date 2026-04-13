@@ -1,4 +1,4 @@
-import { fallbackCityGuides, fallbackCitySupplements } from './fallback-guides.js';
+import { fallbackCityGuides, fallbackCitySupplements } from './fallback-mea.js';
 
 export const marrakechGuide = fallbackCityGuides["marrakech"];
 export const marrakechSupplements = fallbackCitySupplements["marrakech"];

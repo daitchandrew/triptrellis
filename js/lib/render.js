@@ -382,6 +382,22 @@ function renderGuideNote(item, className = "library-guide-note") {
   return `<p class="${className}"><strong>${escapeHtml(lead)}</strong> ${escapeHtml(note)}</p>`;
 }
 
+function notifyProduct(message, type = "info") {
+  if (globalThis.TripTrellisToast) {
+    globalThis.TripTrellisToast(message, type);
+    return;
+  }
+
+  window.alert(message);
+}
+
+function getSavedTripMetaLine(trip) {
+  return [
+    trip.dateRange,
+    formatSavedTripUpdatedAt(trip),
+  ].filter(Boolean).join(" • ");
+}
+
 function renderSelectedHotelNarrative(plan) {
   const descriptionSentences = splitHotelDescription(plan.hotelBase.longDescription);
   const vibeCopy = plan.hotelBase.vibe || descriptionSentences[0] || "A polished base for this trip.";
@@ -577,17 +593,17 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                     <p class="saved-card-kicker">${escapeHtml(trip.city)} itinerary</p>
                     <h4>${escapeHtml(trip.title)}</h4>
                   </div>
-                  <span class="saved-card-date">${escapeHtml(trip.dateRange)}</span>
+                  <span class="saved-card-date">${escapeHtml(getSavedTripMetaLine(trip))}</span>
                 </div>
                 <p class="saved-card-body">${escapeHtml(getSavedTripDescription(trip))}</p>
                 <div class="saved-card-tags">
                   ${getSavedTripTags(trip).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
                 </div>
                 <div class="saved-card-footer">
-                  <span class="saved-card-hotel">${escapeHtml([trip.hotelName || "Hotel base saved", formatSavedTripUpdatedAt(trip)].filter(Boolean).join(" • "))}</span>
+                  <span class="saved-card-hotel">${escapeHtml(trip.hotelName || "Hotel base saved")}</span>
                   <div class="saved-actions">
                     <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Reopen trip</button>
-                    <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Download</button>
+                    <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Export PDF</button>
                     <button class="mini-button saved-delete-button" type="button" data-action="delete-itinerary" data-save-id="${trip.id}">Delete</button>
                   </div>
                 </div>
@@ -693,9 +709,11 @@ export function renderTripPlan(plan, results) {
                       ${renderHotelMeta(hotel.isPrimary ? "Current base" : "Alternative base", hotel.areaLabel, hotel.tierLabel)}
                       <h4>${hotel.name}</h4>
                       <p class="hotel-option-summary">${hotel.summary || hotel.vibe}</p>
+                      ${hotel.positioningLabel ? `<p class="hotel-positioning-line">${escapeHtml(hotel.positioningLabel)}</p>` : ""}
                       ${renderHotelFitChips(hotel)}
                       <p class="footer-note">${hotel.matchLine}</p>
                       ${renderHotelShiftNote(hotel)}
+                      ${hotel.tradeoffLine ? `<p class="hotel-tradeoff-line">${escapeHtml(hotel.tradeoffLine)}</p>` : ""}
                     </div>
                   </div>
                   <div class="item-actions hotel-select-actions">
@@ -945,7 +963,7 @@ export function renderTripPlan(plan, results) {
 export function buildPrintableItineraryHtml(plan) {
   enforceTravelAnchorsAndBoundaries(plan);
   const guideLabel = plan?.guide?.label || plan?.city || "Saved trip";
-  const hotelName = plan?.hotelBase?.hotelName || plan?.hotelName || "Selected hotel";
+  const hotelName = plan?.hotelBase?.hotelName || plan?.hotelName || "Hotel base";
   const hotelArea = plan?.hotelBase?.areaLabel || "Area not specified";
   const hotelDescription = plan?.hotelBase?.longDescription || plan?.hotelBase?.strategy || plan?.hotelBase?.vibe || "Trip anchor for this itinerary.";
   const bookingWatchlist = Array.isArray(plan?.bookingWatchlist) && plan.bookingWatchlist.length
@@ -962,7 +980,7 @@ export function buildPrintableItineraryHtml(plan) {
         </div>
         <div class="print-day-meta">${escapeHtml(day?.baseNote || `Hotel: ${hotelName}`)}</div>
       </header>
-      <p class="print-day-summary">${escapeHtml(day?.summary || "A paced day built around your selected hotel and trip preferences.")}</p>
+          <p class="print-day-summary">${escapeHtml(day?.summary || "A paced day built around your hotel base and trip preferences.")}</p>
       <div class="print-slot-grid">
         ${getVisibleSlotsForDay(dayIndex, plan).map((slot) => {
           const items = getSlotItems(day, slot);
@@ -1148,7 +1166,7 @@ export function buildPrintableItineraryHtml(plan) {
 
           <section class="print-summary-grid">
             <article class="print-panel">
-              <h2>Selected hotel</h2>
+              <h2>Hotel base</h2>
               <p>${escapeHtml(plan?.hotelBase?.vibe || "This hotel anchors the shape and flow of your itinerary.")}</p>
               <p class="print-submeta">${escapeHtml(hotelDescription)}</p>
             </article>
@@ -1181,18 +1199,19 @@ export function openPrintView(plan) {
     html = buildPrintableItineraryHtml(plan);
   } catch (error) {
     console.error("Unable to build printable itinerary.", error);
-    window.alert("The PDF export hit a problem with this saved itinerary. Please resave the trip and try again.");
+    notifyProduct("The PDF export hit a problem with this trip. Please resave the draft and try again.", "error");
     return;
   }
 
   const printWindow = window.open("", "_blank", "width=1100,height=900");
   if (!printWindow) {
-    window.alert("Please allow pop-ups to download your itinerary as a PDF.");
+    notifyProduct("Please allow pop-ups to export this itinerary as a PDF.", "error");
     return;
   }
 
   printWindow.document.open();
   printWindow.document.write(html);
   printWindow.document.close();
+  printWindow.document.title = `${plan?.guide?.label || "TripTrellis"} itinerary`;
   printWindow.focus();
 }

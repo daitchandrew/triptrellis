@@ -1,4 +1,4 @@
-import { fallbackCityGuides, fallbackCitySupplements } from './fallback-guides.js';
+import { fallbackCityGuides, fallbackCitySupplements } from './fallback-asia.js';
 
 export const hongKongGuide = fallbackCityGuides["hong-kong"];
 export const hongKongSupplements = fallbackCitySupplements["hong-kong"];

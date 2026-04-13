@@ -117,15 +117,10 @@ function warmCityData(cityKey) {
 
   runWhenIdle(async () => {
     try {
-      const module = await getCityDataModule();
-      if (typeof module.preloadCityData === "function") {
-        await module.preloadCityData(normalizedCityKey);
-      } else {
-        await Promise.all([
-          getCityGuide(normalizedCityKey),
-          getCategorySupplementLibrary(normalizedCityKey),
-        ]);
-      }
+      await Promise.all([
+        getCityGuide(normalizedCityKey),
+        getCategorySupplementLibrary(normalizedCityKey),
+      ]);
     } catch (error) {
       console.warn(`TripTrellis could not preload city data for "${normalizedCityKey}".`, error);
       warmedCities.delete(normalizedCityKey);

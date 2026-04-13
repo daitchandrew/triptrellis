@@ -83,6 +83,47 @@ function buildHotelRecommendationMatchLine(hotel, area, guide, budgetProfile, fo
   return `${area.label} gives the trip a steady base with enough flexibility to branch out when another part of the city is worth the detour.`;
 }
 
+function formatHotelBestForLabel(tag) {
+  const labels = {
+    food: "food-led days",
+    nightlife: "late dinners and stronger evenings",
+    wellness: "quieter mornings and reset time",
+    design: "style and design-minded stays",
+    culture: "museum and landmark access",
+    shopping: "shopping-heavy days",
+    value: "better price-to-location balance",
+    luxury: "a more elevated stay",
+    walkability: "walkable day flow",
+    romance: "special-occasion energy",
+  };
+
+  return labels[tag] || String(tag || "").replace(/-/g, " ");
+}
+
+function buildHotelPositioningLabel(hotel, area) {
+  const topFit = (hotel.bestFor || [])[0];
+  if (topFit) {
+    return `Leans toward ${formatHotelBestForLabel(topFit)}`;
+  }
+
+  if (hotel.tier === "luxury") return `Leans toward a polished ${area.label} stay`;
+  if (hotel.tier === "smart") return `Leans toward easier value in ${area.label}`;
+  return `Leans toward a balanced ${area.label} base`;
+}
+
+function buildHotelTradeoffLine(hotel, area, hotelBase) {
+  if (!hotelBase || hotel.name === hotelBase.hotelName) {
+    return `This is the base keeping the current version of the trip most coherent.`;
+  }
+
+  const topFit = (hotel.bestFor || []).find(Boolean);
+  if (topFit) {
+    return `Compared with ${hotelBase.areaLabel}, this shifts the trip more toward ${formatHotelBestForLabel(topFit)} while still keeping ${area.label} workable as a base.`;
+  }
+
+  return `Compared with ${hotelBase.areaLabel}, this makes the trip feel more rooted in ${area.label} and a little less centered on the current routing logic.`;
+}
+
 function getFallbackAreaKey(guide) {
   return Object.keys(guide.hotelAreas || {})[0] || "";
 }
@@ -212,6 +253,7 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
       areaLabel: area.label,
       source: "Your booked hotel",
       vibe,
+      bestFor: knownMatch?.bestFor || [],
       strategy: `Suggestions use ${area.label} as the base, then branch into strong nearby or worthwhile cross-town areas when the trip is better for it.`,
       influence: `Hotel influence: balanced. The planner keeps arrivals, late nights, and loose transitions practical around ${area.label}, but full days are still free to reach the strongest parts of the city.`,
       longDescription: buildSelectedHotelDescription(knownMatch || hotelName, areaKey, area, guide),
@@ -225,11 +267,12 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
     const fallback = (guide.hotels?.[budget] || Object.values(guide.hotels || {}).flat())[0];
     const { areaKey: fallbackAreaKey, area: fallbackArea } = resolveArea(guide, fallback?.area);
     return {
-      hotelName: fallback?.name || "Selected hotel",
+      hotelName: fallback?.name || "Hotel base",
       areaKey: fallbackAreaKey,
       areaLabel: fallbackArea.label,
-      source: "Selected hotel",
+      source: "Planner base",
       vibe: fallback?.vibe || `A practical base in ${fallbackArea.label}.`,
+      bestFor: fallback?.bestFor || [],
       strategy: `${fallback?.name || "This hotel"} is recommended because ${fallbackArea.label} gives the trip a useful base without locking every day to one neighborhood.`,
       influence: `Planner bias: ${fallbackArea.label} anchors arrivals, late nights, and practical routing, while full days can still move farther for stronger city experiences.`,
       longDescription: buildSelectedHotelDescription(fallback, fallbackAreaKey, fallbackArea, guide),
@@ -242,8 +285,9 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
     hotelName: recommended.name,
     areaKey,
     areaLabel: area.label,
-    source: "Selected hotel",
+    source: "Planner base",
     vibe: recommended.vibe,
+    bestFor: recommended.bestFor || [],
     strategy: `${recommended.name} is recommended because ${area.label} gives the trip a useful base without locking every day to one neighborhood.`,
     influence: `Planner bias: ${area.label} anchors arrivals, late nights, and practical routing, while full days can still move farther for stronger city experiences.`,
     longDescription: buildSelectedHotelDescription(recommended, areaKey, area, guide),
@@ -262,10 +306,13 @@ export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budget
       areaLabel: area.label,
       tierLabel: hotel.tier ? hotel.tier.charAt(0).toUpperCase() + hotel.tier.slice(1) : "",
       vibe: hotel.vibe,
+      bestFor: hotel.bestFor || [],
       summary: buildHotelOptionSummary(hotel, area),
       description: buildHotelRecommendationDescription(hotel, area, guide),
       amenitiesLine: buildHotelAmenityLine(hotel, area),
       matchLine,
+      positioningLabel: buildHotelPositioningLabel(hotel, area),
+      tradeoffLine: buildHotelTradeoffLine(hotel, area, hotelBase),
       strategyLine: `${hotel.name} shifts the trip toward ${area.label}, which feels ${area.mood}.`,
       isPrimary: hotel.name === hotelBase.hotelName,
     };
@@ -278,10 +325,13 @@ export function buildHotelRecommendations(rankedHotels, guide, hotelBase, budget
       areaLabel: hotelBase.areaLabel,
       tierLabel: "",
       vibe: hotelBase.vibe,
+      bestFor: [],
       summary: `${hotelBase.areaLabel} base with ${hotelBase.vibe.charAt(0).toLowerCase()}${hotelBase.vibe.slice(1)}`,
       description: hotelBase.longDescription || hotelBase.vibe,
       amenitiesLine: "",
       matchLine: "Your selected hotel",
+      positioningLabel: `Keeping the trip centered on ${hotelBase.areaLabel}`,
+      tradeoffLine: `This keeps the trip exactly where your current hotel already anchors it.`,
       strategyLine: `This keeps the trip centered around ${hotelBase.areaLabel}.`,
       isPrimary: true,
     }, ...recommendations.slice(0, 3)];

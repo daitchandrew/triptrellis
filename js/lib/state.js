@@ -1,6 +1,6 @@
 // Shared mutable state with getter/setter pattern, and persistence functions
 
-import { hashString, formatDate } from "./utils.js";
+import { hashString, formatDate, formatFocus } from "./utils.js";
 import { STORAGE_KEY, LEGACY_STORAGE_KEYS, budgetProfiles } from "./constants.js";
 import { buildTravelAvailabilityRules, enforceTravelAnchorsAndBoundaries, fillMissingFirstDayCoreSlots, migrateDayItems, refreshDayState } from "./itinerary.js";
 
@@ -80,9 +80,15 @@ export function serializePlan(plan) {
     days,
   } = plan;
 
+  const tripTitleParts = [
+    plan.guide.label,
+    hotelBase?.areaLabel,
+    Array.isArray(plan.focuses) && plan.focuses.length ? formatFocus(plan.focuses.slice(0, 2)) : "",
+  ].filter(Boolean);
+
   return {
     id: `${plan.cityKey}-${hashString(`${plan.startDate.toISOString()}-${plan.hotelBase.hotelName}-${plan.notes}`)}`,
-    title: `${plan.guide.label} ${formatDate(plan.startDate)} plan`,
+    title: `${tripTitleParts.join(" • ")} • ${formatDate(plan.startDate)}`,
     city: plan.guide.label,
     days: plan.totalDays,
     dateRange: `${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}`,
