@@ -677,7 +677,7 @@ export const pragueGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A strong neighborhood-first block for seeing the city's newer cafe-and-restaurant energy without Old Town pressure."
+      "description": "A neighborhood-first block for seeing the city's newer café-and-restaurant energy without Old Town pressure."
     },
     {
       "name": "Rudolfinum concert or elegant evening",
@@ -987,7 +987,7 @@ export const pragueGuide = {
       ],
       "cuisine": "Modern Czech",
       "reservation": "Reserve ahead.",
-      "description": "A sharper contemporary Czech bistro for a destination-worthy dinner that still feels informal, energetic, and good value.",
+      "description": "A sharper contemporary Czech bistro for a destination-worthy dinner that still feels informal, energetic, and high-value.",
       "michelinStatus": "Bib Gourmand",
       "guideNote": "Michelin calls out its contemporary Czech cooking, industrial room, and especially strong value for the quality.",
       "guideUrl": "https://guide.michelin.com/ca/en/prague/prague/restaurant/the-eatery"
@@ -1287,7 +1287,7 @@ export const pragueSupplements = [
     "tags": [
       "culture"
     ],
-    "description": "A stronger south-side historic block for ramparts, national memory, and views over the Vltava beyond the Old Town core."
+      "description": "A south-side historic block for ramparts, national memory, and views over the Vltava beyond the Old Town core."
   },
   {
     "categoryLabel": "Cultural Sight",
@@ -1857,7 +1857,7 @@ export const pragueSupplements = [
       "museum",
       "design"
     ],
-    "description": "Prague's strongest large-format contemporary-art stop, especially good when the trip wants something sharper and more current than the historic core."
+      "description": "Prague's defining large-format contemporary-art stop, especially good when the trip wants something sharper and more current than the historic core."
   },
   {
     "categoryLabel": "Museum",
@@ -1867,7 +1867,7 @@ export const pragueSupplements = [
       "museum",
       "design"
     ],
-    "description": "The National Gallery's big modern-art building in Prague 7, useful for Cubism, Czech modernism, and a more spacious museum rhythm."
+      "description": "The National Gallery's big modern-art building in Prague 7, especially good for Cubism, Czech modernism, and a more spacious museum rhythm."
   },
   {
     "categoryLabel": "Cultural Sight",
@@ -1888,7 +1888,7 @@ export const pragueSupplements = [
       "museum",
       "design"
     ],
-    "description": "A polished modern-art venue below the castle where the architecture, café, and exhibitions all feel more current than ceremonial."
+      "description": "A modern-art venue below the castle where the architecture, café, and exhibitions all feel more current than ceremonial."
   },
   {
     "categoryLabel": "Place to Wander",

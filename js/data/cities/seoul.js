@@ -236,7 +236,7 @@ export const seoulGuide = {
         "design",
         "shopping"
       ],
-      "description": "The strongest district for design stores, coffee, and current Seoul energy."
+      "description": "Seoul's clearest district for design stores, coffee, and warehouse-to-flagship neighborhood energy."
     },
     {
       "name": "Ikseon-dong",
@@ -281,7 +281,7 @@ export const seoulGuide = {
         "nightlife",
         "food"
       ],
-      "description": "Useful when the trip wants one sleeker, more polished evening."
+      "description": "Best when the trip wants one sleeker, more polished Seoul evening instead of a scrappier night out."
     },
     {
       "name": "Dongdaemun Design Plaza",
@@ -289,7 +289,7 @@ export const seoulGuide = {
       "tags": [
         "design"
       ],
-      "description": "A good architecture-and-fashion stop if the trip leans modern."
+      "description": "A clean architecture-and-fashion stop if the trip leans modern and city-current."
     },
     {
       "name": "Cheonggyecheon Stream",
@@ -298,7 +298,7 @@ export const seoulGuide = {
         "wellness",
         "design"
       ],
-      "description": "A surprisingly calming central-city walk that works well in the late afternoon or evening."
+      "description": "A surprisingly calming central-city walk that lets Seoul feel slower in the late afternoon or early evening."
     },
     {
       "name": "Bongeunsa Temple",
@@ -363,7 +363,7 @@ export const seoulGuide = {
         "museum",
         "culture"
       ],
-      "description": "A strong city-history museum if you want more context on how Seoul evolved over time."
+      "description": "The clearest city-history museum if you want more context on how Seoul changed from royal capital to modern metropolis."
     }
   ],
   "activities": [
@@ -406,7 +406,7 @@ export const seoulGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "A stylish old-meets-new Seoul block with easy café hopping."
+      "description": "An old-meets-new Seoul block where hanok lanes, cafés, and small shops all make easy sense together."
     },
     {
       "name": "Seongsu design crawl",
@@ -417,7 +417,7 @@ export const seoulGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "The strongest district for boutiques, concept stores, and coffee."
+      "description": "Seoul's sharpest district for boutiques, concept stores, and coffee-led wandering."
     },
     {
       "name": "Seoul Forest and cafe reset",
@@ -488,7 +488,7 @@ export const seoulGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "A cleaner, more polished retail-and-café district."
+      "description": "A cleaner, more polished retail-and-café district when you want Seoul to feel stylish rather than hectic."
     },
     {
       "name": "Apgujeong luxury browsing",
@@ -498,7 +498,7 @@ export const seoulGuide = {
         "shopping"
       ],
       "timing": "afternoon",
-      "description": "Best if your trip wants a more polished and fashion-forward lane."
+      "description": "Best if the trip wants a more polished, fashion-forward lane than the city's louder retail zones."
     },
     {
       "name": "Gangnam dinner and cocktail night",
@@ -509,7 +509,7 @@ export const seoulGuide = {
         "food"
       ],
       "timing": "evening",
-      "description": "A strong polished night out if Seoul should feel sleek rather than scrappy."
+      "description": "A polished night out if Seoul should feel sleek, skyline-facing, and more controlled than chaotic."
     },
     {
       "name": "War Memorial of Korea visit",
@@ -519,7 +519,7 @@ export const seoulGuide = {
         "museum"
       ],
       "timing": "afternoon",
-      "description": "A strong history museum stop if the trip wants a more structured and substantial cultural block."
+      "description": "A history museum stop for when the trip wants a more structured and substantial cultural block."
     },
     {
       "name": "DDP architecture and night photo stop",
@@ -529,7 +529,7 @@ export const seoulGuide = {
         "nightlife"
       ],
       "timing": "evening",
-      "description": "A good modern-city visual anchor if the trip likes architecture."
+      "description": "A modern-city visual anchor if the trip wants architecture, scale, and a cleaner contemporary skyline note."
     },
     {
       "name": "Mangwon Market snack loop",
@@ -639,7 +639,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Fine-dining Korean",
       "reservation": "Reserve well in advance.",
-      "description": "A polished modern Korean choice if the trip leans refined."
+      "description": "A polished modern Korean choice if the trip leans refined without feeling stiff."
     },
     {
       "name": "Mapo Jeong Daepo",
@@ -730,7 +730,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Pastries and coffee",
       "reservation": "Go before peak mid-afternoon.",
-      "description": "A fashion-forward café stop that makes Seongsu feel current."
+      "description": "A fashion-forward café stop that makes Seongsu feel unmistakably current."
     },
     {
       "name": "Grandmother's Recipe",
@@ -773,7 +773,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Bakery and cafe",
       "reservation": "Go earlier in the day.",
-      "description": "A strong café-library option for Seongsu if you want more daytime indulgence."
+      "description": "A café-library stop for Seongsu when you want a more indulgent daytime pause."
     },
     {
       "name": "Soigne",
@@ -784,7 +784,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Modern tasting menu",
       "reservation": "Reserve well ahead.",
-      "description": "A polished Seoul fine-dining choice if you want another real splurge option."
+      "description": "A Seoul fine-dining choice if you want another true splurge with a more polished modern mood."
     },
     {
       "name": "Eatanic Garden",
@@ -818,7 +818,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Creative Korean tasting",
       "reservation": "Reserve ahead.",
-      "description": "A refined tasting-menu choice that feels warm and current rather than overly formal."
+      "description": "A refined tasting-menu choice that feels warm and current rather than ceremonially formal."
     },
     {
       "name": "Kwonsooksoo",
@@ -1020,7 +1020,7 @@ export const seoulSupplements = [
     "categoryLabel": "Food",
     "name": "Majang-dong Hanwoo Alley",
     "area": "gangnam",
-    "description": "A strong Seoul splurge-food move built around high-quality Korean beef near the city's main meat market."
+      "description": "A Seoul splurge-food move built around high-quality Korean beef near the city's main meat market."
   },
   {
     "categoryLabel": "Cultural Sight",
@@ -1068,7 +1068,7 @@ export const seoulSupplements = [
     "categoryLabel": "Shopping",
     "name": "The Hyundai Seoul",
     "area": "gangnam",
-    "description": "A major modern department store if the trip wants one polished shopping block."
+      "description": "A major modern department store if the trip wants one polished shopping block with scale."
   },
   {
     "categoryLabel": "Shopping",
@@ -1104,7 +1104,7 @@ export const seoulSupplements = [
     "categoryLabel": "Shopping",
     "name": "Garosu-gil",
     "area": "gangnam",
-    "description": "A polished tree-lined shopping street with fashion boutiques, beauty stores, and stylish cafés."
+      "description": "A polished tree-lined shopping street with fashion boutiques, beauty stores, and cafés that make Apgujeong feel distinctly Seoul."
   },
   {
     "categoryLabel": "Shopping",
@@ -1158,13 +1158,13 @@ export const seoulSupplements = [
     "categoryLabel": "Museum",
     "name": "National Folk Museum of Korea",
     "area": "insadong",
-    "description": "A useful museum on everyday life, belief, and tradition in Korea, located beside Gyeongbokgung."
+      "description": "A museum on everyday life, belief, and tradition in Korea that pairs naturally with the palace area."
   },
   {
     "categoryLabel": "Museum",
     "name": "National Palace Museum of Korea",
     "area": "insadong",
-    "description": "A strong museum for royal objects, court life, and artifacts from the Joseon dynasty."
+      "description": "A museum for royal objects, court life, and Joseon-dynasty artifacts when the palace context needs more depth."
   },
   {
     "categoryLabel": "Museum",
@@ -1188,7 +1188,7 @@ export const seoulSupplements = [
     "categoryLabel": "Place to Wander",
     "name": "Mangwon neighborhood",
     "area": "hongdae",
-    "description": "A more local-feeling west-side area good for wandering, snacking, and lower-key Seoul rhythms."
+      "description": "A more local-feeling west-side area for wandering, snacking, and lower-key Seoul rhythms."
   },
   {
     "categoryLabel": "Place to Wander",
@@ -1224,7 +1224,7 @@ export const seoulSupplements = [
     "categoryLabel": "Place to Wander",
     "name": "Hannam-dong",
     "area": "gangnam",
-    "description": "An affluent design-led neighborhood with polished cafés, galleries, fashion, and a more curated feel."
+      "description": "An affluent design-led neighborhood with polished cafés, galleries, fashion, and a more curated Seoul feel."
   },
   {
     "categoryLabel": "Nightlife & Entertainment",
@@ -1266,7 +1266,7 @@ export const seoulSupplements = [
     "categoryLabel": "Nightlife & Entertainment",
     "name": "Itaewon rooftop bars",
     "area": "gangnam",
-    "description": "A strong pick for cocktails, skyline views, and a more international night out."
+      "description": "A reliable pick for cocktails, skyline views, and a more international night out."
   },
   {
     "categoryLabel": "Nightlife & Entertainment",
@@ -1362,7 +1362,7 @@ export const seoulSupplements = [
     "categoryLabel": "Other",
     "name": "Dongdaemun Design Plaza plaza walk",
     "area": "myeongdong",
-    "description": "A strong architecture-led stop even if you are not specifically shopping or seeing an exhibition."
+      "description": "An architecture-led stop worth seeing even if you are not specifically shopping or catching an exhibition."
   },
   {
     "categoryLabel": "Other",
