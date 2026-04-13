@@ -2397,10 +2397,12 @@ header.hero::before {
 
 .focus-grid .focus-card,
 .focus-grid .focus-card--stretch {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
   min-height: 182px;
-  padding: 18px 18px 19px;
+  padding: 18px 18px 18px;
   border-radius: 20px;
-  gap: 11px;
+  gap: 8px;
   align-items: center;
   justify-content: flex-start;
 }
@@ -2408,7 +2410,7 @@ header.hero::before {
 .focus-grid .focus-card-icon {
   width: 46px;
   height: 46px;
-  margin: 0 auto 2px;
+  margin: 0 auto;
   border-radius: 15px;
   background: linear-gradient(180deg, rgba(15, 123, 108, 0.08), rgba(15, 123, 108, 0.04));
   border: 1px solid rgba(43, 29, 20, 0.1);
@@ -2424,8 +2426,8 @@ header.hero::before {
 .focus-grid .focus-card-title {
   width: 100%;
   min-height: 1.45rem;
-  margin-top: 0;
-  padding-bottom: 2px;
+  margin: 0;
+  padding: 2px 0 1px;
   justify-content: center;
   text-align: center;
   overflow: visible;
@@ -2442,9 +2444,9 @@ header.hero::before {
   flex: 1;
   width: 100%;
   min-height: 0;
-  font-size: 0.86rem;
-  line-height: 1.54;
-  max-width: 18ch;
+  font-size: 0.84rem;
+  line-height: 1.48;
+  max-width: 17ch;
   margin: 0 auto;
   text-align: center;
   text-wrap: pretty;
