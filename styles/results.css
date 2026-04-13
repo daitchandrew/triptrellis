@@ -159,23 +159,25 @@
 }
 
 .dont-miss-section {
-  padding: 32px;
+  padding: 30px 30px 28px;
 }
 
 .dont-miss-section .section-head {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .dont-miss-intro {
-  max-width: 60ch;
+  max-width: 52ch;
 }
 
 .recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
 .dont-miss-card {
-  padding: 18px 18px 17px;
+  padding: 17px 17px 16px;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 241, 233, 0.78));
   border: 1px solid rgba(43, 29, 20, 0.07);
@@ -183,22 +185,34 @@
 
 .dont-miss-rank-number {
   color: #b5764d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(194, 130, 91, 0.09);
+  border: 1px solid rgba(194, 130, 91, 0.14);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
 }
 
 .dont-miss-card h4 {
   color: #1f1813;
   font-family: "Manrope", sans-serif;
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   letter-spacing: -0.03em;
+  line-height: 1.18;
 }
 
 .dont-miss-card p {
   color: rgba(70, 58, 49, 0.78);
-  line-height: 1.58;
+  line-height: 1.52;
 }
 
 .dont-miss-why {
-  margin-top: 8px;
+  margin-top: auto;
   padding-top: 10px;
   border-top: 1px solid rgba(43, 29, 20, 0.06);
 }
@@ -867,7 +881,7 @@
 }
 
 .dont-miss-card {
-  padding: 19px 19px 18px;
+  padding: 18px 18px 17px;
 }
 
 .itinerary-focus-shell {
@@ -1341,7 +1355,7 @@
 .dont-miss-card {
   display: flex;
   flex-direction: column;
-  min-height: 272px;
+  min-height: 228px;
 }
 
 .dont-miss-card-body {
@@ -1352,22 +1366,32 @@
 }
 
 .dont-miss-card h4 {
-  min-height: 2.3em;
+  min-height: 2.4em;
 }
 
 .dont-miss-card > .dont-miss-rank-number {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .dont-miss-card-body > p {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .dont-miss-why {
-  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+.dont-miss-why p {
+  line-height: 1.42;
+}
+
+@media (max-width: 1180px) {
+  .recommendation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .day-summary,

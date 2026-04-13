@@ -753,8 +753,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head">
         <div>
           <p class="section-kicker">Don't miss</p>
-        <h3 class="section-title">The anchors carrying this draft</h3>
-          <p class="card-subtitle dont-miss-intro">These are the places doing the most work in the current brief before you start tailoring the edges around your own taste and pace.</p>
+        <h3 class="section-title">Anchors shaping this draft</h3>
+          <p class="card-subtitle dont-miss-intro">These are the stops doing the most work in the brief before you start refining around your own pace and taste.</p>
         </div>
       </div>
       <div class="recommendation-grid">
@@ -767,7 +767,7 @@ export function renderTripPlan(plan, results) {
               <p>${item.description}</p>
               <div class="footer-note dont-miss-why">
                 <span class="dont-miss-insight-icon" aria-hidden="true">✦</span>
-                <p><strong>Why it surfaced:</strong> ${renderConciergeWhy(item.why)}</p>
+                <p><strong>Why it fits:</strong> ${renderConciergeWhy(item.why)}</p>
               </div>
             </div>
           </article>
