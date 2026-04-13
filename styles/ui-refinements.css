@@ -273,27 +273,36 @@ header.hero::after {
 }
 
 .library-overlay {
-  padding: 32px;
+  padding: 24px;
 }
 
 .library-overlay-panel {
-  padding: 30px;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 16px;
+  width: min(1180px, calc(100vw - 48px));
+  max-height: calc(100vh - 48px);
+  min-height: min(900px, calc(100vh - 48px));
+  padding: 24px 24px 20px;
   border-radius: 32px;
+  overflow: hidden;
 }
 
 .library-overlay-head {
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  gap: 16px;
 }
 
 .builder-toolbar {
-  margin-bottom: 20px;
-  padding: 18px;
+  margin-bottom: 0;
+  padding: 14px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.74);
 }
 
 .library-results-stack {
-  gap: 30px;
+  min-height: 0;
+  gap: 20px;
 }
 
 .library-result-group {
@@ -331,6 +340,40 @@ header.hero::after {
 
 .section-head {
   align-items: start;
+}
+
+.overlay-results-scroll {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-gutter: stable;
+}
+
+.overlay-results-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.overlay-results-scroll::-webkit-scrollbar-thumb {
+  background: rgba(82, 64, 48, 0.18);
+  border-radius: 999px;
+  border: 2px solid rgba(255, 252, 248, 0.9);
+}
+
+.overlay-results-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overlay-toolbar .builder-controls {
+  gap: 10px;
+}
+
+.overlay-toolbar .workspace-note-row {
+  align-items: center;
+  gap: 10px;
+}
+
+.overlay-toolbar .footer-note {
+  margin: 0;
 }
 
 @media (max-width: 980px) {

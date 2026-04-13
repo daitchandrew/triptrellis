@@ -907,7 +907,7 @@ export function renderTripPlan(plan, results) {
             </div>
             ${renderActiveLibraryFilters(plan, filteredLibraryItems)}
           </div>
-          <div class="library-results-stack">
+          <div class="library-results-stack overlay-results-scroll">
             ${filteredLibraryItems.length ? groupedLibraryItems.map((group) => `
               <section class="library-result-group">
                 <div class="library-result-group-head">
