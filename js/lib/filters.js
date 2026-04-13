@@ -102,11 +102,11 @@ function buildLibraryMatch(item, plan, targetDay) {
   if (targetDay && dayAreas.has(item.area)) {
     routeScore = 4;
     score += routeScore;
-    reasons.push("Keeps the route compact");
+    reasons.push("Keeps the route elegantly compact");
   } else if (nearbyAreas.has(item.area)) {
     routeScore = 2.2;
     score += routeScore;
-    reasons.push("Easy from the current area");
+    reasons.push("Easy from the current route");
   }
 
   const categoryCounts = getPlannedCategoryCounts(targetDay);
@@ -114,7 +114,7 @@ function buildLibraryMatch(item, plan, targetDay) {
   if (targetDay && (categoryCounts[item.categoryLabel] || 0) === 0) {
     varietyScore = 1.6;
     score += varietyScore;
-    reasons.push("Adds a different kind of stop");
+    reasons.push("Adds a different kind of texture");
   } else if ((categoryCounts[item.categoryLabel] || 0) >= 1) {
     score -= 1.6;
   }
@@ -123,14 +123,14 @@ function buildLibraryMatch(item, plan, targetDay) {
   }
 
   if (targetDay && dayFitScore >= 4.5 && routeScore >= 2.2) {
-    reasons.unshift("Best fit for this moment");
+    reasons.unshift("Best fit for this exact moment");
   }
   if (!targetDay && item.area === plan.hotelBase.areaKey) {
     score += 1.8;
     reasons.push("Easy from your base");
   }
   if (!reasons.length) {
-    reasons.push(targetDay ? "Strong alternate for this day" : "Strong city pick");
+    reasons.push(targetDay ? "Strong alternate for this stretch of the day" : "Strong city-wide fit");
   }
 
   return {
@@ -183,23 +183,23 @@ export function groupRankedLibraryItems(items, plan) {
       .map((item) => withGroupReason(item, "Strong alternate"));
 
     return [
-      { key: "best", title: "Best fits right now", subtitle: "The strongest options for this exact part of the day.", items: best },
-      { key: "variety", title: "Adds a different texture", subtitle: "Useful swaps when the day needs more contrast or range.", items: variety },
-      { key: "nearby", title: "Easy to fold into the route", subtitle: "Natural additions that keep the day compact.", items: nearby },
-      { key: "more", title: "More city-wide options", subtitle: "Still strong, but less essential for this exact moment.", items: more },
+      { key: "best", title: "Best fits for this moment", subtitle: "The strongest options for this exact stretch of the day.", items: best },
+      { key: "variety", title: "Adds a different texture", subtitle: "Useful when the day needs more contrast, energy, or range.", items: variety },
+      { key: "nearby", title: "Easy to fold into the route", subtitle: "Natural additions that keep the route elegant and compact.", items: nearby },
+      { key: "more", title: "Broader city options", subtitle: "Still strong, but less essential for this exact moment.", items: more },
     ].filter((group) => group.items.length);
   }
 
   const definitions = hasTargetDay
     ? [
         { key: "best", title: "Best fits for this day", subtitle: "Prioritized by route, timing, and what is already planned." },
-        { key: "variety", title: "Adds a different texture", subtitle: "Useful swaps when the day needs more contrast or range." },
-        { key: "nearby", title: "Easy to fold into the route", subtitle: "Natural additions that keep the day compact." },
-        { key: "more", title: "More city-wide options", subtitle: "Still strong, but less essential for this exact moment." },
+        { key: "variety", title: "Adds a different texture", subtitle: "Useful when the day needs more contrast, energy, or range." },
+        { key: "nearby", title: "Easy to fold into the route", subtitle: "Natural additions that keep the route elegant and compact." },
+        { key: "more", title: "Broader city options", subtitle: "Still strong, but less essential for this exact moment." },
       ]
     : [
-        { key: "nearBase", title: "Easy near your base", subtitle: "Useful when you want a simple add without reshaping the day." },
-        { key: "more", title: "Broader city options", subtitle: "Sorted by overall fit for the whole trip." },
+        { key: "nearBase", title: "Easy near your base", subtitle: "Useful when you want a graceful add without reshaping the day." },
+        { key: "more", title: "Broader city options", subtitle: "Sorted by overall fit for the whole brief." },
       ];
 
   return definitions

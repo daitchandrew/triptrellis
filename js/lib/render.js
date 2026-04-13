@@ -567,7 +567,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                 </div>
               </article>
             `).join("")
-          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can download it later or keep building it."}</p></article>`
+          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can reopen it, download it, or keep refining it later."}</p></article>`
         }
       </div>
     </section>
@@ -611,7 +611,7 @@ export function renderTripPlan(plan, results) {
           <article class="glance-card">
             <span class="glance-label">Hotel area</span>
             <strong>${plan.hotelBase.areaLabel}</strong>
-            <p>${plan.hotelStatus === "have-hotel" ? "Built around your selected stay." : "Currently centered on the strongest-fit hotel area."}</p>
+            <p>${plan.hotelStatus === "have-hotel" ? "Built around your selected stay." : "Currently centered on the hotel area giving the brief its strongest overall shape."}</p>
           </article>
           <article class="glance-card">
             <span class="glance-label">Trip type</span>
@@ -626,7 +626,7 @@ export function renderTripPlan(plan, results) {
           <article class="glance-card">
             <span class="glance-label">Trip brief</span>
             <strong>${plan.totalDays} days</strong>
-            <p>${plan.notes ? "Custom notes are influencing the shape of the plan." : "Add notes to shape neighborhoods, meals, and pacing even more."}</p>
+            <p>${plan.notes ? "Custom notes are already steering the shape of the brief." : "Add notes if you want the neighborhoods, meals, and pacing to lean more specifically your way."}</p>
           </article>
         </div>
         <div class="tag-row">
@@ -893,7 +893,7 @@ export function renderTripPlan(plan, results) {
       <article class="section-card utility-section">
         <p class="section-kicker">Still unresolved</p>
         <h3 class="section-title">Soft edges to keep flexible</h3>
-        <p class="card-subtitle utility-intro">These are the parts most likely to shift once weather, energy, and real reservation timing start to shape the trip.</p>
+        <p class="card-subtitle utility-intro">These are the parts most likely to shift once weather, energy, and real reservation timing start shaping the trip in real life.</p>
         <ul class="list-panel">
           ${plan.unresolved.map((item) => `<li>${item}</li>`).join("")}
         </ul>
@@ -902,7 +902,7 @@ export function renderTripPlan(plan, results) {
         <p class="section-kicker">Hotel impact</p>
         <h3 class="section-title">How the base is steering the trip</h3>
         <p class="card-subtitle">${plan.hotelBase.influence}</p>
-        <p class="footer-note utility-intro">Change the hotel area or mention a different neighborhood in the notes, and the mix of restaurants, districts, and daily flow will change too.</p>
+        <p class="footer-note utility-intro">Change the hotel area or point the notes toward another neighborhood, and the mix of restaurants, districts, and daily flow will shift with it.</p>
       </article>
     </section>
   `;

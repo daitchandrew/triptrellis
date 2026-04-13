@@ -3620,6 +3620,11 @@ button:active { transform: translateY(0); }
   margin-bottom: 6px;
 }
 
+.library-result-group-head .footer-note {
+  max-width: 44ch;
+  line-height: 1.5;
+}
+
 .library-match-line {
   width: fit-content;
   margin-top: 4px !important;
@@ -8457,6 +8462,15 @@ textarea {
   font-size: 0.8rem;
 }
 
+.saved-card-kicker {
+  margin-bottom: 4px;
+  color: #8f6a4d;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .saved-card-body {
   max-width: 56ch;
   font-size: 0.88rem;
@@ -8500,6 +8514,10 @@ textarea {
   background: rgba(247, 239, 227, 0.78);
 }
 
+.saved-card.saved-empty h4 {
+  margin-bottom: 8px;
+}
+
 .library-overlay {
   padding: 24px;
   align-items: start;
@@ -8528,6 +8546,10 @@ textarea {
 
 .library-overlay-head .section-title {
   max-width: 18ch;
+}
+
+.library-overlay-head .card-subtitle {
+  max-width: 56ch;
 }
 
 .builder-toolbar {
@@ -8597,6 +8619,10 @@ textarea {
   color: #665b50;
 }
 
+.library-card h4 + p {
+  margin-top: 2px;
+}
+
 .library-guide-note,
 .item-guide-note {
   padding: 9px 11px;
@@ -8623,6 +8649,10 @@ textarea {
   color: #6b6055;
   font-size: 0.8rem;
   line-height: 1.5;
+}
+
+.workspace-note-row .footer-note {
+  max-width: 60ch;
 }
 
 .library-choose-button {
