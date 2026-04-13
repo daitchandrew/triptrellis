@@ -44,6 +44,7 @@
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid rgba(43, 29, 20, 0.08);
   color: rgba(63, 53, 46, 0.78);
+  font-size: 0.8rem;
 }
 
 .confidence-note {
@@ -78,6 +79,7 @@
   margin: 0;
   color: rgba(70, 58, 49, 0.76);
   line-height: 1.58;
+  max-width: 34ch;
 }
 
 .trip-at-a-glance {
@@ -109,6 +111,7 @@
 .glance-card p {
   color: rgba(71, 60, 52, 0.74);
   line-height: 1.55;
+  max-width: 30ch;
 }
 
 .tag-row {
@@ -142,6 +145,7 @@
 
 .workspace-stat p {
   line-height: 1.58;
+  max-width: 31ch;
 }
 
 .saved-empty-actions {
@@ -190,6 +194,7 @@
 
 .dont-miss-card p {
   color: rgba(70, 58, 49, 0.78);
+  line-height: 1.58;
 }
 
 .dont-miss-why {
@@ -315,6 +320,7 @@
 
 .trip-adjust-card small {
   max-width: 30ch;
+  line-height: 1.55;
 }
 
 @media (max-width: 760px) {
@@ -785,6 +791,12 @@
   min-height: 38px;
   border-radius: 14px;
   font-size: 0.8rem;
+}
+
+.saved-card-body,
+.saved-card-hotel,
+.library-actions .footer-note {
+  line-height: 1.56;
 }
 
 .saved-trip-card h4,

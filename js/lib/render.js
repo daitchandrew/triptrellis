@@ -526,7 +526,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
         <div>
           <p class="section-kicker">Saved itineraries</p>
           <h3 class="section-title">${isFrontPage ? "Reopen a saved trip before building a new one" : "Saved trips worth reopening"}</h3>
-          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, download, or keep refining them without starting over.</p>` : `<p class="card-subtitle">Your saved versions stay organized here so you can reopen, download, or keep iterating without falling back into blank-planner mode.</p>`}
+          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, download, or keep refining them without starting over.</p>` : `<p class="card-subtitle">Your saved versions stay organized here so you can reopen, download, or keep iterating without falling back into a blank planner.</p>`}
         </div>
       </div>
       <div class="saved-search-panel">

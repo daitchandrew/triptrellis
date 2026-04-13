@@ -2849,6 +2849,7 @@ header.hero::before {
 .planner-form-card textarea {
   min-height: 148px;
   padding-top: 16px;
+  line-height: 1.56;
 }
 
 .planner-form-card select:hover,
@@ -2868,6 +2869,10 @@ header.hero::before {
 
 .arrival-departure-grid {
   gap: 12px;
+}
+
+.planner-form-card label {
+  gap: 8px;
 }
 
 .segmented-control {
@@ -2892,6 +2897,8 @@ header.hero::before {
 
 .duration-helper {
   max-width: 44ch;
+  color: #76685f;
+  line-height: 1.56;
 }
 
 .footer-tagline {
@@ -2926,4 +2933,22 @@ header.hero::before {
 .footer-fact-value {
   font-size: 0.92rem;
   line-height: 1.48;
+}
+
+.faq-item {
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.faq-item[open] {
+  background: rgba(255, 252, 248, 0.94);
+  border-color: rgba(15, 123, 108, 0.14);
+}
+
+.faq-question {
+  line-height: 1.42;
+}
+
+.faq-answer p {
+  max-width: 58ch;
+  color: #6c6056;
 }
