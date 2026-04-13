@@ -10867,6 +10867,7 @@ header.hero::before {
 .focus-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .focus-card,
@@ -10875,9 +10876,10 @@ header.hero::before {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  min-height: 176px;
-  padding: 16px 14px 14px;
+  justify-content: flex-start;
+  gap: 12px;
+  min-height: 182px;
+  padding: 18px 16px 16px;
   border-radius: 20px;
   background: rgba(255, 252, 248, 0.84);
   border: 1px solid rgba(43, 29, 20, 0.07);
@@ -10897,26 +10899,26 @@ header.hero::before {
 }
 
 .focus-card-icon {
-  width: 28px;
-  height: 28px;
-  margin: 0 0 2px;
+  width: 38px;
+  height: 38px;
+  margin: 0;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  border-radius: 0;
-  background: transparent;
+  border-radius: 12px;
+  background: rgba(15, 123, 108, 0.08);
   color: #29524d;
 }
 
 .focus-card-icon svg {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 
 .focus-card-title {
-  min-height: auto;
-  height: auto;
+  min-height: 1.2em;
+  height: 1.2em;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -10930,10 +10932,11 @@ header.hero::before {
 }
 
 .focus-card-desc {
+  width: 100%;
   color: #6b6055;
   font-size: 0.8rem;
   line-height: 1.48;
-  min-height: 2.96em;
+  min-height: 3em;
 }
 
 .faq-grid {
