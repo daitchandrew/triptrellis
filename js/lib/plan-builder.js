@@ -54,7 +54,7 @@ function buildHotelOptionSummary(hotel, area) {
     : hotel.tier === "smart"
       ? "A practical, good-value base"
       : "A strong, well-located base";
-  return `${tierLead} in ${area.label} with ${hotel.vibe.charAt(0).toLowerCase()}${hotel.vibe.slice(1)}`;
+  return `${tierLead} in ${area.label}, with ${hotel.vibe.charAt(0).toLowerCase()}${hotel.vibe.slice(1)}`;
 }
 
 function buildHotelRecommendationMatchLine(hotel, area, guide, budgetProfile, focusTheme, noteProfile) {
@@ -77,10 +77,10 @@ function buildHotelRecommendationMatchLine(hotel, area, guide, budgetProfile, fo
   }
 
   if (nearbyLabels.length) {
-    return `${area.label} works well as a base if you want easy reach to ${nearbyLabels.join(" and ")} without overcommitting to long cross-town jumps.`;
+    return `${area.label} works especially well as a base if you want easy reach to ${nearbyLabels.join(" and ")} without overcommitting to long cross-town jumps.`;
   }
 
-  return `${area.label} gives the trip a steady base with enough flexibility to branch out when the city is worth the detour.`;
+  return `${area.label} gives the trip a steady base with enough flexibility to branch out when another part of the city is worth the detour.`;
 }
 
 function getFallbackAreaKey(guide) {
@@ -213,7 +213,7 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
       source: "Your booked hotel",
       vibe,
       strategy: `Suggestions use ${area.label} as the base, then branch into strong nearby or worthwhile cross-town areas when the trip is better for it.`,
-      influence: `Hotel influence: balanced. The planner keeps arrivals, late nights, and loose transitions practical around ${area.label}, but full days can explore the strongest parts of the city.`,
+      influence: `Hotel influence: balanced. The planner keeps arrivals, late nights, and loose transitions practical around ${area.label}, but full days are still free to reach the strongest parts of the city.`,
       longDescription: buildSelectedHotelDescription(knownMatch || hotelName, areaKey, area, guide),
       amenityLine: knownMatch ? buildHotelAmenityLine(knownMatch, area) : "",
     };
@@ -231,7 +231,7 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
       source: "Selected hotel",
       vibe: fallback?.vibe || `A practical base in ${fallbackArea.label}.`,
       strategy: `${fallback?.name || "This hotel"} is recommended because ${fallbackArea.label} gives the trip a useful base without locking every day to one neighborhood.`,
-      influence: `Planner bias: ${fallbackArea.label} anchors arrivals, late nights, and practical routing, while full days can move farther for stronger city experiences.`,
+      influence: `Planner bias: ${fallbackArea.label} anchors arrivals, late nights, and practical routing, while full days can still move farther for stronger city experiences.`,
       longDescription: buildSelectedHotelDescription(fallback, fallbackAreaKey, fallbackArea, guide),
       amenityLine: fallback ? buildHotelAmenityLine(fallback, fallbackArea) : "",
     };
@@ -245,7 +245,7 @@ export function determineHotelBase({ cityKey, guide, budget, focuses, hotelStatu
     source: "Selected hotel",
     vibe: recommended.vibe,
     strategy: `${recommended.name} is recommended because ${area.label} gives the trip a useful base without locking every day to one neighborhood.`,
-    influence: `Planner bias: ${area.label} anchors arrivals, late nights, and practical routing, while full days can move farther for stronger city experiences.`,
+    influence: `Planner bias: ${area.label} anchors arrivals, late nights, and practical routing, while full days can still move farther for stronger city experiences.`,
     longDescription: buildSelectedHotelDescription(recommended, areaKey, area, guide),
     amenityLine: buildHotelAmenityLine(recommended, area),
   };
@@ -297,22 +297,22 @@ export function buildDontMissWhy(item, hotelBase, focusTheme, budgetProfile, not
   if (item.area === hotelBase.areaKey) {
     reasons.push(`right by your base in ${hotelBase.areaLabel}`);
   } else if ((item.tags || []).some((tag) => focusTheme.wantedTags.includes(tag))) {
-    reasons.push(`strong match for a ${formatFocusKey(focusTheme)} trip`);
+    reasons.push(`a strong match for a ${formatFocusKey(focusTheme)} trip`);
   }
 
   if ((item.tags || []).some((tag) => budgetProfile.wantedTags.includes(tag))) {
-    reasons.push(`fits a ${budgetProfile.label.toLowerCase()} plan`);
+    reasons.push(`fits a ${budgetProfile.label.toLowerCase()} brief`);
   }
 
   if ((item.tags || []).some((tag) => noteProfile.tags.includes(tag))) {
-    reasons.push("matches your notes");
+    reasons.push("matches the notes shaping this version");
   }
 
   if (!reasons.length && itemAreaLabel) {
     reasons.push(`easy to work into a ${itemAreaLabel} day`);
   }
 
-  return reasons[0] ? `Why it surfaced: ${reasons[0]}.` : "Why it surfaced: high overall fit for this version of the trip.";
+  return reasons[0] ? `Why it surfaced: ${reasons[0]}.` : "Why it surfaced: high overall fit for this version of the brief.";
 }
 
 export function buildDontMissList({ rankedCantMiss, rankedActivities, rankedRestaurants, guide, hotelBase, focusTheme, budgetProfile, noteProfile }) {
@@ -352,11 +352,11 @@ export function buildDayPlan({ guide, hotelBase, noteProfile, budgetProfile, foc
     title: isArrivalDay ? "Arrival and orientation" : isDepartureDay && totalDays > 1 ? "Departure and final highlights" : `Day ${dayNumber}`,
     dateLabel: formatDate(date),
     flow: `Build this day around one or two connected neighborhoods, using ${hotelBase.areaLabel} as the practical base rather than the whole route.`,
-    baseNote: `Hotel: ${hotelBase.hotelName} in ${hotelBase.areaLabel}.`,
-    summary: `Suggested around a ${budgetProfile.label.toLowerCase()} ${focusTheme.headline.toLowerCase().replace(/\.$/, "")}.`,
+    baseNote: `Base: ${hotelBase.hotelName} in ${hotelBase.areaLabel}.`,
+    summary: `A ${budgetProfile.label.toLowerCase()} day shaped around ${focusTheme.headline.toLowerCase().replace(/\.$/, "")}.`,
     areaKeysUsed: [],
     itineraryItems: [],
-    reservationNote: `Good pacing for a ${paceRule.label.toLowerCase()}`,
+    reservationNote: `Paced well for a ${paceRule.label.toLowerCase()}.`,
   };
 }
 

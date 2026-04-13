@@ -544,7 +544,7 @@ export function buildFlowLine(guide, hotelBase, highlights) {
   if (!unique.length) {
     return `Use ${hotelBase.areaLabel} as the practical base, then choose the strongest area for the day.`;
   }
-  return `Flow the day through ${unique.join(" + ")} so it feels organized while still exploring beyond the hotel orbit.`;
+  return `Flow the day through ${unique.join(" + ")} so it feels coherent while still reaching beyond the hotel orbit.`;
 }
 
 export function buildDaySummary(day, plan) {
@@ -567,23 +567,23 @@ export function buildDaySummary(day, plan) {
     : "";
 
   if (morning && afternoon && dinner) {
-    return [cityTemplateLine, `Start with ${morning}, break for ${lunch || "lunch nearby"}, move into ${afternoon}, and use ${dinner} as the dinner anchor.`, areaLine]
+    return [cityTemplateLine, `Start with ${morning}, break for ${lunch || "lunch nearby"}, move into ${afternoon}, and let ${dinner} carry the evening.`, areaLine]
       .filter(Boolean)
       .join(" ");
   }
 
   const labels = items.slice(0, 3).map((item) => item.title);
   if (labels.length === 1) {
-    return [cityTemplateLine, `${labels[0]} is the anchor for this day, with the rest of the timing left flexible around the strongest nearby additions.`, areaLine]
+    return [cityTemplateLine, `${labels[0]} is the anchor for this day, with the rest left flexible around the strongest nearby additions.`, areaLine]
       .filter(Boolean)
       .join(" ");
   }
   if (labels.length === 2) {
-    return [cityTemplateLine, `Start with ${labels[0]}, then flow into ${labels[1]} so the day feels connected instead of scattered.`, areaLine]
+    return [cityTemplateLine, `Start with ${labels[0]}, then flow into ${labels[1]} so the day feels connected rather than scattered.`, areaLine]
       .filter(Boolean)
       .join(" ");
   }
-  return [cityTemplateLine, `Start with ${labels[0]}, move into ${labels[1]}, and finish with ${labels[2]} for a day that keeps the pace coherent.`, areaLine]
+  return [cityTemplateLine, `Start with ${labels[0]}, move into ${labels[1]}, and finish with ${labels[2]} for a day that keeps the pacing coherent.`, areaLine]
     .filter(Boolean)
     .join(" ");
 }
@@ -606,7 +606,7 @@ export function buildDayReservationNote(day, plan) {
   }
 
   if (bookAheadCount >= 2) {
-    return "This day has a couple of things worth timing in advance, so lock the sequence before the trip.";
+    return "This day has a couple of things worth timing in advance, so it is worth locking the sequence before you go.";
   }
 
   if (lateNightCount && foodCount >= 2) {
@@ -618,7 +618,7 @@ export function buildDayReservationNote(day, plan) {
   }
 
   if (bookAheadCount === 1 && foodCount >= 1) {
-    return "Time the reservation anchor first, then let the rest of the day flex around it.";
+    return "Time the reservation anchor first, then let the rest of the day flex naturally around it.";
   }
 
   if (uniqueAreas.length >= 3) {
@@ -806,13 +806,13 @@ function buildItemFitNote(day, item, plan, slot) {
   }
 
   if (slot === "late-night") {
-    return `Why here: Best saved for later, especially after the day has already settled around ${areaLabel}.`;
+    return `Why here: Best saved for later, once the day has already settled around ${areaLabel}.`;
   }
 
   if (slot === "lunch" && item.categoryLabel === "Food") {
     return previousItem
       ? `Why here: Easy midday stop after ${previousItem.title}, keeping the route practical around ${areaLabel}.`
-      : `Why here: Easy midday anchor before the day gets heavier around ${areaLabel}.`;
+      : `Why here: An easy midday anchor before the day gets heavier around ${areaLabel}.`;
   }
 
   if (previousItem && previousItem.area === item.area) {
@@ -832,7 +832,7 @@ function buildItemFitNote(day, item, plan, slot) {
     reasons.push(`fits naturally with the rest of the ${areaLabel} route`);
   }
   if (slot === "morning") {
-    reasons.push("stronger earlier before the area gets busier");
+    reasons.push("stronger earlier, before the area gets busier");
   }
   const focuses = plan.focuses || [plan.focus];
   if ((focuses.includes("amusement") || focuses.includes("design")) && ["Amusement & Activities", "Nightlife & Entertainment", "Food", "Place to Wander"].includes(item.categoryLabel)) {
