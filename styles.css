@@ -10781,7 +10781,7 @@ header.hero::before {
   max-width: none;
   width: 100%;
   font-size: clamp(2rem, 2.8vw, 2.75rem);
-  line-height: 0.93;
+  line-height: 1.02;
   letter-spacing: -0.06em;
 }
 
@@ -10809,8 +10809,18 @@ header.hero::before {
   margin-bottom: 0;
 }
 
+.planner-intro {
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
 .planner-card {
   padding: 36px;
+}
+
+.card-heading {
+  margin-bottom: 20px;
+  padding-bottom: 0;
 }
 
 .planner-card-banner {
@@ -10963,6 +10973,15 @@ header.hero::before {
 
 .trust-stats-section > .stat-card {
   height: 100%;
+}
+
+.proof-cluster {
+  gap: 10px;
+}
+
+.faq-section {
+  margin-top: 0;
+  padding-top: 20px;
 }
 
 .faq-answer {
