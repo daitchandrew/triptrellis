@@ -2015,3 +2015,258 @@ header.hero::before {
     grid-template-columns: 1fr;
   }
 }
+
+/* Finalized front-page cleanup */
+.hero-col-left {
+  gap: 16px;
+}
+
+.hero-intro {
+  display: grid;
+  gap: 0;
+}
+
+.hero-intro .eyebrow {
+  margin-bottom: 12px;
+}
+
+.hero-intro h1 {
+  max-width: 10.9ch;
+  margin-bottom: 12px;
+  font-size: clamp(2.8rem, 4.2vw, 4rem);
+  line-height: 0.93;
+}
+
+.hero-intro .hero-text {
+  max-width: 56ch;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.64;
+}
+
+.hero-chips {
+  margin-bottom: 14px;
+}
+
+.hero-value-grid {
+  gap: 10px;
+}
+
+.hero-value-card {
+  padding: 0.95rem 1rem 1rem;
+  border-radius: 18px;
+}
+
+.hero-value-kicker {
+  font-size: 0.66rem;
+}
+
+.hero-value-card strong {
+  font-size: 0.88rem;
+  line-height: 1.36;
+}
+
+.dark-anchor {
+  padding: 22px 22px 16px;
+}
+
+.dark-anchor-title {
+  margin-bottom: 2px;
+  max-width: 22ch;
+  line-height: 1.03;
+}
+
+.dark-anchor-item {
+  gap: 16px;
+}
+
+.proof-cluster {
+  gap: 10px;
+}
+
+.trust-stats-section {
+  gap: 10px;
+}
+
+.stat-card {
+  padding: 20px 20px 17px;
+}
+
+.stat-card--intro {
+  grid-column: span 1;
+}
+
+.stat-kicker {
+  margin-bottom: 7px;
+}
+
+.stat-number {
+  margin-bottom: 8px;
+  font-size: clamp(1.65rem, 1.8vw, 2.1rem);
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.how-it-works,
+.faq-section {
+  padding: 22px 24px;
+}
+
+.how-title,
+.faq-title {
+  max-width: 18ch;
+}
+
+.section-heading-block {
+  gap: 8px;
+}
+
+.section-intro {
+  max-width: 54ch;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.how-grid,
+.faq-grid {
+  gap: 10px;
+}
+
+.how-step {
+  padding: 16px 16px 14px;
+}
+
+.how-step-title {
+  margin-bottom: 4px;
+}
+
+.how-step-desc {
+  font-size: 0.87rem;
+}
+
+.faq-section {
+  margin-top: 0;
+}
+
+.faq-question {
+  min-height: 64px;
+  padding: 0 20px;
+  font-size: 0.95rem;
+}
+
+.faq-answer {
+  padding: 0 20px 16px;
+}
+
+.faq-answer p {
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
+.planner-card {
+  padding: 30px 30px 26px;
+}
+
+.card-heading h2 {
+  max-width: 11.6ch;
+  margin-bottom: 10px;
+  font-size: clamp(1.95rem, 2.3vw, 2.45rem);
+}
+
+.planner-intro {
+  max-width: 46ch;
+  font-size: 0.93rem;
+}
+
+.planner-card-banner {
+  margin-bottom: 14px;
+  padding: 13px 14px;
+}
+
+.planner-card-banner strong {
+  max-width: 25ch;
+}
+
+.planner-form {
+  gap: 12px;
+}
+
+.planner-form-card {
+  padding: 18px 18px 16px;
+}
+
+.form-block-head {
+  gap: 5px;
+}
+
+.form-guidance-row span {
+  min-height: 2.15rem;
+  font-size: 0.72rem;
+}
+
+.form-actions {
+  gap: 10px;
+}
+
+.planner-action-note {
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.planner-action-note span {
+  font-size: 0.72rem;
+}
+
+.site-footer {
+  margin-top: 14px;
+  padding: 20px 24px 16px;
+}
+
+.footer-summary {
+  max-width: 46ch;
+  font-size: 0.88rem;
+}
+
+.footer-fact {
+  padding: 12px 12px 10px;
+}
+
+.footer-fact-value {
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1180px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-anchor-title,
+  .card-heading h2,
+  .how-title,
+  .faq-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-intro h1 {
+    max-width: 9.6ch;
+    font-size: clamp(2.55rem, 10vw, 3.4rem);
+  }
+
+  .trust-stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .planner-card,
+  .how-it-works,
+  .faq-section,
+  .dark-anchor,
+  .site-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
