@@ -2464,6 +2464,64 @@ header.hero::before {
   align-items: stretch;
 }
 
+/* Final interests grid polish */
+.focus-grid {
+  gap: 12px;
+}
+
+.focus-grid .focus-card,
+.focus-grid .focus-card--stretch {
+  min-height: 176px;
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.focus-grid .focus-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background: linear-gradient(180deg, rgba(15, 123, 108, 0.08), rgba(15, 123, 108, 0.04));
+  border: 1px solid rgba(43, 29, 20, 0.1);
+}
+
+.focus-grid .focus-card-icon svg {
+  width: 23px;
+  height: 23px;
+  stroke-width: 1.85;
+}
+
+.focus-grid .focus-card-title {
+  width: 100%;
+  min-height: 0;
+  margin-top: 2px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.focus-grid .focus-card-label {
+  font-size: 0.92rem;
+  line-height: 1.08;
+  text-align: left;
+}
+
+.focus-grid .focus-card-desc {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  font-size: 0.86rem;
+  line-height: 1.48;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.focus-grid .focus-card:has(input:checked) .focus-card-icon {
+  background: linear-gradient(180deg, rgba(15, 123, 108, 0.12), rgba(15, 123, 108, 0.06));
+  border-color: rgba(15, 123, 108, 0.24);
+}
+
 #generate-trip-button,
 .reset-btn,
 .save-form-btn {
