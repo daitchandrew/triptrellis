@@ -6,6 +6,7 @@ import { enforceTravelAnchorsAndBoundaries, getSlotLabel, getSlotItems, getVisib
 import { loadSavedItineraries } from "./state.js";
 
 function displayCategoryLabel(category) {
+  if (category === "Amusement & Activities") return "Amusement";
   return category === "Nightlife & Entertainment" ? "Nightlife" : category;
 }
 
@@ -282,14 +283,14 @@ export function getOverlayCopy(mode) {
       kicker: "Replace a stop",
       title: "Replace from the library",
       body: "Ranked by route fit, nearby flow, and contrast.",
-      subtle: "Used places stay hidden so the strongest options stay readable.",
+      subtle: "Used places stay hidden so the best options stay readable.",
     };
   }
 
   return {
     kicker: "Add to itinerary",
     title: "Add from the library",
-    body: "Browse by day fit, nearby areas, and additions that make the trip richer.",
+    body: "Browse by day fit, nearby areas, and richer additions.",
     subtle: "Open from a specific day to place it there. Otherwise TripTrellis routes it where it fits best.",
   };
 }
@@ -927,7 +928,7 @@ export function renderTripPlan(plan, results) {
                       ${item.libraryMatch?.reasons?.length ? `<p class="library-match-line">${item.libraryMatch.reasons.join(" • ")}</p>` : ""}
                       <div class="library-actions">
                         <span class="footer-note library-detail-line">${item.detailLine}</span>
-                        <button class="mini-button library-choose-button" type="button" data-action="choose-library-item" data-item-id="${item.id}">${plan.libraryOverlay.mode === "replace" ? "Replace with this" : "Add to itinerary"}</button>
+                        <button class="mini-button library-choose-button" type="button" data-action="choose-library-item" data-item-id="${item.id}">${plan.libraryOverlay.mode === "replace" ? "Replace stop" : "Add stop"}</button>
                       </div>
                     </article>
                   `).join("")}

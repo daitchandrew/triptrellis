@@ -562,21 +562,33 @@
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  line-height: 1;
 }
 
 .library-result-group-head .footer-note {
   color: #6b6055;
-  font-size: 0.82rem;
-  line-height: 1.42;
+  font-size: 0.78rem;
+  line-height: 1.26;
+  max-width: 44ch;
 }
 
 .library-match-line {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  max-width: 100%;
+  min-height: 24px;
+  padding: 4px 8px;
+  border-radius: 999px;
   background: rgba(56, 79, 61, 0.07);
   border-color: rgba(56, 79, 61, 0.12);
   color: #506652 !important;
+  font-size: 0.74rem;
+  line-height: 1.14;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-self: flex-start;
 }
 
 .library-match-line::before {
