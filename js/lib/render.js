@@ -370,7 +370,7 @@ function renderFitNote(fitNote) {
 
   return `
     <div class="footer-note item-fit-note">
-      <strong>Why here:</strong>
+      <strong>Why it fits:</strong>
       <span>${escapeHtml(note)}</span>
     </div>
   `;
@@ -821,7 +821,7 @@ export function renderTripPlan(plan, results) {
                       <p class="slot-kicker">${getSlotLabel(slot)}</p>
                       <p class="slot-status">${slotItems.length ? `${slotItems.length} ${slotItems.length === 1 ? "stop" : "stops"}` : "Open slot"}</p>
                     </div>
-                    <button class="secondary-button mini-button" type="button" data-action="open-add-slot" data-day-index="${dayIndex}" data-slot="${slot}">Add</button>
+                    <button class="secondary-button mini-button" type="button" data-action="open-add-slot" data-day-index="${dayIndex}" data-slot="${slot}">Add stop</button>
                   </div>
                   <ul class="highlight-list slot-list" data-day-index="${dayIndex}" data-slot="${slot}">
                     ${slotItems.length ? slotItems.map((item) => `
@@ -831,7 +831,7 @@ export function renderTripPlan(plan, results) {
                         data-itinerary-id="${item.id}"
                         data-day-index="${dayIndex}"
                       >
-                        ${item.type === "transit_anchor" ? "" : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Reorder within day</span></div>`}
+                        ${item.type === "transit_anchor" ? `<div class="transit-anchor-head"><span class="transit-anchor-kicker">Transit anchor</span></div>` : `<div class="itinerary-item-topbar"><span class="drag-handle" aria-hidden="true">⋮⋮</span><span class="drag-hint">Move within day</span></div>`}
                         ${renderItemBadges({ categoryLabel: item.categoryLabel || "Stop", priceTier: item.priceTier, areaLabel: item.areaLabel || item.area, michelinStatus: item.michelinStatus }, { rowClass: "lib-tag-row lib-tag-row--itinerary" })}
                         <strong>${item.title}</strong>
                         <p>${item.description}</p>
@@ -839,13 +839,17 @@ export function renderTripPlan(plan, results) {
                         ${renderFitNote(item.fitNote)}
                         ${item.detailLine ? `<p class="footer-note item-detail">${item.detailLine}</p>` : ""}
                         ${item.type === "transit_anchor" ? "" : `<div class="item-actions">
-                          <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Earlier</button>
-                          <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Later</button>
-                          <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Swap</button>
-                          <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
+                          <div class="item-action-pair">
+                            <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Earlier</button>
+                            <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Later</button>
+                          </div>
+                          <div class="item-action-pair item-action-pair--secondary">
+                            <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Swap</button>
+                            <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
+                          </div>
                         </div>`}
                       </li>
-                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Open slot. Add something for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the route coherent.</li>`}
+                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}"><strong>Open slot</strong><span>Add a stop for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the day coherent.</span></li>`}
                   </ul>
                 </section>
               `}).join("")}
