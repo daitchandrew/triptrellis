@@ -321,7 +321,6 @@ function saveFormPreferences() {
     saveBtn.classList.add("saved");
     setTimeout(() => saveBtn.classList.remove("saved"), 2000);
   }
-  showToast("Setup saved to this browser.", "success");
 }
 
 function loadFormPreferences() {
