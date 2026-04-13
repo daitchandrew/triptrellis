@@ -60,19 +60,19 @@ function renderWorkspaceStats(plan) {
   return `
     <div class="workspace-stats">
       <article class="workspace-stat">
-        <span class="workspace-stat-label">Planned stops</span>
+        <span class="workspace-stat-label">Draft depth</span>
         <strong>${totalPlannedStops}</strong>
-        <p>${plan.totalDays} days of suggestions, meals, and flexible add-ons.</p>
+        <p>${plan.totalDays} days of suggestions, meals, and routeable moments already carrying the brief.</p>
       </article>
       <article class="workspace-stat">
-        <span class="workspace-stat-label">Neighborhood coverage</span>
+        <span class="workspace-stat-label">Neighborhood spread</span>
         <strong>${uniqueAreas || 1}</strong>
-        <p>Areas represented across this version of the trip.</p>
+        <p>Areas already represented across this version, before you begin swapping and refining.</p>
       </article>
       <article class="workspace-stat">
-        <span class="workspace-stat-label">City library</span>
+        <span class="workspace-stat-label">Editing library</span>
         <strong>${plan.libraryItems.length}</strong>
-        <p>Places you can add, swap, and drag in without rebuilding.</p>
+        <p>Places you can add, replace, and drag in without rebuilding the whole trip.</p>
       </article>
     </div>
   `;
@@ -591,7 +591,7 @@ export function renderTripPlan(plan, results) {
           <div class="trip-hero-copy">
             <p class="section-kicker">Generated city brief</p>
             <h2 class="trip-title">${plan.guide.label}</h2>
-            <p class="trip-lede">A ${plan.totalDays}-day city brief shaped around ${plan.hotelBase.areaLabel}, with cleaner routing, stronger neighborhood logic, and enough flexibility to keep refining without losing the through-line of the trip.</p>
+            <p class="trip-lede">A ${plan.totalDays}-day brief shaped around ${plan.hotelBase.areaLabel}, with clearer day flow, stronger neighborhood logic, and enough flexibility to keep refining without losing the point of the trip.</p>
             <div class="trip-meta-pills">
               <span class="trip-meta-pill">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}</span>
               <span class="trip-meta-pill">${plan.totalDays} days</span>
@@ -609,12 +609,12 @@ export function renderTripPlan(plan, results) {
         </div>
         <div class="trip-at-a-glance">
           <article class="glance-card">
-            <span class="glance-label">Hotel area</span>
+            <span class="glance-label">Base</span>
             <strong>${plan.hotelBase.areaLabel}</strong>
             <p>${plan.hotelStatus === "have-hotel" ? "Built around your selected stay." : "Currently centered on the hotel area giving the brief its strongest overall shape."}</p>
           </article>
           <article class="glance-card">
-            <span class="glance-label">Trip type</span>
+            <span class="glance-label">Lean</span>
             <strong>${formatFocus(plan.focuses || [plan.focus])}</strong>
             <p>${plan.focusTheme.headline}</p>
           </article>
@@ -624,8 +624,8 @@ export function renderTripPlan(plan, results) {
             <p>${plan.paceRule.summary || "The itinerary is paced to avoid cluster-heavy routing."}</p>
           </article>
           <article class="glance-card">
-            <span class="glance-label">Trip brief</span>
-            <strong>${plan.totalDays} days</strong>
+            <span class="glance-label">Version</span>
+            <strong>${plan.totalDays}-day draft</strong>
             <p>${plan.notes ? "Custom notes are already steering the shape of the brief." : "Add notes if you want the neighborhoods, meals, and pacing to lean more specifically your way."}</p>
           </article>
         </div>
@@ -652,7 +652,7 @@ export function renderTripPlan(plan, results) {
         <article class="info-card hotel-selector-card">
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Alternate bases</p>
-            <h3 class="section-title">Other strong ways to center the trip</h3>
+            <h3 class="section-title">Other strong ways to re-center the trip</h3>
             <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent and routeable.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
@@ -706,8 +706,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head">
         <div>
           <p class="section-kicker">Don't miss</p>
-        <h3 class="section-title">Curated anchors for this version of the trip</h3>
-          <p class="card-subtitle dont-miss-intro">The places doing the most work in this build of the brief before you start tailoring the edges around your own taste.</p>
+        <h3 class="section-title">The anchors carrying this version</h3>
+          <p class="card-subtitle dont-miss-intro">These are the places doing the most work in the current brief before you start tailoring the edges around your own taste.</p>
         </div>
       </div>
       <div class="recommendation-grid">
@@ -732,11 +732,11 @@ export function renderTripPlan(plan, results) {
       <div class="section-head itinerary-focus-head">
         <div>
           <p class="section-kicker">Suggested itinerary</p>
-          <h3 class="section-title">A routeable draft you can keep refining</h3>
-          <p class="card-subtitle">This first version already accounts for your base, pace, and notes. Keep editing until it feels less like a draft and more like a trip you would actually take.</p>
+          <h3 class="section-title">The working itinerary</h3>
+          <p class="card-subtitle">This first pass already accounts for your base, pace, and notes. Keep editing until it feels less like a draft and more like something you would genuinely book.</p>
         </div>
         <div class="itinerary-focus-actions">
-          <button class="secondary-button" data-action="open-library" type="button">Add to itinerary</button>
+          <button class="secondary-button" data-action="open-library" type="button">Add to trip</button>
           <button class="secondary-button" data-action="save-itinerary" type="button">Save itinerary</button>
           <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
         </div>
