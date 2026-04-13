@@ -10679,3 +10679,324 @@ header.hero::before {
     margin-top: 18px;
   }
 }
+
+/* Final landing page mock-up polish */
+:root {
+  --tt-accent: #0f7b6c;
+}
+
+header.hero::before {
+  inset: 76px 0 auto;
+  height: min(680px, 74vh);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720' fill='none'><path d='M72 126C202 86 248 212 356 198C472 182 500 102 630 128C764 154 802 288 940 262C1022 246 1086 194 1138 154' stroke='%230f7b6c' stroke-opacity='.14' stroke-width='2.4' stroke-linecap='round'/><path d='M116 590C228 520 286 430 410 440C512 448 560 560 664 566C792 574 874 452 1014 430C1074 422 1114 432 1152 448' stroke='%23b5764d' stroke-opacity='.14' stroke-width='2.1' stroke-linecap='round'/><path d='M178 238C278 232 314 298 414 306C522 314 590 250 686 246C794 242 834 308 916 334C990 358 1052 354 1108 326' stroke='%230f7b6c' stroke-opacity='.1' stroke-width='1.9' stroke-linecap='round'/><circle cx='356' cy='198' r='5' fill='%230f7b6c' fill-opacity='.16'/><circle cx='630' cy='128' r='5' fill='%23b5764d' fill-opacity='.18'/><circle cx='940' cy='262' r='5' fill='%230f7b6c' fill-opacity='.16'/><circle cx='664' cy='566' r='5' fill='%23b5764d' fill-opacity='.18'/></svg>"),
+    radial-gradient(circle at 18% 24%, rgba(181, 118, 77, 0.038), transparent 22%),
+    radial-gradient(circle at 82% 14%, rgba(15, 123, 108, 0.05), transparent 18%);
+  background-size: cover, auto, auto;
+  background-position: center top, center, center;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.18) 74%, transparent);
+  opacity: 0.92;
+}
+
+.topbar {
+  padding-block: 14px;
+}
+
+.topbar-status {
+  gap: 10px;
+}
+
+.topbar-status span,
+.topbar-link {
+  min-height: 38px;
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.topbar-link {
+  position: relative;
+}
+
+.topbar-link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--tt-accent);
+  opacity: 0.88;
+}
+
+.hero-col-left {
+  gap: 16px;
+}
+
+.hero-intro .eyebrow,
+.section-eyebrow,
+.card-kicker,
+.dark-anchor-kicker {
+  margin-bottom: 10px;
+}
+
+.hero-intro h1 {
+  max-width: 11.2ch;
+  margin-bottom: 12px;
+  font-size: clamp(3.15rem, 5vw, 4.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.072em;
+}
+
+.card-heading h2 {
+  max-width: 12ch;
+  font-size: clamp(2rem, 2.8vw, 2.75rem);
+  line-height: 0.93;
+  letter-spacing: -0.06em;
+}
+
+.dark-anchor-title,
+.coverage-band-title,
+.how-title,
+.faq-title {
+  line-height: 0.95;
+}
+
+.hero-intro .hero-text,
+.section-intro,
+.coverage-band-copy,
+.planner-intro,
+.planner-card-banner p,
+.how-step-desc,
+.faq-answer p,
+.footer-note {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.planner-card {
+  padding: 36px;
+}
+
+.planner-card-banner {
+  margin-bottom: 14px;
+  padding: 14px 16px;
+}
+
+.planner-card-banner strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.98rem;
+}
+
+.planner-form {
+  gap: 14px;
+}
+
+.planner-form-card {
+  padding: 20px 20px 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+}
+
+.form-block {
+  padding: 0;
+  gap: 12px;
+}
+
+.form-block::before {
+  display: none;
+}
+
+.form-block-head {
+  margin-bottom: 2px;
+}
+
+.arrival-departure-grid,
+.detail-grid,
+.focus-grid {
+  gap: 10px;
+}
+
+.focus-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.focus-card {
+  gap: 10px;
+  min-height: 176px;
+  padding: 16px 14px 14px;
+  border-radius: 20px;
+  background: rgba(255, 252, 248, 0.84);
+  border: 1px solid rgba(43, 29, 20, 0.07);
+  box-shadow: none;
+  text-align: center;
+}
+
+.focus-card:hover:not(:has(input:checked)) {
+  background: rgba(255, 252, 248, 0.96);
+  border-color: rgba(15, 123, 108, 0.14);
+}
+
+.focus-card:has(input:checked) {
+  background: rgba(255, 252, 248, 0.98);
+  border-color: rgba(15, 123, 108, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(15, 123, 108, 0.42);
+}
+
+.focus-card-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(15, 123, 108, 0.08);
+  color: #29524d;
+}
+
+.focus-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.focus-card-title {
+  min-height: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.focus-card-label {
+  white-space: nowrap;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.focus-card-desc {
+  color: #6b6055;
+  font-size: 0.8rem;
+  line-height: 1.48;
+}
+
+.faq-grid {
+  gap: 10px;
+}
+
+.faq-item {
+  padding: 0;
+  overflow: hidden;
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 68px;
+  padding: 0 22px;
+}
+
+.faq-question::after {
+  margin-left: auto;
+  margin-right: 0;
+  flex: 0 0 18px;
+  width: 18px;
+  text-align: center;
+  color: var(--tt-accent);
+}
+
+.faq-answer {
+  padding: 0 22px 18px;
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr) minmax(0, 0.85fr);
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.form-actions-secondary {
+  display: contents;
+}
+
+#generate-trip-button,
+.reset-btn,
+.save-form-btn {
+  min-height: 58px;
+  border-radius: 18px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+#generate-trip-button {
+  padding: 0 22px;
+  justify-content: center;
+}
+
+.reset-btn,
+.save-form-btn {
+  padding: 0 18px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(15, 123, 108, 0.18);
+  color: #33534d;
+}
+
+.reset-btn:hover,
+.save-form-btn:hover {
+  background: rgba(15, 123, 108, 0.08);
+  border-color: rgba(15, 123, 108, 0.28);
+  color: #174b43;
+}
+
+@media (max-width: 1180px) {
+  .focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions-secondary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-intro h1 {
+    font-size: clamp(2.7rem, 10vw, 3.6rem);
+    max-width: 9.6ch;
+  }
+
+  .card-heading h2 {
+    max-width: none;
+    font-size: clamp(1.8rem, 7.2vw, 2.35rem);
+  }
+
+  .focus-grid,
+  .form-actions-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-card {
+    min-height: 0;
+  }
+
+  .faq-question {
+    padding: 0 18px;
+  }
+
+  .faq-answer {
+    padding: 0 18px 16px;
+  }
+}
