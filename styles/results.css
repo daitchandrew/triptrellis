@@ -320,7 +320,7 @@
 }
 
 .hotel-selector-intro {
-  max-width: 54ch;
+  max-width: 40ch;
 }
 
 .secondary-button--strong {
@@ -450,7 +450,7 @@
 
 .hotel-option-copy {
   display: grid;
-  gap: 6px;
+  gap: 4px;
 }
 
 .hotel-card-eyebrow {
@@ -459,8 +459,8 @@
 
 .hotel-option-summary {
   color: #3f342c;
-  font-weight: 700;
-  line-height: 1.5;
+  font-weight: 600;
+  line-height: 1.42;
 }
 
 .hotel-positioning-line {
@@ -475,7 +475,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin: 4px 0 2px;
+  margin: 6px 0 0;
 }
 
 .hotel-fit-chip {
@@ -678,7 +678,7 @@
 .selected-hotel-card {
   display: grid;
   align-content: start;
-  gap: 16px;
+  gap: 14px;
 }
 
 .selected-hotel-card .section-title,
@@ -690,8 +690,8 @@
   display: grid;
   place-items: center;
   gap: 6px;
-  min-height: 118px;
-  padding: 18px;
+  min-height: 92px;
+  padding: 14px 18px;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 241, 233, 0.78));
   border: 1px solid rgba(43, 29, 20, 0.07);
@@ -722,7 +722,7 @@
 
 .selected-hotel-copy {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .hotel-story-section {
@@ -859,23 +859,29 @@
 }
 
 .hotel-option-card {
-  padding: 18px;
+  padding: 15px 15px 14px;
   border-radius: 22px;
 }
 
 .hotel-option-layout {
+  grid-template-columns: 44px minmax(0, 1fr);
   align-items: start;
-  gap: 14px;
+  gap: 12px;
 }
 
 .hotel-thumb {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
 }
 
 .hotel-option-copy h4 {
+  margin: 1px 0 0;
   line-height: 1.12;
+}
+
+.hotel-options-stack {
+  gap: 10px;
 }
 
 .dont-miss-section .section-head,
@@ -1347,7 +1353,7 @@
 }
 
 .hotel-option-layout {
-  min-height: 186px;
+  min-height: auto;
 }
 
 .hotel-option-copy h4 {
@@ -1355,7 +1361,7 @@
 }
 
 .hotel-fit-row {
-  min-height: 34px;
+  min-height: 27px;
   align-items: flex-start;
 }
 

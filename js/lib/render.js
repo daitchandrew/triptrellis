@@ -340,8 +340,8 @@ function formatHotelFitLabel(tag) {
   return labels[tag] || `Best for ${String(tag || "").replace(/-/g, " ")}`;
 }
 
-function renderHotelFitChips(hotel) {
-  const fits = (hotel?.bestFor || []).filter(Boolean).slice(0, 3);
+function renderHotelFitChips(hotel, limit = 3) {
+  const fits = (hotel?.bestFor || []).filter(Boolean).slice(0, limit);
   if (!fits.length) return "";
 
   return `
@@ -627,6 +627,7 @@ export function renderTripPlan(plan, results) {
   const filteredLibraryItems = getRankedLibraryItems(plan);
   const groupedLibraryItems = groupRankedLibraryItems(filteredLibraryItems, plan);
   const overlayCopy = getOverlayCopy(plan.libraryOverlay?.mode || "add");
+  const alternateHotels = plan.hotelRecommendations.filter((hotel) => !hotel.isPrimary);
   results.innerHTML = `
     <section class="overview-shell">
       <section class="section-card hero-result">
@@ -694,34 +695,26 @@ export function renderTripPlan(plan, results) {
         </article>
 
         <article class="info-card hotel-selector-card">
-          ${plan.hotelRecommendations.length ? `
+          ${alternateHotels.length ? `
             <p class="section-kicker">Alternate bases</p>
-            <h3 class="section-title">Other strong bases for the trip</h3>
-          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these alternates keep the days coherent and easy to live inside.</p>
-            <div class="stacked-cards">
-              ${plan.hotelRecommendations.map((hotel, index) => `
-                <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
-                  <span class="hotel-option-rank">${String(index + 1).padStart(2, "0")}</span>
+            <h3 class="section-title">Base options</h3>
+          <p class="card-subtitle hotel-selector-intro">Compact alternatives if you want the trip to lean into a different neighborhood.</p>
+            <div class="stacked-cards hotel-options-stack">
+              ${alternateHotels.map((hotel, index) => `
+                <article class="recommendation-card hotel-option-card">
                   <div class="hotel-option-layout">
                     <div class="hotel-thumb" aria-hidden="true">
                       <span>${escapeHtml(hotelInitials(hotel.name))}</span>
                     </div>
                     <div class="hotel-option-copy">
-                      ${renderHotelMeta(hotel.isPrimary ? "Current base" : "Alternative base", hotel.areaLabel, hotel.tierLabel)}
+                      ${renderHotelMeta(`Option ${String(index + 1).padStart(2, "0")}`, hotel.areaLabel, hotel.tierLabel)}
                       <h4>${hotel.name}</h4>
                       <p class="hotel-option-summary">${hotel.summary || hotel.vibe}</p>
-                      ${hotel.positioningLabel ? `<p class="hotel-positioning-line">${escapeHtml(hotel.positioningLabel)}</p>` : ""}
-                      ${renderHotelFitChips(hotel)}
-                      <p class="footer-note">${hotel.matchLine}</p>
-                      ${renderHotelShiftNote(hotel)}
-                      ${hotel.tradeoffLine ? `<p class="hotel-tradeoff-line">${escapeHtml(hotel.tradeoffLine)}</p>` : ""}
+                      ${renderHotelFitChips(hotel, 2)}
                     </div>
                   </div>
                   <div class="item-actions hotel-select-actions">
-                    ${hotel.isPrimary
-                      ? `<span class="hotel-current-pill">Current base</span>`
-                      : `<button class="mini-button hotel-outline-button" type="button" data-action="select-hotel" data-hotel-name="${escapeAttribute(hotel.name)}">Recenter here</button>`
-                    }
+                    <button class="mini-button hotel-outline-button" type="button" data-action="select-hotel" data-hotel-name="${escapeAttribute(hotel.name)}">View base</button>
                   </div>
                 </article>
               `).join("")}
