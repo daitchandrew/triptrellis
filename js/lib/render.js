@@ -589,9 +589,9 @@ export function renderTripPlan(plan, results) {
       <section class="section-card hero-result">
         <div class="trip-header">
           <div class="trip-hero-copy">
-            <p class="section-kicker">Trip brief</p>
+            <p class="section-kicker">Generated city brief</p>
             <h2 class="trip-title">${plan.guide.label}</h2>
-            <p class="trip-lede">A ${plan.totalDays}-day city brief built around ${plan.hotelBase.areaLabel}, with cleaner routing, stronger neighborhood logic, and enough flexibility to keep editing without losing the shape of the trip.</p>
+            <p class="trip-lede">A ${plan.totalDays}-day city brief shaped around ${plan.hotelBase.areaLabel}, with cleaner routing, stronger neighborhood logic, and enough flexibility to keep refining without losing the through-line of the trip.</p>
             <div class="trip-meta-pills">
               <span class="trip-meta-pill">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}</span>
               <span class="trip-meta-pill">${plan.totalDays} days</span>
@@ -601,7 +601,7 @@ export function renderTripPlan(plan, results) {
             </div>
           </div>
           <div class="confidence-note">
-            <p class="confidence-kicker">Why this route works</p>
+            <p class="confidence-kicker">Route logic</p>
             <strong>${plan.focusTheme.headline}</strong>
             <p>${plan.hotelBase.influence}</p>
             <p>${plan.budgetProfile.headline}</p>
@@ -642,18 +642,18 @@ export function renderTripPlan(plan, results) {
 
       <section class="summary-grid compact-summary-grid">
         <article class="info-card selected-hotel-card">
-          <p class="section-kicker">${plan.hotelBase.source}</p>
-          <h3 class="section-title">${plan.hotelBase.hotelName}</h3>
-          <p class="strategy-source">${plan.hotelBase.areaLabel}</p>
+            <p class="section-kicker">${plan.hotelBase.source}</p>
+            <h3 class="section-title">${plan.hotelBase.hotelName}</h3>
+            <p class="strategy-source">${plan.hotelBase.areaLabel}</p>
           ${renderSelectedHotelNarrative(plan)}
           ${plan.notes ? `<p class="notes-callout">${plan.notes}</p>` : ""}
         </article>
 
         <article class="info-card hotel-selector-card">
           ${plan.hotelRecommendations.length ? `
-            <p class="section-kicker">Hotel options</p>
+            <p class="section-kicker">Alternate bases</p>
             <h3 class="section-title">Other strong ways to center the trip</h3>
-            <p class="card-subtitle hotel-selector-intro">If you want the city to revolve around another neighborhood, these are the alternates that still keep the trip coherent.</p>
+            <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent and routeable.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -706,8 +706,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head">
         <div>
           <p class="section-kicker">Don't miss</p>
-          <h3 class="section-title">Curated anchors for this version of the trip</h3>
-          <p class="card-subtitle dont-miss-intro">The places doing the most work in this build of the brief, before you start tailoring the edges around your taste.</p>
+        <h3 class="section-title">Curated anchors for this version of the trip</h3>
+          <p class="card-subtitle dont-miss-intro">The places doing the most work in this build of the brief before you start tailoring the edges around your own taste.</p>
         </div>
       </div>
       <div class="recommendation-grid">
@@ -733,7 +733,7 @@ export function renderTripPlan(plan, results) {
         <div>
           <p class="section-kicker">Suggested itinerary</p>
           <h3 class="section-title">A routeable draft you can keep refining</h3>
-          <p class="card-subtitle">This first version already accounts for your base, pace, and notes. Keep editing until it feels less like a draft and more like your trip.</p>
+          <p class="card-subtitle">This first version already accounts for your base, pace, and notes. Keep editing until it feels less like a draft and more like a trip you would actually take.</p>
         </div>
         <div class="itinerary-focus-actions">
           <button class="secondary-button" data-action="open-library" type="button">Add to itinerary</button>
