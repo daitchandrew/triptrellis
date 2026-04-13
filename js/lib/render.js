@@ -510,10 +510,10 @@ function getSavedTripDescription(trip) {
   const area = trip.payload?.hotelBase?.areaLabel;
   const hotel = trip.hotelName || trip.payload?.hotelBase?.hotelName;
   if (area && hotel) {
-    return `${hotel} anchors this ${area} itinerary, with saved day-by-day edits ready to reopen or download.`;
+    return `${hotel} anchors this ${area} itinerary, with your saved day edits ready to reopen or export.`;
   }
   if (hotel) {
-    return `${hotel} anchors this saved itinerary, with your day-by-day edits ready to reopen or download.`;
+    return `${hotel} anchors this saved itinerary, with your day edits ready to reopen or export.`;
   }
   return "A saved trip brief with your hotel, pacing, and itinerary edits preserved.";
 }
@@ -522,7 +522,7 @@ function formatSavedTripUpdatedAt(trip) {
   if (!trip.updatedAt) return "";
   const date = new Date(trip.updatedAt);
   if (Number.isNaN(date.getTime())) return "";
-  return `Last edited ${date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+  return `Updated ${date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
 }
 
 function renderSavedQuickFilters(savedTrips, activeFilter = "all") {
@@ -569,7 +569,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
         <div>
           <p class="section-kicker">Saved itineraries</p>
           <h3 class="section-title">${isFrontPage ? "Reopen a saved trip before starting over" : "Saved trips worth reopening"}</h3>
-          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, export, or keep refining them without starting over.</p>` : `<p class="card-subtitle">Saved versions stay organized here so you can reopen, export, or keep iterating without dropping back into a blank planner.</p>`}
+          ${isFrontPage ? `<p class="card-subtitle">Saved briefs stay here so you can reopen, export, or keep refining them without starting over.</p>` : `<p class="card-subtitle">Saved drafts stay here so you can reopen, export, or keep refining them without dropping back into a blank planner.</p>`}
         </div>
       </div>
       <div class="saved-search-panel">
@@ -603,8 +603,8 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                 <div class="saved-card-footer">
                   <span class="saved-card-hotel">${escapeHtml(trip.hotelName ? `Base: ${trip.hotelName}` : "Base saved")}</span>
                   <div class="saved-actions">
-                    <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Open draft</button>
-                    <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Export PDF</button>
+                    <button class="mini-button saved-reopen-button" type="button" data-action="reopen-itinerary" data-save-id="${trip.id}">Open</button>
+                    <button class="mini-button saved-download-button" type="button" data-action="download-itinerary" data-save-id="${trip.id}">Export</button>
                     <button class="mini-button saved-delete-button" type="button" data-action="delete-itinerary" data-save-id="${trip.id}">Delete</button>
                   </div>
                 </div>
@@ -634,7 +634,7 @@ export function renderTripPlan(plan, results) {
           <div class="trip-hero-copy">
             <p class="section-kicker">Generated city brief</p>
             <h2 class="trip-title">${plan.guide.label}</h2>
-            <p class="trip-lede">A ${plan.totalDays}-day city brief shaped around ${plan.hotelBase.areaLabel}, with a stronger base, cleaner day flow, and enough flexibility to keep refining without losing the point of the trip.</p>
+            <p class="trip-lede">A ${plan.totalDays}-day brief shaped around ${plan.hotelBase.areaLabel}, with a strong base, cleaner day flow, and room to keep refining without losing the trip’s logic.</p>
             <div class="trip-meta-pills">
               <span class="trip-meta-pill">${formatDate(plan.startDate)} to ${formatDate(plan.endDate)}</span>
               <span class="trip-meta-pill">${plan.totalDays} days</span>
@@ -644,7 +644,7 @@ export function renderTripPlan(plan, results) {
             </div>
           </div>
           <div class="confidence-note">
-            <p class="confidence-kicker">What is steering this version</p>
+            <p class="confidence-kicker">What is steering this draft</p>
             <strong>${plan.focusTheme.headline}</strong>
             <p>${plan.hotelBase.influence}</p>
             <p>${plan.budgetProfile.headline}</p>
@@ -669,7 +669,7 @@ export function renderTripPlan(plan, results) {
           <article class="glance-card">
             <span class="glance-label">Current draft</span>
             <strong>${plan.totalDays}-day draft</strong>
-            <p>${plan.notes ? "Custom notes are already steering the shape of the brief." : "Add notes if you want the neighborhoods, meals, and pacing to lean more specifically in your direction."}</p>
+            <p>${plan.notes ? "Custom notes are already steering the shape of the brief." : "Add notes if you want the neighborhoods, meals, and pacing to lean more clearly in your direction."}</p>
           </article>
         </div>
         <div class="tag-row">
@@ -696,8 +696,8 @@ export function renderTripPlan(plan, results) {
         <article class="info-card hotel-selector-card">
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Alternate bases</p>
-            <h3 class="section-title">Other strong ways to center the trip</h3>
-          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these alternates still keep the days coherent and easy to live inside.</p>
+            <h3 class="section-title">Other strong bases for the trip</h3>
+          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these alternates keep the days coherent and easy to live inside.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -753,8 +753,8 @@ export function renderTripPlan(plan, results) {
       <div class="section-head">
         <div>
           <p class="section-kicker">Don't miss</p>
-        <h3 class="section-title">The anchors carrying this version</h3>
-          <p class="card-subtitle dont-miss-intro">These are the places doing the most work in the current brief before you start tailoring the edges around your own taste, pace, and appetite.</p>
+        <h3 class="section-title">The anchors carrying this draft</h3>
+          <p class="card-subtitle dont-miss-intro">These are the places doing the most work in the current brief before you start tailoring the edges around your own taste and pace.</p>
         </div>
       </div>
       <div class="recommendation-grid">
@@ -778,17 +778,17 @@ export function renderTripPlan(plan, results) {
     <section class="section-card itinerary-focus-shell">
       <div class="section-head itinerary-focus-head">
         <div>
-          <p class="section-kicker">Suggested itinerary</p>
-          <h3 class="section-title">The working itinerary</h3>
-          <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels like something you would genuinely book, save, and share.</p>
+          <p class="section-kicker">Itinerary</p>
+          <h3 class="section-title">The itinerary</h3>
+          <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels like something you would genuinely book and share.</p>
         </div>
         <div class="itinerary-focus-actions">
           <div class="results-action-group">
             <span class="results-action-label">Edit in place</span>
-            <button class="secondary-button secondary-button--strong" data-action="open-library" type="button">Open city library</button>
+            <button class="secondary-button secondary-button--strong" data-action="open-library" type="button">Open library</button>
           </div>
           <div class="results-action-group results-action-group--secondary">
-            <span class="results-action-label">Keep or export</span>
+            <span class="results-action-label">Save or share</span>
             <button class="secondary-button" data-action="save-itinerary" type="button">Save draft</button>
             <button class="secondary-button" data-action="print-current-itinerary" type="button">Export / print</button>
           </div>
@@ -843,9 +843,9 @@ export function renderTripPlan(plan, results) {
                         ${renderFitNote(item.fitNote)}
                         ${item.detailLine ? `<p class="footer-note item-detail">${item.detailLine}</p>` : ""}
                         ${item.type === "transit_anchor" ? "" : `<div class="item-actions">
-                          <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Earlier</button>
-                          <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Later</button>
-                          <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Replace</button>
+                          <button class="mini-button secondary-button" type="button" data-action="move-item-earlier" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Move earlier</button>
+                          <button class="mini-button secondary-button" type="button" data-action="move-item-later" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Move later</button>
+                          <button class="mini-button secondary-button" type="button" data-action="replace-item" data-day-index="${dayIndex}" data-slot="${slot}" data-itinerary-id="${item.id}">Swap stop</button>
                           <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
                         </div>`}
                       </li>
