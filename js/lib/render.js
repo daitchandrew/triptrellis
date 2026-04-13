@@ -567,7 +567,7 @@ export function renderSavedItinerariesSection(savedTrips, isFrontPage = false, o
                 </div>
               </article>
             `).join("")
-          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can reopen it, download it, or keep refining it later."}</p></article>`
+          : `<article class="saved-trip-card saved-card saved-empty"><h4>No saved itineraries found</h4><p>${savedTrips.length ? "Try a different city, focus, hotel, or date search." : "Once you save a trip, it will appear here so you can reopen it, download it, or keep refining it later."}</p><div class="saved-empty-actions"><a class="mini-button" href="#planner-form">Build a new trip</a></div></article>`
         }
       </div>
     </section>
@@ -653,7 +653,7 @@ export function renderTripPlan(plan, results) {
           ${plan.hotelRecommendations.length ? `
             <p class="section-kicker">Alternate bases</p>
             <h3 class="section-title">Other strong ways to re-center the trip</h3>
-            <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent and routeable.</p>
+          <p class="card-subtitle hotel-selector-intro">If you want the trip to lean harder into another neighborhood, these are the alternates that still keep the days coherent, routeable, and easy to keep editing.</p>
             <div class="stacked-cards">
               ${plan.hotelRecommendations.map((hotel, index) => `
                 <article class="recommendation-card hotel-option-card ${hotel.isPrimary ? "is-selected" : ""}">
@@ -733,7 +733,7 @@ export function renderTripPlan(plan, results) {
         <div>
           <p class="section-kicker">Suggested itinerary</p>
           <h3 class="section-title">The working itinerary</h3>
-          <p class="card-subtitle">This first pass already accounts for your base, pace, and notes. Keep editing until it feels less like a draft and more like something you would genuinely book.</p>
+          <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels less like a draft and more like something you would genuinely book.</p>
         </div>
         <div class="itinerary-focus-actions">
           <button class="secondary-button" data-action="open-library" type="button">Add to trip</button>

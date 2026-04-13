@@ -144,6 +144,16 @@
   line-height: 1.58;
 }
 
+.saved-empty-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.saved-empty-actions .mini-button {
+  text-decoration: none;
+}
+
 .dont-miss-section {
   padding: 32px;
 }
@@ -532,4 +542,3 @@
   font-size: 0.84rem;
   line-height: 1.54;
 }
-
