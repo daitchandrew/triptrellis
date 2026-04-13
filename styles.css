@@ -8427,13 +8427,13 @@ textarea {
 }
 
 .saved-grid {
-  gap: 14px;
+  gap: 12px;
 }
 
 .saved-trip-card {
-  gap: 12px;
-  padding: 20px;
-  border-radius: 22px;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 20px;
   background:
     radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.05), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(249, 244, 237, 0.94));
@@ -8441,7 +8441,7 @@ textarea {
 }
 
 .saved-card-head {
-  gap: 12px;
+  gap: 10px;
 }
 
 .saved-card-head h4 {
@@ -8459,13 +8459,13 @@ textarea {
 
 .saved-card-body {
   max-width: 56ch;
-  font-size: 0.9rem;
-  line-height: 1.58;
+  font-size: 0.88rem;
+  line-height: 1.56;
 }
 
 .saved-card-footer {
   align-items: center;
-  padding-top: 10px;
+  padding-top: 9px;
   border-top: 1px solid rgba(43, 29, 20, 0.06);
 }
 
@@ -8480,7 +8480,10 @@ textarea {
 .saved-delete-button {
   min-height: 34px;
   padding: 8px 12px;
-  font-size: 0.79rem;
+  font-size: 0.78rem;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 .saved-reopen-button {
@@ -8498,7 +8501,7 @@ textarea {
 }
 
 .library-overlay {
-  padding: 28px;
+  padding: 24px;
   align-items: start;
 }
 
@@ -8510,8 +8513,8 @@ textarea {
 .library-overlay-panel {
   width: min(1280px, calc(100vw - 56px));
   max-height: calc(100vh - 56px);
-  padding: 28px;
-  border-radius: 28px;
+  padding: 26px;
+  border-radius: 26px;
   background:
     radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.06), transparent 28%),
     linear-gradient(180deg, rgba(255, 253, 249, 0.995), rgba(246, 239, 229, 0.98));
@@ -8520,18 +8523,18 @@ textarea {
 
 .library-overlay-head {
   align-items: start;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .library-overlay-head .section-title {
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 .builder-toolbar {
-  gap: 14px;
-  margin-bottom: 18px;
-  padding: 16px;
-  border-radius: 20px;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 15px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(43, 29, 20, 0.06);
 }
@@ -8553,7 +8556,7 @@ textarea {
 }
 
 .library-result-group {
-  gap: 12px;
+  gap: 10px;
 }
 
 .library-result-group-head {
@@ -8561,13 +8564,13 @@ textarea {
 }
 
 .overlay-library-grid {
-  gap: 14px;
+  gap: 12px;
 }
 
 .library-card {
-  gap: 9px;
-  padding: 20px;
-  border-radius: 22px;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 20px;
   background:
     radial-gradient(circle at 100% 0%, rgba(194, 130, 91, 0.05), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 246, 240, 0.96));
@@ -8589,8 +8592,8 @@ textarea {
 }
 
 .library-card > p {
-  font-size: 0.9rem;
-  line-height: 1.56;
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: #665b50;
 }
 
@@ -8610,7 +8613,7 @@ textarea {
 .library-actions {
   gap: 10px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 6px;
   padding-top: 10px;
   border-top: 1px solid rgba(43, 29, 20, 0.06);
 }
@@ -8618,7 +8621,8 @@ textarea {
 .library-actions .footer-note {
   max-width: 72%;
   color: #6b6055;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 .library-choose-button {
@@ -8636,6 +8640,33 @@ textarea {
   background: #34261d !important;
   color: #fff8ee !important;
   transform: none !important;
+}
+
+.saved-download-button,
+.saved-delete-button,
+.library-overlay-head .secondary-button {
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: rgba(40, 31, 24, 0.82) !important;
+  border: 1px solid rgba(43, 29, 20, 0.08) !important;
+}
+
+.saved-download-button:hover,
+.saved-delete-button:hover,
+.library-overlay-head .secondary-button:hover {
+  background: rgba(245, 240, 233, 0.98) !important;
+  color: rgba(33, 25, 20, 0.92) !important;
+  border-color: rgba(194, 130, 91, 0.16) !important;
+}
+
+.saved-delete-button {
+  color: #8a4b5e !important;
+  border-color: rgba(138, 75, 94, 0.16) !important;
+}
+
+.saved-delete-button:hover {
+  background: rgba(138, 75, 94, 0.06) !important;
+  color: #7b3a4b !important;
+  border-color: rgba(138, 75, 94, 0.22) !important;
 }
 
 @media (max-width: 1180px) {
