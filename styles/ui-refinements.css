@@ -3197,6 +3197,14 @@ header.hero::before {
   max-width: 66ch;
 }
 
+.card-heading h2 {
+  max-width: 11.5ch;
+}
+
+.planner-intro {
+  max-width: 46ch;
+}
+
 .hero-text {
   line-height: 1.66;
 }
@@ -3270,8 +3278,64 @@ header.hero::before {
   white-space: nowrap;
 }
 
+.planner-form-card {
+  overflow: hidden;
+}
+
+.form-block {
+  padding: 18px 18px 17px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(249, 242, 233, 0.56));
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) repeat(2, minmax(0, 0.85fr));
+  gap: 12px;
+  padding: 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+#generate-trip-button,
+.reset-btn,
+.save-form-btn {
+  min-height: 54px;
+  border-radius: 18px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+#generate-trip-button {
+  font-size: 0.95rem;
+  box-shadow: 0 12px 28px rgba(43, 29, 20, 0.12);
+}
+
+.reset-btn,
+.save-form-btn {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(43, 29, 20, 0.08);
+  color: rgba(53, 43, 36, 0.82);
+}
+
+.reset-btn:hover,
+.save-form-btn:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(194, 130, 91, 0.16);
+  color: #2b221c;
+}
+
 .save-form-btn.saved {
   border-color: rgba(15, 123, 108, 0.26);
   background: rgba(15, 123, 108, 0.08);
   color: #174b43;
+}
+
+@media (max-width: 760px) {
+  .form-actions {
+    grid-template-columns: 1fr;
+  }
 }
