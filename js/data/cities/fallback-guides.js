@@ -245,6 +245,66 @@ export const fallbackCityGuides = {
       food("Sarong", "seminyak", ["food"], "Asian-influenced fine dining", "A polished Seminyak dinner when the trip wants one more stronger evening table."),
     ],
   }),
+  "hoi-an": buildGuide({
+    label: "Hoi An",
+    country: "Vietnam",
+    currency: "Use short car rides or bikes for the beach and outer villages, but expect the old town to work best on foot after you arrive.",
+    transferNote: "Hoi An is slower and more compact than a big city, so the trip works best when each day is anchored around one clear mood: old-town texture, riverside evenings, or beach-and-countryside breathing room.",
+    areas: [
+      { key: "old-town", label: "Old Town", mood: "historic, lantern-lit, and deeply walkable", strengths: ["culture", "walkability", "food"] },
+      { key: "an-hoi", label: "An Hoi / Riverside", mood: "lively, scenic, and easy at night", strengths: ["food", "nightlife", "walkability"] },
+      { key: "cam-chau", label: "Cam Chau / Rice Fields", mood: "slower, greener, and boutique-led", strengths: ["wellness", "nature", "design"] },
+      { key: "beach", label: "An Bang / Beach Side", mood: "airy, coastal, and more restorative", strengths: ["nature", "food", "wellness"] },
+    ],
+    hotels: {
+      luxury: [
+        hotel("Four Seasons Resort The Nam Hai", "beach", "A true resort splurge if the trip should feel serene, coastal, and unmistakably special from the moment you arrive.", ["luxury", "nature", "wellness"]),
+        hotel("Anantara Hoi An Resort", "an-hoi", "A polished riverside luxury base that keeps old-town evenings and slower mornings in easy reach.", ["luxury", "food", "walkability"]),
+        hotel("Hotel Royal Hoi An - MGallery", "an-hoi", "A more current-feeling luxury stay with strong river access and easier evening follow-through.", ["luxury", "design", "food"]),
+      ],
+      premium: [
+        hotel("Almanity Hoi An Wellness Resort", "cam-chau", "A calmer premium base if the trip wants spa time, boutique polish, and easier breathing room than the old-town core.", ["wellness", "design", "food"]),
+        hotel("Little Riverside Hoi An", "an-hoi", "A strong premium riverside pick if you want the old town close without sleeping directly in its busiest lanes.", ["food", "walkability", "design"]),
+        hotel("La Siesta Hoi An Resort & Spa", "cam-chau", "A polished lower-friction resort-style base between old town and greener edges.", ["wellness", "food", "value"]),
+        hotel("Palm Garden Beach Resort & Spa", "beach", "A useful beach-side premium option if the trip wants more sea air and less lantern-street intensity.", ["nature", "wellness", "food"]),
+      ],
+      smart: [
+        hotel("Vinh Hung Riverside Resort & Spa", "an-hoi", "A practical riverside base that keeps the evenings easy and the old town very close.", ["walkability", "food", "value"]),
+        hotel("Hoi An Central Hotel", "old-town", "A useful smart-spend base for a trip that wants to stay tightly tied to the historic core.", ["culture", "walkability", "value"]),
+        hotel("RiverTown Hoi An Resort & Spa", "an-hoi", "A stronger-value riverside pick if you want a little more calm without losing easy movement.", ["value", "food", "wellness"]),
+        hotel("Athenia Boutique Hotel & Spa", "cam-chau", "A quieter boutique option if rice fields, café mornings, and lighter pacing matter more than old-town immediacy.", ["design", "wellness", "value"]),
+      ],
+    },
+    cantMiss: [
+      sight("Hoi An Ancient Town lantern lanes", "old-town", ["culture", "walkability"], "The essential core of the trip, where timber houses, temple fronts, shopfront glow, and pedestrian lanes finally make Hoi An feel fully itself."),
+      sight("Japanese Covered Bridge and old-town edge", "old-town", ["culture", "design"], "A compact historic anchor that works best as part of a larger old-town route rather than a stand-alone stop."),
+      sight("Fujian Assembly Hall and merchant-house arc", "old-town", ["culture", "design"], "One of the best ways to understand the Chinese-merchant side of Hoi An's history without losing the flow of the old town."),
+      sight("Thu Bon riverfront at dusk", "an-hoi", ["walkability", "nightlife"], "One of the clearest evening anchors in town, when lanterns, river traffic, and slower pacing all start working together."),
+      sight("An Bang Beach", "beach", ["nature", "wellness"], "The easiest way to give the trip air, horizon, and a cleaner beach reset without committing to a bigger transfer day."),
+      sight("Tra Que vegetable village lanes", "cam-chau", ["nature", "culture", "walkability"], "A quieter countryside counterpoint to the old town, especially good when the trip wants texture beyond heritage streets."),
+      sight("Cam Nam bridge and river-island edge", "an-hoi", ["walkability", "culture"], "A softer local-feeling add-on where the pace drops and the river does more of the work than the monuments."),
+    ],
+    activities: [
+      activity("Old-market breakfast and coffee loop", "old-town", ["food", "walkability"], "A useful way to start the day if you want Hoi An to feel lived-in before the prettiest lanes take over."),
+      activity("Tailor and textile browsing block", "old-town", ["shopping", "design"], "A practical Hoi An move if the trip wants custom clothing or one more craft-led daytime sequence."),
+      activity("Rice-field cycle through Cam Chau", "cam-chau", ["nature", "wellness", "walkability"], "A greener, breezier half-day if the trip needs a break from denser old-town walking."),
+      activity("Basket-boat and coconut-grove detour", "cam-chau", ["nature", "amusement"], "A lighter, more playful add-on if the trip wants one activity that feels a little more hands-on and less heritage-heavy."),
+      activity("Lantern-making workshop", "old-town", ["culture", "design"], "A more interactive old-town stop if the trip wants a keepsake without defaulting to pure shopping."),
+      activity("An Hoi wine bar and riverside evening", "an-hoi", ["nightlife", "food"], "A smart easier night when the trip wants atmosphere without building the whole evening around one formal reservation."),
+      activity("Beach-club lunch and late-afternoon coast pause", "beach", ["food", "nature", "wellness"], "A worthwhile coastal reset if the trip should feel a little slower and more sun-led for one stretch."),
+    ],
+    food: [
+      food("Morning Glory Signature", "old-town", ["food"], "Central Vietnamese classics", "A strong first Hoi An meal when you want one room that covers the region's best-known dishes without feeling generic."),
+      food("Banh Mi Phuong", "old-town", ["food", "value"], "Banh mi", "Still the obvious bánh mì stop, but it works well when folded into a broader old-town wander rather than treated like the whole plan."),
+      food("Nu Eatery", "old-town", ["food"], "Current small plates", "A sharper contemporary dinner if the trip wants something smaller, more current, and less strictly traditional."),
+      food("Cargo Club", "an-hoi", ["cafes", "food"], "Riverside café and pastries", "A useful all-day anchor for breakfast, dessert, or a lighter meal near the river."),
+      food("Mango Mango", "an-hoi", ["food", "nightlife"], "Modern Vietnamese by the river", "A scenic riverside dinner if the evening should feel colorful, easy, and very Hoi An."),
+      food("Nhan's Kitchen", "cam-chau", ["food"], "Vietnamese comfort food", "A lower-friction local favorite if the trip wants one more neighborhood-feeling meal beyond the old-town core."),
+      food("The DeckHouse", "beach", ["food", "nature"], "Beach lunch and cocktails", "A strong beach-side pause when An Bang should feel easy, polished, and unhurried."),
+      food("White Rose Restaurant", "old-town", ["food", "culture"], "White rose dumplings and Hoi An specialties", "A useful central stop if the trip wants one more classic Hoi An dish in the middle of the old town."),
+      food("Reaching Out Tea House", "old-town", ["cafes", "culture"], "Silent tea room", "A calm, specific pause when the old town needs one quieter moment and less pure sightseeing momentum."),
+    ],
+  }),
   "paris": buildGuide({
     label: "Paris",
     country: "France",
@@ -980,6 +1040,20 @@ export const fallbackCityGuides = {
 };
 
 export const fallbackCitySupplements = {
+  "hoi-an": [
+    sight("Precious Heritage Art Gallery Museum", "old-town", ["museum", "culture"], "A worthwhile cultural stop if the trip wants more context on central Vietnam and Hoi An's ethnic communities beyond the prettiest lanes."),
+    activity("Faifo Coffee rooftop pause", "old-town", ["cafes", "walkability"], "A simple old-town rooftop moment when you want lantern roofs and tile patterns to do the work."),
+    activity("Hoi An Memories Show evening", "an-hoi", ["amusement", "culture", "nightlife"], "A bigger entertainment-led night if the trip wants one more theatrical version of Hoi An after dark."),
+    sight("Cua Dai shoreline reset", "beach", ["nature", "wellness"], "A looser beach option when the coast should feel less scene-driven than An Bang."),
+    activity("My Son Sanctuary half-day", "cam-chau", ["culture", "nature"], "A larger heritage excursion if the trip wants one more serious cultural anchor beyond town itself."),
+    food("Madam Khanh - The Banh Mi Queen", "old-town", ["food", "value"], "Banh mi", "A strong alternate bánh mì stop if the trip wants to compare the town's most famous version with another local favorite."),
+    food("Bale Well courtyard dinner", "old-town", ["food", "culture"], "Grilled skewers and wraps", "A fun hands-on dinner when the night should feel local, casual, and memorable."),
+    food("Soul Kitchen", "beach", ["food", "nightlife"], "Beach bar and live-music dinner", "A useful coast-side night when the trip wants a laid-back live-music finish."),
+    food("Phin Coffee", "an-hoi", ["cafes", "food"], "Vietnamese coffee and pastries", "A good slower riverside café stop if the afternoon wants one more easy pause."),
+    activity("Cam Kim bridge cycle and craft-village drift", "cam-chau", ["nature", "culture", "walkability"], "A worthwhile bike-led move if the trip wants one more countryside-feeling detour and less old-town density."),
+    sight("Quan Cong Temple", "old-town", ["culture"], "A compact old-town add-on when the route wants one more heritage interior without becoming museum-heavy."),
+    food("Morning Glory Original", "old-town", ["food"], "Vietnamese and Hoi An specialties", "A strong backup to the flagship room if the trip still wants polished regional cooking in the core."),
+  ],
   "singapore": [
     sight("Jewel Changi Rain Vortex", "marina-bay", ["design", "nature"], "A polished spectacle stop that works surprisingly well on an arrival or departure day, especially when the trip wants one more futuristic Singapore moment."),
     activity("East Coast Park cycle and seafood block", "marina-bay", ["nature", "food"], "A breezier coastal stretch when the trip wants a less vertical, more everyday side of Singapore."),
