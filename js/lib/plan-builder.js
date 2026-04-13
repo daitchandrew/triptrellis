@@ -48,13 +48,31 @@ function buildHotelAmenityLine(hotel, area) {
   return amenityHighlights.length ? `Amenities and strengths: ${joinReadableList(amenityHighlights)}.` : "";
 }
 
+function buildHotelOptionAngle(hotel, area) {
+  const topFit = (hotel.bestFor || []).find(Boolean);
+  const tier = hotel.tier || "premium";
+
+  if (topFit === "food") return `${area.label} base that keeps meals and reservations easy to build around.`;
+  if (topFit === "nightlife") return `${area.label} base that keeps evenings lively without making the whole trip feel frantic.`;
+  if (topFit === "wellness") return `${area.label} base that favors quieter mornings and an easier daily rhythm.`;
+  if (topFit === "design") return `${area.label} base with more style and personality than the usual first-trip stay.`;
+  if (topFit === "culture") return `${area.label} base that makes museums, landmarks, and older quarters easier to reach.`;
+  if (topFit === "shopping") return `${area.label} base that keeps shopping streets and polished central districts close.`;
+  if (topFit === "luxury") return `${area.label} base with a more elevated stay and stronger premium comforts.`;
+  if (topFit === "value") return `${area.label} base with a better price-to-location balance than most central options.`;
+
+  if (tier === "luxury") return `${area.label} base with a polished feel and easier access to the city’s higher-end side.`;
+  if (tier === "smart") return `${area.label} base that keeps the trip efficient without flattening it into a generic stay.`;
+  return `${area.label} base that keeps the trip coherent and easy to live inside.`;
+}
+
 function buildHotelOptionSummary(hotel, area) {
-  const tierLead = hotel.tier === "luxury"
-    ? "A polished luxury base"
-    : hotel.tier === "smart"
-      ? "A practical, good-value base"
-      : "A strong, well-located base";
-  return `${tierLead} in ${area.label}, with ${hotel.vibe.charAt(0).toLowerCase()}${hotel.vibe.slice(1)}`;
+  const vibe = String(hotel.vibe || "").trim();
+  const angle = buildHotelOptionAngle(hotel, area);
+  if (!vibe) return angle;
+
+  const normalizedVibe = vibe.replace(/\.$/, "");
+  return `${normalizedVibe.charAt(0).toUpperCase()}${normalizedVibe.slice(1)} ${angle.charAt(0).toLowerCase()}${angle.slice(1)}`;
 }
 
 function buildHotelRecommendationMatchLine(hotel, area, guide, budgetProfile, focusTheme, noteProfile) {
@@ -225,11 +243,12 @@ export function buildSelectedHotelDescription(hotel, areaKey, area, guide) {
   const strengthsLine = strengths.length
     ? `${area.label} is especially strong for ${strengths.join(", ")}, so ${hotelName} gives the trip a more useful base than a generic central pick.`
     : `${area.label} gives the trip a more coherent neighborhood identity than just staying somewhere random and central.`;
-  const descriptionLine = typeof hotel === "object" && hotel
-    ? buildHotelRecommendationDescription(hotel, area, guide)
-    : "";
+  const introLine = typeof hotel === "object" && hotel
+    ? (hotel.description || hotel.vibe || `A comfortable base in ${area.label}.`)
+    : `A comfortable base in ${area.label}.`;
+  const amenityLine = typeof hotel === "object" && hotel ? buildHotelAmenityLine(hotel, area) : "";
 
-  return [descriptionLine, `${area.mood.charAt(0).toUpperCase() + area.mood.slice(1)} is the mood here.`, walkabilityLine, strengthsLine]
+  return [introLine, walkabilityLine, strengthsLine, amenityLine]
     .filter(Boolean)
     .join(" ");
 }

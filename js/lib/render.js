@@ -402,8 +402,8 @@ function getSavedTripMetaLine(trip) {
 function renderSelectedHotelNarrative(plan) {
   const descriptionSentences = splitHotelDescription(plan.hotelBase.longDescription);
   const vibeCopy = plan.hotelBase.vibe || descriptionSentences[0] || "A polished base for this trip.";
-  const locationCopy = descriptionSentences.slice(1, 3).join(" ") || `${plan.hotelBase.areaLabel} gives this itinerary a coherent base for days, meals, and evenings.`;
-  const whyCopy = [descriptionSentences.slice(3).join(" "), plan.hotelBase.strategy].filter(Boolean).join(" ");
+  const locationCopy = descriptionSentences.slice(1, 2).join(" ") || `${plan.hotelBase.areaLabel} gives this itinerary a coherent base for days, meals, and evenings.`;
+  const whyCopy = [descriptionSentences[2], plan.hotelBase.strategy].filter(Boolean).join(" ");
   const amenities = String(plan.hotelBase.amenityLine || "")
     .replace(/^Amenities and strengths:\s*/i, "")
     .replace(/\.$/, "")
