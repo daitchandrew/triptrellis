@@ -752,3 +752,43 @@
     max-width: none;
   }
 }
+
+/* Supporting actions + empty-state finish */
+.empty-state-shell {
+  padding: 34px 34px 32px;
+  border-radius: 30px;
+}
+
+.empty-state-shell .card-subtitle {
+  max-width: 56ch;
+}
+
+.empty-state-actions {
+  gap: 10px;
+}
+
+.empty-state-primary {
+  min-height: 48px;
+}
+
+.saved-actions,
+.itinerary-focus-actions,
+.itinerary-bottom-actions {
+  gap: 10px;
+}
+
+.saved-reopen-button,
+.saved-download-button,
+.saved-delete-button,
+.itinerary-focus-actions .secondary-button,
+.itinerary-bottom-actions .secondary-button {
+  min-height: 38px;
+  border-radius: 14px;
+  font-size: 0.8rem;
+}
+
+.saved-trip-card h4,
+.library-card h4,
+.hotel-option-copy h4 {
+  text-wrap: pretty;
+}
