@@ -420,9 +420,12 @@ function renderSelectedHotelNarrative(plan) {
   const amenityItems = amenities.length ? amenities : fallbackAmenities;
 
   return `
-    <div class="hotel-hero-image" aria-label="Hotel image placeholder">
-      <span>${escapeHtml(hotelInitials(plan.hotelBase.hotelName))}</span>
-      <small>${escapeHtml(plan.hotelBase.areaLabel)} stay</small>
+    <div class="hotel-base-identity" aria-label="Selected hotel base">
+      <span class="hotel-base-monogram">${escapeHtml(hotelInitials(plan.hotelBase.hotelName))}</span>
+      <div class="hotel-base-copy">
+        <small>${escapeHtml(plan.hotelBase.areaLabel)} stay</small>
+        <strong>Selected base for this draft</strong>
+      </div>
     </div>
 
     <div class="hotel-copy-stack selected-hotel-copy">
@@ -751,7 +754,7 @@ export function renderTripPlan(plan, results) {
         </div>
       </div>
       <div class="recommendation-grid">
-        ${plan.dontMiss.slice(0, 5).map((item, index) => `
+        ${plan.dontMiss.slice(0, 6).map((item, index) => `
           <article class="recommendation-card dont-miss-card" data-category="${item.categoryLabel || ''}">
             <span class="dont-miss-rank-number">${String(index + 1).padStart(2, "0")}</span>
             <div class="dont-miss-card-body">
