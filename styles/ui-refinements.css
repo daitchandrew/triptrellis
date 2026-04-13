@@ -2544,13 +2544,16 @@ header.hero::before {
 .focus-grid .focus-card-desc {
   flex: 1;
   width: 100%;
-  min-height: 0;
+  min-height: calc(1.48em * 3);
   font-size: 0.84rem;
   line-height: 1.48;
   max-width: 17ch;
   margin: 0 auto;
   text-align: center;
-  text-wrap: pretty;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .focus-grid .focus-card:has(input:checked) .focus-card-icon {
@@ -3205,6 +3208,11 @@ header.hero::before {
   max-width: 46ch;
 }
 
+.card-heading {
+  display: grid;
+  gap: 8px;
+}
+
 .hero-text {
   line-height: 1.66;
 }
@@ -3287,6 +3295,27 @@ header.hero::before {
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(249, 242, 233, 0.56));
   border: 1px solid rgba(43, 29, 20, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.form-block-head {
+  display: grid;
+  gap: 5px;
+}
+
+.choice-group > legend {
+  margin-bottom: 10px;
+}
+
+#existing-hotel-fields {
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(43, 29, 20, 0.06);
+  background: rgba(255, 252, 248, 0.72);
+}
+
+.duration-display {
+  border: 1px solid rgba(43, 29, 20, 0.06);
 }
 
 .form-actions {
@@ -3321,6 +3350,14 @@ header.hero::before {
   color: rgba(53, 43, 36, 0.82);
 }
 
+.reset-btn {
+  font-weight: 700;
+}
+
+.save-form-btn {
+  font-weight: 800;
+}
+
 .reset-btn:hover,
 .save-form-btn:hover {
   background: rgba(255, 255, 255, 0.96);
@@ -3337,5 +3374,9 @@ header.hero::before {
 @media (max-width: 760px) {
   .form-actions {
     grid-template-columns: 1fr;
+  }
+
+  .planner-intro {
+    max-width: none;
   }
 }
