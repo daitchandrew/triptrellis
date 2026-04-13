@@ -102,8 +102,8 @@ function renderTripAdjustmentPanel(plan) {
       <div class="trip-adjust-head">
         <div>
           <p class="section-kicker">Refine after review</p>
-          <h3 class="section-title">Want to steer this version?</h3>
-          <p class="card-subtitle">Use these only after you have scanned the itinerary and know what direction it should lean next.</p>
+          <h3 class="section-title">Steer the brief without rebuilding it</h3>
+          <p class="card-subtitle">Use these once you have scanned the itinerary and know what should change next, whether that is pace, neighborhood mix, food weight, or evening tone.</p>
         </div>
         ${history.length ? `<span class="adjust-history-pill">${history.length} refinement${history.length === 1 ? "" : "s"} applied</span>` : ""}
       </div>
@@ -282,7 +282,7 @@ export function getOverlayCopy(mode) {
       kicker: "Replace a stop",
       title: "Choose the strongest alternate for this exact moment",
       body: "These options are ranked by route fit, nearby flow, and contrast, so the replacement feels edited into the day rather than dropped in at random.",
-      subtle: "Already-used places are hidden, and the top groups lean toward options that keep the day coherent while still adding something fresh.",
+      subtle: "Already-used places are hidden, and the strongest groups lean toward options that keep the day coherent while still changing its texture in a meaningful way.",
     };
   }
 
@@ -290,7 +290,7 @@ export function getOverlayCopy(mode) {
     kicker: "Add to itinerary",
     title: "Choose something to add",
     body: "Browse the city library with sorting that favors day fit, nearby areas, and additions that make the trip richer instead of repetitive.",
-    subtle: "Open from a specific day to place the stop there. Otherwise TripTrellis will route it into the most natural part of the itinerary.",
+    subtle: "Open from a specific day to place the stop there. Otherwise TripTrellis will route it into the part of the trip where it feels most natural.",
   };
 }
 
@@ -796,7 +796,7 @@ export function renderTripPlan(plan, results) {
                           <button class="mini-button danger-button" type="button" data-action="remove-item" data-day-index="${dayIndex}" data-itinerary-id="${item.id}">Remove</button>
                         </div>`}
                       </li>
-                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Nothing scheduled yet. Add something for ${getSlotLabel(slot).toLowerCase()}.</li>`}
+                    `).join("") : `<li class="empty-itinerary-slot" data-day-index="${dayIndex}" data-slot="${slot}">Nothing is placed here yet. Add something for ${getSlotLabel(slot).toLowerCase()} and TripTrellis will keep the route coherent around it.</li>`}
                   </ul>
                 </section>
               `}).join("")}
@@ -881,7 +881,7 @@ export function renderTripPlan(plan, results) {
                   `).join("")}
                 </div>
               </section>
-            `).join("") : `<article class="recommendation-card saved-card"><h4>No library items match that filter</h4><p>Try another category or search term.</p></article>`}
+            `).join("") : `<article class="recommendation-card saved-card saved-empty"><h4>No library items match that filter</h4><p>Try another category, search term, or area filter. The strongest results usually come back once the library is a little less constrained.</p></article>`}
           </div>
         </div>
       </section>
