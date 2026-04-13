@@ -324,6 +324,32 @@ function renderHotelShiftNote(hotel) {
   return `<p class="hotel-shift-note">${escapeHtml(hotel.strategyLine)}</p>`;
 }
 
+function formatHotelFitLabel(tag) {
+  const labels = {
+    food: "Best for food",
+    nightlife: "Best for evenings",
+    wellness: "Best for recharge",
+    design: "Best for style",
+    culture: "Best for sights",
+    shopping: "Best for shopping",
+    value: "Best for value",
+    luxury: "Best for luxury",
+  };
+
+  return labels[tag] || `Best for ${String(tag || "").replace(/-/g, " ")}`;
+}
+
+function renderHotelFitChips(hotel) {
+  const fits = (hotel?.bestFor || []).filter(Boolean).slice(0, 3);
+  if (!fits.length) return "";
+
+  return `
+    <div class="hotel-fit-row">
+      ${fits.map((fit) => `<span class="hotel-fit-chip">${escapeHtml(formatHotelFitLabel(fit))}</span>`).join("")}
+    </div>
+  `;
+}
+
 function renderDontMissMeta(categoryLabel, areaLabel) {
   const parts = [categoryLabel, areaLabel].filter(Boolean);
   return `
@@ -645,6 +671,7 @@ export function renderTripPlan(plan, results) {
             <p class="section-kicker">${plan.hotelBase.source}</p>
             <h3 class="section-title">${plan.hotelBase.hotelName}</h3>
             <p class="strategy-source">${plan.hotelBase.areaLabel}</p>
+          ${renderHotelFitChips(plan.hotelBase)}
           ${renderSelectedHotelNarrative(plan)}
           ${plan.notes ? `<p class="notes-callout">${plan.notes}</p>` : ""}
         </article>
@@ -666,6 +693,7 @@ export function renderTripPlan(plan, results) {
                       ${renderHotelMeta(hotel.isPrimary ? "Current base" : "Alternative base", hotel.areaLabel, hotel.tierLabel)}
                       <h4>${hotel.name}</h4>
                       <p class="hotel-option-summary">${hotel.summary || hotel.vibe}</p>
+                      ${renderHotelFitChips(hotel)}
                       <p class="footer-note">${hotel.matchLine}</p>
                       ${renderHotelShiftNote(hotel)}
                     </div>
@@ -736,9 +764,15 @@ export function renderTripPlan(plan, results) {
           <p class="card-subtitle">This first pass already accounts for your base, pace, notes, and city logic. Keep editing until it feels less like a draft and more like something you would genuinely book, save, and share.</p>
         </div>
         <div class="itinerary-focus-actions">
-          <button class="secondary-button" data-action="open-library" type="button">Open library</button>
-          <button class="secondary-button" data-action="save-itinerary" type="button">Save this version</button>
-          <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
+          <div class="results-action-group">
+            <span class="results-action-label">Edit the draft</span>
+            <button class="secondary-button secondary-button--strong" data-action="open-library" type="button">Open city library</button>
+          </div>
+          <div class="results-action-group results-action-group--secondary">
+            <span class="results-action-label">Keep this version</span>
+            <button class="secondary-button" data-action="save-itinerary" type="button">Save draft</button>
+            <button class="secondary-button" data-action="print-current-itinerary" type="button">Export / print</button>
+          </div>
         </div>
       </div>
       <div class="day-grid itinerary-only-grid">
@@ -806,8 +840,8 @@ export function renderTripPlan(plan, results) {
         `).join("")}
       </div>
       <div class="itinerary-bottom-actions">
-        <button class="secondary-button" data-action="save-itinerary" type="button">Save this version</button>
-        <button class="secondary-button" data-action="print-current-itinerary" type="button">Print / share</button>
+        <button class="secondary-button secondary-button--strong" data-action="save-itinerary" type="button">Save draft</button>
+        <button class="secondary-button" data-action="print-current-itinerary" type="button">Export / print</button>
       </div>
     </section>
 

@@ -65,12 +65,22 @@ const THEME_KEY = "triptrellis-theme";
 let cityDataModulePromise = null;
 const cityGuidePromises = new Map();
 const supplementLibraryPromises = new Map();
+const warmedCities = new Set();
 
 async function getCityDataModule() {
   if (!cityDataModulePromise) {
     cityDataModulePromise = import("./data/cities/index.js?v=triptrellis-library-expansion-20260412-004");
   }
   return cityDataModulePromise;
+}
+
+function runWhenIdle(callback, timeout = 900) {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(() => callback(), { timeout });
+    return;
+  }
+
+  window.setTimeout(callback, 180);
 }
 
 async function getCityGuide(cityKey) {
@@ -97,6 +107,30 @@ async function getCategorySupplementLibrary(cityKey) {
   const loadPromise = getCityDataModule().then((module) => module.loadCategorySupplementLibrary(cityKey));
   supplementLibraryPromises.set(cityKey, loadPromise);
   return loadPromise;
+}
+
+function warmCityData(cityKey) {
+  const normalizedCityKey = String(cityKey || "").trim();
+  if (!normalizedCityKey || warmedCities.has(normalizedCityKey)) return;
+
+  warmedCities.add(normalizedCityKey);
+
+  runWhenIdle(async () => {
+    try {
+      const module = await getCityDataModule();
+      if (typeof module.preloadCityData === "function") {
+        await module.preloadCityData(normalizedCityKey);
+      } else {
+        await Promise.all([
+          getCityGuide(normalizedCityKey),
+          getCategorySupplementLibrary(normalizedCityKey),
+        ]);
+      }
+    } catch (error) {
+      console.warn(`TripTrellis could not preload city data for "${normalizedCityKey}".`, error);
+      warmedCities.delete(normalizedCityKey);
+    }
+  });
 }
 
 function showToast(message, type = "info") {
@@ -537,6 +571,7 @@ function initializeApp() {
   updateDurationCounter();
   // Load stored preferences if available
   loadFormPreferences();
+  warmCityData(getForm()?.querySelector("#city")?.value);
 
 }
 
@@ -586,7 +621,11 @@ function bindEvents() {
   
   citySelect?.addEventListener("change", () => {
     saveFormPreferences();
+    warmCityData(citySelect.value);
   });
+  citySelect?.addEventListener("focus", () => {
+    warmCityData(citySelect.value);
+  }, { once: true });
   budgetSelect?.addEventListener("change", () => {
     saveFormPreferences();
   });

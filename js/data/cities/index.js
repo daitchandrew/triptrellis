@@ -210,3 +210,18 @@ export async function loadCategorySupplementLibrary(cityKey) {
   supplementLibraryCache.set(cityKey, loadPromise);
   return loadPromise;
 }
+
+export async function preloadCityData(cityKey) {
+  if (!cityKey) return null;
+
+  const [guide, supplements] = await Promise.all([
+    loadCityGuide(cityKey),
+    loadCategorySupplementLibrary(cityKey),
+  ]);
+
+  return { guide, supplements };
+}
+
+export function listSupportedCities() {
+  return Object.keys(cityModuleMeta);
+}

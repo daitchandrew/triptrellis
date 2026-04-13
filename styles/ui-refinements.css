@@ -1853,6 +1853,40 @@ header.hero::before {
   .footer-facts {
     grid-template-columns: 1fr;
   }
+
+  .hero-grid {
+    gap: 26px;
+  }
+
+  .hero-text,
+  .coverage-band-copy,
+  .faq-answer p,
+  .form-block-note {
+    max-width: none;
+  }
+
+  .topbar-link {
+    min-height: 38px;
+  }
+
+  .card-heading h2 {
+    font-size: clamp(1.95rem, 8vw, 2.4rem);
+    line-height: 1.03;
+  }
+
+  .form-block-head {
+    gap: 6px;
+  }
+
+  .field-label {
+    margin-bottom: 8px;
+  }
+
+  .section-intro,
+  .planner-intro,
+  .form-block-note {
+    text-wrap: pretty;
+  }
 }
 
 /* Finalized front-page cleanup */
