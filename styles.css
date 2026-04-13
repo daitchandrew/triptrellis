@@ -10751,10 +10751,16 @@ header.hero::before {
 }
 
 .card-heading h2 {
-  max-width: 12ch;
+  max-width: none;
+  width: 100%;
   font-size: clamp(2rem, 2.8vw, 2.75rem);
   line-height: 0.93;
   letter-spacing: -0.06em;
+}
+
+.heading-full-width {
+  max-width: none !important;
+  width: 100%;
 }
 
 .dark-anchor-title,
@@ -10826,7 +10832,8 @@ header.hero::before {
   align-items: stretch;
 }
 
-.focus-card {
+.focus-card,
+.focus-card--stretch {
   height: 100%;
   gap: 10px;
   min-height: 176px;
