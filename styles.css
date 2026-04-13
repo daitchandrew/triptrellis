@@ -8862,31 +8862,6 @@ textarea {
   gap: 9px;
 }
 
-.focus-card {
-  position: relative;
-}
-
-.focus-card::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(43, 29, 20, 0.12);
-  background: rgba(255, 255, 255, 0.78);
-  opacity: 0;
-  transition: opacity 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
-}
-
-.focus-card:has(input:checked)::after {
-  opacity: 1;
-  background: #1c1a17;
-  border-color: #1c1a17;
-  box-shadow: inset 0 0 0 4px rgba(255, 248, 238, 0.96);
-}
-
 .form-actions {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto auto;
