@@ -10337,18 +10337,39 @@ header.hero::after,
 
 .trust-stats-section {
   gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .stat-card {
-  padding: 18px 18px 16px;
+  padding: 20px 20px 18px;
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.94), rgba(248, 241, 232, 0.92));
-  border: 1px solid rgba(38, 24, 14, 0.08);
+  background: linear-gradient(180deg, rgba(33, 26, 21, 0.96), rgba(46, 37, 30, 0.94));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-kicker {
+  margin: 0 0 8px;
+  color: rgba(241, 231, 220, 0.62);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .stat-number {
+  margin: 0 0 8px;
+  color: #fffaf2;
+  font-size: clamp(1.8rem, 2vw, 2.35rem);
+  font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 1.02;
+}
+
+.stat-label {
+  color: rgba(236, 229, 221, 0.7);
+  font-size: 0.84rem;
+  line-height: 1.55;
 }
 
 .coverage-band,
@@ -10380,6 +10401,11 @@ header.hero::after,
   background: rgba(255, 252, 248, 0.86);
   border: 1px solid rgba(38, 24, 14, 0.08);
   box-shadow: none;
+}
+
+.faq-section {
+  margin-top: 0;
+  padding-top: 22px;
 }
 
 .how-grid,
@@ -10414,21 +10440,22 @@ header.hero::after,
 }
 
 .card-heading {
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   padding-bottom: 12px;
 }
 
 .card-heading h2 {
   font-size: clamp(2rem, 2.45vw, 2.55rem);
-  line-height: 0.96;
+  line-height: 1.02;
   letter-spacing: -0.065em;
   max-width: none;
 }
 
 .planner-intro {
   max-width: 58ch;
-  margin-top: 12px;
+  margin-top: 0;
   font-size: 0.95rem;
+  line-height: 1.58;
 }
 
 .planner-card-banner {
@@ -10835,6 +10862,9 @@ header.hero::before {
 .focus-card,
 .focus-card--stretch {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
   min-height: 176px;
   padding: 16px 14px 14px;
@@ -10842,7 +10872,7 @@ header.hero::before {
   background: rgba(255, 252, 248, 0.84);
   border: 1px solid rgba(43, 29, 20, 0.07);
   box-shadow: none;
-  text-align: center;
+  text-align: left;
 }
 
 .focus-card:hover:not(:has(input:checked)) {
@@ -10857,19 +10887,21 @@ header.hero::before {
 }
 
 .focus-card-icon {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto;
+  width: 28px;
+  height: 28px;
+  margin: 0 0 2px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
-  background: rgba(15, 123, 108, 0.08);
+  flex-shrink: 0;
+  border-radius: 0;
+  background: transparent;
   color: #29524d;
 }
 
 .focus-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 .focus-card-title {
@@ -10877,7 +10909,7 @@ header.hero::before {
   height: auto;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .focus-card-label {
@@ -10979,6 +11011,10 @@ header.hero::before {
 }
 
 @media (max-width: 1180px) {
+  .trust-stats-section {
+    grid-template-columns: 1fr;
+  }
+
   .focus-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
