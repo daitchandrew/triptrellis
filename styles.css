@@ -10790,17 +10790,30 @@ header.hero::before {
 }
 
 .planner-card {
-  padding: 36px;
+  padding: 34px 34px 30px;
 }
 
 .card-heading {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   padding-bottom: 0;
+}
+
+.card-heading h2 {
+  margin-bottom: 10px;
+}
+
+.planner-intro {
+  max-width: 53ch;
+  color: #6a5f55;
+  font-size: 0.97rem;
 }
 
 .planner-card-banner {
   margin-bottom: 14px;
-  padding: 14px 16px;
+  padding: 13px 15px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.92), rgba(248, 240, 228, 0.76));
+  border: 1px solid rgba(43, 29, 20, 0.06);
 }
 
 .planner-card-banner strong {
@@ -10810,19 +10823,20 @@ header.hero::before {
 }
 
 .planner-form {
-  gap: 14px;
+  gap: 16px;
 }
 
 .planner-form-card {
-  padding: 20px 20px 18px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.64);
-  border: 1px solid rgba(43, 29, 20, 0.07);
+  padding: 21px 20px 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(251, 244, 235, 0.72));
+  border: 1px solid rgba(43, 29, 20, 0.065);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
 .form-block {
   padding: 0;
-  gap: 12px;
+  gap: 14px;
 }
 
 .form-block::before {
@@ -10830,13 +10844,180 @@ header.hero::before {
 }
 
 .form-block-head {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  display: grid;
+  gap: 6px;
+}
+
+.form-section-label {
+  color: #8f6a4d;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.form-section-label::after {
+  opacity: 0.42;
+}
+
+.form-block-note,
+.footer-note {
+  color: #706459;
+  font-size: 0.87rem;
+  line-height: 1.55;
+}
+
+.planner-form-card label {
+  gap: 9px;
+  color: #2a1f17;
+  font-size: 0.83rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.planner-form-card input[type="date"],
+.planner-form-card select,
+.planner-form-card textarea {
+  min-height: 54px;
+  border-radius: 16px;
+  border: 1px solid rgba(43, 29, 20, 0.1);
+  background: rgba(255, 255, 255, 0.88);
+  color: #241a13;
+  font-size: 0.96rem;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.planner-form-card input[type="date"],
+.planner-form-card select {
+  padding: 0 16px;
+}
+
+.planner-form-card textarea {
+  min-height: 118px;
+  padding: 14px 16px;
+  resize: vertical;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.planner-form-card input[type="date"]:hover,
+.planner-form-card select:hover,
+.planner-form-card textarea:hover {
+  border-color: rgba(15, 123, 108, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.planner-form-card input[type="date"]:focus,
+.planner-form-card select:focus,
+.planner-form-card textarea:focus {
+  border-color: rgba(15, 123, 108, 0.42);
+  box-shadow: 0 0 0 3px rgba(15, 123, 108, 0.1);
+  outline: none;
+}
+
+.planner-form-card select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(38, 24, 14, 0.55) 50%),
+    linear-gradient(135deg, rgba(38, 24, 14, 0.55) 50%, transparent 50%),
+    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0));
+  background-position:
+    calc(100% - 20px) calc(50% - 3px),
+    calc(100% - 14px) calc(50% - 3px),
+    0 0;
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  background-repeat: no-repeat;
+  padding-right: 44px;
 }
 
 .arrival-departure-grid,
 .detail-grid,
 .focus-grid {
   gap: 12px;
+}
+
+.arrival-departure-grid,
+.detail-grid {
+  margin-top: 2px;
+}
+
+.arrival-departure-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.duration-display {
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+  background: rgba(255, 252, 248, 0.72);
+  border: 1px solid rgba(43, 29, 20, 0.06);
+}
+
+.duration-label {
+  color: #8b6f55;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.duration-counter {
+  margin-top: 5px;
+}
+
+.duration-days {
+  color: #221812;
+  font-size: 2rem;
+  letter-spacing: -0.05em;
+}
+
+.duration-helper {
+  margin-top: 8px;
+  color: #74685d;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.segmented-control {
+  padding: 5px;
+  border-radius: 18px;
+  background: rgba(243, 236, 226, 0.8);
+  border: 1px solid rgba(43, 29, 20, 0.06);
+  gap: 6px;
+}
+
+.segmented-control .toggle-option {
+  min-height: 52px;
+  padding: 13px 14px;
+  border-radius: 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+.segmented-control .toggle-option span {
+  color: #5f544a;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.segmented-control .toggle-option:has(input:checked) {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(15, 123, 108, 0.16);
+  box-shadow: 0 2px 6px rgba(38, 20, 10, 0.04);
+}
+
+.segmented-control .toggle-option:has(input:checked) span {
+  color: #173f39;
+}
+
+#existing-hotel-fields {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 252, 248, 0.62);
+  border: 1px solid rgba(43, 29, 20, 0.06);
 }
 
 .focus-grid {
@@ -10972,9 +11153,10 @@ header.hero::before {
 
 .form-actions {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.82fr) minmax(0, 0.82fr);
   gap: 12px;
-  margin-top: 2px;
+  margin-top: 6px;
+  align-items: stretch;
 }
 
 .form-actions-secondary {
@@ -10984,24 +11166,26 @@ header.hero::before {
 #generate-trip-button,
 .reset-btn,
 .save-form-btn {
-  min-height: 58px;
+  min-height: 56px;
   border-radius: 18px;
-  font-size: 0.94rem;
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 #generate-trip-button {
-  padding: 0 22px;
+  padding: 0 20px;
   justify-content: center;
+  box-shadow: none;
 }
 
 .reset-btn,
 .save-form-btn {
-  padding: 0 18px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(15, 123, 108, 0.18);
-  color: #33534d;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(38, 24, 14, 0.09);
+  color: #5d5146;
 }
 
 .reset-btn:hover,
