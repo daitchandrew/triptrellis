@@ -12,19 +12,19 @@ export const expandedSupplements = {
       "categoryLabel": "Food",
       "name": "Café Chelsea breakfast room",
       "area": "midtown",
-      "description": "A polished morning start if the day begins on the west side of Manhattan."
+      "description": "A warm morning start if the day begins on the west side of Manhattan."
     },
     {
       "categoryLabel": "Food",
       "name": "Thai Diner",
       "area": "lower-east-side",
-      "description": "A stronger Lower East Side meal if the trip wants one more current downtown restaurant."
+      "description": "A lively Lower East Side meal if the trip wants one more current downtown restaurant."
     },
     {
       "categoryLabel": "Cultural Sight",
       "name": "Jefferson Market Library and Village lanes",
       "area": "west-village",
-      "description": "A good Village add-on if the day wants a little more neighborhood detail and less straight-through walking."
+      "description": "A Village add-on if the day wants a little more neighborhood detail and less straight-through walking."
     },
     {
       "categoryLabel": "Museum",
@@ -36,7 +36,7 @@ export const expandedSupplements = {
       "categoryLabel": "Place to Wander",
       "name": "Harlem brownstone and Lenox stretch",
       "area": "midtown",
-      "description": "A worthwhile uptown add-on if the trip wants one more neighborhood-led New York route."
+      "description": "An uptown add-on if the trip wants one more neighborhood-led New York route."
     },
     {
       "categoryLabel": "Food",
@@ -63,7 +63,7 @@ export const expandedSupplements = {
       "categoryLabel": "Place to Wander",
       "name": "Washington Square and MacDougal turn",
       "area": "west-village",
-      "description": "A classic Greenwich Village sequence that gives the day a stronger neighborhood finish."
+      "description": "A classic Greenwich Village sequence that gives the day a more grounded neighborhood finish."
     },
     {
       "categoryLabel": "Food",
@@ -77,13 +77,13 @@ export const expandedSupplements = {
       "categoryLabel": "Food",
       "name": "Petit Trois",
       "area": "west-hollywood",
-      "description": "A stronger central dinner if the trip wants one more classic LA room with lively bistro energy."
+      "description": "A lively central dinner if the trip wants one more classic LA room with bistro energy."
     },
     {
       "categoryLabel": "Nature",
       "name": "Huntington gardens half-day",
       "area": "silver-lake",
-      "description": "A worthwhile bigger outing if the trip wants one calmer landscape-and-library contrast to the usual LA loop."
+      "description": "A bigger outing if the trip wants one calmer landscape-and-library contrast to the usual LA loop."
     },
     {
       "categoryLabel": "Food",
@@ -95,31 +95,31 @@ export const expandedSupplements = {
       "categoryLabel": "Shopping",
       "name": "Platform Culver City browse",
       "area": "santa-monica",
-      "description": "A useful west-side design-and-shopping stop if the trip wants one more polished retail pocket."
+      "description": "A west-side design-and-shopping stop if the trip wants one more refined retail pocket."
     },
     {
       "categoryLabel": "Cultural Sight",
       "name": "Hollyhock House",
       "area": "silver-lake",
-      "description": "A strong architecture stop if the east-side day wants one more specific LA design landmark."
+      "description": "An architecture stop if the east-side day wants one more specific LA design landmark."
     },
     {
       "categoryLabel": "Food",
       "name": "Maru Coffee Los Feliz",
       "area": "silver-lake",
-      "description": "A polished coffee stop that fits naturally into a Los Feliz or Silver Lake morning."
+      "description": "A coffee stop that fits naturally into a Los Feliz or Silver Lake morning."
     },
     {
       "categoryLabel": "Museum",
       "name": "LACMA campus walk",
       "area": "west-hollywood",
-      "description": "A useful central art stop when the day wants a broad cultural anchor without committing to a huge detour."
+      "description": "A central art stop when the day wants a broad cultural anchor without committing to a huge detour."
     },
     {
       "categoryLabel": "Nature",
       "name": "Griffith Observatory terrace",
       "area": "silver-lake",
-      "description": "A classic skyline stop if the east-side day wants a stronger outdoor crescendo."
+      "description": "A classic skyline stop if the east-side day wants a more dramatic outdoor crescendo."
     },
     {
       "categoryLabel": "Food",
@@ -131,7 +131,7 @@ export const expandedSupplements = {
       "categoryLabel": "Place to Wander",
       "name": "Larchmont Village stretch",
       "area": "west-hollywood",
-      "description": "A good central-LA browse when the day wants cafés, storefronts, and a calmer neighborhood pulse."
+      "description": "A central-LA browse when the day wants cafés, storefronts, and a calmer neighborhood pulse."
     }
   ],
   "mexico-city": [
@@ -139,31 +139,31 @@ export const expandedSupplements = {
       "categoryLabel": "Nature",
       "name": "Parque México and Avenida Amsterdam loop",
       "area": "condesa",
-      "description": "A strong Condesa add-on if the trip wants more boulevard-and-park texture built into the day."
+      "description": "A Condesa add-on if the trip wants more boulevard-and-park texture built into the day."
     },
     {
       "categoryLabel": "Food",
       "name": "Tacos Los Alexis",
       "area": "roma-norte",
-      "description": "A useful late taco stop when the Roma Norte night runs longer and the trip wants something direct and local."
+      "description": "A late taco stop when the Roma Norte night runs longer and the trip wants something direct and local."
     },
     {
       "categoryLabel": "Museum",
       "name": "Museo Tamayo",
       "area": "polanco",
-      "description": "A smart west-side modern-art stop if the trip wants one more museum that does not feel too heavy."
+      "description": "A west-side modern-art stop if the trip wants one more museum that does not feel too heavy."
     },
     {
       "categoryLabel": "Food",
       "name": "Taquería Los Cocuyos",
       "area": "centro",
-      "description": "A stronger Centro taco stop if the old-core day wants one more classic local meal."
+      "description": "A Centro taco stop if the old-core day wants one more classic local meal."
     },
     {
       "categoryLabel": "Cultural Sight",
       "name": "Casa Estudio Diego Rivera y Frida Kahlo",
       "area": "condesa",
-      "description": "A worthwhile southern-side design-and-history stop if the trip wants one more artist-specific house museum."
+      "description": "A southern-side design-and-history stop if the trip wants one more artist-specific house museum."
     },
     {
       "categoryLabel": "Food",
@@ -175,7 +175,7 @@ export const expandedSupplements = {
       "categoryLabel": "Food",
       "name": "Contramar",
       "area": "roma-norte",
-      "description": "A highly useful seafood lunch if the trip wants one of the city's strongest daytime restaurant anchors."
+      "description": "A standout seafood lunch if the trip wants one of the city's best daytime restaurant anchors."
     },
     {
       "categoryLabel": "Nature",
@@ -187,13 +187,13 @@ export const expandedSupplements = {
       "categoryLabel": "Museum",
       "name": "Museo Casa Luis Barragán",
       "area": "polanco",
-      "description": "A strong design pilgrimage if the trip wants one more architecture-led stop with real local identity."
+      "description": "A design pilgrimage if the trip wants one more architecture-led stop with real local identity."
     },
     {
       "categoryLabel": "Food",
       "name": "Máximo Bistrot",
       "area": "roma-norte",
-      "description": "A strong polished dinner if the trip wants one contemporary Mexico City table with real consistency."
+      "description": "A contemporary dinner if the trip wants one Mexico City table with real consistency."
     }
   ],
   "buenos-aires": [
@@ -201,7 +201,7 @@ export const expandedSupplements = {
       "categoryLabel": "Shopping",
       "name": "Mercado de San Telmo",
       "area": "san-telmo",
-      "description": "A strong south-side market browse if the timing lines up and the trip wants more local texture."
+      "description": "A south-side market browse if the timing lines up and the trip wants more local texture."
     },
     {
       "categoryLabel": "Food",
@@ -213,19 +213,19 @@ export const expandedSupplements = {
       "categoryLabel": "Nature",
       "name": "Bosques de Palermo morning walk",
       "area": "palermo",
-      "description": "A useful greener add-on if the Palermo day should feel more open and less entirely restaurant-led."
+      "description": "A greener add-on if the Palermo day should feel more open and less entirely restaurant-led."
     },
     {
       "categoryLabel": "Food",
       "name": "Parrilla Peña",
       "area": "recoleta",
-      "description": "A smart lower-key steakhouse if the trip wants one more reliable traditional meal beyond the most famous rooms."
+      "description": "A lower-key steakhouse if the trip wants one more reliable traditional meal beyond the most famous rooms."
     },
     {
       "categoryLabel": "Museum",
       "name": "MALBA",
       "area": "recoleta",
-      "description": "A strong modern Latin American art anchor if the elegant side of the trip wants one more serious museum stop."
+      "description": "A modern Latin American art anchor if the elegant side of the trip wants one more serious museum stop."
     },
     {
       "categoryLabel": "Nightlife & Entertainment",
@@ -237,7 +237,7 @@ export const expandedSupplements = {
       "categoryLabel": "Food",
       "name": "El Preferido de Palermo",
       "area": "palermo",
-      "description": "A stronger Palermo table if the trip wants one more iconic, polished Buenos Aires meal."
+      "description": "An iconic Palermo table if the trip wants one more refined Buenos Aires meal."
     },
     {
       "categoryLabel": "Cultural Sight",
@@ -249,7 +249,7 @@ export const expandedSupplements = {
       "categoryLabel": "Place to Wander",
       "name": "Plaza Dorrego antiques loop",
       "area": "san-telmo",
-      "description": "A good San Telmo anchor when the day wants more antique-market drift and less straight-through walking."
+      "description": "A San Telmo anchor when the day wants more antique-market drift and less straight-through walking."
     },
     {
       "categoryLabel": "Food",

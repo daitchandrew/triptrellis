@@ -132,7 +132,7 @@ export const osakaGuide = {
       {
         "name": "Cross Hotel Osaka",
         "area": "namba",
-        "vibe": "A very useful Dotonbori-adjacent base if you want strong walkability without going budget.",
+        "vibe": "A Dotonbori-adjacent base for travelers who want strong walkability without dropping into bargain-hotel territory.",
         "bestFor": [
           "food",
           "nightlife",
@@ -630,8 +630,8 @@ export const osakaGuide = {
       "reservation": "Walk-up.",
       "description": "A great snack anchor for a Dotonbori or Namba pass when you want hot takoyaki done properly, not just checked off."
     },
-    {
-      "name": "Cafe Taiyo no Tou",
+      {
+        "name": "Cafe Taiyo no Tou",
       "area": "umeda",
       "tags": [
         "food",
@@ -640,7 +640,7 @@ export const osakaGuide = {
       ],
       "cuisine": "Cafe and desserts",
       "reservation": "Flexible.",
-      "description": "A very useful Nakazakicho-style cafe pause if the trip wants one slower, more nostalgic daytime stop."
+      "description": "A slower Nakazakicho cafe pause when the day wants old-house charm and a more nostalgic daytime stop."
     },
     {
       "name": "Bread, Espresso & Utsubo Koen",
@@ -686,8 +686,8 @@ export const osakaGuide = {
       "reservation": "Reserve ahead.",
       "description": "A refined sushi counter for one more composed Osaka splurge meal if the trip wants balance against all the louder local specialties."
     },
-    {
-      "name": "Lilo Coffee Roasters",
+      {
+        "name": "Lilo Coffee Roasters",
       "area": "shinsaibashi",
       "tags": [
         "food",
@@ -695,7 +695,7 @@ export const osakaGuide = {
       ],
       "cuisine": "Coffee",
       "reservation": "Flexible.",
-      "description": "A very strong specialty-coffee stop in central Osaka when the day needs something lighter and taste-driven."
+      "description": "A benchmark central Osaka coffee stop when the day needs something lighter and taste-driven."
     },
     {
       "name": "Le Bouchon",
@@ -744,7 +744,7 @@ export const osakaSupplements = [
   { "categoryLabel": "Nature", "name": "Katsuoji Temple Grounds", "area": "umeda", "description": "A mountainous temple estate dotted with Daruma dolls and especially beautiful during autumn-leaf season." },
 
   { "categoryLabel": "Food", "name": "Takoyaki snack circuit in Namba", "area": "namba", "description": "A useful excuse to graze through Osaka's signature street-food identity without committing the whole day to one queue." },
-  { "categoryLabel": "Food", "name": "Depachika dinner haul in Umeda", "area": "umeda", "description": "A polished food-hall move if the day wants range, quality, and a lower-friction meal than a sit-down dinner." },
+  { "categoryLabel": "Food", "name": "Depachika dinner haul in Umeda", "area": "umeda", "description": "A department-basement feast of bentos, sweets, and prepared specialties when the day wants range without a long sit-down meal." },
   { "categoryLabel": "Food", "name": "Coffee and cake in Nakazakicho", "area": "umeda", "description": "A softer daytime Osaka pause built around old houses, slower cafes, and smaller design details." },
   { "categoryLabel": "Food", "name": "551 Horai pork bun stop", "area": "namba", "description": "A classic hot-snack move for Osaka's beloved butaman, especially useful between station errands and Minami wandering." },
   { "categoryLabel": "Food", "name": "Rikuro cheesecake stop", "area": "namba", "description": "A sweets pause built around Osaka's famously jiggly, extra-light cheesecake, especially good if you want one unmistakably local dessert hit." },
@@ -778,14 +778,14 @@ export const osakaSupplements = [
   { "categoryLabel": "Shopping", "name": "Kuromon Ichiba Market", "area": "namba", "description": "A 600-meter market that doubles as both a serious snack corridor and a place to browse premium fruits, seafood, and kitchen goods." },
   { "categoryLabel": "Shopping", "name": "Nipponbashi Den Den Town", "area": "namba", "description": "Osaka's answer to Akihabara, best for anime figures, retro games, electronics, and a slightly grittier otaku atmosphere." },
   { "categoryLabel": "Shopping", "name": "Tenjinbashisuji Shopping Street", "area": "umeda", "description": "Japan's longest straight shopping arcade, much better for seeing everyday Osaka retail rhythm than for luxury browsing." },
-  { "categoryLabel": "Shopping", "name": "Lucua Osaka", "area": "umeda", "description": "A highly useful Osaka Station fashion complex for trend-driven domestic and international brands." },
+  { "categoryLabel": "Shopping", "name": "Lucua Osaka", "area": "umeda", "description": "A busy Osaka Station fashion complex for trend-driven domestic labels and easy central browsing." },
   { "categoryLabel": "Shopping", "name": "Hep Five", "area": "umeda", "description": "A youth-focused Umeda shopping mall with pop styling and the bright red Ferris wheel built into the roof." },
   { "categoryLabel": "Shopping", "name": "Hankyu Department Store Umeda", "area": "umeda", "description": "The high-end Umeda retail anchor, especially worth it for the depachika and luxury-brand concentration." },
-  { "categoryLabel": "Shopping", "name": "Namba Parks", "area": "namba", "description": "A canyon-like shopping complex topped by terraced gardens, useful for combining retail with a more open-air feel." },
+  { "categoryLabel": "Shopping", "name": "Namba Parks", "area": "namba", "description": "A canyon-like shopping complex topped by terraced gardens, good for combining retail with a rarer open-air feel in central Osaka." },
   { "categoryLabel": "Shopping", "name": "Sennichimae Doguyasuji Shopping Street", "area": "namba", "description": "The kitchen-supply street for knives, restaurant tools, serving ware, and the famous realistic plastic food displays." },
   { "categoryLabel": "Shopping", "name": "Rinku Premium Outlets", "area": "tennoji", "description": "A large airport-side outlet complex if the trip wants a more dedicated bargain-luxury shopping detour." },
   { "categoryLabel": "Shopping", "name": "Lalaport Expo City", "area": "umeda", "description": "A major shopping-and-entertainment complex by Expo Park, good if the day is already heading north for a broader outing." },
-  { "categoryLabel": "Shopping", "name": "Whity Umeda", "area": "umeda", "description": "A vast underground shopping maze that somehow manages to be confusing, useful, and very Osaka all at once." },
+  { "categoryLabel": "Shopping", "name": "Whity Umeda", "area": "umeda", "description": "A vast underground shopping maze that somehow manages to be confusing, practical, and very Osaka all at once." },
   { "categoryLabel": "Shopping", "name": "Crysta Nagahori", "area": "shinsaibashi", "description": "A broad underground retail corridor linking Shinsaibashi and the Horie side with cleaner styling than the busier arcades above." },
   { "categoryLabel": "Shopping", "name": "Namba Walk", "area": "namba", "description": "A long subterranean avenue of shops, cafes, and daily convenience beneath the core of Minami." },
   { "categoryLabel": "Shopping", "name": "Herbis Plaza", "area": "umeda", "description": "An opulent Umeda complex for ultra-high-end boutiques and a smoother luxury-retail mood." },
@@ -793,16 +793,16 @@ export const osakaSupplements = [
 
   { "categoryLabel": "Museum", "name": "Osaka Museum of History", "area": "umeda", "description": "A top-floor-first museum where you can look down on the former Naniwa Palace ruins before tracing Osaka's history back through time." },
   { "categoryLabel": "Museum", "name": "Abeno Harukas Art Museum", "area": "tennoji", "description": "A rotating-exhibition museum that works especially well if you're already building a Tennoji or skyline day." },
-  { "categoryLabel": "Museum", "name": "Osaka Science Museum", "area": "umeda", "description": "A hands-on science stop with a serious planetarium, especially useful for families or a rainy Osaka afternoon." },
+  { "categoryLabel": "Museum", "name": "Osaka Science Museum", "area": "umeda", "description": "A hands-on science stop with a serious planetarium, especially good for families or a rainy Osaka afternoon." },
   { "categoryLabel": "Museum", "name": "Cup Noodles Museum Osaka Ikeda", "area": "umeda", "description": "A playful museum dedicated to instant ramen, best if the trip wants one fun, highly interactive side outing." },
-  { "categoryLabel": "Museum", "name": "Nakanoshima Museum of Art", "area": "umeda", "description": "A sleek black-cube museum focused on modern and contemporary art and design, useful as part of a Nakanoshima culture block." },
+  { "categoryLabel": "Museum", "name": "Nakanoshima Museum of Art", "area": "umeda", "description": "A sleek black-cube museum focused on modern and contemporary art and design, ideal as part of a Nakanoshima culture block." },
   { "categoryLabel": "Museum", "name": "Mint Museum", "area": "umeda", "description": "A coin museum tied to the Japan Mint and especially famous during blossom season when the adjacent cherry-tree walkway opens." },
   { "categoryLabel": "Museum", "name": "Kamigata Ukiyoe Museum", "area": "namba", "description": "A small specialized museum for Osaka-region kabuki actor prints, strong when you want something more niche and locally rooted." },
-  { "categoryLabel": "Museum", "name": "Sakai City Museum", "area": "tennoji", "description": "A useful museum for the history of the kofun tombs and the broader Sakai area if the trip heads that way." },
+  { "categoryLabel": "Museum", "name": "Sakai City Museum", "area": "tennoji", "description": "A good museum for the history of the kofun tombs and the broader Sakai area if the trip heads that way." },
   { "categoryLabel": "Museum", "name": "Koji Kinutani Tenku Art Museum", "area": "umeda", "description": "A vividly colored skyline-adjacent museum experience that feels more immersive and playful than a standard gallery visit." },
   { "categoryLabel": "Museum", "name": "Peace Osaka", "area": "umeda", "description": "A sobering museum focused on the devastating air raids and wartime experience of Osaka." },
   { "categoryLabel": "Museum", "name": "Glion Museum", "area": "umeda", "description": "A warehouse-set collection of historic cars, strong if the trip wants one more unusual specialty museum." },
-  { "categoryLabel": "Museum", "name": "Asahi Breweries Suita Factory", "area": "umeda", "description": "A brewery tour ending in cold tasting pours, useful when the trip wants one lighter branded activity." },
+  { "categoryLabel": "Museum", "name": "Asahi Breweries Suita Factory", "area": "umeda", "description": "A brewery tour ending in cold tasting pours when the trip wants one lighter branded activity." },
   { "categoryLabel": "Museum", "name": "Bicycle Museum Cycle Center", "area": "tennoji", "description": "A specialized Sakai museum tracing the evolution of the bicycle, especially apt in a city tied to craft and manufacturing." },
   { "categoryLabel": "Museum", "name": "Osaka City Museum of Fine Arts", "area": "tennoji", "description": "A more classical art stop inside Tennoji Park, good for Japanese and Chinese painting and sculpture collections." },
   { "categoryLabel": "Museum", "name": "The Entrepreneurial Museum of Challenge and Innovation", "area": "umeda", "description": "A highly Osaka museum of business founders and industrial ambition, especially if the city's commercial identity interests you." },
@@ -827,7 +827,7 @@ export const osakaSupplements = [
   { "categoryLabel": "Place to Wander", "name": "Tsuruhashi Koreatown", "area": "tennoji", "description": "A deeply aromatic neighborhood of yakiniku smoke, kimchi shops, and Korean community texture unlike any other part of Osaka." },
   { "categoryLabel": "Place to Wander", "name": "Sennichimae", "area": "namba", "description": "A major Minami entertainment artery where comedy clubs, signage, shops, and nightlife all overlap." },
   { "categoryLabel": "Place to Wander", "name": "Minami-Senba", "area": "shinsaibashi", "description": "A calmer grid of select shops, coffee spots, and design studios just far enough from the main crowds." },
-  { "categoryLabel": "Place to Wander", "name": "Triangle Park", "area": "shinsaibashi", "description": "Amerikamura's small but famous plaza, ideal for people-watching, takeout snacks, and a quick hit of youth-culture energy." },
+  { "categoryLabel": "Place to Wander", "name": "Triangle Park", "area": "shinsaibashi", "description": "Amerikamura's small but famous plaza, great for people-watching, takeout snacks, and a quick hit of youth-culture energy." },
   { "categoryLabel": "Place to Wander", "name": "Horie District", "area": "shinsaibashi", "description": "A stylish west-of-Amerikamura district for interiors, coffee roasters, and a more relaxed upscale wander." },
   { "categoryLabel": "Place to Wander", "name": "Juso District", "area": "umeda", "description": "A gritty across-the-river district with bars, cheap eats, and a more deeply local nightlife-and-dining feel." },
 
@@ -859,7 +859,7 @@ export const osakaSupplements = [
   { "categoryLabel": "Amusement & Activities", "name": "teamLab Botanical Garden Osaka", "area": "tennoji", "description": "A night garden transformed into an immersive light installation, especially good if the trip wants one more contemporary spectacle." },
   { "categoryLabel": "Amusement & Activities", "name": "Nifrel", "area": "umeda", "description": "A highly curated hybrid of aquarium, zoo, and art-installation sensibility near Expo City." },
   { "categoryLabel": "Amusement & Activities", "name": "VS Park", "area": "umeda", "description": "A playful digital-sports outing that works well for groups or a more active entertainment block." },
-  { "categoryLabel": "Amusement & Activities", "name": "Kids Plaza Osaka", "area": "umeda", "description": "A very strong indoor family stop with interactive exhibits and large-scale play environments." },
+  { "categoryLabel": "Amusement & Activities", "name": "Kids Plaza Osaka", "area": "umeda", "description": "A standout indoor family stop with interactive exhibits and large-scale play environments." },
   { "categoryLabel": "Amusement & Activities", "name": "Hep Five Ferris Wheel", "area": "umeda", "description": "A quick iconic ride above Umeda that pairs well with shopping and a lighter city-view moment." },
   { "categoryLabel": "Amusement & Activities", "name": "Legoland Discovery Center", "area": "umeda", "description": "An indoor family attraction better for children than for adult-only city time, but useful in bad weather." },
   { "categoryLabel": "Amusement & Activities", "name": "Hirakata Park", "area": "umeda", "description": "A beloved local amusement park with an older-fashioned charm that feels very different from USJ." },
@@ -874,3 +874,5 @@ export const osakaSupplements = [
   { "categoryLabel": "Other", "name": "Tsuruhashi deeper Koreatown streets", "area": "tennoji", "description": "A more residential extension of Koreatown that shows everyday community life beyond the main grill-smoke corridors." },
   { "categoryLabel": "Other", "name": "Chikitsu-gu Shrine", "area": "namba", "description": "A small but important market-connected shrine that makes more sense as part of a wholesale-food or merchant-city wander." }
 ];
+
+export default { guide: osakaGuide, supplements: osakaSupplements };

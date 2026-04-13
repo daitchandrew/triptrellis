@@ -88,7 +88,7 @@ export const berlinGuide = {
       {
         "name": "Hotel de Rome",
         "area": "mitte",
-        "vibe": "A polished old-bank conversion with strong central leverage.",
+        "vibe": "A grand old-bank conversion that makes Berlin feel ceremonial, stately, and very central from the start.",
         "bestFor": [
           "luxury",
           "culture",
@@ -98,7 +98,7 @@ export const berlinGuide = {
       {
         "name": "Waldorf Astoria Berlin",
         "area": "charlottenburg",
-        "vibe": "A polished west-Berlin luxury stay with stronger shopping and spa appeal.",
+        "vibe": "A west-Berlin luxury base for travelers who want spa time, classic shopping, and a calmer side of the city.",
         "bestFor": [
           "luxury",
           "shopping",
@@ -120,7 +120,7 @@ export const berlinGuide = {
       {
         "name": "Château Royal Berlin",
         "area": "mitte",
-        "vibe": "Boutique, polished, and very well placed for a first trip.",
+        "vibe": "A well-placed boutique stay for a first trip that wants current design without losing central access.",
         "bestFor": [
           "design",
           "culture",
@@ -152,7 +152,7 @@ export const berlinGuide = {
       {
         "name": "Casa Camper Berlin",
         "area": "mitte",
-        "vibe": "A smart value base in a very useful part of the city.",
+        "vibe": "A smart-value base in one of the city's easiest launch points for museums, food, and transit.",
         "bestFor": [
           "culture",
           "food",
@@ -172,7 +172,7 @@ export const berlinGuide = {
       {
         "name": "The Circus Hotel",
         "area": "mitte",
-        "vibe": "A practical central stay with stronger neighborhood access than most.",
+        "vibe": "A practical central stay with quicker access to lived-in neighborhood Berlin than many Mitte hotels manage.",
         "bestFor": [
           "culture",
           "value",
@@ -643,7 +643,7 @@ export const berlinGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A useful way to balance Berlin's hard history with park space and some of its strongest modern cultural architecture."
+      "description": "A good way to balance Berlin's harder history with park space and some of its clearest modern cultural architecture."
     },
     {
       "name": "Teufelsberg and Grunewald edge outing",
@@ -721,7 +721,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Steak and classic Berlin scene",
       "reservation": "Reserve ahead for dinner.",
-      "description": "A polished social dinner if the trip wants one bigger Berlin night."
+      "description": "A scene-heavy riverfront dinner if the trip wants one bigger Berlin night with real social energy."
     },
     {
       "name": "Mustafa's Gemüse Kebap",
@@ -742,7 +742,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Food hall / market",
       "reservation": "Flexible.",
-      "description": "A strong anchor for a more casual food-driven Berlin afternoon."
+      "description": "A solid anchor for a casual Berlin food afternoon built around stalls, bites, and Kreuzberg foot traffic."
     },
     {
       "name": "Rutz",
@@ -782,7 +782,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Japanese",
       "reservation": "Helpful.",
-      "description": "A slick dinner choice for a more polished west-Berlin evening."
+      "description": "A slick dinner choice when the night should feel dark, design-forward, and distinctly west-Berlin."
     },
     {
       "name": "Bonanza Coffee",
@@ -794,7 +794,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Coffee",
       "reservation": "Flexible.",
-      "description": "A strong cafe stop when the trip wants a softer daytime rhythm."
+      "description": "A benchmark Berlin cafe stop when the day wants a softer, slower daytime rhythm."
     },
     {
       "name": "Katz Orange",
@@ -816,7 +816,7 @@ export const berlinGuide = {
       ],
       "cuisine": "European cafe-brasserie",
       "reservation": "Flexible.",
-      "description": "A useful neighborhood-feeling meal in one of Berlin's easier daytime districts."
+      "description": "A neighborhood-feeling meal in one of Berlin's easier daytime districts, good for a slower Prenzlauer block."
     },
     {
       "name": "Café Einstein Stammhaus",
@@ -827,7 +827,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Classic Viennese-style cafe",
       "reservation": "Flexible.",
-      "description": "A very good old-Europe cafe stop if the trip wants more classic atmosphere."
+      "description": "An old-Europe cafe stop of newspapers, schnitzel, and terrace time when the trip wants more classic atmosphere."
     },
     {
       "name": "Curry 36",
@@ -848,7 +848,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Market food",
       "reservation": "Flexible.",
-      "description": "A useful food-hall anchor for a Kreuzberg day."
+      "description": "A flexible Kreuzberg food-hall anchor for breakfast, lunch, or a browse-led snack stop."
     },
     {
       "name": "Father Carpenter",
@@ -859,7 +859,7 @@ export const berlinGuide = {
       ],
       "cuisine": "Brunch and coffee",
       "reservation": "Go strategically.",
-      "description": "A strong central brunch stop if the trip wants one quality daytime meal."
+      "description": "A strong central brunch stop if the trip wants one quality daytime meal in a courtyard that still feels tucked away."
     },
     {
       "name": "Ernst",
@@ -1726,3 +1726,5 @@ export const berlinSupplements = [
     "description": "A smarter central night when the trip wants serious wine and polished plates without committing to the full tasting-menu format."
   }
 ];
+
+export default { guide: berlinGuide, supplements: berlinSupplements };

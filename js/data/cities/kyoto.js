@@ -53,7 +53,7 @@ export const kyotoGuide = {
       {
         "name": "Park Hyatt Kyoto",
         "area": "higashiyama",
-        "vibe": "Refined and hard to beat if atmosphere matters most.",
+        "vibe": "A refined Kyoto stay if atmosphere matters most.",
         "bestFor": [
           "luxury",
           "culture",
@@ -85,7 +85,7 @@ export const kyotoGuide = {
       {
         "name": "Ace Hotel Kyoto",
         "area": "kawaramachi",
-        "vibe": "Design-led with strong range across old and new Kyoto.",
+        "vibe": "A design-forward stay that lets the trip move easily between merchant-house Kyoto and the city's newer creative layer.",
         "bestFor": [
           "design",
           "food",
@@ -95,7 +95,7 @@ export const kyotoGuide = {
       {
         "name": "The Gate Hotel Kyoto Takasegawa",
         "area": "kawaramachi",
-        "vibe": "Balanced and elegant with smart logistics.",
+        "vibe": "A balanced, elegant base with especially easy Kyoto logistics.",
         "bestFor": [
           "food",
           "transit",
@@ -127,7 +127,7 @@ export const kyotoGuide = {
       {
         "name": "Cross Hotel Kyoto",
         "area": "kawaramachi",
-        "vibe": "Strong value in exactly the right part of town.",
+        "vibe": "A strong-value base in exactly the right part of town.",
         "bestFor": [
           "value",
           "food",
@@ -137,7 +137,7 @@ export const kyotoGuide = {
       {
         "name": "Nohga Hotel Kiyomizu Kyoto",
         "area": "higashiyama",
-        "vibe": "A good style-forward value option near eastern Kyoto.",
+        "vibe": "A style-conscious base near eastern Kyoto, good for travelers who want atmosphere without committing to full luxury.",
         "bestFor": [
           "design",
           "food",
@@ -163,7 +163,7 @@ export const kyotoGuide = {
       "tags": [
         "culture"
       ],
-      "description": "The definitive Kyoto walk and still absolutely worth it."
+      "description": "Kyoto's signature historic walk, where temple views, sloped lanes, and old-shop facades still justify the crowds."
     },
     {
       "name": "Fushimi Inari at an early hour",
@@ -206,7 +206,7 @@ export const kyotoGuide = {
       "tags": [
         "wellness"
       ],
-      "description": "A good calmer block between denser historic stops."
+      "description": "An easy riverbank reset between denser temple blocks and busier central streets."
     },
     {
       "name": "Arashiyama scenery",
@@ -233,7 +233,7 @@ export const kyotoGuide = {
         "wellness",
         "culture"
       ],
-      "description": "A strong calmer-day Kyoto walk if you need something more spacious."
+      "description": "A quieter Kyoto walk where canal-side greenery and temple edges make the city feel more spacious."
     },
     {
       "name": "Nijo Castle",
@@ -295,7 +295,7 @@ export const kyotoGuide = {
         "museum",
         "culture"
       ],
-      "description": "A useful city-history and cultural museum if you want more context on Kyoto beyond temples."
+      "description": "A compact city-history stop for travelers who want Kyoto's merchant and cultural context, not just another temple circuit."
     },
     {
       "name": "Kinkaku-ji (Golden Pavilion)",
@@ -401,7 +401,7 @@ export const kyotoGuide = {
         "design"
       ],
       "timing": "morning",
-      "description": "A signature Kyoto block that feels worth dressing up for."
+      "description": "A dressed-up Kyoto block of temple approaches, preserved facades, and views that still earns its reputation."
     },
     {
       "name": "Yasaka Shrine and Gion drift",
@@ -432,7 +432,7 @@ export const kyotoGuide = {
         "culture"
       ],
       "timing": "morning",
-      "description": "A strong calmer-day option when you want less density."
+      "description": "A calmer Kyoto stretch when the day needs more quiet water and trees than famous gates and queues."
     },
     {
       "name": "Nishiki Market and central graze",
@@ -501,7 +501,7 @@ export const kyotoGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "A strong way to keep Arashiyama from turning into a sprint."
+      "description": "A good way to keep Arashiyama from collapsing into a rushed photo loop."
     },
     {
       "name": "Kodai-ji temple garden visit",
@@ -521,7 +521,7 @@ export const kyotoGuide = {
         "culture"
       ],
       "timing": "evening",
-      "description": "A strong atmospheric finish for one Kyoto day."
+      "description": "An atmospheric Kyoto finish of lantern light, narrow lanes, and quieter details after the daytime crowds ease."
     },
     {
       "name": "Nijo Castle and central history block",
@@ -530,7 +530,7 @@ export const kyotoGuide = {
         "culture"
       ],
       "timing": "morning",
-      "description": "A useful historical counterpoint to temple-heavy Kyoto days."
+      "description": "A welcome historical counterpoint when the trip needs shogunal Kyoto rather than another temple-and-garden sequence."
     },
     {
       "name": "Kamo River dusk stroll",
@@ -549,7 +549,7 @@ export const kyotoGuide = {
         "wellness"
       ],
       "timing": "afternoon",
-      "description": "A strong option when you want Kyoto to feel contemplative rather than crowded."
+      "description": "A better pick when you want Kyoto to feel contemplative rather than congested."
     },
     {
       "name": "Arashiyama monkey park add-on",
@@ -569,7 +569,7 @@ export const kyotoGuide = {
         "culture"
       ],
       "timing": "afternoon",
-      "description": "A serious museum block for travelers who want a stronger art-and-history lens on Kyoto."
+      "description": "A serious museum block for travelers who want Kyoto framed through masterworks, ritual objects, and deeper historical context."
     },
     {
       "name": "Kyoto City KYOCERA Museum of Art stop",
@@ -1707,3 +1707,5 @@ export const kyotoSupplements = [
     "description": "A useful market-and-vintage stop if your dates happen to line up with the temple market schedule."
   }
 ];
+
+export default { guide: kyotoGuide, supplements: kyotoSupplements };

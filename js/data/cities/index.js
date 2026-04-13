@@ -1,85 +1,5 @@
 import { basePlaceName, getPlaceIdentityKeys } from '../../lib/utils.js?v=triptrellis-prague-clock-cleanup-20260411-007';
-
-const cityModuleLoaders = {
-  seoul: () => import('./seoul.js'),
-  tokyo: () => import('./tokyo.js'),
-  kyoto: () => import('./kyoto.js'),
-  osaka: () => import('./osaka.js'),
-  bangkok: () => import('./bangkok.js'),
-  "hoi-an": () => import('./hoi-an.js'),
-  prague: () => import('./prague.js'),
-  copenhagen: () => import('./copenhagen.js'),
-  berlin: () => import('./berlin.js'),
-  singapore: () => import('./singapore.js'),
-  "hong-kong": () => import('./hong-kong.js'),
-  bali: () => import('./bali.js'),
-  paris: () => import('./paris.js'),
-  barcelona: () => import('./barcelona.js'),
-  venice: () => import('./venice.js'),
-  amsterdam: () => import('./amsterdam.js'),
-  lisbon: () => import('./lisbon.js'),
-  "new-york": () => import('./new-york.js'),
-  "los-angeles": () => import('./los-angeles.js'),
-  "mexico-city": () => import('./mexico-city.js'),
-  "buenos-aires": () => import('./buenos-aires.js'),
-  dubai: () => import('./dubai.js'),
-  istanbul: () => import('./istanbul.js'),
-  marrakech: () => import('./marrakech.js'),
-};
-
-const cityModuleMeta = {
-  seoul: { guide: 'seoulGuide', supplements: 'seoulSupplements' },
-  tokyo: { guide: 'tokyoGuide', supplements: 'tokyoSupplements' },
-  kyoto: { guide: 'kyotoGuide', supplements: 'kyotoSupplements' },
-  osaka: { guide: 'osakaGuide', supplements: 'osakaSupplements' },
-  bangkok: { guide: 'bangkokGuide', supplements: 'bangkokSupplements' },
-  "hoi-an": { guide: 'hoiAnGuide', supplements: 'hoiAnSupplements' },
-  prague: { guide: 'pragueGuide', supplements: 'pragueSupplements' },
-  copenhagen: { guide: 'copenhagenGuide', supplements: 'copenhagenSupplements' },
-  berlin: { guide: 'berlinGuide', supplements: 'berlinSupplements' },
-  singapore: { guide: 'singaporeGuide', supplements: 'singaporeSupplements' },
-  "hong-kong": { guide: 'hongKongGuide', supplements: 'hongKongSupplements' },
-  bali: { guide: 'baliGuide', supplements: 'baliSupplements' },
-  paris: { guide: 'parisGuide', supplements: 'parisSupplements' },
-  barcelona: { guide: 'barcelonaGuide', supplements: 'barcelonaSupplements' },
-  venice: { guide: 'veniceGuide', supplements: 'veniceSupplements' },
-  amsterdam: { guide: 'amsterdamGuide', supplements: 'amsterdamSupplements' },
-  lisbon: { guide: 'lisbonGuide', supplements: 'lisbonSupplements' },
-  "new-york": { guide: 'newYorkGuide', supplements: 'newYorkSupplements' },
-  "los-angeles": { guide: 'losAngelesGuide', supplements: 'losAngelesSupplements' },
-  "mexico-city": { guide: 'mexicoCityGuide', supplements: 'mexicoCitySupplements' },
-  "buenos-aires": { guide: 'buenosAiresGuide', supplements: 'buenosAiresSupplements' },
-  dubai: { guide: 'dubaiGuide', supplements: 'dubaiSupplements' },
-  istanbul: { guide: 'istanbulGuide', supplements: 'istanbulSupplements' },
-  marrakech: { guide: 'marrakechGuide', supplements: 'marrakechSupplements' },
-};
-
-const expansionLoaders = {
-  seoul: () => import('./expansions/asia.js'),
-  tokyo: () => import('./expansions/asia.js'),
-  kyoto: () => import('./expansions/asia.js'),
-  osaka: () => import('./expansions/asia.js'),
-  bangkok: () => import('./expansions/asia.js'),
-  "hoi-an": () => import('./expansions/asia.js'),
-  singapore: () => import('./expansions/asia.js'),
-  "hong-kong": () => import('./expansions/asia.js'),
-  bali: () => import('./expansions/asia.js'),
-  prague: () => import('./expansions/europe-central.js'),
-  copenhagen: () => import('./expansions/europe-central.js'),
-  berlin: () => import('./expansions/europe-central.js'),
-  paris: () => import('./expansions/europe-west.js'),
-  barcelona: () => import('./expansions/europe-west.js'),
-  venice: () => import('./expansions/europe-west.js'),
-  amsterdam: () => import('./expansions/europe-west.js'),
-  lisbon: () => import('./expansions/europe-west.js'),
-  "new-york": () => import('./expansions/americas.js'),
-  "los-angeles": () => import('./expansions/americas.js'),
-  "mexico-city": () => import('./expansions/americas.js'),
-  "buenos-aires": () => import('./expansions/americas.js'),
-  dubai: () => import('./expansions/mea.js'),
-  istanbul: () => import('./expansions/mea.js'),
-  marrakech: () => import('./expansions/mea.js'),
-};
+import { getCityRegistryEntry, getExpansionRegionLoader, listRegisteredCities } from './registry.js';
 
 const cityModuleCache = new Map();
 const cityGuideCache = new Map();
@@ -170,12 +90,14 @@ async function loadCityModuleData(cityKey) {
     return cityModuleCache.get(cityKey);
   }
 
-  const loader = cityModuleLoaders[cityKey];
-  const meta = cityModuleMeta[cityKey];
-  const loadPromise = Promise.resolve(loader ? loader() : null).then((module) => ({
-    guide: module?.[meta?.guide] || null,
-    supplements: module?.[meta?.supplements] || [],
-  }));
+  const registryEntry = getCityRegistryEntry(cityKey);
+  const loadPromise = Promise.resolve(registryEntry?.module ? registryEntry.module() : null).then((module) => {
+    const cityData = module?.default || null;
+    return {
+      guide: cityData?.guide || null,
+      supplements: cityData?.supplements || [],
+    };
+  });
   cityModuleCache.set(cityKey, loadPromise);
   return loadPromise;
 }
@@ -200,7 +122,7 @@ export async function loadCategorySupplementLibrary(cityKey) {
   const loadPromise = Promise.all([
     loadCityGuide(cityKey),
     loadCityModuleData(cityKey),
-    Promise.resolve(expansionLoaders[cityKey] ? expansionLoaders[cityKey]() : null),
+    Promise.resolve(getExpansionRegionLoader(getCityRegistryEntry(cityKey)?.expansionRegion)?.() || null),
   ]).then(([guide, data, expansionModule]) => {
     const baseSupplements = data?.supplements || [];
     const expandedSupplements = expansionModule?.expandedSupplements?.[cityKey] || [];
@@ -223,5 +145,5 @@ export async function preloadCityData(cityKey) {
 }
 
 export function listSupportedCities() {
-  return Object.keys(cityModuleMeta);
+  return listRegisteredCities();
 }

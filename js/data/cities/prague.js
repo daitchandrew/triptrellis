@@ -110,7 +110,7 @@ export const pragueGuide = {
       {
         "name": "Prague Marriott Hotel",
         "area": "oldtown",
-        "vibe": "Central, polished, and strong for a refined Prague stay.",
+        "vibe": "Central and refined, with old-town mornings and easier dinner reservations built into the stay.",
         "bestFor": [
           "luxury",
           "food",
@@ -120,7 +120,7 @@ export const pragueGuide = {
       {
         "name": "Four Seasons Prague",
         "area": "malastrana",
-        "vibe": "Serene and romantic if atmosphere matters as much as location.",
+        "vibe": "A serene, romantic stay if atmosphere matters as much as location.",
         "bestFor": [
           "luxury",
           "culture",
@@ -152,7 +152,7 @@ export const pragueGuide = {
       {
         "name": "Hotel U Pavouka (At the Spider)",
         "area": "malastrana",
-        "vibe": "Design-forward boutique near the castle with character and charm.",
+        "vibe": "A design-forward boutique stay near the castle, with real character and charm.",
         "bestFor": [
           "design",
           "culture",
@@ -194,7 +194,7 @@ export const pragueGuide = {
       {
         "name": "Hotel Hastal",
         "area": "oldtown",
-        "vibe": "Central, good value, and perfectly placed for a first Prague trip.",
+        "vibe": "Central, well-priced, and especially easy for a first Prague trip built on foot.",
         "bestFor": [
           "culture",
           "transit",
@@ -204,7 +204,7 @@ export const pragueGuide = {
       {
         "name": "Hotel Clement",
         "area": "oldtown",
-        "vibe": "Simple, reliable, and excellently located for exploring on foot.",
+        "vibe": "A simple, reliable base with excellent access for exploring on foot.",
         "bestFor": [
           "culture",
           "food",
@@ -606,7 +606,7 @@ export const pragueGuide = {
         "culture"
       ],
       "timing": "afternoon",
-      "description": "Czech history and natural sciences in a grand neo-Renaissance setting—especially good if you want real context."
+      "description": "Czech history and natural sciences in a grand neo-Renaissance setting, rewarding when the trip wants real context and not just postcard views."
     },
     {
       "name": "Prague City Museum paper model visit",
@@ -656,7 +656,7 @@ export const pragueGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A very high-value central stop for baroque grandeur indoors and tiled-rooftop views from above."
+      "description": "A high-value central stop for baroque grandeur indoors and tiled-rooftop views from above."
     },
     {
       "name": "Naplávka wine bars and river drift",
@@ -784,7 +784,7 @@ export const pragueGuide = {
       ],
       "cuisine": "Modern European Fine Dining",
       "reservation": "Reserve ahead.",
-      "description": "A sleek special-occasion room for seasonal Czech-led tasting menus that feel minimal, polished, and exacting.",
+      "description": "A sleek special-occasion room for seasonal Czech-led tasting menus that feel minimal, exacting, and very current Prague.",
       "michelinStatus": "One Star",
       "guideNote": "Michelin praises Field for balanced creative cooking centered on seasonal produce and Czech ingredients.",
       "guideUrl": "https://guide.michelin.com/en/prague/prague/restaurant/field"
@@ -942,7 +942,7 @@ export const pragueGuide = {
       ],
       "cuisine": "Grand cafe / Czech classics",
       "reservation": "Helpful at peak hours.",
-      "description": "A mosaic-walled Prague classic for breakfast, pastries, and polished Czech comfort dishes in one of the city's prettiest dining rooms."
+      "description": "A mosaic-walled Prague classic for breakfast, pastries, and Czech comfort dishes in one of the city's prettiest dining rooms."
     },
     {
       "name": "Mlýnec",
@@ -1016,7 +1016,7 @@ export const pragueGuide = {
       ],
       "cuisine": "Italian seafood and pasta",
       "reservation": "Helpful.",
-      "description": "A polished Vinohrady standby for raw bar dishes, elegant pasta, and a smoother dinner pace when Czech food is not the move."
+      "description": "A Vinohrady standby for raw bar dishes, elegant pasta, and a smoother dinner pace when Czech food is not the move."
     }
   ]
 };
@@ -1335,7 +1335,7 @@ export const pragueSupplements = [
       "shopping",
       "design"
     ],
-    "description": "Prague's most stylish shopping street for high-end fashion, jewelers, and polished boutiques."
+    "description": "Prague's most stylish shopping street for high-end fashion, jewelers, and cleaner-lined boutiques."
   },
   {
     "categoryLabel": "Shopping",
@@ -1857,7 +1857,7 @@ export const pragueSupplements = [
       "museum",
       "design"
     ],
-      "description": "Prague's defining large-format contemporary-art stop, especially good when the trip wants something sharper and more current than the historic core."
+      "description": "Prague's defining large-format contemporary-art stop when the trip wants something sharper and more current than the historic core."
   },
   {
     "categoryLabel": "Museum",
@@ -1867,7 +1867,7 @@ export const pragueSupplements = [
       "museum",
       "design"
     ],
-      "description": "The National Gallery's big modern-art building in Prague 7, especially good for Cubism, Czech modernism, and a more spacious museum rhythm."
+      "description": "The National Gallery's big modern-art building in Prague 7, especially strong for Cubism, Czech modernism, and a more spacious museum rhythm."
   },
   {
     "categoryLabel": "Cultural Sight",
@@ -1913,3 +1913,5 @@ export const pragueSupplements = [
     "description": "A relaxed Prague 7 breakfast and coffee stop with the kind of airy neighborhood energy that balances heavier castle-and-clock days."
   }
 ];
+
+export default { guide: pragueGuide, supplements: pragueSupplements };

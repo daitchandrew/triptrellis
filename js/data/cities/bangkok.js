@@ -53,7 +53,7 @@ export const bangkokGuide = {
       {
         "name": "Four Seasons Hotel Bangkok",
         "area": "riverside",
-        "vibe": "Excellent if you want Bangkok to feel indulgent and composed.",
+        "vibe": "An indulgent riverfront base if Bangkok should feel composed from the start.",
         "bestFor": [
           "luxury",
           "food",
@@ -73,7 +73,7 @@ export const bangkokGuide = {
       {
         "name": "Capella Bangkok",
         "area": "riverside",
-        "vibe": "Ultra-polished riverfront luxury with a more contemporary resort feel.",
+        "vibe": "Contemporary riverfront luxury that makes Bangkok feel more like a resort city without losing the urban setting.",
         "bestFor": [
           "luxury",
           "wellness",
@@ -95,7 +95,7 @@ export const bangkokGuide = {
       {
         "name": "Siam@Siam Design Hotel",
         "area": "silom",
-        "vibe": "Expressive and central for a first Bangkok trip.",
+        "vibe": "An expressive central base for a first Bangkok trip.",
         "bestFor": [
           "design",
           "food",
@@ -115,7 +115,7 @@ export const bangkokGuide = {
       {
         "name": "Eastin Grand Hotel Sathorn",
         "area": "silom",
-        "vibe": "A very useful upper-upscale Bangkok base with excellent transit convenience.",
+        "vibe": "An upper-upscale Bangkok base that makes trains, river routes, and dinner reservations unusually easy to build around.",
         "bestFor": [
           "transit",
           "food",
@@ -127,7 +127,7 @@ export const bangkokGuide = {
       {
         "name": "ASAI Bangkok Chinatown",
         "area": "chinatown",
-        "vibe": "Food-first and excellent for local character.",
+        "vibe": "A food-first base with real local character.",
         "bestFor": [
           "food",
           "value",
@@ -137,7 +137,7 @@ export const bangkokGuide = {
       {
         "name": "The Quarter Chaophraya",
         "area": "riverside",
-        "vibe": "A practical riverside stay with easier scenic access.",
+        "vibe": "A riverside stay that keeps ferries, skyline views, and old-city scenery especially close at hand.",
         "bestFor": [
           "wellness",
           "value",
@@ -163,7 +163,7 @@ export const bangkokGuide = {
       "tags": [
         "culture"
       ],
-      "description": "The classic Bangkok cultural start and still worth doing properly."
+      "description": "The classic Bangkok cultural opening, still best handled early and with real time protected for it."
     },
     {
       "name": "Wat Arun river perspective",
@@ -250,7 +250,7 @@ export const bangkokGuide = {
         "shopping",
         "design"
       ],
-      "description": "A polished riverside stop if the trip wants one modern retail block."
+      "description": "A riverside retail stop when the trip wants one modern interlude without losing the water-led mood."
     },
     {
       "name": "Pak Khlong Talat flower market",
@@ -268,7 +268,7 @@ export const bangkokGuide = {
         "nightlife",
         "food"
       ],
-      "description": "Useful if the trip wants one more polished modern Bangkok neighborhood feel."
+      "description": "A clean way to add a more modern Bangkok neighborhood feel to the trip."
     },
     {
       "name": "Bangkok National Museum",
@@ -277,7 +277,7 @@ export const bangkokGuide = {
         "museum",
         "culture"
       ],
-      "description": "Thailand's main national museum, especially strong for Thai art and history."
+      "description": "Thailand's main national museum, rewarding if the trip wants royal, religious, and historical context in one place."
     },
     {
       "name": "Museum Siam",
@@ -317,7 +317,7 @@ export const bangkokGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A stronger visual day if you want the river to matter."
+      "description": "A more visual river-led block when you want the water to shape the day, not just frame it."
     },
     {
       "name": "River ferry and scenic pause",
@@ -357,7 +357,7 @@ export const bangkokGuide = {
         "nightlife"
       ],
       "timing": "evening",
-      "description": "Good if you want a more urban polished Bangkok feel."
+      "description": "Best if you want Bangkok to feel more urban, vertical, and city-lit than temple- or market-led."
     },
     {
       "name": "Rooftop cocktail hour",
@@ -395,7 +395,7 @@ export const bangkokGuide = {
         "culture"
       ],
       "timing": "afternoon",
-      "description": "A strong way to build toward a bigger food evening."
+      "description": "A good lead-in to a bigger food evening, with market texture and narrow lanes doing half the work."
     },
     {
       "name": "Chinatown night market dinner crawl",
@@ -463,7 +463,7 @@ export const bangkokGuide = {
         "food"
       ],
       "timing": "evening",
-      "description": "A polished city night if you want something more modern than Chinatown."
+      "description": "A city night for travelers who want Bangkok after dark to feel more modern than Chinatown's street chaos."
     },
     {
       "name": "ICONSIAM and riverside mall stop",
@@ -473,7 +473,7 @@ export const bangkokGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A useful modern contrast if the trip wants one retail-heavy interlude."
+      "description": "A modern riverside contrast if the trip wants one air-conditioned retail interlude without losing the water setting."
     },
     {
       "name": "Bangkok National Museum visit",
@@ -504,7 +504,7 @@ export const bangkokGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A good modern-art and design pause if the trip leans current and urban."
+      "description": "A solid modern-art and design pause if the trip leans current, urban, and less temple-heavy."
     }
   ],
   "food": [
@@ -528,7 +528,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Modern Thai",
       "reservation": "Reserve ahead.",
-      "description": "A polished modern Thai splurge for one elevated city night."
+      "description": "A modern Thai splurge for one elevated city night with a sharper design-led edge."
     },
     {
       "name": "Nusara",
@@ -539,7 +539,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Modern Thai tasting",
       "reservation": "Book ahead.",
-      "description": "A special-occasion Bangkok dinner with a stronger storytelling feel."
+      "description": "A special-occasion Bangkok dinner where memory, family history, and modern Thai cooking all feel tightly composed."
     },
     {
       "name": "Baan Somtum Sathorn",
@@ -561,7 +561,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Thai small plates",
       "reservation": "Helpful but flexible.",
-      "description": "A good food-and-design pick if the trip leans stylish."
+      "description": "A food-and-design pick for nights that should feel stylish, low-lit, and unmistakably Bangkok."
     },
     {
       "name": "After You Dessert Cafe",
@@ -572,7 +572,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Dessert and coffee",
       "reservation": "Flexible.",
-      "description": "A useful cool-down stop in the middle of a hot day."
+      "description": "A reliable cool-down stop in the middle of a hot Bangkok day."
     },
     {
       "name": "Nai Ek Roll Noodles",
@@ -616,7 +616,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Cafe",
       "reservation": "Flexible.",
-      "description": "A good creative riverside break that keeps the day from feeling too heavy."
+      "description": "A creative riverside pause that keeps the day from tipping too far into temples, heat, or traffic."
     },
     {
       "name": "Supanniga Eating Room",
@@ -648,7 +648,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Seafood",
       "reservation": "Helpful.",
-      "description": "The dependable crab-curry stop: fast-moving, easy for groups, and one of the safest polished introductions to Bangkok seafood cooking."
+      "description": "The crab-curry classic: fast-moving, easy for groups, and one of the clearest introductions to Bangkok seafood cooking."
     },
     {
       "name": "After the Rain cafe-style escape",
@@ -717,7 +717,7 @@ export const bangkokGuide = {
       ],
       "cuisine": "Modern German tasting",
       "reservation": "Book ahead.",
-      "description": "A polished special-occasion option if you want one non-Thai splurge that still feels destination-worthy."
+      "description": "A special-occasion option if you want one non-Thai splurge that still feels destination-worthy."
     },
     {
       "name": "Gaggan Anand",
@@ -1266,7 +1266,7 @@ export const bangkokSupplements = [
     "categoryLabel": "Amusement & Activities",
     "name": "Let's Relax Spa",
     "area": "silom",
-    "description": "A polished massage-and-spa option that works well when the trip wants easy quality without overthinking it."
+    "description": "A massage-and-spa option that works well when the trip wants easy quality without overthinking it."
   },
   {
     "categoryLabel": "Amusement & Activities",
@@ -1383,3 +1383,5 @@ export const bangkokSupplements = [
     "description": "The so-called ghost tower, more of an atmospheric urban legend than a standard sightseeing stop."
   }
 ];
+
+export default { guide: bangkokGuide, supplements: bangkokSupplements };

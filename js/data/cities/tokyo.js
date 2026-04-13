@@ -4,7 +4,7 @@ export const tokyoGuide = {
   "label": "Tokyo",
   "country": "Japan",
   "currency": "Use an IC card for transit and keep some cash for shrines, small bars, and older shops.",
-  "transferNote": "Airport trains work well, but a car can be worth it after a long arrival or on a tight departure morning.",
+  "transferNote": "Airport trains usually work beautifully, but a car can still make sense after a long arrival or on a tight departure morning.",
   "areaAdjacency": {
     "shibuya": [
       "shinjuku",
@@ -76,7 +76,7 @@ export const tokyoGuide = {
       {
         "name": "The Tokyo EDITION, Toranomon",
         "area": "ginza",
-        "vibe": "Design-forward and polished with strong dining energy.",
+        "vibe": "Design-forward and dining-led, with a sleeker modern mood than Tokyo's more ceremonial luxury stays.",
         "bestFor": [
           "luxury",
           "food",
@@ -138,7 +138,7 @@ export const tokyoGuide = {
       {
         "name": "Shibuya Stream Hotel",
         "area": "shibuya",
-        "vibe": "A slick Shibuya stay with strong transit leverage and easy nightlife access.",
+        "vibe": "A slick Shibuya stay with easy nightlife access and the kind of transit leverage that keeps Tokyo feeling manageable.",
         "bestFor": [
           "nightlife",
           "transit",
@@ -150,7 +150,7 @@ export const tokyoGuide = {
       {
         "name": "Mitsui Garden Hotel Ginza Premier",
         "area": "ginza",
-        "vibe": "Comfortable and polished for a first Tokyo trip.",
+        "vibe": "Comfortable and composed for a first Tokyo trip built around Ginza, food, and easy transit.",
         "bestFor": [
           "food",
           "shopping",
@@ -235,7 +235,7 @@ export const tokyoGuide = {
       "description": "A must if you want one cinematic Tokyo night."
     },
     {
-      "name": "Ginza for one polished afternoon",
+      "name": "Ginza for One Composed Afternoon",
       "area": "ginza",
       "tags": [
         "luxury",
@@ -370,7 +370,7 @@ export const tokyoGuide = {
         "wellness"
       ],
       "timing": "afternoon",
-      "description": "A strong art-and-history afternoon if you want culture without crossing too many neighborhoods."
+      "description": "A rewarding art-and-history afternoon if you want serious culture without crossing half the city."
     },
     {
       "name": "Yanaka old Tokyo walk",
@@ -452,7 +452,7 @@ export const tokyoGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A smart decompression block in a dense city schedule."
+      "description": "A needed decompression block in a city schedule that can otherwise get too dense, loud, and vertical."
     },
     {
       "name": "Golden Gai or tucked-away izakaya night",
@@ -494,7 +494,7 @@ export const tokyoGuide = {
         "luxury"
       ],
       "timing": "afternoon",
-      "description": "Best if the trip wants one sharply polished retail block."
+      "description": "Best if the trip wants one sharply composed retail block of flagships, department stores, and immaculate city texture."
     },
     {
       "name": "Tokyo Station and Marunouchi walk",
@@ -504,7 +504,7 @@ export const tokyoGuide = {
         "wellness"
       ],
       "timing": "morning",
-      "description": "A refined city-texture walk with less chaos than central nightlife districts."
+      "description": "A refined city-texture walk of brick facades, business towers, and quieter streets than Tokyo's main nightlife districts."
     },
     {
       "name": "TeamLab or timed-entry concept stop",
@@ -513,7 +513,7 @@ export const tokyoGuide = {
         "design"
       ],
       "timing": "morning",
-      "description": "A useful modern anchor if the trip wants one more spectacle-driven attraction."
+      "description": "A modern anchor if the trip wants one more spectacle-driven attraction."
     },
     {
       "name": "Tsukiji food-first morning",
@@ -523,7 +523,7 @@ export const tokyoGuide = {
         "culture"
       ],
       "timing": "morning",
-      "description": "A strong breakfast-and-market move before the rest of the city fully wakes up."
+      "description": "A breakfast-and-market move that works best before the rest of the city fully wakes up."
     },
     {
       "name": "Daikanyama bookshop and café drift",
@@ -545,7 +545,7 @@ export const tokyoGuide = {
         "wellness"
       ],
       "timing": "afternoon",
-      "description": "A very good area for browsing, coffee, and a lower-volume city feel."
+      "description": "A very easy area for browsing, coffee, and a lower-volume city feel."
     },
     {
       "name": "Kabukicho energy window",
@@ -575,7 +575,7 @@ export const tokyoGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A strong contemporary-art stop if the trip wants one more polished modern-cultural anchor."
+      "description": "A contemporary-art stop if the trip wants one more modern-cultural anchor."
     },
     {
       "name": "teamLab Borderless visit",
@@ -620,7 +620,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Classic sushi",
       "reservation": "Book ahead.",
-      "description": "An old-guard Ginza sushi counter with polished service and a reassuringly classic omakase rhythm, ideal if you want one traditional Tokyo splurge."
+      "description": "An old-guard Ginza sushi counter with reassuringly classic omakase rhythm, best when the splurge should feel traditional rather than theatrical."
     },
     {
       "name": "Uoshin Nogizaka",
@@ -653,7 +653,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Modern izakaya",
       "reservation": "Helpful but not always required.",
-      "description": "Fun, sharp, and ideal near a high-energy Tokyo evening."
+      "description": "Fun, sharp, and easy to fold into a high-energy Tokyo evening."
     },
     {
       "name": "Afuri Harajuku",
@@ -811,7 +811,7 @@ export const tokyoGuide = {
       ],
       "cuisine": "Contemporary French-Japanese",
       "reservation": "Reserve ahead.",
-      "description": "A polished special-occasion dinner that balances French technique with a strong Japanese sense of season.",
+      "description": "A special-occasion dinner that balances French technique with a strong Japanese sense of season.",
       "michelinStatus": "Three Stars",
       "guideNote": "Michelin highlights its three-star contemporary cooking and Green Star sustainability ethos.",
       "guideUrl": "https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/l-effervescence"
@@ -1271,7 +1271,7 @@ export const tokyoSupplements = [
     "categoryLabel": "Place to Wander",
     "name": "Daikanyama T-Site",
     "area": "shibuya",
-    "description": "A polished bookstore-and-café complex that works well as a calmer modern Tokyo pause."
+    "description": "A bookstore-and-café complex that works well as a calmer modern Tokyo pause."
   },
   {
     "categoryLabel": "Place to Wander",
@@ -1508,3 +1508,5 @@ export const tokyoSupplements = [
     "description": "A major new mixed-use district with polished architecture, luxury retail, and a very current Tokyo feel."
   }
 ];
+
+export default { guide: tokyoGuide, supplements: tokyoSupplements };

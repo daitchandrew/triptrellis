@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { loadCategorySupplementLibrary, loadCityGuide, listSupportedCities } from "../js/data/cities/index.js";
+import { CATEGORY_LABELS, isValidCategoryLabel, isValidHotelVibe } from "../js/data/cities/standards.js";
 import { buildTripPlan } from "../js/lib/plan-builder.js";
 import { populateSuggestedItinerary } from "../js/lib/itinerary.js";
 import { hydratePlan, serializePlan } from "../js/lib/state.js";
@@ -48,6 +49,38 @@ async function main() {
 
     if (!coreCount) {
       throw new Error(`No core library content found for "${cityKey}".`);
+    }
+
+    const invalidSupplementLabels = supplements
+      .map((entry) => entry?.categoryLabel)
+      .filter((label) => label && !isValidCategoryLabel(label));
+
+    if (invalidSupplementLabels.length) {
+      throw new Error(
+        `Invalid supplement category labels for "${cityKey}": ${[...new Set(invalidSupplementLabels)].join(", ")}`
+      );
+    }
+
+    const guideCollections = [
+      ...(guide.cantMiss || []),
+      ...(guide.activities || []),
+      ...(guide.food || []),
+    ];
+    const invalidGuideLabels = guideCollections
+      .map((entry) => entry?.categoryLabel)
+      .filter((label) => label && !isValidCategoryLabel(label));
+
+    if (invalidGuideLabels.length) {
+      throw new Error(
+        `Invalid core category labels for "${cityKey}": ${[...new Set(invalidGuideLabels)].join(", ")}`
+      );
+    }
+
+    const hotelVibes = Object.values(guide.hotels || {}).flat().map((hotel) => hotel?.vibe);
+    const invalidHotelVibes = hotelVibes.filter((vibe) => !isValidHotelVibe(vibe));
+
+    if (invalidHotelVibes.length) {
+      throw new Error(`One or more hotel vibe lines failed validation for "${cityKey}".`);
     }
 
     summaries.push(`${guide.label}: ${hotelCount} hotels, ${coreCount} core picks, ${supplements.length} supplements`);
@@ -103,6 +136,7 @@ async function main() {
   }
 
   console.log("TripTrellis smoke check passed.");
+  console.log(`- Canonical categories: ${CATEGORY_LABELS.join(", ")}`);
   summaries.forEach((summary) => console.log(`- ${summary}`));
   console.log("- Sample generation checks: seoul, hoi-an, paris, new-york");
 }

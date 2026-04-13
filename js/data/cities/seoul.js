@@ -79,7 +79,7 @@ export const seoulGuide = {
       {
         "name": "Signiel Seoul",
         "area": "gangnam",
-        "vibe": "Sky-high luxury with knockout views and polished service.",
+        "vibe": "Sky-high luxury with knockout views and the kind of service that makes Gangnam feel ceremonious rather than merely upscale.",
         "bestFor": [
           "luxury",
           "nightlife",
@@ -89,7 +89,7 @@ export const seoulGuide = {
       {
         "name": "Josun Palace",
         "area": "gangnam",
-        "vibe": "Elegant and polished with major dinner leverage.",
+        "vibe": "Elegant and clubby, with major dinner leverage in a part of Seoul that likes to stay out late.",
         "bestFor": [
           "luxury",
           "food",
@@ -99,7 +99,7 @@ export const seoulGuide = {
       {
         "name": "Park Hyatt Seoul",
         "area": "gangnam",
-        "vibe": "Quiet, composed, and strong for a more refined Seoul trip.",
+        "vibe": "Quiet and composed, best when the trip wants Seoul to feel refined rather than restless.",
         "bestFor": [
           "luxury",
           "wellness",
@@ -109,7 +109,7 @@ export const seoulGuide = {
       {
         "name": "Grand InterContinental Seoul Parnas",
         "area": "gangnam",
-        "vibe": "A polished Gangnam luxury base with especially strong business-and-dinner convenience.",
+        "vibe": "A Gangnam luxury base with easy convention, shopping, and dinner access built right into the stay.",
         "bestFor": [
           "luxury",
           "food",
@@ -121,7 +121,7 @@ export const seoulGuide = {
       {
         "name": "Ryse, Autograph Collection",
         "area": "hongdae",
-        "vibe": "Stylish and social with effortless nights out.",
+        "vibe": "A stylish, social base with effortless nights out.",
         "bestFor": [
           "design",
           "nightlife",
@@ -131,7 +131,7 @@ export const seoulGuide = {
       {
         "name": "L7 Myeongdong",
         "area": "myeongdong",
-        "vibe": "Efficient, central, and easy for first-timers.",
+        "vibe": "An efficient, central base for first-timers.",
         "bestFor": [
           "transit",
           "shopping",
@@ -141,7 +141,7 @@ export const seoulGuide = {
       {
         "name": "Andaz Seoul Gangnam",
         "area": "gangnam",
-        "vibe": "Modern and polished with a better-than-average location.",
+        "vibe": "Modern and well-placed, with Gangnam dinners, shopping, and late reservations easy to build around.",
         "bestFor": [
           "design",
           "food",
@@ -163,7 +163,7 @@ export const seoulGuide = {
       {
         "name": "Nine Tree Premier Insadong",
         "area": "insadong",
-        "vibe": "Calm and central for culture-heavy days.",
+        "vibe": "A calm, central base for culture-heavy days.",
         "bestFor": [
           "culture",
           "walkability",
@@ -183,7 +183,7 @@ export const seoulGuide = {
       {
         "name": "Mercure Ambassador Hongdae",
         "area": "hongdae",
-        "vibe": "A practical Hongdae base if you want the neighborhood energy.",
+        "vibe": "A Hongdae base that keeps the neighborhood's music, bars, and food energy right outside the door.",
         "bestFor": [
           "nightlife",
           "food",
@@ -281,7 +281,7 @@ export const seoulGuide = {
         "nightlife",
         "food"
       ],
-      "description": "Best when the trip wants one sleeker, more polished Seoul evening instead of a scrappier night out."
+      "description": "Best when the trip wants one sleeker Seoul evening instead of a scrappier night out."
     },
     {
       "name": "Dongdaemun Design Plaza",
@@ -488,7 +488,7 @@ export const seoulGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "A cleaner, more polished retail-and-café district when you want Seoul to feel stylish rather than hectic."
+      "description": "A cleaner retail-and-café district when you want Seoul to feel stylish rather than hectic."
     },
     {
       "name": "Apgujeong luxury browsing",
@@ -498,7 +498,7 @@ export const seoulGuide = {
         "shopping"
       ],
       "timing": "afternoon",
-      "description": "Best if the trip wants a more polished, fashion-forward lane than the city's louder retail zones."
+      "description": "Best if the trip wants a more fashion-forward lane than the city's louder retail zones."
     },
     {
       "name": "Gangnam dinner and cocktail night",
@@ -509,7 +509,7 @@ export const seoulGuide = {
         "food"
       ],
       "timing": "evening",
-      "description": "A polished night out if Seoul should feel sleek, skyline-facing, and more controlled than chaotic."
+      "description": "A night out for when Seoul should feel sleek, skyline-facing, and more controlled than chaotic."
     },
     {
       "name": "War Memorial of Korea visit",
@@ -560,7 +560,7 @@ export const seoulGuide = {
         "shopping"
       ],
       "timing": "afternoon",
-      "description": "A good old-meets-new Gangnam pairing with temple calm and modern retail nearby."
+      "description": "An old-meets-new Gangnam pairing where temple calm and glossy retail sit almost side by side."
     },
     {
       "name": "Euljiro bar and side-street pass",
@@ -570,7 +570,7 @@ export const seoulGuide = {
         "design"
       ],
       "timing": "evening",
-      "description": "A stronger option if you want a cooler, less polished night than Gangnam."
+      "description": "A better option if you want a cooler, rougher-edged night than Gangnam."
     },
     {
       "name": "National Museum of Korea visit",
@@ -601,7 +601,7 @@ export const seoulGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A very good museum block for travelers who want architecture and art together."
+      "description": "A rewarding museum block for travelers who want architecture and art together in one of Seoul's strongest cultural settings."
     }
   ],
   "food": [
@@ -639,7 +639,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Fine-dining Korean",
       "reservation": "Reserve well in advance.",
-      "description": "A polished modern Korean choice if the trip leans refined without feeling stiff."
+      "description": "A modern Korean choice for trips that lean refined without tipping into stiffness."
     },
     {
       "name": "Mapo Jeong Daepo",
@@ -671,7 +671,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Kalguksu and beef dishes",
       "reservation": "Flexible.",
-      "description": "A polished old-school dining room known for rich beef gomtang and bright bibim naengmyeon, especially useful around Myeongdong or City Hall."
+      "description": "An old-school dining room known for rich beef gomtang and bright bibim naengmyeon, especially good around Myeongdong or City Hall."
     },
     {
       "name": "Myeongdong Kyoja",
@@ -796,7 +796,7 @@ export const seoulGuide = {
       ],
       "cuisine": "Modern Korean tasting",
       "reservation": "Reserve well ahead.",
-      "description": "A skyline-view tasting-menu dinner that fits especially well if you want one polished Gangnam splurge."
+      "description": "A skyline-view tasting-menu dinner that fits especially well if you want one Gangnam splurge."
     },
     {
       "name": "7th Door",
@@ -1104,7 +1104,7 @@ export const seoulSupplements = [
     "categoryLabel": "Shopping",
     "name": "Garosu-gil",
     "area": "gangnam",
-      "description": "A polished tree-lined shopping street with fashion boutiques, beauty stores, and cafés that make Apgujeong feel distinctly Seoul."
+      "description": "A tree-lined shopping street with boutiques, beauty stores, and cafés that make Apgujeong feel distinctly Seoul."
   },
   {
     "categoryLabel": "Shopping",
@@ -1458,7 +1458,7 @@ export const seoulSupplements = [
     "categoryLabel": "Food",
     "name": "Gwanghwamun Gukbap",
     "area": "insadong",
-    "description": "A polished soup-and-rice stop that feels rooted in Korean comfort food but still destination-worthy."
+    "description": "A soup-and-rice stop that feels rooted in Korean comfort food but still destination-worthy."
   },
   {
     "categoryLabel": "Food",
@@ -1467,3 +1467,5 @@ export const seoulSupplements = [
     "description": "A long-running Seoul institution known for clear beef soup served with rice and a very stripped-back menu."
   }
 ];
+
+export default { guide: seoulGuide, supplements: seoulSupplements };

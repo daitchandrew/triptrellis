@@ -167,7 +167,7 @@ export const copenhagenGuide = {
       {
         "name": "Hotel Ottilia",
         "area": "vesterbro",
-        "vibe": "A character-rich value option with a stronger local feel.",
+        "vibe": "A character-rich stay in a converted brewery setting, better when the trip wants Vesterbro texture over old-center formality.",
         "bestFor": [
           "design",
           "food",
@@ -223,7 +223,7 @@ export const copenhagenGuide = {
         "culture",
         "wellness"
       ],
-      "description": "An easy elegant city block that feels good in most trip styles."
+      "description": "An easy elegant city block of royal rooms and formal gardens that works in almost any Copenhagen itinerary."
     },
     {
       "name": "Tivoli Gardens",
@@ -278,7 +278,7 @@ export const copenhagenGuide = {
         "food",
         "design"
       ],
-      "description": "A good way to add more experimental and waterside energy to the trip."
+      "description": "A good way to add industrial waterfront energy and a more experimental side of Copenhagen to the trip."
     },
     {
       "name": "Frederiksberg Gardens",
@@ -294,7 +294,7 @@ export const copenhagenGuide = {
       "tags": [
         "food"
       ],
-      "description": "A strong anchor for a food-first Copenhagen day."
+      "description": "A reliable food-first anchor for smørrebrød, coffee, pantry browsing, and an easy central lunch reset."
     },
     {
       "name": "The Round Tower",
@@ -303,7 +303,7 @@ export const copenhagenGuide = {
         "culture",
         "design"
       ],
-      "description": "A very easy central historic sight with a simple city-view payoff."
+      "description": "A simple central sight where the broad spiral ramp and rooftop view make the old city legible fast."
     },
     {
       "name": "SMK / National Gallery area",
@@ -367,7 +367,7 @@ export const copenhagenGuide = {
         "museum",
         "design"
       ],
-      "description": "A major contemporary-art museum near the coast, useful if the trip wants a larger art outing."
+      "description": "A major coastal contemporary-art outing when the trip wants something larger and more destination-like than a central museum hour."
     }
   ],
   "activities": [
@@ -420,7 +420,7 @@ export const copenhagenGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "Useful if the trip wants central browsing without overthinking it."
+      "description": "An easy central browsing stretch when the day wants Danish retail, side streets, and low-friction city movement."
     },
     {
       "name": "Tivoli evening",
@@ -441,7 +441,7 @@ export const copenhagenGuide = {
         "nightlife"
       ],
       "timing": "evening",
-      "description": "A very strong high-energy Copenhagen night if you want the city to feel social."
+      "description": "A high-energy Copenhagen night of bars, restaurants, and warehouse-edge city life."
     },
     {
       "name": "Vesterbro coffee and wine bars pass",
@@ -503,7 +503,7 @@ export const copenhagenGuide = {
         "food"
       ],
       "timing": "afternoon",
-      "description": "A stronger current-city move with water, industrial edges, and destination dining."
+      "description": "A sharper current-city move of harbor views, industrial edges, and destination restaurants."
     },
     {
       "name": "Frederiksberg Gardens and calm loop",
@@ -582,7 +582,7 @@ export const copenhagenGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "A strong art-museum afternoon for travelers who want more than neighborhood wandering."
+      "description": "A rewarding art-museum afternoon when neighborhood wandering is not enough on its own."
     },
     {
       "name": "Designmuseum Danmark stop",
@@ -592,7 +592,7 @@ export const copenhagenGuide = {
         "design"
       ],
       "timing": "afternoon",
-      "description": "An excellent museum stop for design-minded travelers in one of Copenhagen's most useful central areas."
+      "description": "An excellent design stop for furniture, craft, and decorative arts in one of the city's easiest central areas."
     },
     {
       "name": "ARKEN day-trip style museum outing",
@@ -1468,3 +1468,5 @@ export const copenhagenSupplements = [
     "description": "A former naval zone with maritime buildings, design-school life, and a quieter harbor character than the busiest center."
   }
 ];
+
+export default { guide: copenhagenGuide, supplements: copenhagenSupplements };
