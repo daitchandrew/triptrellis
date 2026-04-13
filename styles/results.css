@@ -542,3 +542,48 @@
   font-size: 0.84rem;
   line-height: 1.54;
 }
+
+/* Premium results upgrade pass */
+.trip-lede {
+  max-width: 60ch;
+}
+
+.confidence-note {
+  gap: 0.7rem;
+}
+
+.confidence-note strong {
+  display: block;
+  line-height: 1.28;
+}
+
+.confidence-note p {
+  max-width: 36ch;
+}
+
+.glance-card p,
+.workspace-stat p,
+.hotel-selector-intro,
+.dont-miss-intro,
+.itinerary-focus-head .card-subtitle {
+  max-width: 58ch;
+}
+
+.hotel-option-summary,
+.dont-miss-card p,
+.day-summary,
+.day-reservation-note {
+  line-height: 1.6;
+}
+
+.selected-hotel-card .notes-callout {
+  max-width: 58ch;
+}
+
+.empty-itinerary-slot {
+  line-height: 1.6;
+}
+
+.saved-empty-actions {
+  margin-top: 1rem;
+}

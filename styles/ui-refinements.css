@@ -1542,12 +1542,142 @@ header.hero::before {
   color: #174b43;
 }
 
+.hero-text {
+  max-width: 62ch;
+}
+
+.hero-value-grid {
+  align-items: stretch;
+}
+
+.hero-value-card {
+  min-height: 100%;
+  padding: 1.15rem 1.2rem 1.25rem;
+}
+
+.hero-value-card strong {
+  display: block;
+  line-height: 1.34;
+}
+
+.proof-cluster {
+  gap: 1.15rem;
+}
+
+.coverage-band-copy,
+.section-intro,
+.form-block-note,
+.planner-intro,
+.planner-card-banner p {
+  max-width: 62ch;
+}
+
+.brief-advantage {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+
+.brief-advantage-head .section-intro {
+  max-width: 63ch;
+}
+
+.brief-advantage-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.brief-advantage-card {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.25rem 1.25rem 1.35rem;
+  border-radius: 28px;
+  border: 1px solid rgba(87, 69, 45, 0.12);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(248, 241, 231, 0.9));
+  box-shadow: 0 18px 40px rgba(79, 57, 26, 0.07);
+}
+
+.brief-advantage-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(145, 107, 56, 0.78);
+}
+
+.brief-advantage-card strong {
+  font-size: clamp(1rem, 1vw + 0.8rem, 1.18rem);
+  line-height: 1.32;
+  color: #23170f;
+}
+
+.brief-advantage-card p {
+  margin: 0;
+  color: rgba(73, 57, 39, 0.76);
+  line-height: 1.58;
+}
+
+.planner-card-banner {
+  gap: 0.55rem;
+}
+
+.planner-card-banner strong {
+  max-width: 29rem;
+}
+
+.planner-form-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-block-head {
+  gap: 0.45rem;
+}
+
+.form-guidance-row {
+  row-gap: 0.55rem;
+}
+
+.form-guidance-row span {
+  min-height: 2.35rem;
+}
+
+.footer-note,
+.footer-note--examples {
+  max-width: 60ch;
+}
+
+.form-actions {
+  align-items: stretch;
+}
+
+.planner-action-note {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.planner-action-note span {
+  min-height: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.faq-section .section-intro,
+.faq-answer p {
+  max-width: 64ch;
+}
+
 @media (max-width: 1180px) {
   .hero-value-grid {
     grid-template-columns: 1fr;
   }
 
   .trust-stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .brief-advantage-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1591,7 +1721,7 @@ header.hero::before {
   }
 
   .planner-action-note {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .faq-question {
