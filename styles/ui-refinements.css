@@ -1237,6 +1237,19 @@ header.hero::before {
   background: rgba(255, 255, 255, 0.96);
 }
 
+.planner-form-card input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.92;
+  cursor: pointer;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  filter: sepia(1) saturate(2.2) hue-rotate(344deg) brightness(0.86);
+}
+
+.planner-form-card input[type="date"]:hover::-webkit-calendar-picker-indicator,
+.planner-form-card input[type="date"]:focus::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  filter: sepia(1) saturate(2.4) hue-rotate(344deg) brightness(0.8);
+}
+
 .planner-form-card input[type="date"]:focus,
 .planner-form-card select:focus,
 .planner-form-card textarea:focus {
