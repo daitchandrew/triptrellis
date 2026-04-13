@@ -792,16 +792,26 @@
 }
 
 .library-result-group {
-  gap: 12px;
+  gap: 8px;
 }
 
 .library-card {
-  padding: 18px;
-  border-radius: 20px;
+  padding: 12px;
+  border-radius: 16px;
 }
 
 .library-card h4 {
-  line-height: 1.16;
+  line-height: 1.12;
+}
+
+.library-result-group-head .footer-note {
+  max-width: 44ch;
+}
+
+@media (max-width: 1180px) {
+  .overlay-library-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 1180px) {

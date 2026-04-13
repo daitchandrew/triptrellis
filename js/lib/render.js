@@ -280,17 +280,17 @@ export function getOverlayCopy(mode) {
   if (mode === "replace") {
     return {
       kicker: "Replace a stop",
-      title: "Choose the strongest alternate for this exact moment",
-      body: "These options are ranked by route fit, nearby flow, and contrast, so the replacement feels edited into the day rather than dropped in at random.",
-      subtle: "Already-used places are hidden, and the strongest groups lean toward options that keep the day coherent while still giving it a noticeably different feel.",
+      title: "Replace from the library",
+      body: "Ranked by route fit, nearby flow, and contrast so the day still feels edited.",
+      subtle: "Used places are hidden, and the strongest groups keep the day coherent.",
     };
   }
 
   return {
     kicker: "Add to itinerary",
-    title: "Choose something to add",
-    body: "Browse the city library with sorting that favors day fit, nearby areas, and additions that make the trip richer instead of repetitive.",
-    subtle: "Open from a specific day to place the stop there. Otherwise TripTrellis will route it into the part of the trip where it feels most natural and useful.",
+    title: "Add from the library",
+    body: "Browse by day fit, nearby areas, and additions that make the trip richer.",
+    subtle: "Open from a specific day to place it there. Otherwise TripTrellis routes it where it fits best.",
   };
 }
 
@@ -922,11 +922,11 @@ export function renderTripPlan(plan, results) {
                     <article class="recommendation-card library-card">
                       ${renderLibraryTags(item)}
                       <h4>${item.name}</h4>
-                      <p>${item.description}</p>
+                      <p class="library-card-description">${item.description}</p>
                       ${renderGuideNote(item)}
                       ${item.libraryMatch?.reasons?.length ? `<p class="library-match-line">${item.libraryMatch.reasons.join(" • ")}</p>` : ""}
                       <div class="library-actions">
-                        <span class="footer-note">${item.detailLine}</span>
+                        <span class="footer-note library-detail-line">${item.detailLine}</span>
                         <button class="mini-button library-choose-button" type="button" data-action="choose-library-item" data-item-id="${item.id}">${plan.libraryOverlay.mode === "replace" ? "Replace with this" : "Add to itinerary"}</button>
                       </div>
                     </article>
